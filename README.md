@@ -38,7 +38,7 @@ If successful, the server will be available at **`http://localhost:3000`**.
 ### **User Management**
 - **Create a new user:**
   ```
-  POST http://localhost:3000/api/users/5
+  POST http://localhost:3000/api/users
   ```
 - **User login:**
   ```
@@ -60,7 +60,7 @@ If successful, the server will be available at **`http://localhost:3000`**.
   ```
   DELETE http://localhost:3000/api/users/soft/6
   ```
-  - **Delete a user form query:**
+- **Delete a user form query:**
   ```
   DELETE http://localhost:3000/api/users/6
   ```
