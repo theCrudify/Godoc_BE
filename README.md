@@ -71,7 +71,9 @@ If successful, the server will be available at **`http://localhost:3000`**.
 3. Use the **Bearer Token** to access the following endpoints:
    - GET (Retrieve all users or a specific user by ID)
    - PUT (Update user information)
-   - PATCH (Soft delete a user)
+   - DELETE (Soft delete a user)
+   - DELETE (delete a user)
+
 
 ## **Notes**
 - Ensure MySQL is running before starting the project.
