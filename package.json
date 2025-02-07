@@ -1,0 +1,42 @@
+{
+    "name": "my-express-ts-app",
+    "version": "1.0.0",
+    "description": "My Express TypeScript App",
+    "main": "src/server.js",
+    "scripts": {
+        "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+        "migrate": "npx prisma migrate dev --name update_schema && npx prisma generate",
+        "start": "node dist/server.js",
+        "build": "tsc",
+        "prisma-generate": "npx prisma generate",
+        "prisma-push": "npx prisma db push && npx prisma generate"
+    },
+    "dependencies": {
+        "@prisma/client": "^6.3.1",
+        "argon2": "^0.41.1",
+        "bcryptjs": "^2.4.3",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.7",
+        "express": "^4.21.2",
+        "express-rate-limit": "^7.5.0",
+        "express-validator": "^7.2.1",
+        "helmet": "^8.0.0",
+        "hpp": "^0.2.3",
+        "ioredis": "^5.4.2",
+        "jsonwebtoken": "^9.0.2",
+        "morgan": "^1.10.0",
+        "redis": "^4.7.0",
+        "useragent": "^2.3.0"
+    },
+    "devDependencies": {
+        "@types/bcryptjs": "^2.4.6",
+        "@types/cors": "^2.8.17",
+        "@types/express": "^5.0.0",
+        "@types/express-validator": "^2.20.33",
+        "@types/helmet": "^0.0.48",
+        "@types/jsonwebtoken": "^9.0.8",
+        "@types/morgan": "^1.9.9",
+        "@types/node": "^22.13.1",
+        "ts-node-dev": "^2.0.0"
+    }
+}
