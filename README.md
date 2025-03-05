@@ -156,5 +156,5 @@ npx prisma db push
 
 📉 **Security Reminder:** Do not expose your `.env` file in public repositories.
 
-📄 **Happy Coding! 🚀**
+📄 **Happy Coding & Enjoy! 🚀**
 
