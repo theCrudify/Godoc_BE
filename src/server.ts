@@ -15,7 +15,10 @@ dotenv.config();
 // Initialize Express app
 const app = express();
 const PORT = process.env.PORT;
-const CORS_ORIGIN = process.env.CORS_ORIGIN || "*";
+const CORS_ORIGIN = process.env.CORS_ORIGIN ;
+// console.log("CORS_ORIGIN:", process.env.CORS_ORIGIN);
+// console.log("JWTSECRET:", process.env.JWT_SECRET);
+// console.log("JWT_EXPIRATION:", process.env.JWT_EXPIRATION);
 
 // Initialize Prisma (ORM)
 const prisma = new PrismaClient();
@@ -40,13 +43,28 @@ app.use("/api/users", userRoutes);
 app.use(errorHandler);
 
 // Start the server
-app.listen(PORT, async () => {
+const server = app.listen(PORT, async () => {
   try {
     await prisma.$connect();
     console.log(`✅ Database connected successfully`);
   } catch (error) {
-    console.error(`❌ Database connection failed: ${error}`);
+    console.error(`❌ Database connection failed:`, error);
   }
 
   console.log(`✅ Server running at http://localhost:${PORT}`);
+});
+
+// Graceful shutdown handling (Menutup Prisma saat server berhenti)
+const shutdown = async (signal: string) => {
+  console.log(`\n🔻 Received ${signal}. Closing server gracefully...`);
+  await prisma.$disconnect();
+  server.close(() => {
+    console.log("✅ Server shut down cleanly.");
+    process.exit(0);
+  });
+};
+
+// Menangani sinyal penghentian proses
+["SIGINT", "SIGTERM"].forEach((signal) => {
+  process.on(signal, () => shutdown(signal));
 });
