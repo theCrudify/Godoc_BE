@@ -1,11 +1,25 @@
 import { Request, Response } from "express";
 import bcrypt from "bcryptjs";
-import jwt from "jsonwebtoken";
+import jwt, { SignOptions } from "jsonwebtoken";
 import dotenv from "dotenv";
 import prisma from "../../config/database";
 
 dotenv.config();
-const JWT_SECRET = process.env.JWT_SECRET || "supersecretkey";
+
+const JWT_SECRET = process.env.JWT_SECRET;
+const JWT_EXPIRATION = process.env.JWT_EXPIRATION;
+
+if (!JWT_SECRET) {
+    throw new Error("❌ JWT_SECRET is not defined in environment variables!");
+}
+if (!JWT_EXPIRATION) {
+    throw new Error("❌ JWT_EXPIRATION is not defined in environment variables!");
+}
+
+// Pastikan JWT_EXPIRATION sesuai dengan tipe yang diharapkan oleh `jwt.sign()`
+const parsedExpiration: SignOptions["expiresIn"] = /^\d+$/.test(JWT_EXPIRATION)
+    ? Number(JWT_EXPIRATION) // Jika hanya angka, ubah ke Number
+    : (JWT_EXPIRATION as SignOptions["expiresIn"]); // Jika string valid, tetap gunakan
 
 // Gunakan Map sederhana agar lebih cepat
 const loginAttempts = new Map<string, { count: number; timer?: NodeJS.Timeout }>();
@@ -14,7 +28,7 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
     try {
         const { email, password } = req.body;
 
-        // Ambil user langsung dari database (jangan cek loginAttempts dulu agar tidak memperlambat query)
+        // Ambil user langsung dari database
         const user = await prisma.mst_user.findUnique({
             where: { email, is_deleted: false },
             select: { user_id: true, username: true, email: true, password: true }
@@ -26,7 +40,7 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
             return;
         }
 
-        // Cek apakah password cocok (gunakan async untuk menghindari blocking)
+        // Cek apakah password cocok
         const isPasswordValid = await bcrypt.compare(password, user.password);
         if (!isPasswordValid) {
             handleFailedLogin(email);
@@ -37,17 +51,17 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
         // Reset login attempt jika berhasil login
         resetLoginAttempts(email);
 
-        // Buat token JWT dengan masa berlaku 24 jam
+        // Buat token JWT dengan masa berlaku dari ENV
         const token = jwt.sign(
             { user_id: user.user_id, email: user.email, username: user.username },
             JWT_SECRET,
-            { expiresIn: "24h" }
+            { expiresIn: parsedExpiration }
         );
 
-        // Kirim token sebagai HTTP-only cookie untuk keamanan tambahan (Opsional)
+        // Kirim token sebagai HTTP-only cookie
         res.cookie("auth_token", token, {
             httpOnly: true,
-            maxAge: 24 * 60 * 60 * 1000, // 24 jam
+            maxAge: convertExpirationToMs(JWT_EXPIRATION) // Konversi waktu ke milidetik
         });
 
         res.status(200).json({
@@ -61,6 +75,23 @@ export const loginUser = async (req: Request, res: Response): Promise<void> => {
         });
     } catch (error) {
         res.status(500).json({ error: "Internal Server Error" });
+    }
+};
+
+// Fungsi untuk mengonversi JWT_EXPIRATION ke milidetik (untuk cookie)
+const convertExpirationToMs = (expiration: string): number => {
+    const match = expiration.match(/^(\d+)([smhd])$/);
+    if (!match) throw new Error("❌ Invalid JWT_EXPIRATION format!");
+
+    const value = parseInt(match[1]);
+    const unit = match[2];
+
+    switch (unit) {
+        case "s": return value * 1000;
+        case "m": return value * 60 * 1000;
+        case "h": return value * 60 * 60 * 1000;
+        case "d": return value * 24 * 60 * 60 * 1000;
+        default: throw new Error("❌ Invalid JWT_EXPIRATION format!");
     }
 };
 
@@ -90,5 +121,4 @@ const resetLoginAttempts = (email: string) => {
     loginAttempts.delete(email);
 };
 
-
-//jidan was here
+// jidan was here

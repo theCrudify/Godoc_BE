@@ -29,14 +29,6 @@ app.use(cors({ origin: CORS_ORIGIN })); // CORS policy
 app.use(helmet()); // Enhanced security
 app.use(morgan("dev")); // Logging HTTP requests
 
-// Rate limiting (anti-brute force)
-const limiter = rateLimit({
-  windowMs: 15 * 60 * 1000, // 15 minutes
-  max: 100, // Limit each IP to 100 requests per windowMs
-  message: "Too many requests, please try again later.",
-});
-app.use(limiter);
-
 // API Routes
 app.get("/", (req, res) => {
   res.send("🚀 Server is running!");
