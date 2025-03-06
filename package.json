@@ -1,7 +1,25 @@
 {
-    "name": "my-express-ts-app",
+    "name": "jidan_starter",
     "version": "1.0.0",
     "description": "My Express TypeScript App",
+    "keywords": [
+        "\"nodejs\"",
+        "\"express\"",
+        "\"api\"",
+        "\"cors\"",
+        "\"backend\""
+    ],
+    "homepage": "https://github.com/theCrudify/starterV1#readme",
+    "bugs": {
+        "url": "https://github.com/theCrudify/starterV1/issues"
+    },
+    "repository": {
+        "type": "git",
+        "url": "git+https://github.com/theCrudify/starterV1.git"
+    },
+    "license": "ISC",
+    "author": "jidanfatahillah",
+    "type": "commonjs",
     "main": "src/server.js",
     "scripts": {
         "dev": "ts-node-dev --respawn --transpile-only src/server.ts",
