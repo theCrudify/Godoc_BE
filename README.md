@@ -158,3 +158,4 @@ npx prisma db push
 
 📄 **Happy Coding & Enjoy! 🚀**
 
+# StarterBE-Prisma-Typescript
