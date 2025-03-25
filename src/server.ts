@@ -68,6 +68,3 @@ const shutdown = async (signal: string) => {
 ["SIGINT", "SIGTERM"].forEach((signal) => {
   process.on(signal, () => shutdown(signal));
 });
-
-
-//jidan was here, thanks btw
