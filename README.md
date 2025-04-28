@@ -32,6 +32,7 @@ npx prisma db push
 npx prisma db pull
 ```
 👉 `db push` applies the Prisma schema to the database.
+
 👉 `db pull` retrieves the schema from the database if any changes were made.
 
 ---

@@ -1,13 +1,17 @@
-import prisma from './database';
+import { prismaDB1, prismaDB2 } from "./database";
 
 const checkDatabaseConnection = async () => {
     try {
-        await prisma.$connect();
-        console.log('✅ Database connected successfully!');
+        await prismaDB1.$connect();
+        console.log('✅ Database 1 connected successfully!');
+
+        await prismaDB2.$connect();
+        console.log('✅ Database 2 connected successfully!');
     } catch (error) {
         console.error('❌ Database connection failed:', error);
     } finally {
-        await prisma.$disconnect();
+        await prismaDB1.$disconnect();
+        await prismaDB2.$disconnect();
     }
 };
 

@@ -1,0 +1,931 @@
+
+Object.defineProperty(exports, "__esModule", { value: true });
+
+const {
+  Decimal,
+  objectEnumValues,
+  makeStrictEnum,
+  Public,
+  getRuntime,
+  skip
+} = require('./runtime/index-browser.js')
+
+
+const Prisma = {}
+
+exports.Prisma = Prisma
+exports.$Enums = {}
+
+/**
+ * Prisma Client JS version: 6.6.0
+ * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+ */
+Prisma.prismaVersion = {
+  client: "6.6.0",
+  engine: "f676762280b54cd07c770017ed3711ddde35f37a"
+}
+
+Prisma.PrismaClientKnownRequestError = () => {
+  const runtimeName = getRuntime().prettyName;
+  throw new Error(`PrismaClientKnownRequestError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
+In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
+)};
+Prisma.PrismaClientUnknownRequestError = () => {
+  const runtimeName = getRuntime().prettyName;
+  throw new Error(`PrismaClientUnknownRequestError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
+In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
+)}
+Prisma.PrismaClientRustPanicError = () => {
+  const runtimeName = getRuntime().prettyName;
+  throw new Error(`PrismaClientRustPanicError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
+In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
+)}
+Prisma.PrismaClientInitializationError = () => {
+  const runtimeName = getRuntime().prettyName;
+  throw new Error(`PrismaClientInitializationError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
+In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
+)}
+Prisma.PrismaClientValidationError = () => {
+  const runtimeName = getRuntime().prettyName;
+  throw new Error(`PrismaClientValidationError is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
+In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
+)}
+Prisma.Decimal = Decimal
+
+/**
+ * Re-export of sql-template-tag
+ */
+Prisma.sql = () => {
+  const runtimeName = getRuntime().prettyName;
+  throw new Error(`sqltag is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
+In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
+)}
+Prisma.empty = () => {
+  const runtimeName = getRuntime().prettyName;
+  throw new Error(`empty is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
+In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
+)}
+Prisma.join = () => {
+  const runtimeName = getRuntime().prettyName;
+  throw new Error(`join is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
+In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
+)}
+Prisma.raw = () => {
+  const runtimeName = getRuntime().prettyName;
+  throw new Error(`raw is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
+In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
+)}
+Prisma.validator = Public.validator
+
+/**
+* Extensions
+*/
+Prisma.getExtensionContext = () => {
+  const runtimeName = getRuntime().prettyName;
+  throw new Error(`Extensions.getExtensionContext is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
+In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
+)}
+Prisma.defineExtension = () => {
+  const runtimeName = getRuntime().prettyName;
+  throw new Error(`Extensions.defineExtension is unable to run in this browser environment, or has been bundled for the browser (running in ${runtimeName}).
+In case this error is unexpected for you, please report it in https://pris.ly/prisma-prisma-bug-report`,
+)}
+
+/**
+ * Shorthand utilities for JSON filtering
+ */
+Prisma.DbNull = objectEnumValues.instances.DbNull
+Prisma.JsonNull = objectEnumValues.instances.JsonNull
+Prisma.AnyNull = objectEnumValues.instances.AnyNull
+
+Prisma.NullTypes = {
+  DbNull: objectEnumValues.classes.DbNull,
+  JsonNull: objectEnumValues.classes.JsonNull,
+  AnyNull: objectEnumValues.classes.AnyNull
+}
+
+
+
+/**
+ * Enums
+ */
+
+exports.Prisma.TransactionIsolationLevel = makeStrictEnum({
+  ReadUncommitted: 'ReadUncommitted',
+  ReadCommitted: 'ReadCommitted',
+  RepeatableRead: 'RepeatableRead',
+  Serializable: 'Serializable'
+});
+
+exports.Prisma.Mst_roleScalarFieldEnum = {
+  id: 'id',
+  role_name: 'role_name',
+  description: 'description',
+  created_at: 'created_at',
+  updated_at: 'updated_at',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.Mst_lineScalarFieldEnum = {
+  id: 'id',
+  line: 'line',
+  id_section_manufacture: 'id_section_manufacture',
+  code_line: 'code_line',
+  status: 'status',
+  is_deleted: 'is_deleted',
+  created_by: 'created_by',
+  created_at: 'created_at',
+  updated_by: 'updated_by',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.Mst_department_headScalarFieldEnum = {
+  id: 'id',
+  authorization_id: 'authorization_id',
+  section_id: 'section_id',
+  created_by: 'created_by',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Mst_section_headScalarFieldEnum = {
+  id: 'id',
+  authorization_id: 'authorization_id',
+  section_id: 'section_id',
+  created_by: 'created_by',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Mst_sub_documentScalarFieldEnum = {
+  id: 'id',
+  desc: 'desc',
+  code: 'code'
+};
+
+exports.Prisma.Mst_developmentScalarFieldEnum = {
+  id: 'id',
+  development_desc: 'development_desc',
+  development_code: 'development_code',
+  is_deleted: 'is_deleted',
+  status: 'status',
+  updated_by: 'updated_by',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.Mst_doc_typeScalarFieldEnum = {
+  id: 'id',
+  document_type: 'document_type',
+  document_code: 'document_code',
+  is_deleted: 'is_deleted',
+  status: 'status',
+  updated_by: 'updated_by',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.Mst_areaScalarFieldEnum = {
+  id: 'id',
+  id_line: 'id_line',
+  area: 'area',
+  code_area: 'code_area',
+  status: 'status',
+  created_by: 'created_by',
+  created_at: 'created_at',
+  updated_by: 'updated_by',
+  updated_at: 'updated_at',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Mst_plantScalarFieldEnum = {
+  id: 'id',
+  plant_name: 'plant_name',
+  plant_code: 'plant_code',
+  address: 'address',
+  created_at: 'created_at',
+  created_by: 'created_by',
+  updated_at: 'updated_at',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.Mst_departmentScalarFieldEnum = {
+  id: 'id',
+  department_name: 'department_name',
+  department_code: 'department_code',
+  plant_id: 'plant_id',
+  status: 'status',
+  is_deleted: 'is_deleted',
+  created_by: 'created_by',
+  created_at: 'created_at',
+  updated_by: 'updated_by',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.Mst_section_departmentScalarFieldEnum = {
+  id: 'id',
+  department_id: 'department_id',
+  section_name: 'section_name',
+  status: 'status',
+  created_by: 'created_by',
+  created_at: 'created_at',
+  updated_by: 'updated_by',
+  updated_at: 'updated_at',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Mst_document_categoriesScalarFieldEnum = {
+  id: 'id',
+  category: 'category',
+  status: 'status',
+  is_deleted: 'is_deleted',
+  updated_at: 'updated_at',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.Tr_document_numberScalarFieldEnum = {
+  id: 'id',
+  running_number: 'running_number',
+  klasifikasi_document: 'klasifikasi_document',
+  category_id: 'category_id',
+  plant_id: 'plant_id',
+  area_id: 'area_id',
+  section_id: 'section_id',
+  auth_id: 'auth_id',
+  line_code: 'line_code',
+  section_code: 'section_code',
+  department_code: 'department_code',
+  development_code: 'development_code',
+  id_proposed_header: 'id_proposed_header',
+  sub_document: 'sub_document',
+  is_internal_memo: 'is_internal_memo',
+  is_surat_ketentuan: 'is_surat_ketentuan',
+  created_by: 'created_by',
+  created_date: 'created_date'
+};
+
+exports.Prisma.Tr_additional_docScalarFieldEnum = {
+  id: 'id',
+  running_number: 'running_number',
+  klasifikasi_document: 'klasifikasi_document',
+  category_id: 'category_id',
+  plant_id: 'plant_id',
+  auth_id: 'auth_id',
+  proposed_change_id: 'proposed_change_id',
+  line_code: 'line_code',
+  section_code: 'section_code',
+  department_code: 'department_code',
+  development_code: 'development_code',
+  id_proposed_header: 'id_proposed_header',
+  sub_document: 'sub_document',
+  is_internal_memo: 'is_internal_memo',
+  is_surat_ketentuan: 'is_surat_ketentuan',
+  created_by: 'created_by',
+  created_date: 'created_date'
+};
+
+exports.Prisma.Tr_additional_fileScalarFieldEnum = {
+  id: 'id',
+  tr_additional_doc_id: 'tr_additional_doc_id',
+  version: 'version',
+  mimetype: 'mimetype',
+  file: 'file',
+  created_by: 'created_by',
+  created_date: 'created_date',
+  updated_at: 'updated_at',
+  updated_by: 'updated_by',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Tr_proposed_changes_historyScalarFieldEnum = {
+  id: 'id',
+  description: 'description',
+  employee_code: 'employee_code',
+  proposed_changes_id: 'proposed_changes_id',
+  auth_id: 'auth_id',
+  note: 'note',
+  status: 'status',
+  created_date: 'created_date',
+  updated_date: 'updated_date',
+  created_by: 'created_by'
+};
+
+exports.Prisma.Tr_proposed_changes_approvalScalarFieldEnum = {
+  id: 'id',
+  proposed_changes_id: 'proposed_changes_id',
+  auth_id: 'auth_id',
+  step: 'step',
+  actor: 'actor',
+  employee_code: 'employee_code',
+  status: 'status',
+  updated_date: 'updated_date',
+  created_date: 'created_date'
+};
+
+exports.Prisma.Mst_authorizationScalarFieldEnum = {
+  id: 'id',
+  employee_code: 'employee_code',
+  employee_name: 'employee_name',
+  email: 'email',
+  number_phone: 'number_phone',
+  gender: 'gender',
+  department_id: 'department_id',
+  section_id: 'section_id',
+  plant_id: 'plant_id',
+  role_id: 'role_id',
+  status: 'status',
+  created_at: 'created_at',
+  created_by: 'created_by',
+  updated_at: 'updated_at',
+  updated_by: 'updated_by',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Tbl_support_documentScalarFieldEnum = {
+  id: 'id',
+  support_doc_id: 'support_doc_id',
+  proposed_id: 'proposed_id',
+  document_type: 'document_type',
+  title: 'title',
+  status: 'status',
+  created_by: 'created_by',
+  created_date: 'created_date',
+  updated_at: 'updated_at',
+  updated_by: 'updated_by',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Tbl_support_document_notedScalarFieldEnum = {
+  id: 'id',
+  support_doc_id: 'support_doc_id',
+  version: 'version',
+  noted: 'noted',
+  status: 'status',
+  created_by: 'created_by',
+  created_date: 'created_date',
+  updated_at: 'updated_at',
+  updated_by: 'updated_by',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Tbl_support_document_fileScalarFieldEnum = {
+  id: 'id',
+  support_doc_id: 'support_doc_id',
+  version: 'version',
+  file: 'file',
+  status: 'status',
+  created_by: 'created_by',
+  created_date: 'created_date',
+  updated_at: 'updated_at',
+  updated_by: 'updated_by',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Mst_support_documentScalarFieldEnum = {
+  id: 'id',
+  document_type: 'document_type',
+  status: 'status',
+  is_deleted: 'is_deleted',
+  updated_at: 'updated_at',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.Tr_authorization_docScalarFieldEnum = {
+  id: 'id',
+  proposed_change_id: 'proposed_change_id',
+  doc_number: 'doc_number',
+  implementation_date: 'implementation_date',
+  evaluation: 'evaluation',
+  description: 'description',
+  conclution: 'conclution',
+  concept: 'concept',
+  standart: 'standart',
+  method: 'method',
+  status: 'status',
+  progress: 'progress',
+  created_by: 'created_by',
+  auth_id: 'auth_id',
+  plant_id: 'plant_id',
+  created_date: 'created_date',
+  department_id: 'department_id',
+  section_department_id: 'section_department_id',
+  updated_at: 'updated_at'
+};
+
+exports.Prisma.Tr_authdoc_approvalScalarFieldEnum = {
+  id: 'id',
+  authdoc_id: 'authdoc_id',
+  auth_id: 'auth_id',
+  step: 'step',
+  actor: 'actor',
+  employee_code: 'employee_code',
+  status: 'status',
+  updated_date: 'updated_date',
+  created_date: 'created_date'
+};
+
+exports.Prisma.Tr_proposed_changesScalarFieldEnum = {
+  id: 'id',
+  project_name: 'project_name',
+  document_number_id: 'document_number_id',
+  item_changes: 'item_changes',
+  line_code: 'line_code',
+  section_code: 'section_code',
+  section_name: 'section_name',
+  department_id: 'department_id',
+  section_department_id: 'section_department_id',
+  plant_id: 'plant_id',
+  auth_id: 'auth_id',
+  change_type: 'change_type',
+  description: 'description',
+  reason: 'reason',
+  cost: 'cost',
+  cost_text: 'cost_text',
+  planning_start: 'planning_start',
+  planning_end: 'planning_end',
+  created_date: 'created_date',
+  created_by: 'created_by',
+  updated_at: 'updated_at',
+  need_engineering_approval: 'need_engineering_approval',
+  need_production_approval: 'need_production_approval',
+  other_sytem: 'other_sytem',
+  status: 'status',
+  progress: 'progress',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Tr_authdoc_historyScalarFieldEnum = {
+  id: 'id',
+  description: 'description',
+  employee_code: 'employee_code',
+  authdoc_id: 'authdoc_id',
+  auth_id: 'auth_id',
+  note: 'note',
+  status: 'status',
+  created_date: 'created_date',
+  updated_date: 'updated_date',
+  created_by: 'created_by'
+};
+
+exports.Prisma.Tr_authdoc_memberScalarFieldEnum = {
+  id: 'id',
+  authdoc_id: 'authdoc_id',
+  employee_code: 'employee_code',
+  employee_name: 'employee_name',
+  status: 'status',
+  created_date: 'created_date',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Tr_handoverScalarFieldEnum = {
+  id: 'id',
+  doc_number: 'doc_number',
+  auth_id: 'auth_id',
+  auth_id2: 'auth_id2',
+  auth_id3: 'auth_id3',
+  auth_id4: 'auth_id4',
+  proposed_change_id: 'proposed_change_id',
+  authdoc_id: 'authdoc_id',
+  plant_id: 'plant_id',
+  department_id: 'department_id',
+  section_department_id: 'section_department_id',
+  progress: 'progress',
+  status: 'status',
+  material: 'material',
+  remark: 'remark',
+  created_by: 'created_by',
+  created_date: 'created_date',
+  updated_at: 'updated_at',
+  updated_by: 'updated_by',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Tr_handover_approvalScalarFieldEnum = {
+  id: 'id',
+  handover_id: 'handover_id',
+  auth_id: 'auth_id',
+  step: 'step',
+  actor: 'actor',
+  employee_code: 'employee_code',
+  status: 'status',
+  updated_date: 'updated_date',
+  created_date: 'created_date'
+};
+
+exports.Prisma.Tr_handover_historyScalarFieldEnum = {
+  id: 'id',
+  description: 'description',
+  employee_code: 'employee_code',
+  handover_id: 'handover_id',
+  auth_id: 'auth_id',
+  note: 'note',
+  status: 'status',
+  created_date: 'created_date',
+  updated_date: 'updated_date',
+  created_by: 'created_by'
+};
+
+exports.Prisma.Email_tracking_proposedchangesScalarFieldEnum = {
+  id: 'id',
+  proposed_changes_id: 'proposed_changes_id',
+  recipient_email: 'recipient_email',
+  recipient_type: 'recipient_type',
+  status: 'status',
+  note_hash: 'note_hash',
+  note_text: 'note_text',
+  message_id: 'message_id',
+  sent_at: 'sent_at',
+  is_success: 'is_success',
+  retry_count: 'retry_count',
+  last_retry_at: 'last_retry_at',
+  created_at: 'created_at'
+};
+
+exports.Prisma.Email_tracking_authdocScalarFieldEnum = {
+  id: 'id',
+  authorization_doc_id: 'authorization_doc_id',
+  recipient_email: 'recipient_email',
+  recipient_type: 'recipient_type',
+  status: 'status',
+  note_hash: 'note_hash',
+  note_text: 'note_text',
+  message_id: 'message_id',
+  sent_at: 'sent_at',
+  is_success: 'is_success',
+  retry_count: 'retry_count',
+  last_retry_at: 'last_retry_at',
+  created_at: 'created_at'
+};
+
+exports.Prisma.Email_tracking_handoverScalarFieldEnum = {
+  id: 'id',
+  handover_id: 'handover_id',
+  recipient_email: 'recipient_email',
+  recipient_type: 'recipient_type',
+  status: 'status',
+  note_hash: 'note_hash',
+  note_text: 'note_text',
+  message_id: 'message_id',
+  sent_at: 'sent_at',
+  is_success: 'is_success',
+  retry_count: 'retry_count',
+  last_retry_at: 'last_retry_at',
+  created_at: 'created_at'
+};
+
+exports.Prisma.SortOrder = {
+  asc: 'asc',
+  desc: 'desc'
+};
+
+exports.Prisma.NullsOrder = {
+  first: 'first',
+  last: 'last'
+};
+
+exports.Prisma.mst_roleOrderByRelevanceFieldEnum = {
+  role_name: 'role_name',
+  description: 'description'
+};
+
+exports.Prisma.mst_lineOrderByRelevanceFieldEnum = {
+  line: 'line',
+  code_line: 'code_line',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.mst_department_headOrderByRelevanceFieldEnum = {
+  created_by: 'created_by'
+};
+
+exports.Prisma.mst_section_headOrderByRelevanceFieldEnum = {
+  created_by: 'created_by'
+};
+
+exports.Prisma.mst_sub_documentOrderByRelevanceFieldEnum = {
+  desc: 'desc',
+  code: 'code'
+};
+
+exports.Prisma.mst_developmentOrderByRelevanceFieldEnum = {
+  development_desc: 'development_desc',
+  development_code: 'development_code',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.mst_doc_typeOrderByRelevanceFieldEnum = {
+  document_type: 'document_type',
+  document_code: 'document_code',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.mst_areaOrderByRelevanceFieldEnum = {
+  area: 'area',
+  code_area: 'code_area',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.mst_plantOrderByRelevanceFieldEnum = {
+  plant_name: 'plant_name',
+  plant_code: 'plant_code',
+  address: 'address',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.mst_departmentOrderByRelevanceFieldEnum = {
+  department_name: 'department_name',
+  department_code: 'department_code',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.mst_section_departmentOrderByRelevanceFieldEnum = {
+  section_name: 'section_name',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.mst_document_categoriesOrderByRelevanceFieldEnum = {
+  category: 'category',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.tr_document_numberOrderByRelevanceFieldEnum = {
+  running_number: 'running_number',
+  klasifikasi_document: 'klasifikasi_document',
+  line_code: 'line_code',
+  section_code: 'section_code',
+  department_code: 'department_code',
+  development_code: 'development_code',
+  id_proposed_header: 'id_proposed_header',
+  sub_document: 'sub_document',
+  created_by: 'created_by'
+};
+
+exports.Prisma.tr_additional_docOrderByRelevanceFieldEnum = {
+  running_number: 'running_number',
+  klasifikasi_document: 'klasifikasi_document',
+  line_code: 'line_code',
+  section_code: 'section_code',
+  department_code: 'department_code',
+  development_code: 'development_code',
+  id_proposed_header: 'id_proposed_header',
+  sub_document: 'sub_document',
+  created_by: 'created_by'
+};
+
+exports.Prisma.tr_additional_fileOrderByRelevanceFieldEnum = {
+  mimetype: 'mimetype',
+  file: 'file',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.tr_proposed_changes_historyOrderByRelevanceFieldEnum = {
+  description: 'description',
+  employee_code: 'employee_code',
+  note: 'note',
+  status: 'status',
+  created_by: 'created_by'
+};
+
+exports.Prisma.tr_proposed_changes_approvalOrderByRelevanceFieldEnum = {
+  actor: 'actor',
+  employee_code: 'employee_code',
+  status: 'status'
+};
+
+exports.Prisma.mst_authorizationOrderByRelevanceFieldEnum = {
+  employee_code: 'employee_code',
+  employee_name: 'employee_name',
+  email: 'email',
+  number_phone: 'number_phone',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.tbl_support_documentOrderByRelevanceFieldEnum = {
+  document_type: 'document_type',
+  title: 'title',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.tbl_support_document_notedOrderByRelevanceFieldEnum = {
+  noted: 'noted',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.tbl_support_document_fileOrderByRelevanceFieldEnum = {
+  file: 'file',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.mst_support_documentOrderByRelevanceFieldEnum = {
+  document_type: 'document_type',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.tr_authorization_docOrderByRelevanceFieldEnum = {
+  doc_number: 'doc_number',
+  evaluation: 'evaluation',
+  description: 'description',
+  conclution: 'conclution',
+  concept: 'concept',
+  standart: 'standart',
+  method: 'method',
+  status: 'status',
+  progress: 'progress',
+  created_by: 'created_by'
+};
+
+exports.Prisma.tr_authdoc_approvalOrderByRelevanceFieldEnum = {
+  actor: 'actor',
+  employee_code: 'employee_code',
+  status: 'status'
+};
+
+exports.Prisma.tr_proposed_changesOrderByRelevanceFieldEnum = {
+  project_name: 'project_name',
+  item_changes: 'item_changes',
+  line_code: 'line_code',
+  section_code: 'section_code',
+  section_name: 'section_name',
+  change_type: 'change_type',
+  description: 'description',
+  reason: 'reason',
+  cost: 'cost',
+  cost_text: 'cost_text',
+  created_by: 'created_by',
+  other_sytem: 'other_sytem',
+  status: 'status',
+  progress: 'progress'
+};
+
+exports.Prisma.tr_authdoc_historyOrderByRelevanceFieldEnum = {
+  description: 'description',
+  employee_code: 'employee_code',
+  note: 'note',
+  status: 'status',
+  created_by: 'created_by'
+};
+
+exports.Prisma.tr_authdoc_memberOrderByRelevanceFieldEnum = {
+  employee_code: 'employee_code',
+  employee_name: 'employee_name',
+  status: 'status'
+};
+
+exports.Prisma.tr_handoverOrderByRelevanceFieldEnum = {
+  doc_number: 'doc_number',
+  progress: 'progress',
+  status: 'status',
+  material: 'material',
+  remark: 'remark',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
+
+exports.Prisma.tr_handover_approvalOrderByRelevanceFieldEnum = {
+  actor: 'actor',
+  employee_code: 'employee_code',
+  status: 'status'
+};
+
+exports.Prisma.tr_handover_historyOrderByRelevanceFieldEnum = {
+  description: 'description',
+  employee_code: 'employee_code',
+  note: 'note',
+  status: 'status',
+  created_by: 'created_by'
+};
+
+exports.Prisma.email_tracking_proposedchangesOrderByRelevanceFieldEnum = {
+  recipient_email: 'recipient_email',
+  note_hash: 'note_hash',
+  note_text: 'note_text',
+  message_id: 'message_id'
+};
+
+exports.Prisma.email_tracking_authdocOrderByRelevanceFieldEnum = {
+  recipient_email: 'recipient_email',
+  note_hash: 'note_hash',
+  note_text: 'note_text',
+  message_id: 'message_id'
+};
+
+exports.Prisma.email_tracking_handoverOrderByRelevanceFieldEnum = {
+  recipient_email: 'recipient_email',
+  note_hash: 'note_hash',
+  note_text: 'note_text',
+  message_id: 'message_id'
+};
+exports.Gender = exports.$Enums.Gender = {
+  M: 'M',
+  F: 'F'
+};
+
+exports.email_tracking_proposedchanges_recipient_type = exports.$Enums.email_tracking_proposedchanges_recipient_type = {
+  submitter: 'submitter',
+  approver: 'approver',
+  next_approver: 'next_approver'
+};
+
+exports.email_tracking_proposedchanges_status = exports.$Enums.email_tracking_proposedchanges_status = {
+  approved: 'approved',
+  not_approved: 'not_approved',
+  rejected: 'rejected'
+};
+
+exports.email_tracking_authdoc_recipient_type = exports.$Enums.email_tracking_authdoc_recipient_type = {
+  submitter: 'submitter',
+  approver: 'approver',
+  next_approver: 'next_approver'
+};
+
+exports.email_tracking_authdoc_status = exports.$Enums.email_tracking_authdoc_status = {
+  approved: 'approved',
+  not_approved: 'not_approved',
+  rejected: 'rejected'
+};
+
+exports.email_tracking_handover_recipient_type = exports.$Enums.email_tracking_handover_recipient_type = {
+  submitter: 'submitter',
+  approver: 'approver',
+  next_approver: 'next_approver'
+};
+
+exports.email_tracking_handover_status = exports.$Enums.email_tracking_handover_status = {
+  approved: 'approved',
+  not_approved: 'not_approved',
+  rejected: 'rejected'
+};
+
+exports.Prisma.ModelName = {
+  mst_role: 'mst_role',
+  mst_line: 'mst_line',
+  mst_department_head: 'mst_department_head',
+  mst_section_head: 'mst_section_head',
+  mst_sub_document: 'mst_sub_document',
+  mst_development: 'mst_development',
+  mst_doc_type: 'mst_doc_type',
+  mst_area: 'mst_area',
+  mst_plant: 'mst_plant',
+  mst_department: 'mst_department',
+  mst_section_department: 'mst_section_department',
+  mst_document_categories: 'mst_document_categories',
+  tr_document_number: 'tr_document_number',
+  tr_additional_doc: 'tr_additional_doc',
+  tr_additional_file: 'tr_additional_file',
+  tr_proposed_changes_history: 'tr_proposed_changes_history',
+  tr_proposed_changes_approval: 'tr_proposed_changes_approval',
+  mst_authorization: 'mst_authorization',
+  tbl_support_document: 'tbl_support_document',
+  tbl_support_document_noted: 'tbl_support_document_noted',
+  tbl_support_document_file: 'tbl_support_document_file',
+  mst_support_document: 'mst_support_document',
+  tr_authorization_doc: 'tr_authorization_doc',
+  tr_authdoc_approval: 'tr_authdoc_approval',
+  tr_proposed_changes: 'tr_proposed_changes',
+  tr_authdoc_history: 'tr_authdoc_history',
+  tr_authdoc_member: 'tr_authdoc_member',
+  tr_handover: 'tr_handover',
+  tr_handover_approval: 'tr_handover_approval',
+  tr_handover_history: 'tr_handover_history',
+  email_tracking_proposedchanges: 'email_tracking_proposedchanges',
+  email_tracking_authdoc: 'email_tracking_authdoc',
+  email_tracking_handover: 'email_tracking_handover'
+};
+
+/**
+ * This is a stub Prisma Client that will error at runtime if called.
+ */
+class PrismaClient {
+  constructor() {
+    return new Proxy(this, {
+      get(target, prop) {
+        let message
+        const runtime = getRuntime()
+        if (runtime.isEdge) {
+          message = `PrismaClient is not configured to run in ${runtime.prettyName}. In order to run Prisma Client on edge runtime, either:
+- Use Prisma Accelerate: https://pris.ly/d/accelerate
+- Use Driver Adapters: https://pris.ly/d/driver-adapters
+`;
+        } else {
+          message = 'PrismaClient is unable to run in this browser environment, or has been bundled for the browser (running in `' + runtime.prettyName + '`).'
+        }
+
+        message += `
+If this is unexpected, please open an issue: https://pris.ly/prisma-prisma-bug-report`
+
+        throw new Error(message)
+      }
+    })
+  }
+}
+
+exports.PrismaClient = PrismaClient
+
+Object.assign(exports, Prisma)

@@ -1,14 +1,15 @@
-import { PrismaClient } from "@prisma/client";
-import dotenv from "dotenv";
+import { PrismaClient as PrismaClientDB1 } from "../../prisma/generated/db1";
+import { PrismaClient as PrismaClientDB2 } from "../../prisma/generated/db2";
+import * as dotenv from "dotenv";
 
-dotenv.config(); // Pastikan variabel .env dimuat
+dotenv.config();
 
-const prisma = new PrismaClient({
-    datasources: {
-        db: {
-            url: process.env.DATABASE_URL, // Gunakan langsung dari .env
-        },
-    },
+const prismaDB1 = new PrismaClientDB1({
+  datasources: { db: { url: process.env.DATABASE_URL_1 } }
 });
 
-export default prisma;
+const prismaDB2 = new PrismaClientDB2({
+  datasources: { db: { url: process.env.DATABASE_URL_2 } }
+});
+
+export { prismaDB1, prismaDB2 };
