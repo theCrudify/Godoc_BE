@@ -1,17 +1,15 @@
 import { Request, Response } from "express";
 import { prismaDB2 } from "../../../../config/database";
 
-
-export const getAllProposedChanges = async (req: Request, res: Response): Promise<void> => {
+// Get all proposed changes with relations
+export const getAllProposedChangesWithRelations = async (req: Request, res: Response): Promise<void> => {
     try {
-        // Ekstrak query parameters dengan default values
         const page = Number(req.query.page) || 1;
         const limit = Number(req.query.limit) || 10;
         const searchTerm = (req.query.search as string) || "";
         const sortColumn = (req.query.sort as string) || "id";
         const sortDirection = req.query.direction === "desc" ? "desc" : "asc";
 
-        // Definisi kolom yang diperbolehkan untuk sorting
         const validSortColumns = [
             "id", "project_name", "document_number_id", "item_changes",
             "line_code", "section_code", "department_id",
@@ -20,22 +18,18 @@ export const getAllProposedChanges = async (req: Request, res: Response): Promis
             "progress", "need_engineering_approval", "need_production_approval"
         ];
 
-        // Validasi sortColumn dan set default jika tidak valid
         const orderBy: any = validSortColumns.includes(sortColumn)
             ? { [sortColumn]: sortDirection }
             : { id: "asc" };
 
         const offset = (page - 1) * limit;
 
-        // Inisialisasi whereCondition
         const whereCondition: any = {
             is_deleted: false
         };
 
-        // Array untuk kondisi AND
         const andConditions = [];
 
-        // Tambahkan kondisi pencarian (Search Term)
         if (searchTerm) {
             andConditions.push({
                 OR: [
@@ -50,66 +44,400 @@ export const getAllProposedChanges = async (req: Request, res: Response): Promis
             });
         }
 
-        // Filter by status
+        if (req.query.auth_id) {
+            andConditions.push({ auth_id: Number(req.query.auth_id) });
+        }
+
         if (req.query.status) {
             andConditions.push({ status: req.query.status as string });
         }
 
-        // Filter by change_type
         if (req.query.change_type) {
             andConditions.push({ change_type: req.query.change_type as string });
         }
 
-        // Filter by plant_id
         if (req.query.plant_id) {
             andConditions.push({ plant_id: Number(req.query.plant_id) });
         }
 
-        // Filter by department_id
         if (req.query.department_id) {
             andConditions.push({ department_id: Number(req.query.department_id) });
         }
 
-        // Filter by section_department_id
         if (req.query.section_department_id) {
             andConditions.push({ section_department_id: Number(req.query.section_department_id) });
         }
 
-        // Filter by line_code
         if (req.query.line_code) {
             andConditions.push({ line_code: req.query.line_code as string });
         }
 
-        // Filter by engineering approval
         if (req.query.need_engineering_approval !== undefined) {
             andConditions.push({
-                need_engineering_approval: req.query.need_engineering_approval === 'true'
+                need_engineering_approval: req.query.need_engineering_approval === "true"
             });
         }
 
-        // Filter by production approval
         if (req.query.need_production_approval !== undefined) {
             andConditions.push({
-                need_production_approval: req.query.need_production_approval === 'true'
+                need_production_approval: req.query.need_production_approval === "true"
             });
         }
 
-        // Filter by progress
         if (req.query.progress) {
             andConditions.push({ progress: req.query.progress as string });
         }
 
-        // Filter by created_by
         if (req.query.created_by) {
             andConditions.push({ created_by: req.query.created_by as string });
         }
 
-        // Tambahkan AND conditions ke where jika ada
         if (andConditions.length > 0) {
             whereCondition.AND = andConditions;
         }
 
-        // Eksekusi query findMany dan count dalam transaksi
+        // Get the proposed changes data
+        const [proposedChanges, totalCount] = await prismaDB2.$transaction([
+            prismaDB2.tr_proposed_changes.findMany({
+                where: whereCondition,
+                skip: offset,
+                take: limit,
+                orderBy,
+                include: {
+                    plant: true,
+                    department: true,
+                    section_department: true,
+                    documentNumber: true
+                }
+            }),
+            prismaDB2.tr_proposed_changes.count({
+                where: whereCondition
+            }),
+        ]);
+
+        // Fetch related data separately to avoid type issues
+        const proposedChangeIds = proposedChanges.map(pc => pc.id);
+        
+        // Get authorization docs for these proposed changes
+        const authDocs = await prismaDB2.tr_authorization_doc.findMany({
+            where: {
+                proposed_change_id: {
+                    in: proposedChangeIds
+                }
+            },
+            select: {
+                id: true,
+                doc_number: true,
+                proposed_change_id: true,
+                progress: true
+            }
+        });
+        
+        // Get handovers for these proposed changes
+        const handovers = await prismaDB2.tr_handover.findMany({
+            where: {
+                proposed_change_id: {
+                    in: proposedChangeIds
+                }
+            },
+            select: {
+                id: true,
+                doc_number: true,
+                proposed_change_id: true,
+                progress: true
+            }
+        });
+
+        // Group auth docs and handovers by proposed_change_id
+        const authDocsByProposedChangeId: Record<number, typeof authDocs> = {};
+        const handoversByProposedChangeId: Record<number, typeof handovers> = {};
+        
+        authDocs.forEach(doc => {
+            if (doc.proposed_change_id) {
+                if (!authDocsByProposedChangeId[doc.proposed_change_id]) {
+                    authDocsByProposedChangeId[doc.proposed_change_id] = [];
+                }
+                authDocsByProposedChangeId[doc.proposed_change_id].push(doc);
+            }
+        });
+        
+        handovers.forEach(handover => {
+            if (handover.proposed_change_id) {
+                if (!handoversByProposedChangeId[handover.proposed_change_id]) {
+                    handoversByProposedChangeId[handover.proposed_change_id] = [];
+                }
+                handoversByProposedChangeId[handover.proposed_change_id].push(handover);
+            }
+        });
+
+        // Format the results to add the additional information
+        const formattedProposedChanges = proposedChanges.map(item => {
+            const relatedAuthDocs = authDocsByProposedChangeId[item.id] || [];
+            const relatedHandovers = handoversByProposedChangeId[item.id] || [];
+            
+            return {
+                ...item,
+                document_number: (item.documentNumber as any)?.running_number || "not yet",
+                has_authorization_doc: relatedAuthDocs.length > 0 ? 
+                    relatedAuthDocs.map(doc => doc.doc_number).join(", ") : 
+                    "not yet",
+                authorization_doc_ids: relatedAuthDocs.length > 0 ?
+                    relatedAuthDocs.map(doc => doc.id) :
+                    [],
+                authorization_doc_progress: relatedAuthDocs.length > 0 ?
+                    relatedAuthDocs.map(doc => ({
+                        id: doc.id,
+                        doc_number: doc.doc_number,
+                        progress: doc.progress || "not available"
+                    })) :
+                    [],
+                has_handover: relatedHandovers.length > 0 ? 
+                    relatedHandovers.map(handover => handover.doc_number).join(", ") : 
+                    "not yet",
+                handover_ids: relatedHandovers.length > 0 ?
+                    relatedHandovers.map(handover => handover.id) :
+                    [],
+                handover_progress: relatedHandovers.length > 0 ?
+                    relatedHandovers.map(handover => ({
+                        id: handover.id,
+                        doc_number: handover.doc_number,
+                        progress: handover.progress || "not available"
+                    })) :
+                    []
+            };
+        });
+
+        const totalPages = Math.ceil(totalCount / limit);
+        const hasNextPage = page < totalPages;
+        const hasPreviousPage = page > 1;
+
+        res.status(200).json({
+            data: formattedProposedChanges,
+            pagination: {
+                totalCount,
+                totalPages,
+                currentPage: page,
+                limit,
+                hasNextPage,
+                hasPreviousPage
+            },
+        });
+    } catch (error: any) {
+        console.error("❌ Error in getAllProposedChangesWithRelations:", error);
+        res.status(500).json({
+            error: "Internal Server Error",
+            details: process.env.NODE_ENV === 'development' ? error.message : undefined
+        });
+    }
+};
+
+// Get a specific proposed change by ID with relations
+export const getProposedChangeByIdWithRelations = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const proposedChangeId = Number(req.params.id);
+        
+        if (isNaN(proposedChangeId)) {
+            res.status(400).json({ error: "Invalid ID format" });
+            return;
+        }
+
+        // Get the proposed change data
+        const proposedChange = await prismaDB2.tr_proposed_changes.findUnique({
+            where: {
+                id: proposedChangeId,
+                is_deleted: false
+            },
+            include: {
+                plant: true,
+                department: true,
+                section_department: true,
+                documentNumber: true
+            }
+        });
+
+        if (!proposedChange) {
+            res.status(404).json({ error: "Proposed change not found" });
+            return;
+        }
+
+        // Get authorization docs for this proposed change
+        const authDocs = await prismaDB2.tr_authorization_doc.findMany({
+            where: {
+                proposed_change_id: proposedChangeId
+            },
+            select: {
+                id: true,
+                doc_number: true,
+                proposed_change_id: true,
+                progress: true
+            }
+        });
+        
+        // Get handovers for this proposed change
+        const handovers = await prismaDB2.tr_handover.findMany({
+            where: {
+                proposed_change_id: proposedChangeId
+            },
+            select: {
+                id: true,
+                doc_number: true,
+                proposed_change_id: true,
+                progress: true
+            }
+        });
+
+        // Format the result to add the additional information
+        const formattedProposedChange = {
+            ...proposedChange,
+            document_number: (proposedChange.documentNumber as any)?.running_number || "not yet",
+            has_authorization_doc: authDocs.length > 0 ? 
+                authDocs.map(doc => doc.doc_number).join(", ") : 
+                "not yet",
+            authorization_doc_ids: authDocs.length > 0 ?
+                authDocs.map(doc => doc.id) :
+                [],
+            authorization_doc_progress: authDocs.length > 0 ?
+                authDocs.map(doc => ({
+                    id: doc.id,
+                    doc_number: doc.doc_number,
+                    progress: doc.progress || "not available"
+                })) :
+                [],
+            has_handover: handovers.length > 0 ? 
+                handovers.map(handover => handover.doc_number).join(", ") : 
+                "not yet",
+            handover_ids: handovers.length > 0 ?
+                handovers.map(handover => handover.id) :
+                [],
+            handover_progress: handovers.length > 0 ?
+                handovers.map(handover => ({
+                    id: handover.id,
+                    doc_number: handover.doc_number,
+                    progress: handover.progress || "not available"
+                })) :
+                []
+        };
+
+        res.status(200).json({
+            data: formattedProposedChange
+        });
+    } catch (error: any) {
+        console.error(`❌ Error in getProposedChangeByIdWithRelations: ${error.message}`);
+        res.status(500).json({
+            error: "Internal Server Error",
+            details: process.env.NODE_ENV === 'development' ? error.message : undefined
+        });
+    }
+};
+
+export const getAllProposedChanges = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const page = Number(req.query.page) || 1;
+        const limit = Number(req.query.limit) || 10;
+        const searchTerm = (req.query.search as string) || "";
+        const sortColumn = (req.query.sort as string) || "id";
+        const sortDirection = req.query.direction === "desc" ? "desc" : "asc";
+
+        const validSortColumns = [
+            "id", "project_name", "document_number_id", "item_changes",
+            "line_code", "section_code", "department_id",
+            "section_department_id", "plant_id", "change_type",
+            "status", "created_date", "planning_start", "planning_end",
+            "progress", "need_engineering_approval", "need_production_approval"
+        ];
+
+        const orderBy: any = validSortColumns.includes(sortColumn)
+            ? { [sortColumn]: sortDirection }
+            : { id: "asc" };
+
+        const offset = (page - 1) * limit;
+
+        // Ambil semua proposed_change_id yang digunakan di tr_authorization_doc
+        const usedProposedChangeIds = (await prismaDB2.tr_authorization_doc.findMany({
+            select: { proposed_change_id: true },
+            where: {
+                proposed_change_id: {
+                    not: null
+                }
+            },
+            distinct: ['proposed_change_id']
+        })).map((item) => item.proposed_change_id);
+
+        const whereCondition: any = {
+            is_deleted: false,
+            id: {
+                notIn: usedProposedChangeIds
+            }
+        };
+
+        const andConditions = [];
+
+        if (searchTerm) {
+            andConditions.push({
+                OR: [
+                    { project_name: { contains: searchTerm } },
+                    { item_changes: { contains: searchTerm } },
+                    { line_code: { contains: searchTerm } },
+                    { section_code: { contains: searchTerm } },
+                    { change_type: { contains: searchTerm } },
+                    { description: { contains: searchTerm } },
+                    { status: { contains: searchTerm } }
+                ]
+            });
+        }
+
+        if (req.query.auth_id) {
+            andConditions.push({ auth_id: Number(req.query.auth_id) });
+        }
+
+        if (req.query.status) {
+            andConditions.push({ status: req.query.status as string });
+        }
+
+        if (req.query.change_type) {
+            andConditions.push({ change_type: req.query.change_type as string });
+        }
+
+        if (req.query.plant_id) {
+            andConditions.push({ plant_id: Number(req.query.plant_id) });
+        }
+
+        if (req.query.department_id) {
+            andConditions.push({ department_id: Number(req.query.department_id) });
+        }
+
+        if (req.query.section_department_id) {
+            andConditions.push({ section_department_id: Number(req.query.section_department_id) });
+        }
+
+        if (req.query.line_code) {
+            andConditions.push({ line_code: req.query.line_code as string });
+        }
+
+        if (req.query.need_engineering_approval !== undefined) {
+            andConditions.push({
+                need_engineering_approval: req.query.need_engineering_approval === "true"
+            });
+        }
+
+        if (req.query.need_production_approval !== undefined) {
+            andConditions.push({
+                need_production_approval: req.query.need_production_approval === "true"
+            });
+        }
+
+        if (req.query.progress) {
+            andConditions.push({ progress: req.query.progress as string });
+        }
+
+        if (req.query.created_by) {
+            andConditions.push({ created_by: req.query.created_by as string });
+        }
+
+        if (andConditions.length > 0) {
+            whereCondition.AND = andConditions;
+        }
+
         const [proposedChanges, totalCount] = await prismaDB2.$transaction([
             prismaDB2.tr_proposed_changes.findMany({
                 where: whereCondition,
@@ -134,19 +462,16 @@ export const getAllProposedChanges = async (req: Request, res: Response): Promis
                         }
                     }
                 }
-
             }),
             prismaDB2.tr_proposed_changes.count({
                 where: whereCondition
             }),
         ]);
 
-        // Kalkulasi pagination
         const totalPages = Math.ceil(totalCount / limit);
         const hasNextPage = page < totalPages;
         const hasPreviousPage = page > 1;
 
-        // Format response
         res.status(200).json({
             data: proposedChanges,
             pagination: {
@@ -166,6 +491,8 @@ export const getAllProposedChanges = async (req: Request, res: Response): Promis
         });
     }
 };
+
+
 
 export const softDeleteProposedChange = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;

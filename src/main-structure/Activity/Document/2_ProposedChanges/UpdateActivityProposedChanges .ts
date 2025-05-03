@@ -98,7 +98,7 @@ export const updateProposedChange = async (req: Request, res: Response): Promise
         
         try {
             // Try to find approvers from tr_proposed_changes_history based on 'not_approved' status
-            const approvalHistories = await prismaDB2.tr_proposed_changes_history.findMany({
+            const approvalHistories = await prismaDB2.tr_proposed_changes_approval.findMany({
                 where: {
                     proposed_changes_id: Number(id),
                     status: 'not_approved'
@@ -119,7 +119,6 @@ export const updateProposedChange = async (req: Request, res: Response): Promise
                     if (approver) {
                         notApprovedApprovers.push({
                             ...approver,
-                            note: history.note
                         });
                     }
                 }

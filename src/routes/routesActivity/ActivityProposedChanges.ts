@@ -4,7 +4,9 @@ import { upload } from "../../middleware/uploadMiddleware"; // naik satu folder 
 import {
     getAllProposedChanges,
     createSupportDocuments,
-    softDeleteProposedChange
+    softDeleteProposedChange,
+    getAllProposedChangesWithRelations,
+    getProposedChangeByIdWithRelations
 }
     from '../../main-structure/Activity/Document/2_ProposedChanges/ActivityProposedChanges'; // Pastikan path-nya benar
 
@@ -37,6 +39,7 @@ import {
     downloadSupportDocumentFile,
     downloadWithWatermark,
     getSupportDocNotes,
+    
 
 
 }
@@ -120,5 +123,11 @@ router.post('/status', updateApprovalStatus);
 // Endpoint untuk mendapatkan semua approval dengan status on_going
 // router.get("/ongoing", getAllOngoingApprovals);
 
+
+router.get("/completion", getAllProposedChangesWithRelations);
+router.get("/completion/:id", getProposedChangeByIdWithRelations);
+
+
+// getAllProposedChangesWithRelations
 
 export default router;

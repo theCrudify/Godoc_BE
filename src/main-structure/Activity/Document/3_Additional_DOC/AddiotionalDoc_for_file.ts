@@ -2,78 +2,10 @@ import { Request, Response } from "express";
 import { prismaDB2 } from "../../../../config/database";
 import path from "path";
 import fs from "fs";
-import mime from 'mime-types';
 
 const uploadsDir = path.join(process.cwd(), "src", "uploads");
 
-/**
- * Mendapatkan semua file untuk dokumen tertentu berdasarkan proposed_change_id
- */
-export const getDocumentFilesByProposedChangeId = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const { proposed_change_id } = req.query;
 
-    if (!proposed_change_id) {
-      res.status(400).json({
-        status: false,
-        message: "proposed_change_id is required"
-      });
-      return;
-    }
-
-    // Konversi ID ke integer
-    const changeId = parseInt(proposed_change_id as string, 10);
-
-    if (isNaN(changeId)) {
-      res.status(400).json({
-        status: false,
-        message: "proposed_change_id must be a valid number"
-      });
-      return;
-    }
-
-    // Cari dokumen berdasarkan proposed_change_id
-    const document = await prismaDB2.tr_additional_doc.findFirst({
-      where: {
-        proposed_change_id: changeId
-      }
-    });
-
-    if (!document) {
-      res.status(404).json({
-        status: false,
-        message: "Document not found with the provided proposed_change_id"
-      });
-      return;
-    }
-
-    // Ambil semua file dokumen yang tidak terhapus
-    const files = await prismaDB2.tr_additional_file.findMany({
-      where: {
-        tr_additional_doc_id: document.id,
-        is_deleted: false
-      },
-      orderBy: {
-        version: 'desc'
-      }
-    });
-
-    res.status(200).json({
-      status: true,
-      message: "Files retrieved successfully",
-      data: files
-    });
-
-  } catch (error) {
-    console.error("❌ Error retrieving document files:", error);
-    res.status(500).json({
-      status: false,
-      message: error instanceof Error ? error.message : "Unknown error"
-    });
-  } finally {
-    await prismaDB2.$disconnect();
-  }
-};
 
 /**
  * Mendapatkan semua file untuk dokumen tertentu berdasarkan tr_additional_doc_id
@@ -425,5 +357,105 @@ export const deleteDocumentFile = async (req: Request, res: Response): Promise<v
     });
   } finally {
     await prismaDB2.$disconnect();
+  }
+};
+
+
+export const updateProgressSupport = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const id = Number(req.params.id);
+    const { progresssupport } = req.body;
+
+    if (isNaN(id)) {
+      res.status(400).json({ status: false, error: "Invalid ID format" });
+      return;
+    }
+
+    if (typeof progresssupport !== "string") {
+      res.status(400).json({ status: false, error: "progresssupport must be a string" });
+      return;
+    }
+
+    const updated = await prismaDB2.tr_proposed_changes.update({
+      where: { id },
+      data: { progresssupport },
+    });
+
+    res.status(200).json({
+      status: true,
+      message: "Progress support updated successfully",
+      data: updated,
+    });
+
+  } catch (error: any) {
+    console.error("❌ Error updating progresssupport:", error);
+
+    res.status(500).json({
+      status: false,
+      error: "Failed to update progresssupport",
+      name: error.name || "UnknownError",
+      message: error.message || "An unexpected error occurred",
+      meta: error.meta || null
+    });
+  }
+};
+
+
+export const deleteAdditionalFile = async (req: Request, res: Response): Promise<void> => {
+  try {
+    const { fileId } = req.params;
+
+    if (!fileId) {
+      res.status(400).json({
+        status: false,
+        message: "File ID is required"
+      });
+      return;
+    }
+
+    const id = parseInt(fileId, 10);
+    if (isNaN(id)) {
+      res.status(400).json({
+        status: false,
+        message: "File ID must be a valid number"
+      });
+      return;
+    }
+
+    // Cari file yang belum dihapus
+    const fileInfo = await prismaDB2.tr_additional_file.findFirst({
+      where: {
+        id,
+        is_deleted: false
+      }
+    });
+
+    if (!fileInfo) {
+      res.status(404).json({
+        status: false,
+        message: "File not found or already deleted"
+      });
+      return;
+    }
+
+    // Update is_deleted
+    await prismaDB2.tr_additional_file.update({
+      where: { id },
+      data: {
+        is_deleted: true
+      }
+    });
+
+    res.status(200).json({
+      status: true,
+      message: "File marked as deleted successfully"
+    });
+
+  } catch (error) {
+    console.error("❌ Error deleting file:", error);
+    res.status(500).json({
+      status: false,
+      message: error instanceof Error ? error.message : "Unknown error"
+    });
   }
 };

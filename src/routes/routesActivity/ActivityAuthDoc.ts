@@ -1,61 +1,68 @@
 import express from 'express';
 
-import {
-    createAuthDoc,
-}
-    from '../../main-structure/Activity/Document/4_Authorization_DOC/Authorization_Add'; // Pastikan path-nya benar
-
-
-import {
-    getAllAuthDoc,
-    getAuthDocById,
-}
-    from '../../main-structure/Activity/Document/4_Authorization_DOC/Authorization_List'; // Pastikan path-nya benar
-
-import {
-    getHistoryAuthDoc,
-}
-    from '../../main-structure/Activity/Document/4_Authorization_DOC/Authorization_History'; // Pastikan path-nya benar
-
-import {
-    getApprovalListAuthDoc,
-}
-    from '../../main-structure/Activity/Document/4_Authorization_DOC/Authorization_Approvallist'; // Pastikan path-nya benar
-
-import {
-    getAuthDocByIdApprover,
-    updateAuthApprovalStatus,
-}
-    from '../../main-structure/Activity/Document/4_Authorization_DOC/Authorization_Approver'; // Pastikan path-nya benar
-
-    import {
-  
-        updateAuthDocById
-    }
-        from '../../main-structure/Activity/Document/4_Authorization_DOC/Authorization_Update'; // Pastikan path-nya benar
-    
+// Controller Imports (Pastikan semua path sudah benar)
+import { createAuthDoc } from '../../main-structure/Activity/Document/4_Authorization_DOC/Authorization_Add';
+import { getAllAuthDoc, getAuthDocById } from '../../main-structure/Activity/Document/4_Authorization_DOC/Authorization_List';
+import { getHistoryAuthDoc } from '../../main-structure/Activity/Document/4_Authorization_DOC/Authorization_History';
+import { getApprovalListAuthDoc } from '../../main-structure/Activity/Document/4_Authorization_DOC/Authorization_Approvallist';
+import { getAuthDocByIdApprover, updateAuthApprovalStatus } from '../../main-structure/Activity/Document/4_Authorization_DOC/Authorization_Approver';
+import { updateAuthDocById } from '../../main-structure/Activity/Document/4_Authorization_DOC/Authorization_Update';
+import { getAuthDocByAuthId } from '../../main-structure/Activity/Document/4_Authorization_DOC/filterAuthorization';
 
 const router = express.Router();
 
-//Post Buat Dokumen updateAuthDocById
+/**
+ * @route   POST /authdoc
+ * @desc    Create a new Authorization Document
+ */
 router.post("/authdoc", createAuthDoc);
 
-//List Authdoc
+/**
+ * @route   GET /authdoc
+ * @desc    Get list of all Authorization Documents
+ */
 router.get("/authdoc", getAllAuthDoc);
+
+/**
+ * @route   GET /authdoc/:id
+ * @desc    Get Authorization Document by ID
+ */
 router.get("/authdoc/:id", getAuthDocById);
+
+/**
+ * @route   PUT /authdoc/:id
+ * @desc    Update Authorization Document by ID
+ */
 router.put("/authdoc/:id", updateAuthDocById);
 
-
-
-//Main History  getApprovalListAuthDoc
+/**
+ * @route   GET /history-byID-authdoc/:id
+ * @desc    Get history of a specific Authorization Document
+ */
 router.get("/history-byID-authdoc/:id", getHistoryAuthDoc);
 
+/**
+ * @route   GET /approval-byID-authdoc/:id
+ * @desc    Get approval list of a specific Authorization Document
+ */
 router.get("/approval-byID-authdoc/:id", getApprovalListAuthDoc);
 
+/**
+ * @route   GET /authdocongoing
+ * @desc    Get Authorization Documents that are currently pending for the approver
+ */
+router.get("/authdocongoing", getAuthDocByIdApprover);
 
+/**
+ * @route   POST /authstatus
+ * @desc    Update the approval status of an Authorization Document
+ */
+router.post("/authstatus", updateAuthApprovalStatus);
 
-//Nyari by Approver yang mau mulai ngapprove updateAuthApprovalStatus
-router.get('/authdocongoing', getAuthDocByIdApprover);
-router.post('/authstatus', updateAuthApprovalStatus);
+/**
+ * @route   GET /authdoc/by-auth/:id
+ * @desc    Get Authorization Document(s) by authorization ID
+ */
+router.get("/authdoc/by-auth/:id", getAuthDocByAuthId);
 
 export default router;

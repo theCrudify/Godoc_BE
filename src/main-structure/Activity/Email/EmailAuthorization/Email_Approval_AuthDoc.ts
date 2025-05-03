@@ -334,12 +334,12 @@ export const sendApprovalEmails = async (
          const logId = await createEmailLogEntry(tr_authorization_doc, currentApproverEmail, approverRecipientType, status, note);
          if (logId) {
             try {
-               let emailSubject = `[Go-Document] Anda Telah ${getStatusText(status)} Dokumen: ${data.proposedChange.project_name}`;
+               let emailSubject = `[Go-Document] Anda Telah memilih ${getStatusText(status)} Dokumen: ${data.proposedChange.project_name}`;
                if (status === 'not_approved') {
                   emailSubject = `[Go-Document] Anda Telah TIDAK MENYETUJUI Dokumen: ${data.proposedChange.project_name}`;
                } else if (data.isLastApprover && status === 'approved') {
-                  emailSubject = `[Go-Document] Anda Telah ${getStatusText(status)} Dokumen Sebagai Approver Terakhir: ${data.proposedChange.project_name}`;
-               }
+                emailSubject = `[Go-Document] Anda Telah Menetapkan Status ${getStatusText(status)} untuk Dokumen: ${data.proposedChange.project_name}`;
+              }
 
                const approverTemplate = createEmailTemplate('approver', data, status, docNumber, currentApproverGender, '', '', note);
                console.log(`📧 Attempting to send email to APPROVER: ${currentApproverEmail} (Log ID: ${logId})`);

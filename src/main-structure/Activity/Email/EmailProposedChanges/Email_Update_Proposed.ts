@@ -5,6 +5,10 @@ import { format } from "date-fns";
 import { id } from "date-fns/locale/id";
 
 // Fungsi utama untuk mengirim notifikasi email tentang pembaruan
+// In the sendUpdateNotificationEmails function, we need to modify our approach
+// to track not just emails but also roles to prevent true duplicates while
+// allowing the same email to receive different role-based notifications
+
 async function sendUpdateNotificationEmails(
   proposedChangesId: number,
   existingRecord: any,
@@ -12,26 +16,108 @@ async function sendUpdateNotificationEmails(
   submitter: any
 ) {
   try {
+    console.log(`Starting sendUpdateNotificationEmails for proposed change ID: ${proposedChangesId}`);
+    console.log(`Number of not approved approvers: ${notApprovedApprovers?.length || 0}`);
+    
     // Get the document number
     const runningNumber = await getDocumentNumber(proposedChangesId);
     
-    // Buat set untuk mencatat email yang sudah dikirim untuk mencegah duplikasi
-    const emailsSent = new Set<string>();
+    // Instead of tracking just emails, track email+role combinations
+    // This allows the same email to receive different notifications for different roles
+    const emailRoleSent = new Set<string>();
     
     // Kirim email ke submitter terlebih dahulu
     if (submitter?.email) {
+      console.log(`Sending email to submitter: ${submitter.email}`);
       await sendSubmitterUpdateNotification(existingRecord, submitter, runningNumber);
-      emailsSent.add(submitter.email.toLowerCase());
+      emailRoleSent.add(`${submitter.email.toLowerCase()}:submitter`);
+      console.log(`Email sent to submitter, added to emailRoleSent set: ${submitter.email.toLowerCase()}:submitter`);
+    } else {
+      console.log(`Submitter email not available, skipping submitter notification`);
     }
     
     // Kirim email ke approver yang sebelumnya menolak (tanpa duplikasi)
-    await sendApproverUpdateNotifications(existingRecord, notApprovedApprovers, submitter, runningNumber, emailsSent);
+    console.log(`About to send emails to ${notApprovedApprovers?.length || 0} approvers who previously rejected`);
+    await sendApproverUpdateNotifications(existingRecord, notApprovedApprovers, submitter, runningNumber, emailRoleSent);
     
     return true;
   } catch (error) {
     console.error("Error sending update notification emails:", error);
     throw error; // Rethrow for proper error handling
   }
+}
+
+// Update the sendApproverUpdateNotifications function to use the new email+role tracking
+async function sendApproverUpdateNotifications(
+  existingRecord: any,
+  notApprovedApprovers: any[],
+  submitter: any,
+  runningNumber: string,
+  emailRoleSent: Set<string> = new Set()
+) {
+  console.log(`Starting sendApproverUpdateNotifications with ${notApprovedApprovers?.length || 0} approvers`);
+  console.log(`Current emailRoleSent set contains ${emailRoleSent.size} entries:`, Array.from(emailRoleSent));
+  
+  if (!notApprovedApprovers || notApprovedApprovers.length === 0) {
+    console.log("No previous not-approved approvers found");
+    return false;
+  }
+
+  let successCount = 0;
+  
+  // Kirim email ke setiap approver yang menolak sebelumnya
+  for (const approver of notApprovedApprovers) {
+    console.log(`Processing approver: ${approver.employee_name || 'unknown'} (ID: ${approver.id})`);
+    
+    // Skip jika tidak ada email
+    if (!approver.email) {
+      console.log(`Approver ${approver.employee_name || 'unknown'} doesn't have an email, skipping`);
+      continue;
+    }
+    
+    const approverEmail = approver.email.toLowerCase();
+    const approverRoleKey = `${approverEmail}:approver-${approver.id}`; // Include ID to differentiate between approvers with same email
+    console.log(`Approver email: ${approverEmail}`);
+    
+    // Skip hanya jika kombinasi email+role sudah dikirim sebelumnya
+    if (emailRoleSent.has(approverRoleKey)) {
+      console.log(`Email already sent to ${approverEmail} as approver with ID ${approver.id}, skipping duplicate`);
+      continue;
+    }
+    
+    try {
+      const approverGender = getGenderTitle(approver.gender);
+      const emailSubject = `[Go-Document] Dokumen Telah Diperbarui: ${existingRecord.project_name}`;
+
+      console.log(`Creating email template for approver: ${approverEmail}`);
+      const approverTemplate = createApproverUpdateTemplate(
+        existingRecord,
+        submitter,
+        approver,
+        runningNumber,
+        approverGender
+      );
+
+      // Kirim email ke approver
+      console.log(`Attempting to send email to approver: ${approverEmail}`);
+      await sendEmail({
+        to: approver.email,
+        subject: emailSubject,
+        html: approverTemplate
+      });
+
+      // Catat kombinasi email+role yang sudah dikirim
+      emailRoleSent.add(approverRoleKey);
+      
+      console.log(`✅ Update notification email sent to approver: ${approver.email}`);
+      successCount++;
+    } catch (error) {
+      console.error(`❌ Error sending email to approver: ${approver.email}`, error);
+    }
+  }
+  
+  console.log(`Completed sendApproverUpdateNotifications with ${successCount} successful emails`);
+  return successCount > 0;
 }
 
 // Fungsi untuk mengirim notifikasi ke submitter
@@ -110,68 +196,77 @@ function createSubmitterUpdateTemplate(
   );
 }
 
-// Fungsi untuk mengirim notifikasi ke para approver yang sebelumnya menolak
-async function sendApproverUpdateNotifications(
-  existingRecord: any,
-  notApprovedApprovers: any[],
-  submitter: any,
-  runningNumber: string,
-  emailsSent: Set<string> = new Set()
-) {
-  if (!notApprovedApprovers || notApprovedApprovers.length === 0) {
-    console.log("No previous not-approved approvers found");
-    return false;
-  }
-
-  let successCount = 0;
+// // Fungsi untuk mengirim notifikasi ke para approver yang sebelumnya menolak
+// async function sendApproverUpdateNotifications(
+//   existingRecord: any,
+//   notApprovedApprovers: any[],
+//   submitter: any,
+//   runningNumber: string,
+//   emailsSent: Set<string> = new Set()
+// ) {
+//   console.log(`Starting sendApproverUpdateNotifications with ${notApprovedApprovers?.length || 0} approvers`);
+//   console.log(`Current emailsSent set contains ${emailsSent.size} emails:`, Array.from(emailsSent));
   
-  // Kirim email ke setiap approver yang menolak sebelumnya
-  for (const approver of notApprovedApprovers) {
-    // Skip jika tidak ada email
-    if (!approver.email) {
-      console.log(`Approver ${approver.employee_name || 'unknown'} doesn't have an email, skipping`);
-      continue;
-    }
-    
-    const approverEmail = approver.email.toLowerCase();
-    
-    // Skip jika email sudah dikirim sebelumnya (untuk menghindari duplikasi)
-    if (emailsSent.has(approverEmail)) {
-      console.log(`Email already sent to ${approverEmail}, skipping duplicate`);
-      continue;
-    }
-    
-    try {
-      const approverGender = getGenderTitle(approver.gender);
-      const emailSubject = `[Go-Document] Dokumen Telah Diperbarui: ${existingRecord.project_name}`;
+//   if (!notApprovedApprovers || notApprovedApprovers.length === 0) {
+//     console.log("No previous not-approved approvers found");
+//     return false;
+//   }
 
-      const approverTemplate = createApproverUpdateTemplate(
-        existingRecord,
-        submitter,
-        approver,
-        runningNumber,
-        approverGender
-      );
+//   let successCount = 0;
+  
+//   // Kirim email ke setiap approver yang menolak sebelumnya
+//   for (const approver of notApprovedApprovers) {
+//     console.log(`Processing approver: ${approver.employee_name || 'unknown'} (ID: ${approver.id})`);
+    
+//     // Skip jika tidak ada email
+//     if (!approver.email) {
+//       console.log(`Approver ${approver.employee_name || 'unknown'} doesn't have an email, skipping`);
+//       continue;
+//     }
+    
+//     const approverEmail = approver.email.toLowerCase();
+//     console.log(`Approver email: ${approverEmail}`);
+    
+//     // Skip jika email sudah dikirim sebelumnya (untuk menghindari duplikasi)
+//     if (emailsSent.has(approverEmail)) {
+//       console.log(`Email already sent to ${approverEmail}, skipping duplicate`);
+//       continue;
+//     }
+    
+//     try {
+//       const approverGender = getGenderTitle(approver.gender);
+//       const emailSubject = `[Go-Document] Dokumen Telah Diperbarui: ${existingRecord.project_name}`;
 
-      // Kirim email ke approver
-      await sendEmail({
-        to: approver.email,
-        subject: emailSubject,
-        html: approverTemplate
-      });
+//       console.log(`Creating email template for approver: ${approverEmail}`);
+//       const approverTemplate = createApproverUpdateTemplate(
+//         existingRecord,
+//         submitter,
+//         approver,
+//         runningNumber,
+//         approverGender
+//       );
 
-      // Catat bahwa email sudah dikirim ke alamat ini
-      emailsSent.add(approverEmail);
+//       // Kirim email ke approver
+//       console.log(`Attempting to send email to approver: ${approverEmail}`);
+//       await sendEmail({
+//         to: approver.email,
+//         subject: emailSubject,
+//         html: approverTemplate
+//       });
+
+//       // Catat bahwa email sudah dikirim ke alamat ini
+//       emailsSent.add(approverEmail);
       
-      console.log(`Update notification email sent to approver: ${approver.email}`);
-      successCount++;
-    } catch (error) {
-      console.error(`Error sending email to approver: ${approver.email}`, error);
-    }
-  }
+//       console.log(`✅ Update notification email sent to approver: ${approver.email}`);
+//       successCount++;
+//     } catch (error) {
+//       console.error(`❌ Error sending email to approver: ${approver.email}`, error);
+//     }
+//   }
   
-  return successCount > 0;
-}
+//   console.log(`Completed sendApproverUpdateNotifications with ${successCount} successful emails`);
+//   return successCount > 0;
+// }
 
 // Fungsi untuk membuat template email untuk approver
 function createApproverUpdateTemplate(

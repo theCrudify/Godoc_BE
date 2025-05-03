@@ -14,6 +14,11 @@ export type PrismaPromise<T> = $Public.PrismaPromise<T>
 
 
 /**
+ * Model tr_log
+ * 
+ */
+export type tr_log = $Result.DefaultSelection<Prisma.$tr_logPayload>
+/**
  * Model mst_role
  * 
  */
@@ -164,6 +169,11 @@ export type tr_handover_approval = $Result.DefaultSelection<Prisma.$tr_handover_
  */
 export type tr_handover_history = $Result.DefaultSelection<Prisma.$tr_handover_historyPayload>
 /**
+ * Model email_tracking_handover
+ * 
+ */
+export type email_tracking_handover = $Result.DefaultSelection<Prisma.$email_tracking_handoverPayload>
+/**
  * Model email_tracking_proposedchanges
  * 
  */
@@ -173,11 +183,6 @@ export type email_tracking_proposedchanges = $Result.DefaultSelection<Prisma.$em
  * 
  */
 export type email_tracking_authdoc = $Result.DefaultSelection<Prisma.$email_tracking_authdocPayload>
-/**
- * Model email_tracking_handover
- * 
- */
-export type email_tracking_handover = $Result.DefaultSelection<Prisma.$email_tracking_handoverPayload>
 
 /**
  * Enums
@@ -281,8 +286,8 @@ export const email_tracking_handover_status: typeof $Enums.email_tracking_handov
  * @example
  * ```
  * const prisma = new PrismaClient()
- * // Fetch zero or more Mst_roles
- * const mst_roles = await prisma.mst_role.findMany()
+ * // Fetch zero or more Tr_logs
+ * const tr_logs = await prisma.tr_log.findMany()
  * ```
  *
  *
@@ -302,8 +307,8 @@ export class PrismaClient<
    * @example
    * ```
    * const prisma = new PrismaClient()
-   * // Fetch zero or more Mst_roles
-   * const mst_roles = await prisma.mst_role.findMany()
+   * // Fetch zero or more Tr_logs
+   * const tr_logs = await prisma.tr_log.findMany()
    * ```
    *
    *
@@ -400,6 +405,16 @@ export class PrismaClient<
   }>>
 
       /**
+   * `prisma.tr_log`: Exposes CRUD operations for the **tr_log** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tr_logs
+    * const tr_logs = await prisma.tr_log.findMany()
+    * ```
+    */
+  get tr_log(): Prisma.tr_logDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.mst_role`: Exposes CRUD operations for the **mst_role** model.
     * Example usage:
     * ```ts
@@ -700,6 +715,16 @@ export class PrismaClient<
   get tr_handover_history(): Prisma.tr_handover_historyDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.email_tracking_handover`: Exposes CRUD operations for the **email_tracking_handover** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Email_tracking_handovers
+    * const email_tracking_handovers = await prisma.email_tracking_handover.findMany()
+    * ```
+    */
+  get email_tracking_handover(): Prisma.email_tracking_handoverDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.email_tracking_proposedchanges`: Exposes CRUD operations for the **email_tracking_proposedchanges** model.
     * Example usage:
     * ```ts
@@ -718,16 +743,6 @@ export class PrismaClient<
     * ```
     */
   get email_tracking_authdoc(): Prisma.email_tracking_authdocDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.email_tracking_handover`: Exposes CRUD operations for the **email_tracking_handover** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Email_tracking_handovers
-    * const email_tracking_handovers = await prisma.email_tracking_handover.findMany()
-    * ```
-    */
-  get email_tracking_handover(): Prisma.email_tracking_handoverDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -786,8 +801,8 @@ export namespace Prisma {
   export import Exact = $Public.Exact
 
   /**
-   * Prisma Client JS version: 6.6.0
-   * Query Engine version: f676762280b54cd07c770017ed3711ddde35f37a
+   * Prisma Client JS version: 6.7.0
+   * Query Engine version: 3cff47a7f5d65c3ea74883f1d736e41d68ce91ed
    */
   export type PrismaVersion = {
     client: string
@@ -1168,6 +1183,7 @@ export namespace Prisma {
 
 
   export const ModelName: {
+    tr_log: 'tr_log',
     mst_role: 'mst_role',
     mst_line: 'mst_line',
     mst_department_head: 'mst_department_head',
@@ -1198,9 +1214,9 @@ export namespace Prisma {
     tr_handover: 'tr_handover',
     tr_handover_approval: 'tr_handover_approval',
     tr_handover_history: 'tr_handover_history',
+    email_tracking_handover: 'email_tracking_handover',
     email_tracking_proposedchanges: 'email_tracking_proposedchanges',
-    email_tracking_authdoc: 'email_tracking_authdoc',
-    email_tracking_handover: 'email_tracking_handover'
+    email_tracking_authdoc: 'email_tracking_authdoc'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1219,10 +1235,76 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "mst_role" | "mst_line" | "mst_department_head" | "mst_section_head" | "mst_sub_document" | "mst_development" | "mst_doc_type" | "mst_area" | "mst_plant" | "mst_department" | "mst_section_department" | "mst_document_categories" | "tr_document_number" | "tr_additional_doc" | "tr_additional_file" | "tr_proposed_changes_history" | "tr_proposed_changes_approval" | "mst_authorization" | "tbl_support_document" | "tbl_support_document_noted" | "tbl_support_document_file" | "mst_support_document" | "tr_authorization_doc" | "tr_authdoc_approval" | "tr_proposed_changes" | "tr_authdoc_history" | "tr_authdoc_member" | "tr_handover" | "tr_handover_approval" | "tr_handover_history" | "email_tracking_proposedchanges" | "email_tracking_authdoc" | "email_tracking_handover"
+      modelProps: "tr_log" | "mst_role" | "mst_line" | "mst_department_head" | "mst_section_head" | "mst_sub_document" | "mst_development" | "mst_doc_type" | "mst_area" | "mst_plant" | "mst_department" | "mst_section_department" | "mst_document_categories" | "tr_document_number" | "tr_additional_doc" | "tr_additional_file" | "tr_proposed_changes_history" | "tr_proposed_changes_approval" | "mst_authorization" | "tbl_support_document" | "tbl_support_document_noted" | "tbl_support_document_file" | "mst_support_document" | "tr_authorization_doc" | "tr_authdoc_approval" | "tr_proposed_changes" | "tr_authdoc_history" | "tr_authdoc_member" | "tr_handover" | "tr_handover_approval" | "tr_handover_history" | "email_tracking_handover" | "email_tracking_proposedchanges" | "email_tracking_authdoc"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
+      tr_log: {
+        payload: Prisma.$tr_logPayload<ExtArgs>
+        fields: Prisma.tr_logFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.tr_logFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_logPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.tr_logFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_logPayload>
+          }
+          findFirst: {
+            args: Prisma.tr_logFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_logPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.tr_logFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_logPayload>
+          }
+          findMany: {
+            args: Prisma.tr_logFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_logPayload>[]
+          }
+          create: {
+            args: Prisma.tr_logCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_logPayload>
+          }
+          createMany: {
+            args: Prisma.tr_logCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.tr_logDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_logPayload>
+          }
+          update: {
+            args: Prisma.tr_logUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_logPayload>
+          }
+          deleteMany: {
+            args: Prisma.tr_logDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.tr_logUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.tr_logUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_logPayload>
+          }
+          aggregate: {
+            args: Prisma.Tr_logAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTr_log>
+          }
+          groupBy: {
+            args: Prisma.tr_logGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Tr_logGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.tr_logCountArgs<ExtArgs>
+            result: $Utils.Optional<Tr_logCountAggregateOutputType> | number
+          }
+        }
+      }
       mst_role: {
         payload: Prisma.$mst_rolePayload<ExtArgs>
         fields: Prisma.mst_roleFieldRefs
@@ -3203,6 +3285,72 @@ export namespace Prisma {
           }
         }
       }
+      email_tracking_handover: {
+        payload: Prisma.$email_tracking_handoverPayload<ExtArgs>
+        fields: Prisma.email_tracking_handoverFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.email_tracking_handoverFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.email_tracking_handoverFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>
+          }
+          findFirst: {
+            args: Prisma.email_tracking_handoverFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.email_tracking_handoverFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>
+          }
+          findMany: {
+            args: Prisma.email_tracking_handoverFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>[]
+          }
+          create: {
+            args: Prisma.email_tracking_handoverCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>
+          }
+          createMany: {
+            args: Prisma.email_tracking_handoverCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.email_tracking_handoverDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>
+          }
+          update: {
+            args: Prisma.email_tracking_handoverUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>
+          }
+          deleteMany: {
+            args: Prisma.email_tracking_handoverDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.email_tracking_handoverUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.email_tracking_handoverUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>
+          }
+          aggregate: {
+            args: Prisma.Email_tracking_handoverAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateEmail_tracking_handover>
+          }
+          groupBy: {
+            args: Prisma.email_tracking_handoverGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Email_tracking_handoverGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.email_tracking_handoverCountArgs<ExtArgs>
+            result: $Utils.Optional<Email_tracking_handoverCountAggregateOutputType> | number
+          }
+        }
+      }
       email_tracking_proposedchanges: {
         payload: Prisma.$email_tracking_proposedchangesPayload<ExtArgs>
         fields: Prisma.email_tracking_proposedchangesFieldRefs
@@ -3335,72 +3483,6 @@ export namespace Prisma {
           }
         }
       }
-      email_tracking_handover: {
-        payload: Prisma.$email_tracking_handoverPayload<ExtArgs>
-        fields: Prisma.email_tracking_handoverFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.email_tracking_handoverFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.email_tracking_handoverFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>
-          }
-          findFirst: {
-            args: Prisma.email_tracking_handoverFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.email_tracking_handoverFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>
-          }
-          findMany: {
-            args: Prisma.email_tracking_handoverFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>[]
-          }
-          create: {
-            args: Prisma.email_tracking_handoverCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>
-          }
-          createMany: {
-            args: Prisma.email_tracking_handoverCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          delete: {
-            args: Prisma.email_tracking_handoverDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>
-          }
-          update: {
-            args: Prisma.email_tracking_handoverUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>
-          }
-          deleteMany: {
-            args: Prisma.email_tracking_handoverDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.email_tracking_handoverUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.email_tracking_handoverUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$email_tracking_handoverPayload>
-          }
-          aggregate: {
-            args: Prisma.Email_tracking_handoverAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateEmail_tracking_handover>
-          }
-          groupBy: {
-            args: Prisma.email_tracking_handoverGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Email_tracking_handoverGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.email_tracking_handoverCountArgs<ExtArgs>
-            result: $Utils.Optional<Email_tracking_handoverCountAggregateOutputType> | number
-          }
-        }
-      }
     }
   } & {
     other: {
@@ -3485,6 +3567,7 @@ export namespace Prisma {
     omit?: Prisma.GlobalOmitConfig
   }
   export type GlobalOmitConfig = {
+    tr_log?: tr_logOmit
     mst_role?: mst_roleOmit
     mst_line?: mst_lineOmit
     mst_department_head?: mst_department_headOmit
@@ -3515,9 +3598,9 @@ export namespace Prisma {
     tr_handover?: tr_handoverOmit
     tr_handover_approval?: tr_handover_approvalOmit
     tr_handover_history?: tr_handover_historyOmit
+    email_tracking_handover?: email_tracking_handoverOmit
     email_tracking_proposedchanges?: email_tracking_proposedchangesOmit
     email_tracking_authdoc?: email_tracking_authdocOmit
-    email_tracking_handover?: email_tracking_handoverOmit
   }
 
   /* Types for Logging */
@@ -4061,6 +4144,7 @@ export namespace Prisma {
     authorizationDocs: number
     documentNumbers: number
     tr_handover_tr_handover_auth_idTomst_authorization: number
+    tr_handover_tr_handover_auth_id5Tomst_authorization: number
     tr_handover_tr_handover_auth_id2Tomst_authorization: number
     tr_handover_tr_handover_auth_id3Tomst_authorization: number
     tr_handover_tr_handover_auth_id4Tomst_authorization: number
@@ -4080,6 +4164,7 @@ export namespace Prisma {
     authorizationDocs?: boolean | Mst_authorizationCountOutputTypeCountAuthorizationDocsArgs
     documentNumbers?: boolean | Mst_authorizationCountOutputTypeCountDocumentNumbersArgs
     tr_handover_tr_handover_auth_idTomst_authorization?: boolean | Mst_authorizationCountOutputTypeCountTr_handover_tr_handover_auth_idTomst_authorizationArgs
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: boolean | Mst_authorizationCountOutputTypeCountTr_handover_tr_handover_auth_id5Tomst_authorizationArgs
     tr_handover_tr_handover_auth_id2Tomst_authorization?: boolean | Mst_authorizationCountOutputTypeCountTr_handover_tr_handover_auth_id2Tomst_authorizationArgs
     tr_handover_tr_handover_auth_id3Tomst_authorization?: boolean | Mst_authorizationCountOutputTypeCountTr_handover_tr_handover_auth_id3Tomst_authorizationArgs
     tr_handover_tr_handover_auth_id4Tomst_authorization?: boolean | Mst_authorizationCountOutputTypeCountTr_handover_tr_handover_auth_id4Tomst_authorizationArgs
@@ -4154,6 +4239,13 @@ export namespace Prisma {
    * Mst_authorizationCountOutputType without action
    */
   export type Mst_authorizationCountOutputTypeCountTr_handover_tr_handover_auth_idTomst_authorizationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tr_handoverWhereInput
+  }
+
+  /**
+   * Mst_authorizationCountOutputType without action
+   */
+  export type Mst_authorizationCountOutputTypeCountTr_handover_tr_handover_auth_id5Tomst_authorizationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: tr_handoverWhereInput
   }
 
@@ -4489,6 +4581,973 @@ export namespace Prisma {
   /**
    * Models
    */
+
+  /**
+   * Model tr_log
+   */
+
+  export type AggregateTr_log = {
+    _count: Tr_logCountAggregateOutputType | null
+    _avg: Tr_logAvgAggregateOutputType | null
+    _sum: Tr_logSumAggregateOutputType | null
+    _min: Tr_logMinAggregateOutputType | null
+    _max: Tr_logMaxAggregateOutputType | null
+  }
+
+  export type Tr_logAvgAggregateOutputType = {
+    statusCode: number | null
+  }
+
+  export type Tr_logSumAggregateOutputType = {
+    statusCode: number | null
+  }
+
+  export type Tr_logMinAggregateOutputType = {
+    id: string | null
+    timestamp: Date | null
+    userId: string | null
+    endpoint: string | null
+    method: string | null
+    statusCode: number | null
+    ipAddress: string | null
+    userAgent: string | null
+    action: string | null
+  }
+
+  export type Tr_logMaxAggregateOutputType = {
+    id: string | null
+    timestamp: Date | null
+    userId: string | null
+    endpoint: string | null
+    method: string | null
+    statusCode: number | null
+    ipAddress: string | null
+    userAgent: string | null
+    action: string | null
+  }
+
+  export type Tr_logCountAggregateOutputType = {
+    id: number
+    timestamp: number
+    userId: number
+    endpoint: number
+    method: number
+    statusCode: number
+    ipAddress: number
+    userAgent: number
+    action: number
+    metadata: number
+    _all: number
+  }
+
+
+  export type Tr_logAvgAggregateInputType = {
+    statusCode?: true
+  }
+
+  export type Tr_logSumAggregateInputType = {
+    statusCode?: true
+  }
+
+  export type Tr_logMinAggregateInputType = {
+    id?: true
+    timestamp?: true
+    userId?: true
+    endpoint?: true
+    method?: true
+    statusCode?: true
+    ipAddress?: true
+    userAgent?: true
+    action?: true
+  }
+
+  export type Tr_logMaxAggregateInputType = {
+    id?: true
+    timestamp?: true
+    userId?: true
+    endpoint?: true
+    method?: true
+    statusCode?: true
+    ipAddress?: true
+    userAgent?: true
+    action?: true
+  }
+
+  export type Tr_logCountAggregateInputType = {
+    id?: true
+    timestamp?: true
+    userId?: true
+    endpoint?: true
+    method?: true
+    statusCode?: true
+    ipAddress?: true
+    userAgent?: true
+    action?: true
+    metadata?: true
+    _all?: true
+  }
+
+  export type Tr_logAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tr_log to aggregate.
+     */
+    where?: tr_logWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_logs to fetch.
+     */
+    orderBy?: tr_logOrderByWithRelationInput | tr_logOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: tr_logWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned tr_logs
+    **/
+    _count?: true | Tr_logCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Tr_logAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Tr_logSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Tr_logMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Tr_logMaxAggregateInputType
+  }
+
+  export type GetTr_logAggregateType<T extends Tr_logAggregateArgs> = {
+        [P in keyof T & keyof AggregateTr_log]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTr_log[P]>
+      : GetScalarType<T[P], AggregateTr_log[P]>
+  }
+
+
+
+
+  export type tr_logGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tr_logWhereInput
+    orderBy?: tr_logOrderByWithAggregationInput | tr_logOrderByWithAggregationInput[]
+    by: Tr_logScalarFieldEnum[] | Tr_logScalarFieldEnum
+    having?: tr_logScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Tr_logCountAggregateInputType | true
+    _avg?: Tr_logAvgAggregateInputType
+    _sum?: Tr_logSumAggregateInputType
+    _min?: Tr_logMinAggregateInputType
+    _max?: Tr_logMaxAggregateInputType
+  }
+
+  export type Tr_logGroupByOutputType = {
+    id: string
+    timestamp: Date
+    userId: string | null
+    endpoint: string
+    method: string
+    statusCode: number
+    ipAddress: string | null
+    userAgent: string | null
+    action: string | null
+    metadata: JsonValue | null
+    _count: Tr_logCountAggregateOutputType | null
+    _avg: Tr_logAvgAggregateOutputType | null
+    _sum: Tr_logSumAggregateOutputType | null
+    _min: Tr_logMinAggregateOutputType | null
+    _max: Tr_logMaxAggregateOutputType | null
+  }
+
+  type GetTr_logGroupByPayload<T extends tr_logGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Tr_logGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Tr_logGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Tr_logGroupByOutputType[P]>
+            : GetScalarType<T[P], Tr_logGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type tr_logSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    timestamp?: boolean
+    userId?: boolean
+    endpoint?: boolean
+    method?: boolean
+    statusCode?: boolean
+    ipAddress?: boolean
+    userAgent?: boolean
+    action?: boolean
+    metadata?: boolean
+  }, ExtArgs["result"]["tr_log"]>
+
+
+
+  export type tr_logSelectScalar = {
+    id?: boolean
+    timestamp?: boolean
+    userId?: boolean
+    endpoint?: boolean
+    method?: boolean
+    statusCode?: boolean
+    ipAddress?: boolean
+    userAgent?: boolean
+    action?: boolean
+    metadata?: boolean
+  }
+
+  export type tr_logOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "timestamp" | "userId" | "endpoint" | "method" | "statusCode" | "ipAddress" | "userAgent" | "action" | "metadata", ExtArgs["result"]["tr_log"]>
+
+  export type $tr_logPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "tr_log"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: string
+      timestamp: Date
+      userId: string | null
+      endpoint: string
+      method: string
+      statusCode: number
+      ipAddress: string | null
+      userAgent: string | null
+      action: string | null
+      metadata: Prisma.JsonValue | null
+    }, ExtArgs["result"]["tr_log"]>
+    composites: {}
+  }
+
+  type tr_logGetPayload<S extends boolean | null | undefined | tr_logDefaultArgs> = $Result.GetResult<Prisma.$tr_logPayload, S>
+
+  type tr_logCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<tr_logFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Tr_logCountAggregateInputType | true
+    }
+
+  export interface tr_logDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tr_log'], meta: { name: 'tr_log' } }
+    /**
+     * Find zero or one Tr_log that matches the filter.
+     * @param {tr_logFindUniqueArgs} args - Arguments to find a Tr_log
+     * @example
+     * // Get one Tr_log
+     * const tr_log = await prisma.tr_log.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends tr_logFindUniqueArgs>(args: SelectSubset<T, tr_logFindUniqueArgs<ExtArgs>>): Prisma__tr_logClient<$Result.GetResult<Prisma.$tr_logPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Tr_log that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {tr_logFindUniqueOrThrowArgs} args - Arguments to find a Tr_log
+     * @example
+     * // Get one Tr_log
+     * const tr_log = await prisma.tr_log.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends tr_logFindUniqueOrThrowArgs>(args: SelectSubset<T, tr_logFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tr_logClient<$Result.GetResult<Prisma.$tr_logPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tr_log that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_logFindFirstArgs} args - Arguments to find a Tr_log
+     * @example
+     * // Get one Tr_log
+     * const tr_log = await prisma.tr_log.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends tr_logFindFirstArgs>(args?: SelectSubset<T, tr_logFindFirstArgs<ExtArgs>>): Prisma__tr_logClient<$Result.GetResult<Prisma.$tr_logPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tr_log that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_logFindFirstOrThrowArgs} args - Arguments to find a Tr_log
+     * @example
+     * // Get one Tr_log
+     * const tr_log = await prisma.tr_log.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends tr_logFindFirstOrThrowArgs>(args?: SelectSubset<T, tr_logFindFirstOrThrowArgs<ExtArgs>>): Prisma__tr_logClient<$Result.GetResult<Prisma.$tr_logPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tr_logs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_logFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tr_logs
+     * const tr_logs = await prisma.tr_log.findMany()
+     * 
+     * // Get first 10 Tr_logs
+     * const tr_logs = await prisma.tr_log.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tr_logWithIdOnly = await prisma.tr_log.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends tr_logFindManyArgs>(args?: SelectSubset<T, tr_logFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_logPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Tr_log.
+     * @param {tr_logCreateArgs} args - Arguments to create a Tr_log.
+     * @example
+     * // Create one Tr_log
+     * const Tr_log = await prisma.tr_log.create({
+     *   data: {
+     *     // ... data to create a Tr_log
+     *   }
+     * })
+     * 
+     */
+    create<T extends tr_logCreateArgs>(args: SelectSubset<T, tr_logCreateArgs<ExtArgs>>): Prisma__tr_logClient<$Result.GetResult<Prisma.$tr_logPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tr_logs.
+     * @param {tr_logCreateManyArgs} args - Arguments to create many Tr_logs.
+     * @example
+     * // Create many Tr_logs
+     * const tr_log = await prisma.tr_log.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends tr_logCreateManyArgs>(args?: SelectSubset<T, tr_logCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Tr_log.
+     * @param {tr_logDeleteArgs} args - Arguments to delete one Tr_log.
+     * @example
+     * // Delete one Tr_log
+     * const Tr_log = await prisma.tr_log.delete({
+     *   where: {
+     *     // ... filter to delete one Tr_log
+     *   }
+     * })
+     * 
+     */
+    delete<T extends tr_logDeleteArgs>(args: SelectSubset<T, tr_logDeleteArgs<ExtArgs>>): Prisma__tr_logClient<$Result.GetResult<Prisma.$tr_logPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Tr_log.
+     * @param {tr_logUpdateArgs} args - Arguments to update one Tr_log.
+     * @example
+     * // Update one Tr_log
+     * const tr_log = await prisma.tr_log.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends tr_logUpdateArgs>(args: SelectSubset<T, tr_logUpdateArgs<ExtArgs>>): Prisma__tr_logClient<$Result.GetResult<Prisma.$tr_logPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tr_logs.
+     * @param {tr_logDeleteManyArgs} args - Arguments to filter Tr_logs to delete.
+     * @example
+     * // Delete a few Tr_logs
+     * const { count } = await prisma.tr_log.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends tr_logDeleteManyArgs>(args?: SelectSubset<T, tr_logDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tr_logs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_logUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tr_logs
+     * const tr_log = await prisma.tr_log.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends tr_logUpdateManyArgs>(args: SelectSubset<T, tr_logUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Tr_log.
+     * @param {tr_logUpsertArgs} args - Arguments to update or create a Tr_log.
+     * @example
+     * // Update or create a Tr_log
+     * const tr_log = await prisma.tr_log.upsert({
+     *   create: {
+     *     // ... data to create a Tr_log
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tr_log we want to update
+     *   }
+     * })
+     */
+    upsert<T extends tr_logUpsertArgs>(args: SelectSubset<T, tr_logUpsertArgs<ExtArgs>>): Prisma__tr_logClient<$Result.GetResult<Prisma.$tr_logPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tr_logs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_logCountArgs} args - Arguments to filter Tr_logs to count.
+     * @example
+     * // Count the number of Tr_logs
+     * const count = await prisma.tr_log.count({
+     *   where: {
+     *     // ... the filter for the Tr_logs we want to count
+     *   }
+     * })
+    **/
+    count<T extends tr_logCountArgs>(
+      args?: Subset<T, tr_logCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Tr_logCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tr_log.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Tr_logAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Tr_logAggregateArgs>(args: Subset<T, Tr_logAggregateArgs>): Prisma.PrismaPromise<GetTr_logAggregateType<T>>
+
+    /**
+     * Group by Tr_log.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_logGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends tr_logGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: tr_logGroupByArgs['orderBy'] }
+        : { orderBy?: tr_logGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, tr_logGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTr_logGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the tr_log model
+   */
+  readonly fields: tr_logFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for tr_log.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__tr_logClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the tr_log model
+   */
+  interface tr_logFieldRefs {
+    readonly id: FieldRef<"tr_log", 'String'>
+    readonly timestamp: FieldRef<"tr_log", 'DateTime'>
+    readonly userId: FieldRef<"tr_log", 'String'>
+    readonly endpoint: FieldRef<"tr_log", 'String'>
+    readonly method: FieldRef<"tr_log", 'String'>
+    readonly statusCode: FieldRef<"tr_log", 'Int'>
+    readonly ipAddress: FieldRef<"tr_log", 'String'>
+    readonly userAgent: FieldRef<"tr_log", 'String'>
+    readonly action: FieldRef<"tr_log", 'String'>
+    readonly metadata: FieldRef<"tr_log", 'Json'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * tr_log findUnique
+   */
+  export type tr_logFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_log
+     */
+    select?: tr_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_log
+     */
+    omit?: tr_logOmit<ExtArgs> | null
+    /**
+     * Filter, which tr_log to fetch.
+     */
+    where: tr_logWhereUniqueInput
+  }
+
+  /**
+   * tr_log findUniqueOrThrow
+   */
+  export type tr_logFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_log
+     */
+    select?: tr_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_log
+     */
+    omit?: tr_logOmit<ExtArgs> | null
+    /**
+     * Filter, which tr_log to fetch.
+     */
+    where: tr_logWhereUniqueInput
+  }
+
+  /**
+   * tr_log findFirst
+   */
+  export type tr_logFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_log
+     */
+    select?: tr_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_log
+     */
+    omit?: tr_logOmit<ExtArgs> | null
+    /**
+     * Filter, which tr_log to fetch.
+     */
+    where?: tr_logWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_logs to fetch.
+     */
+    orderBy?: tr_logOrderByWithRelationInput | tr_logOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tr_logs.
+     */
+    cursor?: tr_logWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tr_logs.
+     */
+    distinct?: Tr_logScalarFieldEnum | Tr_logScalarFieldEnum[]
+  }
+
+  /**
+   * tr_log findFirstOrThrow
+   */
+  export type tr_logFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_log
+     */
+    select?: tr_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_log
+     */
+    omit?: tr_logOmit<ExtArgs> | null
+    /**
+     * Filter, which tr_log to fetch.
+     */
+    where?: tr_logWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_logs to fetch.
+     */
+    orderBy?: tr_logOrderByWithRelationInput | tr_logOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tr_logs.
+     */
+    cursor?: tr_logWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_logs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tr_logs.
+     */
+    distinct?: Tr_logScalarFieldEnum | Tr_logScalarFieldEnum[]
+  }
+
+  /**
+   * tr_log findMany
+   */
+  export type tr_logFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_log
+     */
+    select?: tr_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_log
+     */
+    omit?: tr_logOmit<ExtArgs> | null
+    /**
+     * Filter, which tr_logs to fetch.
+     */
+    where?: tr_logWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_logs to fetch.
+     */
+    orderBy?: tr_logOrderByWithRelationInput | tr_logOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing tr_logs.
+     */
+    cursor?: tr_logWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_logs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_logs.
+     */
+    skip?: number
+    distinct?: Tr_logScalarFieldEnum | Tr_logScalarFieldEnum[]
+  }
+
+  /**
+   * tr_log create
+   */
+  export type tr_logCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_log
+     */
+    select?: tr_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_log
+     */
+    omit?: tr_logOmit<ExtArgs> | null
+    /**
+     * The data needed to create a tr_log.
+     */
+    data: XOR<tr_logCreateInput, tr_logUncheckedCreateInput>
+  }
+
+  /**
+   * tr_log createMany
+   */
+  export type tr_logCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many tr_logs.
+     */
+    data: tr_logCreateManyInput | tr_logCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * tr_log update
+   */
+  export type tr_logUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_log
+     */
+    select?: tr_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_log
+     */
+    omit?: tr_logOmit<ExtArgs> | null
+    /**
+     * The data needed to update a tr_log.
+     */
+    data: XOR<tr_logUpdateInput, tr_logUncheckedUpdateInput>
+    /**
+     * Choose, which tr_log to update.
+     */
+    where: tr_logWhereUniqueInput
+  }
+
+  /**
+   * tr_log updateMany
+   */
+  export type tr_logUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update tr_logs.
+     */
+    data: XOR<tr_logUpdateManyMutationInput, tr_logUncheckedUpdateManyInput>
+    /**
+     * Filter which tr_logs to update
+     */
+    where?: tr_logWhereInput
+    /**
+     * Limit how many tr_logs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * tr_log upsert
+   */
+  export type tr_logUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_log
+     */
+    select?: tr_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_log
+     */
+    omit?: tr_logOmit<ExtArgs> | null
+    /**
+     * The filter to search for the tr_log to update in case it exists.
+     */
+    where: tr_logWhereUniqueInput
+    /**
+     * In case the tr_log found by the `where` argument doesn't exist, create a new tr_log with this data.
+     */
+    create: XOR<tr_logCreateInput, tr_logUncheckedCreateInput>
+    /**
+     * In case the tr_log was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<tr_logUpdateInput, tr_logUncheckedUpdateInput>
+  }
+
+  /**
+   * tr_log delete
+   */
+  export type tr_logDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_log
+     */
+    select?: tr_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_log
+     */
+    omit?: tr_logOmit<ExtArgs> | null
+    /**
+     * Filter which tr_log to delete.
+     */
+    where: tr_logWhereUniqueInput
+  }
+
+  /**
+   * tr_log deleteMany
+   */
+  export type tr_logDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tr_logs to delete
+     */
+    where?: tr_logWhereInput
+    /**
+     * Limit how many tr_logs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * tr_log without action
+   */
+  export type tr_logDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_log
+     */
+    select?: tr_logSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_log
+     */
+    omit?: tr_logOmit<ExtArgs> | null
+  }
+
 
   /**
    * Model mst_role
@@ -23016,6 +24075,7 @@ export namespace Prisma {
     authorizationDocs?: boolean | mst_authorization$authorizationDocsArgs<ExtArgs>
     documentNumbers?: boolean | mst_authorization$documentNumbersArgs<ExtArgs>
     tr_handover_tr_handover_auth_idTomst_authorization?: boolean | mst_authorization$tr_handover_tr_handover_auth_idTomst_authorizationArgs<ExtArgs>
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: boolean | mst_authorization$tr_handover_tr_handover_auth_id5Tomst_authorizationArgs<ExtArgs>
     tr_handover_tr_handover_auth_id2Tomst_authorization?: boolean | mst_authorization$tr_handover_tr_handover_auth_id2Tomst_authorizationArgs<ExtArgs>
     tr_handover_tr_handover_auth_id3Tomst_authorization?: boolean | mst_authorization$tr_handover_tr_handover_auth_id3Tomst_authorizationArgs<ExtArgs>
     tr_handover_tr_handover_auth_id4Tomst_authorization?: boolean | mst_authorization$tr_handover_tr_handover_auth_id4Tomst_authorizationArgs<ExtArgs>
@@ -23062,6 +24122,7 @@ export namespace Prisma {
     authorizationDocs?: boolean | mst_authorization$authorizationDocsArgs<ExtArgs>
     documentNumbers?: boolean | mst_authorization$documentNumbersArgs<ExtArgs>
     tr_handover_tr_handover_auth_idTomst_authorization?: boolean | mst_authorization$tr_handover_tr_handover_auth_idTomst_authorizationArgs<ExtArgs>
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: boolean | mst_authorization$tr_handover_tr_handover_auth_id5Tomst_authorizationArgs<ExtArgs>
     tr_handover_tr_handover_auth_id2Tomst_authorization?: boolean | mst_authorization$tr_handover_tr_handover_auth_id2Tomst_authorizationArgs<ExtArgs>
     tr_handover_tr_handover_auth_id3Tomst_authorization?: boolean | mst_authorization$tr_handover_tr_handover_auth_id3Tomst_authorizationArgs<ExtArgs>
     tr_handover_tr_handover_auth_id4Tomst_authorization?: boolean | mst_authorization$tr_handover_tr_handover_auth_id4Tomst_authorizationArgs<ExtArgs>
@@ -23088,6 +24149,7 @@ export namespace Prisma {
       authorizationDocs: Prisma.$tr_authorization_docPayload<ExtArgs>[]
       documentNumbers: Prisma.$tr_document_numberPayload<ExtArgs>[]
       tr_handover_tr_handover_auth_idTomst_authorization: Prisma.$tr_handoverPayload<ExtArgs>[]
+      tr_handover_tr_handover_auth_id5Tomst_authorization: Prisma.$tr_handoverPayload<ExtArgs>[]
       tr_handover_tr_handover_auth_id2Tomst_authorization: Prisma.$tr_handoverPayload<ExtArgs>[]
       tr_handover_tr_handover_auth_id3Tomst_authorization: Prisma.$tr_handoverPayload<ExtArgs>[]
       tr_handover_tr_handover_auth_id4Tomst_authorization: Prisma.$tr_handoverPayload<ExtArgs>[]
@@ -23466,6 +24528,7 @@ export namespace Prisma {
     authorizationDocs<T extends mst_authorization$authorizationDocsArgs<ExtArgs> = {}>(args?: Subset<T, mst_authorization$authorizationDocsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     documentNumbers<T extends mst_authorization$documentNumbersArgs<ExtArgs> = {}>(args?: Subset<T, mst_authorization$documentNumbersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_document_numberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tr_handover_tr_handover_auth_idTomst_authorization<T extends mst_authorization$tr_handover_tr_handover_auth_idTomst_authorizationArgs<ExtArgs> = {}>(args?: Subset<T, mst_authorization$tr_handover_tr_handover_auth_idTomst_authorizationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_handoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tr_handover_tr_handover_auth_id5Tomst_authorization<T extends mst_authorization$tr_handover_tr_handover_auth_id5Tomst_authorizationArgs<ExtArgs> = {}>(args?: Subset<T, mst_authorization$tr_handover_tr_handover_auth_id5Tomst_authorizationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_handoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tr_handover_tr_handover_auth_id2Tomst_authorization<T extends mst_authorization$tr_handover_tr_handover_auth_id2Tomst_authorizationArgs<ExtArgs> = {}>(args?: Subset<T, mst_authorization$tr_handover_tr_handover_auth_id2Tomst_authorizationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_handoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tr_handover_tr_handover_auth_id3Tomst_authorization<T extends mst_authorization$tr_handover_tr_handover_auth_id3Tomst_authorizationArgs<ExtArgs> = {}>(args?: Subset<T, mst_authorization$tr_handover_tr_handover_auth_id3Tomst_authorizationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_handoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     tr_handover_tr_handover_auth_id4Tomst_authorization<T extends mst_authorization$tr_handover_tr_handover_auth_id4Tomst_authorizationArgs<ExtArgs> = {}>(args?: Subset<T, mst_authorization$tr_handover_tr_handover_auth_id4Tomst_authorizationArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_handoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -24109,6 +25172,30 @@ export namespace Prisma {
    * mst_authorization.tr_handover_tr_handover_auth_idTomst_authorization
    */
   export type mst_authorization$tr_handover_tr_handover_auth_idTomst_authorizationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_handover
+     */
+    select?: tr_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_handover
+     */
+    omit?: tr_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_handoverInclude<ExtArgs> | null
+    where?: tr_handoverWhereInput
+    orderBy?: tr_handoverOrderByWithRelationInput | tr_handoverOrderByWithRelationInput[]
+    cursor?: tr_handoverWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Tr_handoverScalarFieldEnum | Tr_handoverScalarFieldEnum[]
+  }
+
+  /**
+   * mst_authorization.tr_handover_tr_handover_auth_id5Tomst_authorization
+   */
+  export type mst_authorization$tr_handover_tr_handover_auth_id5Tomst_authorizationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the tr_handover
      */
@@ -31041,6 +32128,7 @@ export namespace Prisma {
     other_sytem: string | null
     status: string | null
     progress: string | null
+    progresssupport: string | null
     is_deleted: boolean | null
   }
 
@@ -31071,6 +32159,7 @@ export namespace Prisma {
     other_sytem: string | null
     status: string | null
     progress: string | null
+    progresssupport: string | null
     is_deleted: boolean | null
   }
 
@@ -31101,6 +32190,7 @@ export namespace Prisma {
     other_sytem: number
     status: number
     progress: number
+    progresssupport: number
     is_deleted: number
     _all: number
   }
@@ -31151,6 +32241,7 @@ export namespace Prisma {
     other_sytem?: true
     status?: true
     progress?: true
+    progresssupport?: true
     is_deleted?: true
   }
 
@@ -31181,6 +32272,7 @@ export namespace Prisma {
     other_sytem?: true
     status?: true
     progress?: true
+    progresssupport?: true
     is_deleted?: true
   }
 
@@ -31211,6 +32303,7 @@ export namespace Prisma {
     other_sytem?: true
     status?: true
     progress?: true
+    progresssupport?: true
     is_deleted?: true
     _all?: true
   }
@@ -31328,6 +32421,7 @@ export namespace Prisma {
     other_sytem: string | null
     status: string | null
     progress: string | null
+    progresssupport: string | null
     is_deleted: boolean
     _count: Tr_proposed_changesCountAggregateOutputType | null
     _avg: Tr_proposed_changesAvgAggregateOutputType | null
@@ -31377,6 +32471,7 @@ export namespace Prisma {
     other_sytem?: boolean
     status?: boolean
     progress?: boolean
+    progresssupport?: boolean
     is_deleted?: boolean
     email_tracking_proposedchanges?: boolean | tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs>
     proposedChange?: boolean | tr_proposed_changes$proposedChangeArgs<ExtArgs>
@@ -31422,10 +32517,11 @@ export namespace Prisma {
     other_sytem?: boolean
     status?: boolean
     progress?: boolean
+    progresssupport?: boolean
     is_deleted?: boolean
   }
 
-  export type tr_proposed_changesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "project_name" | "document_number_id" | "item_changes" | "line_code" | "section_code" | "section_name" | "department_id" | "section_department_id" | "plant_id" | "auth_id" | "change_type" | "description" | "reason" | "cost" | "cost_text" | "planning_start" | "planning_end" | "created_date" | "created_by" | "updated_at" | "need_engineering_approval" | "need_production_approval" | "other_sytem" | "status" | "progress" | "is_deleted", ExtArgs["result"]["tr_proposed_changes"]>
+  export type tr_proposed_changesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "project_name" | "document_number_id" | "item_changes" | "line_code" | "section_code" | "section_name" | "department_id" | "section_department_id" | "plant_id" | "auth_id" | "change_type" | "description" | "reason" | "cost" | "cost_text" | "planning_start" | "planning_end" | "created_date" | "created_by" | "updated_at" | "need_engineering_approval" | "need_production_approval" | "other_sytem" | "status" | "progress" | "progresssupport" | "is_deleted", ExtArgs["result"]["tr_proposed_changes"]>
   export type tr_proposed_changesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     email_tracking_proposedchanges?: boolean | tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs>
     proposedChange?: boolean | tr_proposed_changes$proposedChangeArgs<ExtArgs>
@@ -31485,6 +32581,7 @@ export namespace Prisma {
       other_sytem: string | null
       status: string | null
       progress: string | null
+      progresssupport: string | null
       is_deleted: boolean
     }, ExtArgs["result"]["tr_proposed_changes"]>
     composites: {}
@@ -31893,6 +32990,7 @@ export namespace Prisma {
     readonly other_sytem: FieldRef<"tr_proposed_changes", 'String'>
     readonly status: FieldRef<"tr_proposed_changes", 'String'>
     readonly progress: FieldRef<"tr_proposed_changes", 'String'>
+    readonly progresssupport: FieldRef<"tr_proposed_changes", 'String'>
     readonly is_deleted: FieldRef<"tr_proposed_changes", 'Boolean'>
   }
     
@@ -34612,6 +35710,7 @@ export namespace Prisma {
     auth_id2: number | null
     auth_id3: number | null
     auth_id4: number | null
+    auth_id5: number | null
     proposed_change_id: number | null
     authdoc_id: number | null
     plant_id: number | null
@@ -34625,6 +35724,7 @@ export namespace Prisma {
     auth_id2: number | null
     auth_id3: number | null
     auth_id4: number | null
+    auth_id5: number | null
     proposed_change_id: number | null
     authdoc_id: number | null
     plant_id: number | null
@@ -34639,6 +35739,7 @@ export namespace Prisma {
     auth_id2: number | null
     auth_id3: number | null
     auth_id4: number | null
+    auth_id5: number | null
     proposed_change_id: number | null
     authdoc_id: number | null
     plant_id: number | null
@@ -34662,6 +35763,7 @@ export namespace Prisma {
     auth_id2: number | null
     auth_id3: number | null
     auth_id4: number | null
+    auth_id5: number | null
     proposed_change_id: number | null
     authdoc_id: number | null
     plant_id: number | null
@@ -34685,6 +35787,7 @@ export namespace Prisma {
     auth_id2: number
     auth_id3: number
     auth_id4: number
+    auth_id5: number
     proposed_change_id: number
     authdoc_id: number
     plant_id: number
@@ -34709,6 +35812,7 @@ export namespace Prisma {
     auth_id2?: true
     auth_id3?: true
     auth_id4?: true
+    auth_id5?: true
     proposed_change_id?: true
     authdoc_id?: true
     plant_id?: true
@@ -34722,6 +35826,7 @@ export namespace Prisma {
     auth_id2?: true
     auth_id3?: true
     auth_id4?: true
+    auth_id5?: true
     proposed_change_id?: true
     authdoc_id?: true
     plant_id?: true
@@ -34736,6 +35841,7 @@ export namespace Prisma {
     auth_id2?: true
     auth_id3?: true
     auth_id4?: true
+    auth_id5?: true
     proposed_change_id?: true
     authdoc_id?: true
     plant_id?: true
@@ -34759,6 +35865,7 @@ export namespace Prisma {
     auth_id2?: true
     auth_id3?: true
     auth_id4?: true
+    auth_id5?: true
     proposed_change_id?: true
     authdoc_id?: true
     plant_id?: true
@@ -34782,6 +35889,7 @@ export namespace Prisma {
     auth_id2?: true
     auth_id3?: true
     auth_id4?: true
+    auth_id5?: true
     proposed_change_id?: true
     authdoc_id?: true
     plant_id?: true
@@ -34892,6 +36000,7 @@ export namespace Prisma {
     auth_id2: number | null
     auth_id3: number | null
     auth_id4: number | null
+    auth_id5: number | null
     proposed_change_id: number | null
     authdoc_id: number | null
     plant_id: number | null
@@ -34934,6 +36043,7 @@ export namespace Prisma {
     auth_id2?: boolean
     auth_id3?: boolean
     auth_id4?: boolean
+    auth_id5?: boolean
     proposed_change_id?: boolean
     authdoc_id?: boolean
     plant_id?: boolean
@@ -34950,6 +36060,7 @@ export namespace Prisma {
     is_deleted?: boolean
     email_tracking_handover?: boolean | tr_handover$email_tracking_handoverArgs<ExtArgs>
     mst_authorization_tr_handover_auth_idTomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_idTomst_authorizationArgs<ExtArgs>
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_id5Tomst_authorizationArgs<ExtArgs>
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_id2Tomst_authorizationArgs<ExtArgs>
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_id3Tomst_authorizationArgs<ExtArgs>
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_id4Tomst_authorizationArgs<ExtArgs>
@@ -34972,6 +36083,7 @@ export namespace Prisma {
     auth_id2?: boolean
     auth_id3?: boolean
     auth_id4?: boolean
+    auth_id5?: boolean
     proposed_change_id?: boolean
     authdoc_id?: boolean
     plant_id?: boolean
@@ -34988,10 +36100,11 @@ export namespace Prisma {
     is_deleted?: boolean
   }
 
-  export type tr_handoverOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "doc_number" | "auth_id" | "auth_id2" | "auth_id3" | "auth_id4" | "proposed_change_id" | "authdoc_id" | "plant_id" | "department_id" | "section_department_id" | "progress" | "status" | "material" | "remark" | "created_by" | "created_date" | "updated_at" | "updated_by" | "is_deleted", ExtArgs["result"]["tr_handover"]>
+  export type tr_handoverOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "doc_number" | "auth_id" | "auth_id2" | "auth_id3" | "auth_id4" | "auth_id5" | "proposed_change_id" | "authdoc_id" | "plant_id" | "department_id" | "section_department_id" | "progress" | "status" | "material" | "remark" | "created_by" | "created_date" | "updated_at" | "updated_by" | "is_deleted", ExtArgs["result"]["tr_handover"]>
   export type tr_handoverInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     email_tracking_handover?: boolean | tr_handover$email_tracking_handoverArgs<ExtArgs>
     mst_authorization_tr_handover_auth_idTomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_idTomst_authorizationArgs<ExtArgs>
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_id5Tomst_authorizationArgs<ExtArgs>
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_id2Tomst_authorizationArgs<ExtArgs>
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_id3Tomst_authorizationArgs<ExtArgs>
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_id4Tomst_authorizationArgs<ExtArgs>
@@ -35010,6 +36123,7 @@ export namespace Prisma {
     objects: {
       email_tracking_handover: Prisma.$email_tracking_handoverPayload<ExtArgs>[]
       mst_authorization_tr_handover_auth_idTomst_authorization: Prisma.$mst_authorizationPayload<ExtArgs> | null
+      mst_authorization_tr_handover_auth_id5Tomst_authorization: Prisma.$mst_authorizationPayload<ExtArgs> | null
       mst_authorization_tr_handover_auth_id2Tomst_authorization: Prisma.$mst_authorizationPayload<ExtArgs> | null
       mst_authorization_tr_handover_auth_id3Tomst_authorization: Prisma.$mst_authorizationPayload<ExtArgs> | null
       mst_authorization_tr_handover_auth_id4Tomst_authorization: Prisma.$mst_authorizationPayload<ExtArgs> | null
@@ -35028,6 +36142,7 @@ export namespace Prisma {
       auth_id2: number | null
       auth_id3: number | null
       auth_id4: number | null
+      auth_id5: number | null
       proposed_change_id: number | null
       authdoc_id: number | null
       plant_id: number | null
@@ -35384,6 +36499,7 @@ export namespace Prisma {
     readonly [Symbol.toStringTag]: "PrismaPromise"
     email_tracking_handover<T extends tr_handover$email_tracking_handoverArgs<ExtArgs> = {}>(args?: Subset<T, tr_handover$email_tracking_handoverArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     mst_authorization_tr_handover_auth_idTomst_authorization<T extends tr_handover$mst_authorization_tr_handover_auth_idTomst_authorizationArgs<ExtArgs> = {}>(args?: Subset<T, tr_handover$mst_authorization_tr_handover_auth_idTomst_authorizationArgs<ExtArgs>>): Prisma__mst_authorizationClient<$Result.GetResult<Prisma.$mst_authorizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    mst_authorization_tr_handover_auth_id5Tomst_authorization<T extends tr_handover$mst_authorization_tr_handover_auth_id5Tomst_authorizationArgs<ExtArgs> = {}>(args?: Subset<T, tr_handover$mst_authorization_tr_handover_auth_id5Tomst_authorizationArgs<ExtArgs>>): Prisma__mst_authorizationClient<$Result.GetResult<Prisma.$mst_authorizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     mst_authorization_tr_handover_auth_id2Tomst_authorization<T extends tr_handover$mst_authorization_tr_handover_auth_id2Tomst_authorizationArgs<ExtArgs> = {}>(args?: Subset<T, tr_handover$mst_authorization_tr_handover_auth_id2Tomst_authorizationArgs<ExtArgs>>): Prisma__mst_authorizationClient<$Result.GetResult<Prisma.$mst_authorizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     mst_authorization_tr_handover_auth_id3Tomst_authorization<T extends tr_handover$mst_authorization_tr_handover_auth_id3Tomst_authorizationArgs<ExtArgs> = {}>(args?: Subset<T, tr_handover$mst_authorization_tr_handover_auth_id3Tomst_authorizationArgs<ExtArgs>>): Prisma__mst_authorizationClient<$Result.GetResult<Prisma.$mst_authorizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
     mst_authorization_tr_handover_auth_id4Tomst_authorization<T extends tr_handover$mst_authorization_tr_handover_auth_id4Tomst_authorizationArgs<ExtArgs> = {}>(args?: Subset<T, tr_handover$mst_authorization_tr_handover_auth_id4Tomst_authorizationArgs<ExtArgs>>): Prisma__mst_authorizationClient<$Result.GetResult<Prisma.$mst_authorizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
@@ -35429,6 +36545,7 @@ export namespace Prisma {
     readonly auth_id2: FieldRef<"tr_handover", 'Int'>
     readonly auth_id3: FieldRef<"tr_handover", 'Int'>
     readonly auth_id4: FieldRef<"tr_handover", 'Int'>
+    readonly auth_id5: FieldRef<"tr_handover", 'Int'>
     readonly proposed_change_id: FieldRef<"tr_handover", 'Int'>
     readonly authdoc_id: FieldRef<"tr_handover", 'Int'>
     readonly plant_id: FieldRef<"tr_handover", 'Int'>
@@ -35813,6 +36930,25 @@ export namespace Prisma {
    * tr_handover.mst_authorization_tr_handover_auth_idTomst_authorization
    */
   export type tr_handover$mst_authorization_tr_handover_auth_idTomst_authorizationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_authorization
+     */
+    select?: mst_authorizationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_authorization
+     */
+    omit?: mst_authorizationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mst_authorizationInclude<ExtArgs> | null
+    where?: mst_authorizationWhereInput
+  }
+
+  /**
+   * tr_handover.mst_authorization_tr_handover_auth_id5Tomst_authorization
+   */
+  export type tr_handover$mst_authorization_tr_handover_auth_id5Tomst_authorizationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
      * Select specific fields to fetch from the mst_authorization
      */
@@ -38177,6 +39313,1065 @@ export namespace Prisma {
 
 
   /**
+   * Model email_tracking_handover
+   */
+
+  export type AggregateEmail_tracking_handover = {
+    _count: Email_tracking_handoverCountAggregateOutputType | null
+    _avg: Email_tracking_handoverAvgAggregateOutputType | null
+    _sum: Email_tracking_handoverSumAggregateOutputType | null
+    _min: Email_tracking_handoverMinAggregateOutputType | null
+    _max: Email_tracking_handoverMaxAggregateOutputType | null
+  }
+
+  export type Email_tracking_handoverAvgAggregateOutputType = {
+    id: number | null
+    handover_id: number | null
+    retry_count: number | null
+  }
+
+  export type Email_tracking_handoverSumAggregateOutputType = {
+    id: number | null
+    handover_id: number | null
+    retry_count: number | null
+  }
+
+  export type Email_tracking_handoverMinAggregateOutputType = {
+    id: number | null
+    handover_id: number | null
+    recipient_email: string | null
+    recipient_type: $Enums.email_tracking_handover_recipient_type | null
+    status: $Enums.email_tracking_handover_status | null
+    note_hash: string | null
+    note_text: string | null
+    message_id: string | null
+    sent_at: Date | null
+    is_success: boolean | null
+    retry_count: number | null
+    last_retry_at: Date | null
+    created_at: Date | null
+  }
+
+  export type Email_tracking_handoverMaxAggregateOutputType = {
+    id: number | null
+    handover_id: number | null
+    recipient_email: string | null
+    recipient_type: $Enums.email_tracking_handover_recipient_type | null
+    status: $Enums.email_tracking_handover_status | null
+    note_hash: string | null
+    note_text: string | null
+    message_id: string | null
+    sent_at: Date | null
+    is_success: boolean | null
+    retry_count: number | null
+    last_retry_at: Date | null
+    created_at: Date | null
+  }
+
+  export type Email_tracking_handoverCountAggregateOutputType = {
+    id: number
+    handover_id: number
+    recipient_email: number
+    recipient_type: number
+    status: number
+    note_hash: number
+    note_text: number
+    message_id: number
+    sent_at: number
+    is_success: number
+    retry_count: number
+    last_retry_at: number
+    created_at: number
+    _all: number
+  }
+
+
+  export type Email_tracking_handoverAvgAggregateInputType = {
+    id?: true
+    handover_id?: true
+    retry_count?: true
+  }
+
+  export type Email_tracking_handoverSumAggregateInputType = {
+    id?: true
+    handover_id?: true
+    retry_count?: true
+  }
+
+  export type Email_tracking_handoverMinAggregateInputType = {
+    id?: true
+    handover_id?: true
+    recipient_email?: true
+    recipient_type?: true
+    status?: true
+    note_hash?: true
+    note_text?: true
+    message_id?: true
+    sent_at?: true
+    is_success?: true
+    retry_count?: true
+    last_retry_at?: true
+    created_at?: true
+  }
+
+  export type Email_tracking_handoverMaxAggregateInputType = {
+    id?: true
+    handover_id?: true
+    recipient_email?: true
+    recipient_type?: true
+    status?: true
+    note_hash?: true
+    note_text?: true
+    message_id?: true
+    sent_at?: true
+    is_success?: true
+    retry_count?: true
+    last_retry_at?: true
+    created_at?: true
+  }
+
+  export type Email_tracking_handoverCountAggregateInputType = {
+    id?: true
+    handover_id?: true
+    recipient_email?: true
+    recipient_type?: true
+    status?: true
+    note_hash?: true
+    note_text?: true
+    message_id?: true
+    sent_at?: true
+    is_success?: true
+    retry_count?: true
+    last_retry_at?: true
+    created_at?: true
+    _all?: true
+  }
+
+  export type Email_tracking_handoverAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which email_tracking_handover to aggregate.
+     */
+    where?: email_tracking_handoverWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of email_tracking_handovers to fetch.
+     */
+    orderBy?: email_tracking_handoverOrderByWithRelationInput | email_tracking_handoverOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: email_tracking_handoverWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` email_tracking_handovers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` email_tracking_handovers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned email_tracking_handovers
+    **/
+    _count?: true | Email_tracking_handoverCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Email_tracking_handoverAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Email_tracking_handoverSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Email_tracking_handoverMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Email_tracking_handoverMaxAggregateInputType
+  }
+
+  export type GetEmail_tracking_handoverAggregateType<T extends Email_tracking_handoverAggregateArgs> = {
+        [P in keyof T & keyof AggregateEmail_tracking_handover]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateEmail_tracking_handover[P]>
+      : GetScalarType<T[P], AggregateEmail_tracking_handover[P]>
+  }
+
+
+
+
+  export type email_tracking_handoverGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: email_tracking_handoverWhereInput
+    orderBy?: email_tracking_handoverOrderByWithAggregationInput | email_tracking_handoverOrderByWithAggregationInput[]
+    by: Email_tracking_handoverScalarFieldEnum[] | Email_tracking_handoverScalarFieldEnum
+    having?: email_tracking_handoverScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Email_tracking_handoverCountAggregateInputType | true
+    _avg?: Email_tracking_handoverAvgAggregateInputType
+    _sum?: Email_tracking_handoverSumAggregateInputType
+    _min?: Email_tracking_handoverMinAggregateInputType
+    _max?: Email_tracking_handoverMaxAggregateInputType
+  }
+
+  export type Email_tracking_handoverGroupByOutputType = {
+    id: number
+    handover_id: number
+    recipient_email: string
+    recipient_type: $Enums.email_tracking_handover_recipient_type
+    status: $Enums.email_tracking_handover_status
+    note_hash: string
+    note_text: string | null
+    message_id: string | null
+    sent_at: Date | null
+    is_success: boolean | null
+    retry_count: number | null
+    last_retry_at: Date | null
+    created_at: Date | null
+    _count: Email_tracking_handoverCountAggregateOutputType | null
+    _avg: Email_tracking_handoverAvgAggregateOutputType | null
+    _sum: Email_tracking_handoverSumAggregateOutputType | null
+    _min: Email_tracking_handoverMinAggregateOutputType | null
+    _max: Email_tracking_handoverMaxAggregateOutputType | null
+  }
+
+  type GetEmail_tracking_handoverGroupByPayload<T extends email_tracking_handoverGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Email_tracking_handoverGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Email_tracking_handoverGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Email_tracking_handoverGroupByOutputType[P]>
+            : GetScalarType<T[P], Email_tracking_handoverGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type email_tracking_handoverSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    handover_id?: boolean
+    recipient_email?: boolean
+    recipient_type?: boolean
+    status?: boolean
+    note_hash?: boolean
+    note_text?: boolean
+    message_id?: boolean
+    sent_at?: boolean
+    is_success?: boolean
+    retry_count?: boolean
+    last_retry_at?: boolean
+    created_at?: boolean
+    tr_handover?: boolean | tr_handoverDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["email_tracking_handover"]>
+
+
+
+  export type email_tracking_handoverSelectScalar = {
+    id?: boolean
+    handover_id?: boolean
+    recipient_email?: boolean
+    recipient_type?: boolean
+    status?: boolean
+    note_hash?: boolean
+    note_text?: boolean
+    message_id?: boolean
+    sent_at?: boolean
+    is_success?: boolean
+    retry_count?: boolean
+    last_retry_at?: boolean
+    created_at?: boolean
+  }
+
+  export type email_tracking_handoverOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "handover_id" | "recipient_email" | "recipient_type" | "status" | "note_hash" | "note_text" | "message_id" | "sent_at" | "is_success" | "retry_count" | "last_retry_at" | "created_at", ExtArgs["result"]["email_tracking_handover"]>
+  export type email_tracking_handoverInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    tr_handover?: boolean | tr_handoverDefaultArgs<ExtArgs>
+  }
+
+  export type $email_tracking_handoverPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "email_tracking_handover"
+    objects: {
+      tr_handover: Prisma.$tr_handoverPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      handover_id: number
+      recipient_email: string
+      recipient_type: $Enums.email_tracking_handover_recipient_type
+      status: $Enums.email_tracking_handover_status
+      note_hash: string
+      note_text: string | null
+      message_id: string | null
+      sent_at: Date | null
+      is_success: boolean | null
+      retry_count: number | null
+      last_retry_at: Date | null
+      created_at: Date | null
+    }, ExtArgs["result"]["email_tracking_handover"]>
+    composites: {}
+  }
+
+  type email_tracking_handoverGetPayload<S extends boolean | null | undefined | email_tracking_handoverDefaultArgs> = $Result.GetResult<Prisma.$email_tracking_handoverPayload, S>
+
+  type email_tracking_handoverCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<email_tracking_handoverFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Email_tracking_handoverCountAggregateInputType | true
+    }
+
+  export interface email_tracking_handoverDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['email_tracking_handover'], meta: { name: 'email_tracking_handover' } }
+    /**
+     * Find zero or one Email_tracking_handover that matches the filter.
+     * @param {email_tracking_handoverFindUniqueArgs} args - Arguments to find a Email_tracking_handover
+     * @example
+     * // Get one Email_tracking_handover
+     * const email_tracking_handover = await prisma.email_tracking_handover.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends email_tracking_handoverFindUniqueArgs>(args: SelectSubset<T, email_tracking_handoverFindUniqueArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Email_tracking_handover that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {email_tracking_handoverFindUniqueOrThrowArgs} args - Arguments to find a Email_tracking_handover
+     * @example
+     * // Get one Email_tracking_handover
+     * const email_tracking_handover = await prisma.email_tracking_handover.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends email_tracking_handoverFindUniqueOrThrowArgs>(args: SelectSubset<T, email_tracking_handoverFindUniqueOrThrowArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Email_tracking_handover that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {email_tracking_handoverFindFirstArgs} args - Arguments to find a Email_tracking_handover
+     * @example
+     * // Get one Email_tracking_handover
+     * const email_tracking_handover = await prisma.email_tracking_handover.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends email_tracking_handoverFindFirstArgs>(args?: SelectSubset<T, email_tracking_handoverFindFirstArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Email_tracking_handover that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {email_tracking_handoverFindFirstOrThrowArgs} args - Arguments to find a Email_tracking_handover
+     * @example
+     * // Get one Email_tracking_handover
+     * const email_tracking_handover = await prisma.email_tracking_handover.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends email_tracking_handoverFindFirstOrThrowArgs>(args?: SelectSubset<T, email_tracking_handoverFindFirstOrThrowArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Email_tracking_handovers that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {email_tracking_handoverFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Email_tracking_handovers
+     * const email_tracking_handovers = await prisma.email_tracking_handover.findMany()
+     * 
+     * // Get first 10 Email_tracking_handovers
+     * const email_tracking_handovers = await prisma.email_tracking_handover.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const email_tracking_handoverWithIdOnly = await prisma.email_tracking_handover.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends email_tracking_handoverFindManyArgs>(args?: SelectSubset<T, email_tracking_handoverFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Email_tracking_handover.
+     * @param {email_tracking_handoverCreateArgs} args - Arguments to create a Email_tracking_handover.
+     * @example
+     * // Create one Email_tracking_handover
+     * const Email_tracking_handover = await prisma.email_tracking_handover.create({
+     *   data: {
+     *     // ... data to create a Email_tracking_handover
+     *   }
+     * })
+     * 
+     */
+    create<T extends email_tracking_handoverCreateArgs>(args: SelectSubset<T, email_tracking_handoverCreateArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Email_tracking_handovers.
+     * @param {email_tracking_handoverCreateManyArgs} args - Arguments to create many Email_tracking_handovers.
+     * @example
+     * // Create many Email_tracking_handovers
+     * const email_tracking_handover = await prisma.email_tracking_handover.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends email_tracking_handoverCreateManyArgs>(args?: SelectSubset<T, email_tracking_handoverCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Email_tracking_handover.
+     * @param {email_tracking_handoverDeleteArgs} args - Arguments to delete one Email_tracking_handover.
+     * @example
+     * // Delete one Email_tracking_handover
+     * const Email_tracking_handover = await prisma.email_tracking_handover.delete({
+     *   where: {
+     *     // ... filter to delete one Email_tracking_handover
+     *   }
+     * })
+     * 
+     */
+    delete<T extends email_tracking_handoverDeleteArgs>(args: SelectSubset<T, email_tracking_handoverDeleteArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Email_tracking_handover.
+     * @param {email_tracking_handoverUpdateArgs} args - Arguments to update one Email_tracking_handover.
+     * @example
+     * // Update one Email_tracking_handover
+     * const email_tracking_handover = await prisma.email_tracking_handover.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends email_tracking_handoverUpdateArgs>(args: SelectSubset<T, email_tracking_handoverUpdateArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Email_tracking_handovers.
+     * @param {email_tracking_handoverDeleteManyArgs} args - Arguments to filter Email_tracking_handovers to delete.
+     * @example
+     * // Delete a few Email_tracking_handovers
+     * const { count } = await prisma.email_tracking_handover.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends email_tracking_handoverDeleteManyArgs>(args?: SelectSubset<T, email_tracking_handoverDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Email_tracking_handovers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {email_tracking_handoverUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Email_tracking_handovers
+     * const email_tracking_handover = await prisma.email_tracking_handover.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends email_tracking_handoverUpdateManyArgs>(args: SelectSubset<T, email_tracking_handoverUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Email_tracking_handover.
+     * @param {email_tracking_handoverUpsertArgs} args - Arguments to update or create a Email_tracking_handover.
+     * @example
+     * // Update or create a Email_tracking_handover
+     * const email_tracking_handover = await prisma.email_tracking_handover.upsert({
+     *   create: {
+     *     // ... data to create a Email_tracking_handover
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Email_tracking_handover we want to update
+     *   }
+     * })
+     */
+    upsert<T extends email_tracking_handoverUpsertArgs>(args: SelectSubset<T, email_tracking_handoverUpsertArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Email_tracking_handovers.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {email_tracking_handoverCountArgs} args - Arguments to filter Email_tracking_handovers to count.
+     * @example
+     * // Count the number of Email_tracking_handovers
+     * const count = await prisma.email_tracking_handover.count({
+     *   where: {
+     *     // ... the filter for the Email_tracking_handovers we want to count
+     *   }
+     * })
+    **/
+    count<T extends email_tracking_handoverCountArgs>(
+      args?: Subset<T, email_tracking_handoverCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Email_tracking_handoverCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Email_tracking_handover.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Email_tracking_handoverAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Email_tracking_handoverAggregateArgs>(args: Subset<T, Email_tracking_handoverAggregateArgs>): Prisma.PrismaPromise<GetEmail_tracking_handoverAggregateType<T>>
+
+    /**
+     * Group by Email_tracking_handover.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {email_tracking_handoverGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends email_tracking_handoverGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: email_tracking_handoverGroupByArgs['orderBy'] }
+        : { orderBy?: email_tracking_handoverGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, email_tracking_handoverGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEmail_tracking_handoverGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the email_tracking_handover model
+   */
+  readonly fields: email_tracking_handoverFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for email_tracking_handover.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__email_tracking_handoverClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    tr_handover<T extends tr_handoverDefaultArgs<ExtArgs> = {}>(args?: Subset<T, tr_handoverDefaultArgs<ExtArgs>>): Prisma__tr_handoverClient<$Result.GetResult<Prisma.$tr_handoverPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the email_tracking_handover model
+   */
+  interface email_tracking_handoverFieldRefs {
+    readonly id: FieldRef<"email_tracking_handover", 'Int'>
+    readonly handover_id: FieldRef<"email_tracking_handover", 'Int'>
+    readonly recipient_email: FieldRef<"email_tracking_handover", 'String'>
+    readonly recipient_type: FieldRef<"email_tracking_handover", 'email_tracking_handover_recipient_type'>
+    readonly status: FieldRef<"email_tracking_handover", 'email_tracking_handover_status'>
+    readonly note_hash: FieldRef<"email_tracking_handover", 'String'>
+    readonly note_text: FieldRef<"email_tracking_handover", 'String'>
+    readonly message_id: FieldRef<"email_tracking_handover", 'String'>
+    readonly sent_at: FieldRef<"email_tracking_handover", 'DateTime'>
+    readonly is_success: FieldRef<"email_tracking_handover", 'Boolean'>
+    readonly retry_count: FieldRef<"email_tracking_handover", 'Int'>
+    readonly last_retry_at: FieldRef<"email_tracking_handover", 'DateTime'>
+    readonly created_at: FieldRef<"email_tracking_handover", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * email_tracking_handover findUnique
+   */
+  export type email_tracking_handoverFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the email_tracking_handover
+     */
+    select?: email_tracking_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the email_tracking_handover
+     */
+    omit?: email_tracking_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: email_tracking_handoverInclude<ExtArgs> | null
+    /**
+     * Filter, which email_tracking_handover to fetch.
+     */
+    where: email_tracking_handoverWhereUniqueInput
+  }
+
+  /**
+   * email_tracking_handover findUniqueOrThrow
+   */
+  export type email_tracking_handoverFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the email_tracking_handover
+     */
+    select?: email_tracking_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the email_tracking_handover
+     */
+    omit?: email_tracking_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: email_tracking_handoverInclude<ExtArgs> | null
+    /**
+     * Filter, which email_tracking_handover to fetch.
+     */
+    where: email_tracking_handoverWhereUniqueInput
+  }
+
+  /**
+   * email_tracking_handover findFirst
+   */
+  export type email_tracking_handoverFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the email_tracking_handover
+     */
+    select?: email_tracking_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the email_tracking_handover
+     */
+    omit?: email_tracking_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: email_tracking_handoverInclude<ExtArgs> | null
+    /**
+     * Filter, which email_tracking_handover to fetch.
+     */
+    where?: email_tracking_handoverWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of email_tracking_handovers to fetch.
+     */
+    orderBy?: email_tracking_handoverOrderByWithRelationInput | email_tracking_handoverOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for email_tracking_handovers.
+     */
+    cursor?: email_tracking_handoverWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` email_tracking_handovers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` email_tracking_handovers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of email_tracking_handovers.
+     */
+    distinct?: Email_tracking_handoverScalarFieldEnum | Email_tracking_handoverScalarFieldEnum[]
+  }
+
+  /**
+   * email_tracking_handover findFirstOrThrow
+   */
+  export type email_tracking_handoverFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the email_tracking_handover
+     */
+    select?: email_tracking_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the email_tracking_handover
+     */
+    omit?: email_tracking_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: email_tracking_handoverInclude<ExtArgs> | null
+    /**
+     * Filter, which email_tracking_handover to fetch.
+     */
+    where?: email_tracking_handoverWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of email_tracking_handovers to fetch.
+     */
+    orderBy?: email_tracking_handoverOrderByWithRelationInput | email_tracking_handoverOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for email_tracking_handovers.
+     */
+    cursor?: email_tracking_handoverWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` email_tracking_handovers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` email_tracking_handovers.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of email_tracking_handovers.
+     */
+    distinct?: Email_tracking_handoverScalarFieldEnum | Email_tracking_handoverScalarFieldEnum[]
+  }
+
+  /**
+   * email_tracking_handover findMany
+   */
+  export type email_tracking_handoverFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the email_tracking_handover
+     */
+    select?: email_tracking_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the email_tracking_handover
+     */
+    omit?: email_tracking_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: email_tracking_handoverInclude<ExtArgs> | null
+    /**
+     * Filter, which email_tracking_handovers to fetch.
+     */
+    where?: email_tracking_handoverWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of email_tracking_handovers to fetch.
+     */
+    orderBy?: email_tracking_handoverOrderByWithRelationInput | email_tracking_handoverOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing email_tracking_handovers.
+     */
+    cursor?: email_tracking_handoverWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` email_tracking_handovers from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` email_tracking_handovers.
+     */
+    skip?: number
+    distinct?: Email_tracking_handoverScalarFieldEnum | Email_tracking_handoverScalarFieldEnum[]
+  }
+
+  /**
+   * email_tracking_handover create
+   */
+  export type email_tracking_handoverCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the email_tracking_handover
+     */
+    select?: email_tracking_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the email_tracking_handover
+     */
+    omit?: email_tracking_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: email_tracking_handoverInclude<ExtArgs> | null
+    /**
+     * The data needed to create a email_tracking_handover.
+     */
+    data: XOR<email_tracking_handoverCreateInput, email_tracking_handoverUncheckedCreateInput>
+  }
+
+  /**
+   * email_tracking_handover createMany
+   */
+  export type email_tracking_handoverCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many email_tracking_handovers.
+     */
+    data: email_tracking_handoverCreateManyInput | email_tracking_handoverCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * email_tracking_handover update
+   */
+  export type email_tracking_handoverUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the email_tracking_handover
+     */
+    select?: email_tracking_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the email_tracking_handover
+     */
+    omit?: email_tracking_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: email_tracking_handoverInclude<ExtArgs> | null
+    /**
+     * The data needed to update a email_tracking_handover.
+     */
+    data: XOR<email_tracking_handoverUpdateInput, email_tracking_handoverUncheckedUpdateInput>
+    /**
+     * Choose, which email_tracking_handover to update.
+     */
+    where: email_tracking_handoverWhereUniqueInput
+  }
+
+  /**
+   * email_tracking_handover updateMany
+   */
+  export type email_tracking_handoverUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update email_tracking_handovers.
+     */
+    data: XOR<email_tracking_handoverUpdateManyMutationInput, email_tracking_handoverUncheckedUpdateManyInput>
+    /**
+     * Filter which email_tracking_handovers to update
+     */
+    where?: email_tracking_handoverWhereInput
+    /**
+     * Limit how many email_tracking_handovers to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * email_tracking_handover upsert
+   */
+  export type email_tracking_handoverUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the email_tracking_handover
+     */
+    select?: email_tracking_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the email_tracking_handover
+     */
+    omit?: email_tracking_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: email_tracking_handoverInclude<ExtArgs> | null
+    /**
+     * The filter to search for the email_tracking_handover to update in case it exists.
+     */
+    where: email_tracking_handoverWhereUniqueInput
+    /**
+     * In case the email_tracking_handover found by the `where` argument doesn't exist, create a new email_tracking_handover with this data.
+     */
+    create: XOR<email_tracking_handoverCreateInput, email_tracking_handoverUncheckedCreateInput>
+    /**
+     * In case the email_tracking_handover was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<email_tracking_handoverUpdateInput, email_tracking_handoverUncheckedUpdateInput>
+  }
+
+  /**
+   * email_tracking_handover delete
+   */
+  export type email_tracking_handoverDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the email_tracking_handover
+     */
+    select?: email_tracking_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the email_tracking_handover
+     */
+    omit?: email_tracking_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: email_tracking_handoverInclude<ExtArgs> | null
+    /**
+     * Filter which email_tracking_handover to delete.
+     */
+    where: email_tracking_handoverWhereUniqueInput
+  }
+
+  /**
+   * email_tracking_handover deleteMany
+   */
+  export type email_tracking_handoverDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which email_tracking_handovers to delete
+     */
+    where?: email_tracking_handoverWhereInput
+    /**
+     * Limit how many email_tracking_handovers to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * email_tracking_handover without action
+   */
+  export type email_tracking_handoverDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the email_tracking_handover
+     */
+    select?: email_tracking_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the email_tracking_handover
+     */
+    omit?: email_tracking_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: email_tracking_handoverInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model email_tracking_proposedchanges
    */
 
@@ -40295,1065 +42490,6 @@ export namespace Prisma {
 
 
   /**
-   * Model email_tracking_handover
-   */
-
-  export type AggregateEmail_tracking_handover = {
-    _count: Email_tracking_handoverCountAggregateOutputType | null
-    _avg: Email_tracking_handoverAvgAggregateOutputType | null
-    _sum: Email_tracking_handoverSumAggregateOutputType | null
-    _min: Email_tracking_handoverMinAggregateOutputType | null
-    _max: Email_tracking_handoverMaxAggregateOutputType | null
-  }
-
-  export type Email_tracking_handoverAvgAggregateOutputType = {
-    id: number | null
-    handover_id: number | null
-    retry_count: number | null
-  }
-
-  export type Email_tracking_handoverSumAggregateOutputType = {
-    id: number | null
-    handover_id: number | null
-    retry_count: number | null
-  }
-
-  export type Email_tracking_handoverMinAggregateOutputType = {
-    id: number | null
-    handover_id: number | null
-    recipient_email: string | null
-    recipient_type: $Enums.email_tracking_handover_recipient_type | null
-    status: $Enums.email_tracking_handover_status | null
-    note_hash: string | null
-    note_text: string | null
-    message_id: string | null
-    sent_at: Date | null
-    is_success: boolean | null
-    retry_count: number | null
-    last_retry_at: Date | null
-    created_at: Date | null
-  }
-
-  export type Email_tracking_handoverMaxAggregateOutputType = {
-    id: number | null
-    handover_id: number | null
-    recipient_email: string | null
-    recipient_type: $Enums.email_tracking_handover_recipient_type | null
-    status: $Enums.email_tracking_handover_status | null
-    note_hash: string | null
-    note_text: string | null
-    message_id: string | null
-    sent_at: Date | null
-    is_success: boolean | null
-    retry_count: number | null
-    last_retry_at: Date | null
-    created_at: Date | null
-  }
-
-  export type Email_tracking_handoverCountAggregateOutputType = {
-    id: number
-    handover_id: number
-    recipient_email: number
-    recipient_type: number
-    status: number
-    note_hash: number
-    note_text: number
-    message_id: number
-    sent_at: number
-    is_success: number
-    retry_count: number
-    last_retry_at: number
-    created_at: number
-    _all: number
-  }
-
-
-  export type Email_tracking_handoverAvgAggregateInputType = {
-    id?: true
-    handover_id?: true
-    retry_count?: true
-  }
-
-  export type Email_tracking_handoverSumAggregateInputType = {
-    id?: true
-    handover_id?: true
-    retry_count?: true
-  }
-
-  export type Email_tracking_handoverMinAggregateInputType = {
-    id?: true
-    handover_id?: true
-    recipient_email?: true
-    recipient_type?: true
-    status?: true
-    note_hash?: true
-    note_text?: true
-    message_id?: true
-    sent_at?: true
-    is_success?: true
-    retry_count?: true
-    last_retry_at?: true
-    created_at?: true
-  }
-
-  export type Email_tracking_handoverMaxAggregateInputType = {
-    id?: true
-    handover_id?: true
-    recipient_email?: true
-    recipient_type?: true
-    status?: true
-    note_hash?: true
-    note_text?: true
-    message_id?: true
-    sent_at?: true
-    is_success?: true
-    retry_count?: true
-    last_retry_at?: true
-    created_at?: true
-  }
-
-  export type Email_tracking_handoverCountAggregateInputType = {
-    id?: true
-    handover_id?: true
-    recipient_email?: true
-    recipient_type?: true
-    status?: true
-    note_hash?: true
-    note_text?: true
-    message_id?: true
-    sent_at?: true
-    is_success?: true
-    retry_count?: true
-    last_retry_at?: true
-    created_at?: true
-    _all?: true
-  }
-
-  export type Email_tracking_handoverAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which email_tracking_handover to aggregate.
-     */
-    where?: email_tracking_handoverWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of email_tracking_handovers to fetch.
-     */
-    orderBy?: email_tracking_handoverOrderByWithRelationInput | email_tracking_handoverOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: email_tracking_handoverWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` email_tracking_handovers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` email_tracking_handovers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned email_tracking_handovers
-    **/
-    _count?: true | Email_tracking_handoverCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Email_tracking_handoverAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Email_tracking_handoverSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Email_tracking_handoverMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Email_tracking_handoverMaxAggregateInputType
-  }
-
-  export type GetEmail_tracking_handoverAggregateType<T extends Email_tracking_handoverAggregateArgs> = {
-        [P in keyof T & keyof AggregateEmail_tracking_handover]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateEmail_tracking_handover[P]>
-      : GetScalarType<T[P], AggregateEmail_tracking_handover[P]>
-  }
-
-
-
-
-  export type email_tracking_handoverGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: email_tracking_handoverWhereInput
-    orderBy?: email_tracking_handoverOrderByWithAggregationInput | email_tracking_handoverOrderByWithAggregationInput[]
-    by: Email_tracking_handoverScalarFieldEnum[] | Email_tracking_handoverScalarFieldEnum
-    having?: email_tracking_handoverScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Email_tracking_handoverCountAggregateInputType | true
-    _avg?: Email_tracking_handoverAvgAggregateInputType
-    _sum?: Email_tracking_handoverSumAggregateInputType
-    _min?: Email_tracking_handoverMinAggregateInputType
-    _max?: Email_tracking_handoverMaxAggregateInputType
-  }
-
-  export type Email_tracking_handoverGroupByOutputType = {
-    id: number
-    handover_id: number
-    recipient_email: string
-    recipient_type: $Enums.email_tracking_handover_recipient_type
-    status: $Enums.email_tracking_handover_status
-    note_hash: string
-    note_text: string | null
-    message_id: string | null
-    sent_at: Date | null
-    is_success: boolean | null
-    retry_count: number | null
-    last_retry_at: Date | null
-    created_at: Date | null
-    _count: Email_tracking_handoverCountAggregateOutputType | null
-    _avg: Email_tracking_handoverAvgAggregateOutputType | null
-    _sum: Email_tracking_handoverSumAggregateOutputType | null
-    _min: Email_tracking_handoverMinAggregateOutputType | null
-    _max: Email_tracking_handoverMaxAggregateOutputType | null
-  }
-
-  type GetEmail_tracking_handoverGroupByPayload<T extends email_tracking_handoverGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Email_tracking_handoverGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Email_tracking_handoverGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Email_tracking_handoverGroupByOutputType[P]>
-            : GetScalarType<T[P], Email_tracking_handoverGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type email_tracking_handoverSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    handover_id?: boolean
-    recipient_email?: boolean
-    recipient_type?: boolean
-    status?: boolean
-    note_hash?: boolean
-    note_text?: boolean
-    message_id?: boolean
-    sent_at?: boolean
-    is_success?: boolean
-    retry_count?: boolean
-    last_retry_at?: boolean
-    created_at?: boolean
-    tr_handover?: boolean | tr_handoverDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["email_tracking_handover"]>
-
-
-
-  export type email_tracking_handoverSelectScalar = {
-    id?: boolean
-    handover_id?: boolean
-    recipient_email?: boolean
-    recipient_type?: boolean
-    status?: boolean
-    note_hash?: boolean
-    note_text?: boolean
-    message_id?: boolean
-    sent_at?: boolean
-    is_success?: boolean
-    retry_count?: boolean
-    last_retry_at?: boolean
-    created_at?: boolean
-  }
-
-  export type email_tracking_handoverOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "handover_id" | "recipient_email" | "recipient_type" | "status" | "note_hash" | "note_text" | "message_id" | "sent_at" | "is_success" | "retry_count" | "last_retry_at" | "created_at", ExtArgs["result"]["email_tracking_handover"]>
-  export type email_tracking_handoverInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    tr_handover?: boolean | tr_handoverDefaultArgs<ExtArgs>
-  }
-
-  export type $email_tracking_handoverPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "email_tracking_handover"
-    objects: {
-      tr_handover: Prisma.$tr_handoverPayload<ExtArgs>
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      handover_id: number
-      recipient_email: string
-      recipient_type: $Enums.email_tracking_handover_recipient_type
-      status: $Enums.email_tracking_handover_status
-      note_hash: string
-      note_text: string | null
-      message_id: string | null
-      sent_at: Date | null
-      is_success: boolean | null
-      retry_count: number | null
-      last_retry_at: Date | null
-      created_at: Date | null
-    }, ExtArgs["result"]["email_tracking_handover"]>
-    composites: {}
-  }
-
-  type email_tracking_handoverGetPayload<S extends boolean | null | undefined | email_tracking_handoverDefaultArgs> = $Result.GetResult<Prisma.$email_tracking_handoverPayload, S>
-
-  type email_tracking_handoverCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<email_tracking_handoverFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Email_tracking_handoverCountAggregateInputType | true
-    }
-
-  export interface email_tracking_handoverDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['email_tracking_handover'], meta: { name: 'email_tracking_handover' } }
-    /**
-     * Find zero or one Email_tracking_handover that matches the filter.
-     * @param {email_tracking_handoverFindUniqueArgs} args - Arguments to find a Email_tracking_handover
-     * @example
-     * // Get one Email_tracking_handover
-     * const email_tracking_handover = await prisma.email_tracking_handover.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends email_tracking_handoverFindUniqueArgs>(args: SelectSubset<T, email_tracking_handoverFindUniqueArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Email_tracking_handover that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {email_tracking_handoverFindUniqueOrThrowArgs} args - Arguments to find a Email_tracking_handover
-     * @example
-     * // Get one Email_tracking_handover
-     * const email_tracking_handover = await prisma.email_tracking_handover.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends email_tracking_handoverFindUniqueOrThrowArgs>(args: SelectSubset<T, email_tracking_handoverFindUniqueOrThrowArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Email_tracking_handover that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {email_tracking_handoverFindFirstArgs} args - Arguments to find a Email_tracking_handover
-     * @example
-     * // Get one Email_tracking_handover
-     * const email_tracking_handover = await prisma.email_tracking_handover.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends email_tracking_handoverFindFirstArgs>(args?: SelectSubset<T, email_tracking_handoverFindFirstArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Email_tracking_handover that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {email_tracking_handoverFindFirstOrThrowArgs} args - Arguments to find a Email_tracking_handover
-     * @example
-     * // Get one Email_tracking_handover
-     * const email_tracking_handover = await prisma.email_tracking_handover.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends email_tracking_handoverFindFirstOrThrowArgs>(args?: SelectSubset<T, email_tracking_handoverFindFirstOrThrowArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Email_tracking_handovers that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {email_tracking_handoverFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Email_tracking_handovers
-     * const email_tracking_handovers = await prisma.email_tracking_handover.findMany()
-     * 
-     * // Get first 10 Email_tracking_handovers
-     * const email_tracking_handovers = await prisma.email_tracking_handover.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const email_tracking_handoverWithIdOnly = await prisma.email_tracking_handover.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends email_tracking_handoverFindManyArgs>(args?: SelectSubset<T, email_tracking_handoverFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Email_tracking_handover.
-     * @param {email_tracking_handoverCreateArgs} args - Arguments to create a Email_tracking_handover.
-     * @example
-     * // Create one Email_tracking_handover
-     * const Email_tracking_handover = await prisma.email_tracking_handover.create({
-     *   data: {
-     *     // ... data to create a Email_tracking_handover
-     *   }
-     * })
-     * 
-     */
-    create<T extends email_tracking_handoverCreateArgs>(args: SelectSubset<T, email_tracking_handoverCreateArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Email_tracking_handovers.
-     * @param {email_tracking_handoverCreateManyArgs} args - Arguments to create many Email_tracking_handovers.
-     * @example
-     * // Create many Email_tracking_handovers
-     * const email_tracking_handover = await prisma.email_tracking_handover.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends email_tracking_handoverCreateManyArgs>(args?: SelectSubset<T, email_tracking_handoverCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Email_tracking_handover.
-     * @param {email_tracking_handoverDeleteArgs} args - Arguments to delete one Email_tracking_handover.
-     * @example
-     * // Delete one Email_tracking_handover
-     * const Email_tracking_handover = await prisma.email_tracking_handover.delete({
-     *   where: {
-     *     // ... filter to delete one Email_tracking_handover
-     *   }
-     * })
-     * 
-     */
-    delete<T extends email_tracking_handoverDeleteArgs>(args: SelectSubset<T, email_tracking_handoverDeleteArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Email_tracking_handover.
-     * @param {email_tracking_handoverUpdateArgs} args - Arguments to update one Email_tracking_handover.
-     * @example
-     * // Update one Email_tracking_handover
-     * const email_tracking_handover = await prisma.email_tracking_handover.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends email_tracking_handoverUpdateArgs>(args: SelectSubset<T, email_tracking_handoverUpdateArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Email_tracking_handovers.
-     * @param {email_tracking_handoverDeleteManyArgs} args - Arguments to filter Email_tracking_handovers to delete.
-     * @example
-     * // Delete a few Email_tracking_handovers
-     * const { count } = await prisma.email_tracking_handover.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends email_tracking_handoverDeleteManyArgs>(args?: SelectSubset<T, email_tracking_handoverDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Email_tracking_handovers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {email_tracking_handoverUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Email_tracking_handovers
-     * const email_tracking_handover = await prisma.email_tracking_handover.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends email_tracking_handoverUpdateManyArgs>(args: SelectSubset<T, email_tracking_handoverUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Email_tracking_handover.
-     * @param {email_tracking_handoverUpsertArgs} args - Arguments to update or create a Email_tracking_handover.
-     * @example
-     * // Update or create a Email_tracking_handover
-     * const email_tracking_handover = await prisma.email_tracking_handover.upsert({
-     *   create: {
-     *     // ... data to create a Email_tracking_handover
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Email_tracking_handover we want to update
-     *   }
-     * })
-     */
-    upsert<T extends email_tracking_handoverUpsertArgs>(args: SelectSubset<T, email_tracking_handoverUpsertArgs<ExtArgs>>): Prisma__email_tracking_handoverClient<$Result.GetResult<Prisma.$email_tracking_handoverPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Email_tracking_handovers.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {email_tracking_handoverCountArgs} args - Arguments to filter Email_tracking_handovers to count.
-     * @example
-     * // Count the number of Email_tracking_handovers
-     * const count = await prisma.email_tracking_handover.count({
-     *   where: {
-     *     // ... the filter for the Email_tracking_handovers we want to count
-     *   }
-     * })
-    **/
-    count<T extends email_tracking_handoverCountArgs>(
-      args?: Subset<T, email_tracking_handoverCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Email_tracking_handoverCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Email_tracking_handover.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Email_tracking_handoverAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Email_tracking_handoverAggregateArgs>(args: Subset<T, Email_tracking_handoverAggregateArgs>): Prisma.PrismaPromise<GetEmail_tracking_handoverAggregateType<T>>
-
-    /**
-     * Group by Email_tracking_handover.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {email_tracking_handoverGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends email_tracking_handoverGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: email_tracking_handoverGroupByArgs['orderBy'] }
-        : { orderBy?: email_tracking_handoverGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, email_tracking_handoverGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetEmail_tracking_handoverGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the email_tracking_handover model
-   */
-  readonly fields: email_tracking_handoverFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for email_tracking_handover.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__email_tracking_handoverClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    tr_handover<T extends tr_handoverDefaultArgs<ExtArgs> = {}>(args?: Subset<T, tr_handoverDefaultArgs<ExtArgs>>): Prisma__tr_handoverClient<$Result.GetResult<Prisma.$tr_handoverPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the email_tracking_handover model
-   */
-  interface email_tracking_handoverFieldRefs {
-    readonly id: FieldRef<"email_tracking_handover", 'Int'>
-    readonly handover_id: FieldRef<"email_tracking_handover", 'Int'>
-    readonly recipient_email: FieldRef<"email_tracking_handover", 'String'>
-    readonly recipient_type: FieldRef<"email_tracking_handover", 'email_tracking_handover_recipient_type'>
-    readonly status: FieldRef<"email_tracking_handover", 'email_tracking_handover_status'>
-    readonly note_hash: FieldRef<"email_tracking_handover", 'String'>
-    readonly note_text: FieldRef<"email_tracking_handover", 'String'>
-    readonly message_id: FieldRef<"email_tracking_handover", 'String'>
-    readonly sent_at: FieldRef<"email_tracking_handover", 'DateTime'>
-    readonly is_success: FieldRef<"email_tracking_handover", 'Boolean'>
-    readonly retry_count: FieldRef<"email_tracking_handover", 'Int'>
-    readonly last_retry_at: FieldRef<"email_tracking_handover", 'DateTime'>
-    readonly created_at: FieldRef<"email_tracking_handover", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * email_tracking_handover findUnique
-   */
-  export type email_tracking_handoverFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the email_tracking_handover
-     */
-    select?: email_tracking_handoverSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the email_tracking_handover
-     */
-    omit?: email_tracking_handoverOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: email_tracking_handoverInclude<ExtArgs> | null
-    /**
-     * Filter, which email_tracking_handover to fetch.
-     */
-    where: email_tracking_handoverWhereUniqueInput
-  }
-
-  /**
-   * email_tracking_handover findUniqueOrThrow
-   */
-  export type email_tracking_handoverFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the email_tracking_handover
-     */
-    select?: email_tracking_handoverSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the email_tracking_handover
-     */
-    omit?: email_tracking_handoverOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: email_tracking_handoverInclude<ExtArgs> | null
-    /**
-     * Filter, which email_tracking_handover to fetch.
-     */
-    where: email_tracking_handoverWhereUniqueInput
-  }
-
-  /**
-   * email_tracking_handover findFirst
-   */
-  export type email_tracking_handoverFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the email_tracking_handover
-     */
-    select?: email_tracking_handoverSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the email_tracking_handover
-     */
-    omit?: email_tracking_handoverOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: email_tracking_handoverInclude<ExtArgs> | null
-    /**
-     * Filter, which email_tracking_handover to fetch.
-     */
-    where?: email_tracking_handoverWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of email_tracking_handovers to fetch.
-     */
-    orderBy?: email_tracking_handoverOrderByWithRelationInput | email_tracking_handoverOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for email_tracking_handovers.
-     */
-    cursor?: email_tracking_handoverWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` email_tracking_handovers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` email_tracking_handovers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of email_tracking_handovers.
-     */
-    distinct?: Email_tracking_handoverScalarFieldEnum | Email_tracking_handoverScalarFieldEnum[]
-  }
-
-  /**
-   * email_tracking_handover findFirstOrThrow
-   */
-  export type email_tracking_handoverFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the email_tracking_handover
-     */
-    select?: email_tracking_handoverSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the email_tracking_handover
-     */
-    omit?: email_tracking_handoverOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: email_tracking_handoverInclude<ExtArgs> | null
-    /**
-     * Filter, which email_tracking_handover to fetch.
-     */
-    where?: email_tracking_handoverWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of email_tracking_handovers to fetch.
-     */
-    orderBy?: email_tracking_handoverOrderByWithRelationInput | email_tracking_handoverOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for email_tracking_handovers.
-     */
-    cursor?: email_tracking_handoverWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` email_tracking_handovers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` email_tracking_handovers.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of email_tracking_handovers.
-     */
-    distinct?: Email_tracking_handoverScalarFieldEnum | Email_tracking_handoverScalarFieldEnum[]
-  }
-
-  /**
-   * email_tracking_handover findMany
-   */
-  export type email_tracking_handoverFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the email_tracking_handover
-     */
-    select?: email_tracking_handoverSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the email_tracking_handover
-     */
-    omit?: email_tracking_handoverOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: email_tracking_handoverInclude<ExtArgs> | null
-    /**
-     * Filter, which email_tracking_handovers to fetch.
-     */
-    where?: email_tracking_handoverWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of email_tracking_handovers to fetch.
-     */
-    orderBy?: email_tracking_handoverOrderByWithRelationInput | email_tracking_handoverOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing email_tracking_handovers.
-     */
-    cursor?: email_tracking_handoverWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` email_tracking_handovers from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` email_tracking_handovers.
-     */
-    skip?: number
-    distinct?: Email_tracking_handoverScalarFieldEnum | Email_tracking_handoverScalarFieldEnum[]
-  }
-
-  /**
-   * email_tracking_handover create
-   */
-  export type email_tracking_handoverCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the email_tracking_handover
-     */
-    select?: email_tracking_handoverSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the email_tracking_handover
-     */
-    omit?: email_tracking_handoverOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: email_tracking_handoverInclude<ExtArgs> | null
-    /**
-     * The data needed to create a email_tracking_handover.
-     */
-    data: XOR<email_tracking_handoverCreateInput, email_tracking_handoverUncheckedCreateInput>
-  }
-
-  /**
-   * email_tracking_handover createMany
-   */
-  export type email_tracking_handoverCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many email_tracking_handovers.
-     */
-    data: email_tracking_handoverCreateManyInput | email_tracking_handoverCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * email_tracking_handover update
-   */
-  export type email_tracking_handoverUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the email_tracking_handover
-     */
-    select?: email_tracking_handoverSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the email_tracking_handover
-     */
-    omit?: email_tracking_handoverOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: email_tracking_handoverInclude<ExtArgs> | null
-    /**
-     * The data needed to update a email_tracking_handover.
-     */
-    data: XOR<email_tracking_handoverUpdateInput, email_tracking_handoverUncheckedUpdateInput>
-    /**
-     * Choose, which email_tracking_handover to update.
-     */
-    where: email_tracking_handoverWhereUniqueInput
-  }
-
-  /**
-   * email_tracking_handover updateMany
-   */
-  export type email_tracking_handoverUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update email_tracking_handovers.
-     */
-    data: XOR<email_tracking_handoverUpdateManyMutationInput, email_tracking_handoverUncheckedUpdateManyInput>
-    /**
-     * Filter which email_tracking_handovers to update
-     */
-    where?: email_tracking_handoverWhereInput
-    /**
-     * Limit how many email_tracking_handovers to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * email_tracking_handover upsert
-   */
-  export type email_tracking_handoverUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the email_tracking_handover
-     */
-    select?: email_tracking_handoverSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the email_tracking_handover
-     */
-    omit?: email_tracking_handoverOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: email_tracking_handoverInclude<ExtArgs> | null
-    /**
-     * The filter to search for the email_tracking_handover to update in case it exists.
-     */
-    where: email_tracking_handoverWhereUniqueInput
-    /**
-     * In case the email_tracking_handover found by the `where` argument doesn't exist, create a new email_tracking_handover with this data.
-     */
-    create: XOR<email_tracking_handoverCreateInput, email_tracking_handoverUncheckedCreateInput>
-    /**
-     * In case the email_tracking_handover was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<email_tracking_handoverUpdateInput, email_tracking_handoverUncheckedUpdateInput>
-  }
-
-  /**
-   * email_tracking_handover delete
-   */
-  export type email_tracking_handoverDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the email_tracking_handover
-     */
-    select?: email_tracking_handoverSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the email_tracking_handover
-     */
-    omit?: email_tracking_handoverOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: email_tracking_handoverInclude<ExtArgs> | null
-    /**
-     * Filter which email_tracking_handover to delete.
-     */
-    where: email_tracking_handoverWhereUniqueInput
-  }
-
-  /**
-   * email_tracking_handover deleteMany
-   */
-  export type email_tracking_handoverDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which email_tracking_handovers to delete
-     */
-    where?: email_tracking_handoverWhereInput
-    /**
-     * Limit how many email_tracking_handovers to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * email_tracking_handover without action
-   */
-  export type email_tracking_handoverDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the email_tracking_handover
-     */
-    select?: email_tracking_handoverSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the email_tracking_handover
-     */
-    omit?: email_tracking_handoverOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: email_tracking_handoverInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Enums
    */
 
@@ -41365,6 +42501,22 @@ export namespace Prisma {
   };
 
   export type TransactionIsolationLevel = (typeof TransactionIsolationLevel)[keyof typeof TransactionIsolationLevel]
+
+
+  export const Tr_logScalarFieldEnum: {
+    id: 'id',
+    timestamp: 'timestamp',
+    userId: 'userId',
+    endpoint: 'endpoint',
+    method: 'method',
+    statusCode: 'statusCode',
+    ipAddress: 'ipAddress',
+    userAgent: 'userAgent',
+    action: 'action',
+    metadata: 'metadata'
+  };
+
+  export type Tr_logScalarFieldEnum = (typeof Tr_logScalarFieldEnum)[keyof typeof Tr_logScalarFieldEnum]
 
 
   export const Mst_roleScalarFieldEnum: {
@@ -41770,6 +42922,7 @@ export namespace Prisma {
     other_sytem: 'other_sytem',
     status: 'status',
     progress: 'progress',
+    progresssupport: 'progresssupport',
     is_deleted: 'is_deleted'
   };
 
@@ -41812,6 +42965,7 @@ export namespace Prisma {
     auth_id2: 'auth_id2',
     auth_id3: 'auth_id3',
     auth_id4: 'auth_id4',
+    auth_id5: 'auth_id5',
     proposed_change_id: 'proposed_change_id',
     authdoc_id: 'authdoc_id',
     plant_id: 'plant_id',
@@ -41862,6 +43016,25 @@ export namespace Prisma {
   export type Tr_handover_historyScalarFieldEnum = (typeof Tr_handover_historyScalarFieldEnum)[keyof typeof Tr_handover_historyScalarFieldEnum]
 
 
+  export const Email_tracking_handoverScalarFieldEnum: {
+    id: 'id',
+    handover_id: 'handover_id',
+    recipient_email: 'recipient_email',
+    recipient_type: 'recipient_type',
+    status: 'status',
+    note_hash: 'note_hash',
+    note_text: 'note_text',
+    message_id: 'message_id',
+    sent_at: 'sent_at',
+    is_success: 'is_success',
+    retry_count: 'retry_count',
+    last_retry_at: 'last_retry_at',
+    created_at: 'created_at'
+  };
+
+  export type Email_tracking_handoverScalarFieldEnum = (typeof Email_tracking_handoverScalarFieldEnum)[keyof typeof Email_tracking_handoverScalarFieldEnum]
+
+
   export const Email_tracking_proposedchangesScalarFieldEnum: {
     id: 'id',
     proposed_changes_id: 'proposed_changes_id',
@@ -41900,25 +43073,6 @@ export namespace Prisma {
   export type Email_tracking_authdocScalarFieldEnum = (typeof Email_tracking_authdocScalarFieldEnum)[keyof typeof Email_tracking_authdocScalarFieldEnum]
 
 
-  export const Email_tracking_handoverScalarFieldEnum: {
-    id: 'id',
-    handover_id: 'handover_id',
-    recipient_email: 'recipient_email',
-    recipient_type: 'recipient_type',
-    status: 'status',
-    note_hash: 'note_hash',
-    note_text: 'note_text',
-    message_id: 'message_id',
-    sent_at: 'sent_at',
-    is_success: 'is_success',
-    retry_count: 'retry_count',
-    last_retry_at: 'last_retry_at',
-    created_at: 'created_at'
-  };
-
-  export type Email_tracking_handoverScalarFieldEnum = (typeof Email_tracking_handoverScalarFieldEnum)[keyof typeof Email_tracking_handoverScalarFieldEnum]
-
-
   export const SortOrder: {
     asc: 'asc',
     desc: 'desc'
@@ -41927,12 +43081,50 @@ export namespace Prisma {
   export type SortOrder = (typeof SortOrder)[keyof typeof SortOrder]
 
 
+  export const NullableJsonNullValueInput: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull
+  };
+
+  export type NullableJsonNullValueInput = (typeof NullableJsonNullValueInput)[keyof typeof NullableJsonNullValueInput]
+
+
+  export const JsonNullValueFilter: {
+    DbNull: typeof DbNull,
+    JsonNull: typeof JsonNull,
+    AnyNull: typeof AnyNull
+  };
+
+  export type JsonNullValueFilter = (typeof JsonNullValueFilter)[keyof typeof JsonNullValueFilter]
+
+
+  export const QueryMode: {
+    default: 'default',
+    insensitive: 'insensitive'
+  };
+
+  export type QueryMode = (typeof QueryMode)[keyof typeof QueryMode]
+
+
   export const NullsOrder: {
     first: 'first',
     last: 'last'
   };
 
   export type NullsOrder = (typeof NullsOrder)[keyof typeof NullsOrder]
+
+
+  export const tr_logOrderByRelevanceFieldEnum: {
+    id: 'id',
+    userId: 'userId',
+    endpoint: 'endpoint',
+    method: 'method',
+    ipAddress: 'ipAddress',
+    userAgent: 'userAgent',
+    action: 'action'
+  };
+
+  export type tr_logOrderByRelevanceFieldEnum = (typeof tr_logOrderByRelevanceFieldEnum)[keyof typeof tr_logOrderByRelevanceFieldEnum]
 
 
   export const mst_roleOrderByRelevanceFieldEnum: {
@@ -42188,7 +43380,8 @@ export namespace Prisma {
     created_by: 'created_by',
     other_sytem: 'other_sytem',
     status: 'status',
-    progress: 'progress'
+    progress: 'progress',
+    progresssupport: 'progresssupport'
   };
 
   export type tr_proposed_changesOrderByRelevanceFieldEnum = (typeof tr_proposed_changesOrderByRelevanceFieldEnum)[keyof typeof tr_proposed_changesOrderByRelevanceFieldEnum]
@@ -42247,6 +43440,16 @@ export namespace Prisma {
   export type tr_handover_historyOrderByRelevanceFieldEnum = (typeof tr_handover_historyOrderByRelevanceFieldEnum)[keyof typeof tr_handover_historyOrderByRelevanceFieldEnum]
 
 
+  export const email_tracking_handoverOrderByRelevanceFieldEnum: {
+    recipient_email: 'recipient_email',
+    note_hash: 'note_hash',
+    note_text: 'note_text',
+    message_id: 'message_id'
+  };
+
+  export type email_tracking_handoverOrderByRelevanceFieldEnum = (typeof email_tracking_handoverOrderByRelevanceFieldEnum)[keyof typeof email_tracking_handoverOrderByRelevanceFieldEnum]
+
+
   export const email_tracking_proposedchangesOrderByRelevanceFieldEnum: {
     recipient_email: 'recipient_email',
     note_hash: 'note_hash',
@@ -42267,26 +43470,9 @@ export namespace Prisma {
   export type email_tracking_authdocOrderByRelevanceFieldEnum = (typeof email_tracking_authdocOrderByRelevanceFieldEnum)[keyof typeof email_tracking_authdocOrderByRelevanceFieldEnum]
 
 
-  export const email_tracking_handoverOrderByRelevanceFieldEnum: {
-    recipient_email: 'recipient_email',
-    note_hash: 'note_hash',
-    note_text: 'note_text',
-    message_id: 'message_id'
-  };
-
-  export type email_tracking_handoverOrderByRelevanceFieldEnum = (typeof email_tracking_handoverOrderByRelevanceFieldEnum)[keyof typeof email_tracking_handoverOrderByRelevanceFieldEnum]
-
-
   /**
    * Field references
    */
-
-
-  /**
-   * Reference to a field of type 'Int'
-   */
-  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
-    
 
 
   /**
@@ -42304,6 +43490,27 @@ export namespace Prisma {
 
 
   /**
+   * Reference to a field of type 'Int'
+   */
+  export type IntFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Int'>
+    
+
+
+  /**
+   * Reference to a field of type 'Json'
+   */
+  export type JsonFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Json'>
+    
+
+
+  /**
+   * Reference to a field of type 'QueryMode'
+   */
+  export type EnumQueryModeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'QueryMode'>
+    
+
+
+  /**
    * Reference to a field of type 'Boolean'
    */
   export type BooleanFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Boolean'>
@@ -42314,6 +43521,20 @@ export namespace Prisma {
    * Reference to a field of type 'Gender'
    */
   export type EnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender'>
+    
+
+
+  /**
+   * Reference to a field of type 'email_tracking_handover_recipient_type'
+   */
+  export type Enumemail_tracking_handover_recipient_typeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'email_tracking_handover_recipient_type'>
+    
+
+
+  /**
+   * Reference to a field of type 'email_tracking_handover_status'
+   */
+  export type Enumemail_tracking_handover_statusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'email_tracking_handover_status'>
     
 
 
@@ -42346,20 +43567,6 @@ export namespace Prisma {
 
 
   /**
-   * Reference to a field of type 'email_tracking_handover_recipient_type'
-   */
-  export type Enumemail_tracking_handover_recipient_typeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'email_tracking_handover_recipient_type'>
-    
-
-
-  /**
-   * Reference to a field of type 'email_tracking_handover_status'
-   */
-  export type Enumemail_tracking_handover_statusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'email_tracking_handover_status'>
-    
-
-
-  /**
    * Reference to a field of type 'Float'
    */
   export type FloatFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Float'>
@@ -42368,6 +43575,86 @@ export namespace Prisma {
    * Deep Input Types
    */
 
+
+  export type tr_logWhereInput = {
+    AND?: tr_logWhereInput | tr_logWhereInput[]
+    OR?: tr_logWhereInput[]
+    NOT?: tr_logWhereInput | tr_logWhereInput[]
+    id?: StringFilter<"tr_log"> | string
+    timestamp?: DateTimeFilter<"tr_log"> | Date | string
+    userId?: StringNullableFilter<"tr_log"> | string | null
+    endpoint?: StringFilter<"tr_log"> | string
+    method?: StringFilter<"tr_log"> | string
+    statusCode?: IntFilter<"tr_log"> | number
+    ipAddress?: StringNullableFilter<"tr_log"> | string | null
+    userAgent?: StringNullableFilter<"tr_log"> | string | null
+    action?: StringNullableFilter<"tr_log"> | string | null
+    metadata?: JsonNullableFilter<"tr_log">
+  }
+
+  export type tr_logOrderByWithRelationInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    endpoint?: SortOrder
+    method?: SortOrder
+    statusCode?: SortOrder
+    ipAddress?: SortOrderInput | SortOrder
+    userAgent?: SortOrderInput | SortOrder
+    action?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
+    _relevance?: tr_logOrderByRelevanceInput
+  }
+
+  export type tr_logWhereUniqueInput = Prisma.AtLeast<{
+    id?: string
+    AND?: tr_logWhereInput | tr_logWhereInput[]
+    OR?: tr_logWhereInput[]
+    NOT?: tr_logWhereInput | tr_logWhereInput[]
+    timestamp?: DateTimeFilter<"tr_log"> | Date | string
+    userId?: StringNullableFilter<"tr_log"> | string | null
+    endpoint?: StringFilter<"tr_log"> | string
+    method?: StringFilter<"tr_log"> | string
+    statusCode?: IntFilter<"tr_log"> | number
+    ipAddress?: StringNullableFilter<"tr_log"> | string | null
+    userAgent?: StringNullableFilter<"tr_log"> | string | null
+    action?: StringNullableFilter<"tr_log"> | string | null
+    metadata?: JsonNullableFilter<"tr_log">
+  }, "id">
+
+  export type tr_logOrderByWithAggregationInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    userId?: SortOrderInput | SortOrder
+    endpoint?: SortOrder
+    method?: SortOrder
+    statusCode?: SortOrder
+    ipAddress?: SortOrderInput | SortOrder
+    userAgent?: SortOrderInput | SortOrder
+    action?: SortOrderInput | SortOrder
+    metadata?: SortOrderInput | SortOrder
+    _count?: tr_logCountOrderByAggregateInput
+    _avg?: tr_logAvgOrderByAggregateInput
+    _max?: tr_logMaxOrderByAggregateInput
+    _min?: tr_logMinOrderByAggregateInput
+    _sum?: tr_logSumOrderByAggregateInput
+  }
+
+  export type tr_logScalarWhereWithAggregatesInput = {
+    AND?: tr_logScalarWhereWithAggregatesInput | tr_logScalarWhereWithAggregatesInput[]
+    OR?: tr_logScalarWhereWithAggregatesInput[]
+    NOT?: tr_logScalarWhereWithAggregatesInput | tr_logScalarWhereWithAggregatesInput[]
+    id?: StringWithAggregatesFilter<"tr_log"> | string
+    timestamp?: DateTimeWithAggregatesFilter<"tr_log"> | Date | string
+    userId?: StringNullableWithAggregatesFilter<"tr_log"> | string | null
+    endpoint?: StringWithAggregatesFilter<"tr_log"> | string
+    method?: StringWithAggregatesFilter<"tr_log"> | string
+    statusCode?: IntWithAggregatesFilter<"tr_log"> | number
+    ipAddress?: StringNullableWithAggregatesFilter<"tr_log"> | string | null
+    userAgent?: StringNullableWithAggregatesFilter<"tr_log"> | string | null
+    action?: StringNullableWithAggregatesFilter<"tr_log"> | string | null
+    metadata?: JsonNullableWithAggregatesFilter<"tr_log">
+  }
 
   export type mst_roleWhereInput = {
     AND?: mst_roleWhereInput | mst_roleWhereInput[]
@@ -43813,6 +45100,7 @@ export namespace Prisma {
     authorizationDocs?: Tr_authorization_docListRelationFilter
     documentNumbers?: Tr_document_numberListRelationFilter
     tr_handover_tr_handover_auth_idTomst_authorization?: Tr_handoverListRelationFilter
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: Tr_handoverListRelationFilter
     tr_handover_tr_handover_auth_id2Tomst_authorization?: Tr_handoverListRelationFilter
     tr_handover_tr_handover_auth_id3Tomst_authorization?: Tr_handoverListRelationFilter
     tr_handover_tr_handover_auth_id4Tomst_authorization?: Tr_handoverListRelationFilter
@@ -43852,6 +45140,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docOrderByRelationAggregateInput
     documentNumbers?: tr_document_numberOrderByRelationAggregateInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverOrderByRelationAggregateInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverOrderByRelationAggregateInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverOrderByRelationAggregateInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverOrderByRelationAggregateInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverOrderByRelationAggregateInput
@@ -43895,6 +45184,7 @@ export namespace Prisma {
     authorizationDocs?: Tr_authorization_docListRelationFilter
     documentNumbers?: Tr_document_numberListRelationFilter
     tr_handover_tr_handover_auth_idTomst_authorization?: Tr_handoverListRelationFilter
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: Tr_handoverListRelationFilter
     tr_handover_tr_handover_auth_id2Tomst_authorization?: Tr_handoverListRelationFilter
     tr_handover_tr_handover_auth_id3Tomst_authorization?: Tr_handoverListRelationFilter
     tr_handover_tr_handover_auth_id4Tomst_authorization?: Tr_handoverListRelationFilter
@@ -44545,6 +45835,7 @@ export namespace Prisma {
     other_sytem?: StringNullableFilter<"tr_proposed_changes"> | string | null
     status?: StringNullableFilter<"tr_proposed_changes"> | string | null
     progress?: StringNullableFilter<"tr_proposed_changes"> | string | null
+    progresssupport?: StringNullableFilter<"tr_proposed_changes"> | string | null
     is_deleted?: BoolFilter<"tr_proposed_changes"> | boolean
     email_tracking_proposedchanges?: Email_tracking_proposedchangesListRelationFilter
     proposedChange?: Tbl_support_documentListRelationFilter
@@ -44587,6 +45878,7 @@ export namespace Prisma {
     other_sytem?: SortOrderInput | SortOrder
     status?: SortOrderInput | SortOrder
     progress?: SortOrderInput | SortOrder
+    progresssupport?: SortOrderInput | SortOrder
     is_deleted?: SortOrder
     email_tracking_proposedchanges?: email_tracking_proposedchangesOrderByRelationAggregateInput
     proposedChange?: tbl_support_documentOrderByRelationAggregateInput
@@ -44633,6 +45925,7 @@ export namespace Prisma {
     other_sytem?: StringNullableFilter<"tr_proposed_changes"> | string | null
     status?: StringNullableFilter<"tr_proposed_changes"> | string | null
     progress?: StringNullableFilter<"tr_proposed_changes"> | string | null
+    progresssupport?: StringNullableFilter<"tr_proposed_changes"> | string | null
     is_deleted?: BoolFilter<"tr_proposed_changes"> | boolean
     email_tracking_proposedchanges?: Email_tracking_proposedchangesListRelationFilter
     proposedChange?: Tbl_support_documentListRelationFilter
@@ -44675,6 +45968,7 @@ export namespace Prisma {
     other_sytem?: SortOrderInput | SortOrder
     status?: SortOrderInput | SortOrder
     progress?: SortOrderInput | SortOrder
+    progresssupport?: SortOrderInput | SortOrder
     is_deleted?: SortOrder
     _count?: tr_proposed_changesCountOrderByAggregateInput
     _avg?: tr_proposed_changesAvgOrderByAggregateInput
@@ -44713,6 +46007,7 @@ export namespace Prisma {
     other_sytem?: StringNullableWithAggregatesFilter<"tr_proposed_changes"> | string | null
     status?: StringNullableWithAggregatesFilter<"tr_proposed_changes"> | string | null
     progress?: StringNullableWithAggregatesFilter<"tr_proposed_changes"> | string | null
+    progresssupport?: StringNullableWithAggregatesFilter<"tr_proposed_changes"> | string | null
     is_deleted?: BoolWithAggregatesFilter<"tr_proposed_changes"> | boolean
   }
 
@@ -44880,6 +46175,7 @@ export namespace Prisma {
     auth_id2?: IntNullableFilter<"tr_handover"> | number | null
     auth_id3?: IntNullableFilter<"tr_handover"> | number | null
     auth_id4?: IntNullableFilter<"tr_handover"> | number | null
+    auth_id5?: IntNullableFilter<"tr_handover"> | number | null
     proposed_change_id?: IntNullableFilter<"tr_handover"> | number | null
     authdoc_id?: IntNullableFilter<"tr_handover"> | number | null
     plant_id?: IntNullableFilter<"tr_handover"> | number | null
@@ -44896,6 +46192,7 @@ export namespace Prisma {
     is_deleted?: BoolNullableFilter<"tr_handover"> | boolean | null
     email_tracking_handover?: Email_tracking_handoverListRelationFilter
     mst_authorization_tr_handover_auth_idTomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
@@ -44915,6 +46212,7 @@ export namespace Prisma {
     auth_id2?: SortOrderInput | SortOrder
     auth_id3?: SortOrderInput | SortOrder
     auth_id4?: SortOrderInput | SortOrder
+    auth_id5?: SortOrderInput | SortOrder
     proposed_change_id?: SortOrderInput | SortOrder
     authdoc_id?: SortOrderInput | SortOrder
     plant_id?: SortOrderInput | SortOrder
@@ -44931,6 +46229,7 @@ export namespace Prisma {
     is_deleted?: SortOrderInput | SortOrder
     email_tracking_handover?: email_tracking_handoverOrderByRelationAggregateInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationOrderByWithRelationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationOrderByWithRelationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationOrderByWithRelationInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationOrderByWithRelationInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationOrderByWithRelationInput
@@ -44954,6 +46253,7 @@ export namespace Prisma {
     auth_id2?: IntNullableFilter<"tr_handover"> | number | null
     auth_id3?: IntNullableFilter<"tr_handover"> | number | null
     auth_id4?: IntNullableFilter<"tr_handover"> | number | null
+    auth_id5?: IntNullableFilter<"tr_handover"> | number | null
     proposed_change_id?: IntNullableFilter<"tr_handover"> | number | null
     authdoc_id?: IntNullableFilter<"tr_handover"> | number | null
     plant_id?: IntNullableFilter<"tr_handover"> | number | null
@@ -44970,6 +46270,7 @@ export namespace Prisma {
     is_deleted?: BoolNullableFilter<"tr_handover"> | boolean | null
     email_tracking_handover?: Email_tracking_handoverListRelationFilter
     mst_authorization_tr_handover_auth_idTomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
@@ -44989,6 +46290,7 @@ export namespace Prisma {
     auth_id2?: SortOrderInput | SortOrder
     auth_id3?: SortOrderInput | SortOrder
     auth_id4?: SortOrderInput | SortOrder
+    auth_id5?: SortOrderInput | SortOrder
     proposed_change_id?: SortOrderInput | SortOrder
     authdoc_id?: SortOrderInput | SortOrder
     plant_id?: SortOrderInput | SortOrder
@@ -45020,6 +46322,7 @@ export namespace Prisma {
     auth_id2?: IntNullableWithAggregatesFilter<"tr_handover"> | number | null
     auth_id3?: IntNullableWithAggregatesFilter<"tr_handover"> | number | null
     auth_id4?: IntNullableWithAggregatesFilter<"tr_handover"> | number | null
+    auth_id5?: IntNullableWithAggregatesFilter<"tr_handover"> | number | null
     proposed_change_id?: IntNullableWithAggregatesFilter<"tr_handover"> | number | null
     authdoc_id?: IntNullableWithAggregatesFilter<"tr_handover"> | number | null
     plant_id?: IntNullableWithAggregatesFilter<"tr_handover"> | number | null
@@ -45201,6 +46504,104 @@ export namespace Prisma {
     created_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_history"> | Date | string | null
     updated_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_history"> | Date | string | null
     created_by?: StringNullableWithAggregatesFilter<"tr_handover_history"> | string | null
+  }
+
+  export type email_tracking_handoverWhereInput = {
+    AND?: email_tracking_handoverWhereInput | email_tracking_handoverWhereInput[]
+    OR?: email_tracking_handoverWhereInput[]
+    NOT?: email_tracking_handoverWhereInput | email_tracking_handoverWhereInput[]
+    id?: IntFilter<"email_tracking_handover"> | number
+    handover_id?: IntFilter<"email_tracking_handover"> | number
+    recipient_email?: StringFilter<"email_tracking_handover"> | string
+    recipient_type?: Enumemail_tracking_handover_recipient_typeFilter<"email_tracking_handover"> | $Enums.email_tracking_handover_recipient_type
+    status?: Enumemail_tracking_handover_statusFilter<"email_tracking_handover"> | $Enums.email_tracking_handover_status
+    note_hash?: StringFilter<"email_tracking_handover"> | string
+    note_text?: StringNullableFilter<"email_tracking_handover"> | string | null
+    message_id?: StringNullableFilter<"email_tracking_handover"> | string | null
+    sent_at?: DateTimeNullableFilter<"email_tracking_handover"> | Date | string | null
+    is_success?: BoolNullableFilter<"email_tracking_handover"> | boolean | null
+    retry_count?: IntNullableFilter<"email_tracking_handover"> | number | null
+    last_retry_at?: DateTimeNullableFilter<"email_tracking_handover"> | Date | string | null
+    created_at?: DateTimeNullableFilter<"email_tracking_handover"> | Date | string | null
+    tr_handover?: XOR<Tr_handoverScalarRelationFilter, tr_handoverWhereInput>
+  }
+
+  export type email_tracking_handoverOrderByWithRelationInput = {
+    id?: SortOrder
+    handover_id?: SortOrder
+    recipient_email?: SortOrder
+    recipient_type?: SortOrder
+    status?: SortOrder
+    note_hash?: SortOrder
+    note_text?: SortOrderInput | SortOrder
+    message_id?: SortOrderInput | SortOrder
+    sent_at?: SortOrderInput | SortOrder
+    is_success?: SortOrderInput | SortOrder
+    retry_count?: SortOrderInput | SortOrder
+    last_retry_at?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    tr_handover?: tr_handoverOrderByWithRelationInput
+    _relevance?: email_tracking_handoverOrderByRelevanceInput
+  }
+
+  export type email_tracking_handoverWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: email_tracking_handoverWhereInput | email_tracking_handoverWhereInput[]
+    OR?: email_tracking_handoverWhereInput[]
+    NOT?: email_tracking_handoverWhereInput | email_tracking_handoverWhereInput[]
+    handover_id?: IntFilter<"email_tracking_handover"> | number
+    recipient_email?: StringFilter<"email_tracking_handover"> | string
+    recipient_type?: Enumemail_tracking_handover_recipient_typeFilter<"email_tracking_handover"> | $Enums.email_tracking_handover_recipient_type
+    status?: Enumemail_tracking_handover_statusFilter<"email_tracking_handover"> | $Enums.email_tracking_handover_status
+    note_hash?: StringFilter<"email_tracking_handover"> | string
+    note_text?: StringNullableFilter<"email_tracking_handover"> | string | null
+    message_id?: StringNullableFilter<"email_tracking_handover"> | string | null
+    sent_at?: DateTimeNullableFilter<"email_tracking_handover"> | Date | string | null
+    is_success?: BoolNullableFilter<"email_tracking_handover"> | boolean | null
+    retry_count?: IntNullableFilter<"email_tracking_handover"> | number | null
+    last_retry_at?: DateTimeNullableFilter<"email_tracking_handover"> | Date | string | null
+    created_at?: DateTimeNullableFilter<"email_tracking_handover"> | Date | string | null
+    tr_handover?: XOR<Tr_handoverScalarRelationFilter, tr_handoverWhereInput>
+  }, "id">
+
+  export type email_tracking_handoverOrderByWithAggregationInput = {
+    id?: SortOrder
+    handover_id?: SortOrder
+    recipient_email?: SortOrder
+    recipient_type?: SortOrder
+    status?: SortOrder
+    note_hash?: SortOrder
+    note_text?: SortOrderInput | SortOrder
+    message_id?: SortOrderInput | SortOrder
+    sent_at?: SortOrderInput | SortOrder
+    is_success?: SortOrderInput | SortOrder
+    retry_count?: SortOrderInput | SortOrder
+    last_retry_at?: SortOrderInput | SortOrder
+    created_at?: SortOrderInput | SortOrder
+    _count?: email_tracking_handoverCountOrderByAggregateInput
+    _avg?: email_tracking_handoverAvgOrderByAggregateInput
+    _max?: email_tracking_handoverMaxOrderByAggregateInput
+    _min?: email_tracking_handoverMinOrderByAggregateInput
+    _sum?: email_tracking_handoverSumOrderByAggregateInput
+  }
+
+  export type email_tracking_handoverScalarWhereWithAggregatesInput = {
+    AND?: email_tracking_handoverScalarWhereWithAggregatesInput | email_tracking_handoverScalarWhereWithAggregatesInput[]
+    OR?: email_tracking_handoverScalarWhereWithAggregatesInput[]
+    NOT?: email_tracking_handoverScalarWhereWithAggregatesInput | email_tracking_handoverScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"email_tracking_handover"> | number
+    handover_id?: IntWithAggregatesFilter<"email_tracking_handover"> | number
+    recipient_email?: StringWithAggregatesFilter<"email_tracking_handover"> | string
+    recipient_type?: Enumemail_tracking_handover_recipient_typeWithAggregatesFilter<"email_tracking_handover"> | $Enums.email_tracking_handover_recipient_type
+    status?: Enumemail_tracking_handover_statusWithAggregatesFilter<"email_tracking_handover"> | $Enums.email_tracking_handover_status
+    note_hash?: StringWithAggregatesFilter<"email_tracking_handover"> | string
+    note_text?: StringNullableWithAggregatesFilter<"email_tracking_handover"> | string | null
+    message_id?: StringNullableWithAggregatesFilter<"email_tracking_handover"> | string | null
+    sent_at?: DateTimeNullableWithAggregatesFilter<"email_tracking_handover"> | Date | string | null
+    is_success?: BoolNullableWithAggregatesFilter<"email_tracking_handover"> | boolean | null
+    retry_count?: IntNullableWithAggregatesFilter<"email_tracking_handover"> | number | null
+    last_retry_at?: DateTimeNullableWithAggregatesFilter<"email_tracking_handover"> | Date | string | null
+    created_at?: DateTimeNullableWithAggregatesFilter<"email_tracking_handover"> | Date | string | null
   }
 
   export type email_tracking_proposedchangesWhereInput = {
@@ -45399,102 +46800,95 @@ export namespace Prisma {
     created_at?: DateTimeNullableWithAggregatesFilter<"email_tracking_authdoc"> | Date | string | null
   }
 
-  export type email_tracking_handoverWhereInput = {
-    AND?: email_tracking_handoverWhereInput | email_tracking_handoverWhereInput[]
-    OR?: email_tracking_handoverWhereInput[]
-    NOT?: email_tracking_handoverWhereInput | email_tracking_handoverWhereInput[]
-    id?: IntFilter<"email_tracking_handover"> | number
-    handover_id?: IntFilter<"email_tracking_handover"> | number
-    recipient_email?: StringFilter<"email_tracking_handover"> | string
-    recipient_type?: Enumemail_tracking_handover_recipient_typeFilter<"email_tracking_handover"> | $Enums.email_tracking_handover_recipient_type
-    status?: Enumemail_tracking_handover_statusFilter<"email_tracking_handover"> | $Enums.email_tracking_handover_status
-    note_hash?: StringFilter<"email_tracking_handover"> | string
-    note_text?: StringNullableFilter<"email_tracking_handover"> | string | null
-    message_id?: StringNullableFilter<"email_tracking_handover"> | string | null
-    sent_at?: DateTimeNullableFilter<"email_tracking_handover"> | Date | string | null
-    is_success?: BoolNullableFilter<"email_tracking_handover"> | boolean | null
-    retry_count?: IntNullableFilter<"email_tracking_handover"> | number | null
-    last_retry_at?: DateTimeNullableFilter<"email_tracking_handover"> | Date | string | null
-    created_at?: DateTimeNullableFilter<"email_tracking_handover"> | Date | string | null
-    tr_handover?: XOR<Tr_handoverScalarRelationFilter, tr_handoverWhereInput>
+  export type tr_logCreateInput = {
+    id?: string
+    timestamp?: Date | string
+    userId?: string | null
+    endpoint: string
+    method: string
+    statusCode: number
+    ipAddress?: string | null
+    userAgent?: string | null
+    action?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
   }
 
-  export type email_tracking_handoverOrderByWithRelationInput = {
-    id?: SortOrder
-    handover_id?: SortOrder
-    recipient_email?: SortOrder
-    recipient_type?: SortOrder
-    status?: SortOrder
-    note_hash?: SortOrder
-    note_text?: SortOrderInput | SortOrder
-    message_id?: SortOrderInput | SortOrder
-    sent_at?: SortOrderInput | SortOrder
-    is_success?: SortOrderInput | SortOrder
-    retry_count?: SortOrderInput | SortOrder
-    last_retry_at?: SortOrderInput | SortOrder
-    created_at?: SortOrderInput | SortOrder
-    tr_handover?: tr_handoverOrderByWithRelationInput
-    _relevance?: email_tracking_handoverOrderByRelevanceInput
+  export type tr_logUncheckedCreateInput = {
+    id?: string
+    timestamp?: Date | string
+    userId?: string | null
+    endpoint: string
+    method: string
+    statusCode: number
+    ipAddress?: string | null
+    userAgent?: string | null
+    action?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
   }
 
-  export type email_tracking_handoverWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: email_tracking_handoverWhereInput | email_tracking_handoverWhereInput[]
-    OR?: email_tracking_handoverWhereInput[]
-    NOT?: email_tracking_handoverWhereInput | email_tracking_handoverWhereInput[]
-    handover_id?: IntFilter<"email_tracking_handover"> | number
-    recipient_email?: StringFilter<"email_tracking_handover"> | string
-    recipient_type?: Enumemail_tracking_handover_recipient_typeFilter<"email_tracking_handover"> | $Enums.email_tracking_handover_recipient_type
-    status?: Enumemail_tracking_handover_statusFilter<"email_tracking_handover"> | $Enums.email_tracking_handover_status
-    note_hash?: StringFilter<"email_tracking_handover"> | string
-    note_text?: StringNullableFilter<"email_tracking_handover"> | string | null
-    message_id?: StringNullableFilter<"email_tracking_handover"> | string | null
-    sent_at?: DateTimeNullableFilter<"email_tracking_handover"> | Date | string | null
-    is_success?: BoolNullableFilter<"email_tracking_handover"> | boolean | null
-    retry_count?: IntNullableFilter<"email_tracking_handover"> | number | null
-    last_retry_at?: DateTimeNullableFilter<"email_tracking_handover"> | Date | string | null
-    created_at?: DateTimeNullableFilter<"email_tracking_handover"> | Date | string | null
-    tr_handover?: XOR<Tr_handoverScalarRelationFilter, tr_handoverWhereInput>
-  }, "id">
-
-  export type email_tracking_handoverOrderByWithAggregationInput = {
-    id?: SortOrder
-    handover_id?: SortOrder
-    recipient_email?: SortOrder
-    recipient_type?: SortOrder
-    status?: SortOrder
-    note_hash?: SortOrder
-    note_text?: SortOrderInput | SortOrder
-    message_id?: SortOrderInput | SortOrder
-    sent_at?: SortOrderInput | SortOrder
-    is_success?: SortOrderInput | SortOrder
-    retry_count?: SortOrderInput | SortOrder
-    last_retry_at?: SortOrderInput | SortOrder
-    created_at?: SortOrderInput | SortOrder
-    _count?: email_tracking_handoverCountOrderByAggregateInput
-    _avg?: email_tracking_handoverAvgOrderByAggregateInput
-    _max?: email_tracking_handoverMaxOrderByAggregateInput
-    _min?: email_tracking_handoverMinOrderByAggregateInput
-    _sum?: email_tracking_handoverSumOrderByAggregateInput
+  export type tr_logUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    endpoint?: StringFieldUpdateOperationsInput | string
+    method?: StringFieldUpdateOperationsInput | string
+    statusCode?: IntFieldUpdateOperationsInput | number
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
   }
 
-  export type email_tracking_handoverScalarWhereWithAggregatesInput = {
-    AND?: email_tracking_handoverScalarWhereWithAggregatesInput | email_tracking_handoverScalarWhereWithAggregatesInput[]
-    OR?: email_tracking_handoverScalarWhereWithAggregatesInput[]
-    NOT?: email_tracking_handoverScalarWhereWithAggregatesInput | email_tracking_handoverScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"email_tracking_handover"> | number
-    handover_id?: IntWithAggregatesFilter<"email_tracking_handover"> | number
-    recipient_email?: StringWithAggregatesFilter<"email_tracking_handover"> | string
-    recipient_type?: Enumemail_tracking_handover_recipient_typeWithAggregatesFilter<"email_tracking_handover"> | $Enums.email_tracking_handover_recipient_type
-    status?: Enumemail_tracking_handover_statusWithAggregatesFilter<"email_tracking_handover"> | $Enums.email_tracking_handover_status
-    note_hash?: StringWithAggregatesFilter<"email_tracking_handover"> | string
-    note_text?: StringNullableWithAggregatesFilter<"email_tracking_handover"> | string | null
-    message_id?: StringNullableWithAggregatesFilter<"email_tracking_handover"> | string | null
-    sent_at?: DateTimeNullableWithAggregatesFilter<"email_tracking_handover"> | Date | string | null
-    is_success?: BoolNullableWithAggregatesFilter<"email_tracking_handover"> | boolean | null
-    retry_count?: IntNullableWithAggregatesFilter<"email_tracking_handover"> | number | null
-    last_retry_at?: DateTimeNullableWithAggregatesFilter<"email_tracking_handover"> | Date | string | null
-    created_at?: DateTimeNullableWithAggregatesFilter<"email_tracking_handover"> | Date | string | null
+  export type tr_logUncheckedUpdateInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    endpoint?: StringFieldUpdateOperationsInput | string
+    method?: StringFieldUpdateOperationsInput | string
+    statusCode?: IntFieldUpdateOperationsInput | number
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type tr_logCreateManyInput = {
+    id?: string
+    timestamp?: Date | string
+    userId?: string | null
+    endpoint: string
+    method: string
+    statusCode: number
+    ipAddress?: string | null
+    userAgent?: string | null
+    action?: string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type tr_logUpdateManyMutationInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    endpoint?: StringFieldUpdateOperationsInput | string
+    method?: StringFieldUpdateOperationsInput | string
+    statusCode?: IntFieldUpdateOperationsInput | number
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
+  }
+
+  export type tr_logUncheckedUpdateManyInput = {
+    id?: StringFieldUpdateOperationsInput | string
+    timestamp?: DateTimeFieldUpdateOperationsInput | Date | string
+    userId?: NullableStringFieldUpdateOperationsInput | string | null
+    endpoint?: StringFieldUpdateOperationsInput | string
+    method?: StringFieldUpdateOperationsInput | string
+    statusCode?: IntFieldUpdateOperationsInput | number
+    ipAddress?: NullableStringFieldUpdateOperationsInput | string | null
+    userAgent?: NullableStringFieldUpdateOperationsInput | string | null
+    action?: NullableStringFieldUpdateOperationsInput | string | null
+    metadata?: NullableJsonNullValueInput | InputJsonValue
   }
 
   export type mst_roleCreateInput = {
@@ -46970,6 +48364,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -47005,6 +48400,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -47039,6 +48435,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -47074,6 +48471,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -47741,6 +49139,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
@@ -47783,6 +49182,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -47814,6 +49214,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
@@ -47856,6 +49257,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -47893,6 +49295,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
   }
 
@@ -47917,6 +49320,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -47947,6 +49351,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -48115,6 +49520,7 @@ export namespace Prisma {
     is_deleted?: boolean | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
@@ -48134,6 +49540,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -48166,6 +49573,7 @@ export namespace Prisma {
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -48185,6 +49593,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -48211,6 +49620,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -48247,6 +49657,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -48426,6 +49837,114 @@ export namespace Prisma {
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type email_tracking_handoverCreateInput = {
+    recipient_email: string
+    recipient_type: $Enums.email_tracking_handover_recipient_type
+    status: $Enums.email_tracking_handover_status
+    note_hash: string
+    note_text?: string | null
+    message_id?: string | null
+    sent_at?: Date | string | null
+    is_success?: boolean | null
+    retry_count?: number | null
+    last_retry_at?: Date | string | null
+    created_at?: Date | string | null
+    tr_handover: tr_handoverCreateNestedOneWithoutEmail_tracking_handoverInput
+  }
+
+  export type email_tracking_handoverUncheckedCreateInput = {
+    id?: number
+    handover_id: number
+    recipient_email: string
+    recipient_type: $Enums.email_tracking_handover_recipient_type
+    status: $Enums.email_tracking_handover_status
+    note_hash: string
+    note_text?: string | null
+    message_id?: string | null
+    sent_at?: Date | string | null
+    is_success?: boolean | null
+    retry_count?: number | null
+    last_retry_at?: Date | string | null
+    created_at?: Date | string | null
+  }
+
+  export type email_tracking_handoverUpdateInput = {
+    recipient_email?: StringFieldUpdateOperationsInput | string
+    recipient_type?: Enumemail_tracking_handover_recipient_typeFieldUpdateOperationsInput | $Enums.email_tracking_handover_recipient_type
+    status?: Enumemail_tracking_handover_statusFieldUpdateOperationsInput | $Enums.email_tracking_handover_status
+    note_hash?: StringFieldUpdateOperationsInput | string
+    note_text?: NullableStringFieldUpdateOperationsInput | string | null
+    message_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_success?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    retry_count?: NullableIntFieldUpdateOperationsInput | number | null
+    last_retry_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    tr_handover?: tr_handoverUpdateOneRequiredWithoutEmail_tracking_handoverNestedInput
+  }
+
+  export type email_tracking_handoverUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    handover_id?: IntFieldUpdateOperationsInput | number
+    recipient_email?: StringFieldUpdateOperationsInput | string
+    recipient_type?: Enumemail_tracking_handover_recipient_typeFieldUpdateOperationsInput | $Enums.email_tracking_handover_recipient_type
+    status?: Enumemail_tracking_handover_statusFieldUpdateOperationsInput | $Enums.email_tracking_handover_status
+    note_hash?: StringFieldUpdateOperationsInput | string
+    note_text?: NullableStringFieldUpdateOperationsInput | string | null
+    message_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_success?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    retry_count?: NullableIntFieldUpdateOperationsInput | number | null
+    last_retry_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type email_tracking_handoverCreateManyInput = {
+    id?: number
+    handover_id: number
+    recipient_email: string
+    recipient_type: $Enums.email_tracking_handover_recipient_type
+    status: $Enums.email_tracking_handover_status
+    note_hash: string
+    note_text?: string | null
+    message_id?: string | null
+    sent_at?: Date | string | null
+    is_success?: boolean | null
+    retry_count?: number | null
+    last_retry_at?: Date | string | null
+    created_at?: Date | string | null
+  }
+
+  export type email_tracking_handoverUpdateManyMutationInput = {
+    recipient_email?: StringFieldUpdateOperationsInput | string
+    recipient_type?: Enumemail_tracking_handover_recipient_typeFieldUpdateOperationsInput | $Enums.email_tracking_handover_recipient_type
+    status?: Enumemail_tracking_handover_statusFieldUpdateOperationsInput | $Enums.email_tracking_handover_status
+    note_hash?: StringFieldUpdateOperationsInput | string
+    note_text?: NullableStringFieldUpdateOperationsInput | string | null
+    message_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_success?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    retry_count?: NullableIntFieldUpdateOperationsInput | number | null
+    last_retry_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type email_tracking_handoverUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    handover_id?: IntFieldUpdateOperationsInput | number
+    recipient_email?: StringFieldUpdateOperationsInput | string
+    recipient_type?: Enumemail_tracking_handover_recipient_typeFieldUpdateOperationsInput | $Enums.email_tracking_handover_recipient_type
+    status?: Enumemail_tracking_handover_statusFieldUpdateOperationsInput | $Enums.email_tracking_handover_status
+    note_hash?: StringFieldUpdateOperationsInput | string
+    note_text?: NullableStringFieldUpdateOperationsInput | string | null
+    message_id?: NullableStringFieldUpdateOperationsInput | string | null
+    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_success?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    retry_count?: NullableIntFieldUpdateOperationsInput | number | null
+    last_retry_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type email_tracking_proposedchangesCreateInput = {
@@ -48644,125 +50163,6 @@ export namespace Prisma {
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
-  export type email_tracking_handoverCreateInput = {
-    recipient_email: string
-    recipient_type: $Enums.email_tracking_handover_recipient_type
-    status: $Enums.email_tracking_handover_status
-    note_hash: string
-    note_text?: string | null
-    message_id?: string | null
-    sent_at?: Date | string | null
-    is_success?: boolean | null
-    retry_count?: number | null
-    last_retry_at?: Date | string | null
-    created_at?: Date | string | null
-    tr_handover: tr_handoverCreateNestedOneWithoutEmail_tracking_handoverInput
-  }
-
-  export type email_tracking_handoverUncheckedCreateInput = {
-    id?: number
-    handover_id: number
-    recipient_email: string
-    recipient_type: $Enums.email_tracking_handover_recipient_type
-    status: $Enums.email_tracking_handover_status
-    note_hash: string
-    note_text?: string | null
-    message_id?: string | null
-    sent_at?: Date | string | null
-    is_success?: boolean | null
-    retry_count?: number | null
-    last_retry_at?: Date | string | null
-    created_at?: Date | string | null
-  }
-
-  export type email_tracking_handoverUpdateInput = {
-    recipient_email?: StringFieldUpdateOperationsInput | string
-    recipient_type?: Enumemail_tracking_handover_recipient_typeFieldUpdateOperationsInput | $Enums.email_tracking_handover_recipient_type
-    status?: Enumemail_tracking_handover_statusFieldUpdateOperationsInput | $Enums.email_tracking_handover_status
-    note_hash?: StringFieldUpdateOperationsInput | string
-    note_text?: NullableStringFieldUpdateOperationsInput | string | null
-    message_id?: NullableStringFieldUpdateOperationsInput | string | null
-    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    is_success?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    retry_count?: NullableIntFieldUpdateOperationsInput | number | null
-    last_retry_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    tr_handover?: tr_handoverUpdateOneRequiredWithoutEmail_tracking_handoverNestedInput
-  }
-
-  export type email_tracking_handoverUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    handover_id?: IntFieldUpdateOperationsInput | number
-    recipient_email?: StringFieldUpdateOperationsInput | string
-    recipient_type?: Enumemail_tracking_handover_recipient_typeFieldUpdateOperationsInput | $Enums.email_tracking_handover_recipient_type
-    status?: Enumemail_tracking_handover_statusFieldUpdateOperationsInput | $Enums.email_tracking_handover_status
-    note_hash?: StringFieldUpdateOperationsInput | string
-    note_text?: NullableStringFieldUpdateOperationsInput | string | null
-    message_id?: NullableStringFieldUpdateOperationsInput | string | null
-    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    is_success?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    retry_count?: NullableIntFieldUpdateOperationsInput | number | null
-    last_retry_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type email_tracking_handoverCreateManyInput = {
-    id?: number
-    handover_id: number
-    recipient_email: string
-    recipient_type: $Enums.email_tracking_handover_recipient_type
-    status: $Enums.email_tracking_handover_status
-    note_hash: string
-    note_text?: string | null
-    message_id?: string | null
-    sent_at?: Date | string | null
-    is_success?: boolean | null
-    retry_count?: number | null
-    last_retry_at?: Date | string | null
-    created_at?: Date | string | null
-  }
-
-  export type email_tracking_handoverUpdateManyMutationInput = {
-    recipient_email?: StringFieldUpdateOperationsInput | string
-    recipient_type?: Enumemail_tracking_handover_recipient_typeFieldUpdateOperationsInput | $Enums.email_tracking_handover_recipient_type
-    status?: Enumemail_tracking_handover_statusFieldUpdateOperationsInput | $Enums.email_tracking_handover_status
-    note_hash?: StringFieldUpdateOperationsInput | string
-    note_text?: NullableStringFieldUpdateOperationsInput | string | null
-    message_id?: NullableStringFieldUpdateOperationsInput | string | null
-    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    is_success?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    retry_count?: NullableIntFieldUpdateOperationsInput | number | null
-    last_retry_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type email_tracking_handoverUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    handover_id?: IntFieldUpdateOperationsInput | number
-    recipient_email?: StringFieldUpdateOperationsInput | string
-    recipient_type?: Enumemail_tracking_handover_recipient_typeFieldUpdateOperationsInput | $Enums.email_tracking_handover_recipient_type
-    status?: Enumemail_tracking_handover_statusFieldUpdateOperationsInput | $Enums.email_tracking_handover_status
-    note_hash?: StringFieldUpdateOperationsInput | string
-    note_text?: NullableStringFieldUpdateOperationsInput | string | null
-    message_id?: NullableStringFieldUpdateOperationsInput | string | null
-    sent_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    is_success?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    retry_count?: NullableIntFieldUpdateOperationsInput | number | null
-    last_retry_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type IntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type StringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -48776,6 +50176,17 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type DateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type StringNullableFilter<$PrismaModel = never> = {
@@ -48793,7 +50204,115 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type DateTimeFilter<$PrismaModel = never> = {
+  export type IntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+  export type JsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+  }
+
+  export type SortOrderInput = {
+    sort: SortOrder
+    nulls?: NullsOrder
+  }
+
+  export type tr_logOrderByRelevanceInput = {
+    fields: tr_logOrderByRelevanceFieldEnum | tr_logOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type tr_logCountOrderByAggregateInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    userId?: SortOrder
+    endpoint?: SortOrder
+    method?: SortOrder
+    statusCode?: SortOrder
+    ipAddress?: SortOrder
+    userAgent?: SortOrder
+    action?: SortOrder
+    metadata?: SortOrder
+  }
+
+  export type tr_logAvgOrderByAggregateInput = {
+    statusCode?: SortOrder
+  }
+
+  export type tr_logMaxOrderByAggregateInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    userId?: SortOrder
+    endpoint?: SortOrder
+    method?: SortOrder
+    statusCode?: SortOrder
+    ipAddress?: SortOrder
+    userAgent?: SortOrder
+    action?: SortOrder
+  }
+
+  export type tr_logMinOrderByAggregateInput = {
+    id?: SortOrder
+    timestamp?: SortOrder
+    userId?: SortOrder
+    endpoint?: SortOrder
+    method?: SortOrder
+    statusCode?: SortOrder
+    ipAddress?: SortOrder
+    userAgent?: SortOrder
+    action?: SortOrder
+  }
+
+  export type tr_logSumOrderByAggregateInput = {
+    statusCode?: SortOrder
+  }
+
+  export type StringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
     notIn?: Date[] | string[]
@@ -48801,7 +50320,70 @@ export namespace Prisma {
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
+  }
+
+  export type IntWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
+    _count?: NestedIntFilter<$PrismaModel>
+    _avg?: NestedFloatFilter<$PrismaModel>
+    _sum?: NestedIntFilter<$PrismaModel>
+    _min?: NestedIntFilter<$PrismaModel>
+    _max?: NestedIntFilter<$PrismaModel>
+  }
+  export type JsonNullableWithAggregatesFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, Exclude<keyof Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>,
+        Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<JsonNullableWithAggregatesFilterBase<$PrismaModel>>, 'path'>>
+
+  export type JsonNullableWithAggregatesFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedJsonNullableFilter<$PrismaModel>
+    _max?: NestedJsonNullableFilter<$PrismaModel>
   }
 
   export type DateTimeNullableFilter<$PrismaModel = never> = {
@@ -48830,11 +50412,6 @@ export namespace Prisma {
     every?: mst_authorizationWhereInput
     some?: mst_authorizationWhereInput
     none?: mst_authorizationWhereInput
-  }
-
-  export type SortOrderInput = {
-    sort: SortOrder
-    nulls?: NullsOrder
   }
 
   export type mst_authorizationOrderByRelationAggregateInput = {
@@ -48887,72 +50464,6 @@ export namespace Prisma {
     id?: SortOrder
     created_by?: SortOrder
     updated_by?: SortOrder
-  }
-
-  export type IntWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntWithAggregatesFilter<$PrismaModel> | number
-    _count?: NestedIntFilter<$PrismaModel>
-    _avg?: NestedFloatFilter<$PrismaModel>
-    _sum?: NestedIntFilter<$PrismaModel>
-    _min?: NestedIntFilter<$PrismaModel>
-    _max?: NestedIntFilter<$PrismaModel>
-  }
-
-  export type StringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
-  }
-
-  export type StringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type DateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
   export type DateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -50683,6 +52194,7 @@ export namespace Prisma {
     other_sytem?: SortOrder
     status?: SortOrder
     progress?: SortOrder
+    progresssupport?: SortOrder
     is_deleted?: SortOrder
   }
 
@@ -50722,6 +52234,7 @@ export namespace Prisma {
     other_sytem?: SortOrder
     status?: SortOrder
     progress?: SortOrder
+    progresssupport?: SortOrder
     is_deleted?: SortOrder
   }
 
@@ -50752,6 +52265,7 @@ export namespace Prisma {
     other_sytem?: SortOrder
     status?: SortOrder
     progress?: SortOrder
+    progresssupport?: SortOrder
     is_deleted?: SortOrder
   }
 
@@ -50890,6 +52404,7 @@ export namespace Prisma {
     auth_id2?: SortOrder
     auth_id3?: SortOrder
     auth_id4?: SortOrder
+    auth_id5?: SortOrder
     proposed_change_id?: SortOrder
     authdoc_id?: SortOrder
     plant_id?: SortOrder
@@ -50912,6 +52427,7 @@ export namespace Prisma {
     auth_id2?: SortOrder
     auth_id3?: SortOrder
     auth_id4?: SortOrder
+    auth_id5?: SortOrder
     proposed_change_id?: SortOrder
     authdoc_id?: SortOrder
     plant_id?: SortOrder
@@ -50926,6 +52442,7 @@ export namespace Prisma {
     auth_id2?: SortOrder
     auth_id3?: SortOrder
     auth_id4?: SortOrder
+    auth_id5?: SortOrder
     proposed_change_id?: SortOrder
     authdoc_id?: SortOrder
     plant_id?: SortOrder
@@ -50949,6 +52466,7 @@ export namespace Prisma {
     auth_id2?: SortOrder
     auth_id3?: SortOrder
     auth_id4?: SortOrder
+    auth_id5?: SortOrder
     proposed_change_id?: SortOrder
     authdoc_id?: SortOrder
     plant_id?: SortOrder
@@ -50971,6 +52489,7 @@ export namespace Prisma {
     auth_id2?: SortOrder
     auth_id3?: SortOrder
     auth_id4?: SortOrder
+    auth_id5?: SortOrder
     proposed_change_id?: SortOrder
     authdoc_id?: SortOrder
     plant_id?: SortOrder
@@ -51094,6 +52613,111 @@ export namespace Prisma {
     id?: SortOrder
     handover_id?: SortOrder
     auth_id?: SortOrder
+  }
+
+  export type Enumemail_tracking_handover_recipient_typeFilter<$PrismaModel = never> = {
+    equals?: $Enums.email_tracking_handover_recipient_type | Enumemail_tracking_handover_recipient_typeFieldRefInput<$PrismaModel>
+    in?: $Enums.email_tracking_handover_recipient_type[]
+    notIn?: $Enums.email_tracking_handover_recipient_type[]
+    not?: NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel> | $Enums.email_tracking_handover_recipient_type
+  }
+
+  export type Enumemail_tracking_handover_statusFilter<$PrismaModel = never> = {
+    equals?: $Enums.email_tracking_handover_status | Enumemail_tracking_handover_statusFieldRefInput<$PrismaModel>
+    in?: $Enums.email_tracking_handover_status[]
+    notIn?: $Enums.email_tracking_handover_status[]
+    not?: NestedEnumemail_tracking_handover_statusFilter<$PrismaModel> | $Enums.email_tracking_handover_status
+  }
+
+  export type Tr_handoverScalarRelationFilter = {
+    is?: tr_handoverWhereInput
+    isNot?: tr_handoverWhereInput
+  }
+
+  export type email_tracking_handoverOrderByRelevanceInput = {
+    fields: email_tracking_handoverOrderByRelevanceFieldEnum | email_tracking_handoverOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type email_tracking_handoverCountOrderByAggregateInput = {
+    id?: SortOrder
+    handover_id?: SortOrder
+    recipient_email?: SortOrder
+    recipient_type?: SortOrder
+    status?: SortOrder
+    note_hash?: SortOrder
+    note_text?: SortOrder
+    message_id?: SortOrder
+    sent_at?: SortOrder
+    is_success?: SortOrder
+    retry_count?: SortOrder
+    last_retry_at?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type email_tracking_handoverAvgOrderByAggregateInput = {
+    id?: SortOrder
+    handover_id?: SortOrder
+    retry_count?: SortOrder
+  }
+
+  export type email_tracking_handoverMaxOrderByAggregateInput = {
+    id?: SortOrder
+    handover_id?: SortOrder
+    recipient_email?: SortOrder
+    recipient_type?: SortOrder
+    status?: SortOrder
+    note_hash?: SortOrder
+    note_text?: SortOrder
+    message_id?: SortOrder
+    sent_at?: SortOrder
+    is_success?: SortOrder
+    retry_count?: SortOrder
+    last_retry_at?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type email_tracking_handoverMinOrderByAggregateInput = {
+    id?: SortOrder
+    handover_id?: SortOrder
+    recipient_email?: SortOrder
+    recipient_type?: SortOrder
+    status?: SortOrder
+    note_hash?: SortOrder
+    note_text?: SortOrder
+    message_id?: SortOrder
+    sent_at?: SortOrder
+    is_success?: SortOrder
+    retry_count?: SortOrder
+    last_retry_at?: SortOrder
+    created_at?: SortOrder
+  }
+
+  export type email_tracking_handoverSumOrderByAggregateInput = {
+    id?: SortOrder
+    handover_id?: SortOrder
+    retry_count?: SortOrder
+  }
+
+  export type Enumemail_tracking_handover_recipient_typeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.email_tracking_handover_recipient_type | Enumemail_tracking_handover_recipient_typeFieldRefInput<$PrismaModel>
+    in?: $Enums.email_tracking_handover_recipient_type[]
+    notIn?: $Enums.email_tracking_handover_recipient_type[]
+    not?: NestedEnumemail_tracking_handover_recipient_typeWithAggregatesFilter<$PrismaModel> | $Enums.email_tracking_handover_recipient_type
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel>
+    _max?: NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel>
+  }
+
+  export type Enumemail_tracking_handover_statusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.email_tracking_handover_status | Enumemail_tracking_handover_statusFieldRefInput<$PrismaModel>
+    in?: $Enums.email_tracking_handover_status[]
+    notIn?: $Enums.email_tracking_handover_status[]
+    not?: NestedEnumemail_tracking_handover_statusWithAggregatesFilter<$PrismaModel> | $Enums.email_tracking_handover_status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumemail_tracking_handover_statusFilter<$PrismaModel>
+    _max?: NestedEnumemail_tracking_handover_statusFilter<$PrismaModel>
   }
 
   export type Enumemail_tracking_proposedchanges_recipient_typeFilter<$PrismaModel = never> = {
@@ -51306,109 +52930,24 @@ export namespace Prisma {
     _max?: NestedEnumemail_tracking_authdoc_statusFilter<$PrismaModel>
   }
 
-  export type Enumemail_tracking_handover_recipient_typeFilter<$PrismaModel = never> = {
-    equals?: $Enums.email_tracking_handover_recipient_type | Enumemail_tracking_handover_recipient_typeFieldRefInput<$PrismaModel>
-    in?: $Enums.email_tracking_handover_recipient_type[]
-    notIn?: $Enums.email_tracking_handover_recipient_type[]
-    not?: NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel> | $Enums.email_tracking_handover_recipient_type
+  export type StringFieldUpdateOperationsInput = {
+    set?: string
   }
 
-  export type Enumemail_tracking_handover_statusFilter<$PrismaModel = never> = {
-    equals?: $Enums.email_tracking_handover_status | Enumemail_tracking_handover_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.email_tracking_handover_status[]
-    notIn?: $Enums.email_tracking_handover_status[]
-    not?: NestedEnumemail_tracking_handover_statusFilter<$PrismaModel> | $Enums.email_tracking_handover_status
+  export type DateTimeFieldUpdateOperationsInput = {
+    set?: Date | string
   }
 
-  export type Tr_handoverScalarRelationFilter = {
-    is?: tr_handoverWhereInput
-    isNot?: tr_handoverWhereInput
+  export type NullableStringFieldUpdateOperationsInput = {
+    set?: string | null
   }
 
-  export type email_tracking_handoverOrderByRelevanceInput = {
-    fields: email_tracking_handoverOrderByRelevanceFieldEnum | email_tracking_handoverOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
-  export type email_tracking_handoverCountOrderByAggregateInput = {
-    id?: SortOrder
-    handover_id?: SortOrder
-    recipient_email?: SortOrder
-    recipient_type?: SortOrder
-    status?: SortOrder
-    note_hash?: SortOrder
-    note_text?: SortOrder
-    message_id?: SortOrder
-    sent_at?: SortOrder
-    is_success?: SortOrder
-    retry_count?: SortOrder
-    last_retry_at?: SortOrder
-    created_at?: SortOrder
-  }
-
-  export type email_tracking_handoverAvgOrderByAggregateInput = {
-    id?: SortOrder
-    handover_id?: SortOrder
-    retry_count?: SortOrder
-  }
-
-  export type email_tracking_handoverMaxOrderByAggregateInput = {
-    id?: SortOrder
-    handover_id?: SortOrder
-    recipient_email?: SortOrder
-    recipient_type?: SortOrder
-    status?: SortOrder
-    note_hash?: SortOrder
-    note_text?: SortOrder
-    message_id?: SortOrder
-    sent_at?: SortOrder
-    is_success?: SortOrder
-    retry_count?: SortOrder
-    last_retry_at?: SortOrder
-    created_at?: SortOrder
-  }
-
-  export type email_tracking_handoverMinOrderByAggregateInput = {
-    id?: SortOrder
-    handover_id?: SortOrder
-    recipient_email?: SortOrder
-    recipient_type?: SortOrder
-    status?: SortOrder
-    note_hash?: SortOrder
-    note_text?: SortOrder
-    message_id?: SortOrder
-    sent_at?: SortOrder
-    is_success?: SortOrder
-    retry_count?: SortOrder
-    last_retry_at?: SortOrder
-    created_at?: SortOrder
-  }
-
-  export type email_tracking_handoverSumOrderByAggregateInput = {
-    id?: SortOrder
-    handover_id?: SortOrder
-    retry_count?: SortOrder
-  }
-
-  export type Enumemail_tracking_handover_recipient_typeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.email_tracking_handover_recipient_type | Enumemail_tracking_handover_recipient_typeFieldRefInput<$PrismaModel>
-    in?: $Enums.email_tracking_handover_recipient_type[]
-    notIn?: $Enums.email_tracking_handover_recipient_type[]
-    not?: NestedEnumemail_tracking_handover_recipient_typeWithAggregatesFilter<$PrismaModel> | $Enums.email_tracking_handover_recipient_type
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel>
-    _max?: NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel>
-  }
-
-  export type Enumemail_tracking_handover_statusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.email_tracking_handover_status | Enumemail_tracking_handover_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.email_tracking_handover_status[]
-    notIn?: $Enums.email_tracking_handover_status[]
-    not?: NestedEnumemail_tracking_handover_statusWithAggregatesFilter<$PrismaModel> | $Enums.email_tracking_handover_status
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumemail_tracking_handover_statusFilter<$PrismaModel>
-    _max?: NestedEnumemail_tracking_handover_statusFilter<$PrismaModel>
+  export type IntFieldUpdateOperationsInput = {
+    set?: number
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
   }
 
   export type mst_authorizationCreateNestedManyWithoutRoleInput = {
@@ -51423,18 +52962,6 @@ export namespace Prisma {
     connectOrCreate?: mst_authorizationCreateOrConnectWithoutRoleInput | mst_authorizationCreateOrConnectWithoutRoleInput[]
     createMany?: mst_authorizationCreateManyRoleInputEnvelope
     connect?: mst_authorizationWhereUniqueInput | mst_authorizationWhereUniqueInput[]
-  }
-
-  export type StringFieldUpdateOperationsInput = {
-    set?: string
-  }
-
-  export type NullableStringFieldUpdateOperationsInput = {
-    set?: string | null
-  }
-
-  export type DateTimeFieldUpdateOperationsInput = {
-    set?: Date | string
   }
 
   export type NullableDateTimeFieldUpdateOperationsInput = {
@@ -51461,14 +52988,6 @@ export namespace Prisma {
     update?: mst_authorizationUpdateWithWhereUniqueWithoutRoleInput | mst_authorizationUpdateWithWhereUniqueWithoutRoleInput[]
     updateMany?: mst_authorizationUpdateManyWithWhereWithoutRoleInput | mst_authorizationUpdateManyWithWhereWithoutRoleInput[]
     deleteMany?: mst_authorizationScalarWhereInput | mst_authorizationScalarWhereInput[]
-  }
-
-  export type IntFieldUpdateOperationsInput = {
-    set?: number
-    increment?: number
-    decrement?: number
-    multiply?: number
-    divide?: number
   }
 
   export type mst_authorizationUncheckedUpdateManyWithoutRoleNestedInput = {
@@ -53009,6 +54528,13 @@ export namespace Prisma {
     connect?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
   }
 
+  export type tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
+    create?: XOR<tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput, tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput> | tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[] | tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    connectOrCreate?: tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput | tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    createMany?: tr_handoverCreateManyMst_authorization_tr_handover_auth_id5Tomst_authorizationInputEnvelope
+    connect?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
+  }
+
   export type tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput = {
     create?: XOR<tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput, tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput> | tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput[] | tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput[]
     connectOrCreate?: tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput | tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput[]
@@ -53118,6 +54644,13 @@ export namespace Prisma {
     create?: XOR<tr_handoverCreateWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput, tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput> | tr_handoverCreateWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput[] | tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput[]
     connectOrCreate?: tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput | tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput[]
     createMany?: tr_handoverCreateManyMst_authorization_tr_handover_auth_idTomst_authorizationInputEnvelope
+    connect?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
+  }
+
+  export type tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
+    create?: XOR<tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput, tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput> | tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[] | tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    connectOrCreate?: tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput | tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    createMany?: tr_handoverCreateManyMst_authorization_tr_handover_auth_id5Tomst_authorizationInputEnvelope
     connect?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
   }
 
@@ -53330,6 +54863,20 @@ export namespace Prisma {
     connect?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
     update?: tr_handoverUpdateWithWhereUniqueWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput | tr_handoverUpdateWithWhereUniqueWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput[]
     updateMany?: tr_handoverUpdateManyWithWhereWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput | tr_handoverUpdateManyWithWhereWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput[]
+    deleteMany?: tr_handoverScalarWhereInput | tr_handoverScalarWhereInput[]
+  }
+
+  export type tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput = {
+    create?: XOR<tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput, tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput> | tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[] | tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    connectOrCreate?: tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput | tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    upsert?: tr_handoverUpsertWithWhereUniqueWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput | tr_handoverUpsertWithWhereUniqueWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    createMany?: tr_handoverCreateManyMst_authorization_tr_handover_auth_id5Tomst_authorizationInputEnvelope
+    set?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
+    disconnect?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
+    delete?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
+    connect?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
+    update?: tr_handoverUpdateWithWhereUniqueWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput | tr_handoverUpdateWithWhereUniqueWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    updateMany?: tr_handoverUpdateManyWithWhereWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput | tr_handoverUpdateManyWithWhereWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
     deleteMany?: tr_handoverScalarWhereInput | tr_handoverScalarWhereInput[]
   }
 
@@ -53554,6 +55101,20 @@ export namespace Prisma {
     connect?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
     update?: tr_handoverUpdateWithWhereUniqueWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput | tr_handoverUpdateWithWhereUniqueWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput[]
     updateMany?: tr_handoverUpdateManyWithWhereWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput | tr_handoverUpdateManyWithWhereWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput[]
+    deleteMany?: tr_handoverScalarWhereInput | tr_handoverScalarWhereInput[]
+  }
+
+  export type tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput = {
+    create?: XOR<tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput, tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput> | tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[] | tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    connectOrCreate?: tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput | tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    upsert?: tr_handoverUpsertWithWhereUniqueWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput | tr_handoverUpsertWithWhereUniqueWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    createMany?: tr_handoverCreateManyMst_authorization_tr_handover_auth_id5Tomst_authorizationInputEnvelope
+    set?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
+    disconnect?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
+    delete?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
+    connect?: tr_handoverWhereUniqueInput | tr_handoverWhereUniqueInput[]
+    update?: tr_handoverUpdateWithWhereUniqueWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput | tr_handoverUpdateWithWhereUniqueWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    updateMany?: tr_handoverUpdateManyWithWhereWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput | tr_handoverUpdateManyWithWhereWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
     deleteMany?: tr_handoverScalarWhereInput | tr_handoverScalarWhereInput[]
   }
 
@@ -54612,6 +56173,12 @@ export namespace Prisma {
     connect?: mst_authorizationWhereUniqueInput
   }
 
+  export type mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput = {
+    create?: XOR<mst_authorizationCreateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput, mst_authorizationUncheckedCreateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput>
+    connectOrCreate?: mst_authorizationCreateOrConnectWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
+    connect?: mst_authorizationWhereUniqueInput
+  }
+
   export type mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput = {
     create?: XOR<mst_authorizationCreateWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput, mst_authorizationUncheckedCreateWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput>
     connectOrCreate?: mst_authorizationCreateOrConnectWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
@@ -54717,6 +56284,16 @@ export namespace Prisma {
     delete?: mst_authorizationWhereInput | boolean
     connect?: mst_authorizationWhereUniqueInput
     update?: XOR<XOR<mst_authorizationUpdateToOneWithWhereWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput, mst_authorizationUpdateWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput>, mst_authorizationUncheckedUpdateWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput>
+  }
+
+  export type mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput = {
+    create?: XOR<mst_authorizationCreateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput, mst_authorizationUncheckedCreateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput>
+    connectOrCreate?: mst_authorizationCreateOrConnectWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
+    upsert?: mst_authorizationUpsertWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
+    disconnect?: mst_authorizationWhereInput | boolean
+    delete?: mst_authorizationWhereInput | boolean
+    connect?: mst_authorizationWhereUniqueInput
+    update?: XOR<XOR<mst_authorizationUpdateToOneWithWhereWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput, mst_authorizationUpdateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput>, mst_authorizationUncheckedUpdateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput>
   }
 
   export type mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput = {
@@ -54933,6 +56510,28 @@ export namespace Prisma {
     update?: XOR<XOR<mst_authorizationUpdateToOneWithWhereWithoutTr_handover_historyInput, mst_authorizationUpdateWithoutTr_handover_historyInput>, mst_authorizationUncheckedUpdateWithoutTr_handover_historyInput>
   }
 
+  export type tr_handoverCreateNestedOneWithoutEmail_tracking_handoverInput = {
+    create?: XOR<tr_handoverCreateWithoutEmail_tracking_handoverInput, tr_handoverUncheckedCreateWithoutEmail_tracking_handoverInput>
+    connectOrCreate?: tr_handoverCreateOrConnectWithoutEmail_tracking_handoverInput
+    connect?: tr_handoverWhereUniqueInput
+  }
+
+  export type Enumemail_tracking_handover_recipient_typeFieldUpdateOperationsInput = {
+    set?: $Enums.email_tracking_handover_recipient_type
+  }
+
+  export type Enumemail_tracking_handover_statusFieldUpdateOperationsInput = {
+    set?: $Enums.email_tracking_handover_status
+  }
+
+  export type tr_handoverUpdateOneRequiredWithoutEmail_tracking_handoverNestedInput = {
+    create?: XOR<tr_handoverCreateWithoutEmail_tracking_handoverInput, tr_handoverUncheckedCreateWithoutEmail_tracking_handoverInput>
+    connectOrCreate?: tr_handoverCreateOrConnectWithoutEmail_tracking_handoverInput
+    upsert?: tr_handoverUpsertWithoutEmail_tracking_handoverInput
+    connect?: tr_handoverWhereUniqueInput
+    update?: XOR<XOR<tr_handoverUpdateToOneWithWhereWithoutEmail_tracking_handoverInput, tr_handoverUpdateWithoutEmail_tracking_handoverInput>, tr_handoverUncheckedUpdateWithoutEmail_tracking_handoverInput>
+  }
+
   export type tr_proposed_changesCreateNestedOneWithoutEmail_tracking_proposedchangesInput = {
     create?: XOR<tr_proposed_changesCreateWithoutEmail_tracking_proposedchangesInput, tr_proposed_changesUncheckedCreateWithoutEmail_tracking_proposedchangesInput>
     connectOrCreate?: tr_proposed_changesCreateOrConnectWithoutEmail_tracking_proposedchangesInput
@@ -54977,39 +56576,6 @@ export namespace Prisma {
     update?: XOR<XOR<tr_authorization_docUpdateToOneWithWhereWithoutEmail_tracking_authdocInput, tr_authorization_docUpdateWithoutEmail_tracking_authdocInput>, tr_authorization_docUncheckedUpdateWithoutEmail_tracking_authdocInput>
   }
 
-  export type tr_handoverCreateNestedOneWithoutEmail_tracking_handoverInput = {
-    create?: XOR<tr_handoverCreateWithoutEmail_tracking_handoverInput, tr_handoverUncheckedCreateWithoutEmail_tracking_handoverInput>
-    connectOrCreate?: tr_handoverCreateOrConnectWithoutEmail_tracking_handoverInput
-    connect?: tr_handoverWhereUniqueInput
-  }
-
-  export type Enumemail_tracking_handover_recipient_typeFieldUpdateOperationsInput = {
-    set?: $Enums.email_tracking_handover_recipient_type
-  }
-
-  export type Enumemail_tracking_handover_statusFieldUpdateOperationsInput = {
-    set?: $Enums.email_tracking_handover_status
-  }
-
-  export type tr_handoverUpdateOneRequiredWithoutEmail_tracking_handoverNestedInput = {
-    create?: XOR<tr_handoverCreateWithoutEmail_tracking_handoverInput, tr_handoverUncheckedCreateWithoutEmail_tracking_handoverInput>
-    connectOrCreate?: tr_handoverCreateOrConnectWithoutEmail_tracking_handoverInput
-    upsert?: tr_handoverUpsertWithoutEmail_tracking_handoverInput
-    connect?: tr_handoverWhereUniqueInput
-    update?: XOR<XOR<tr_handoverUpdateToOneWithWhereWithoutEmail_tracking_handoverInput, tr_handoverUpdateWithoutEmail_tracking_handoverInput>, tr_handoverUncheckedUpdateWithoutEmail_tracking_handoverInput>
-  }
-
-  export type NestedIntFilter<$PrismaModel = never> = {
-    equals?: number | IntFieldRefInput<$PrismaModel>
-    in?: number[]
-    notIn?: number[]
-    lt?: number | IntFieldRefInput<$PrismaModel>
-    lte?: number | IntFieldRefInput<$PrismaModel>
-    gt?: number | IntFieldRefInput<$PrismaModel>
-    gte?: number | IntFieldRefInput<$PrismaModel>
-    not?: NestedIntFilter<$PrismaModel> | number
-  }
-
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -55023,6 +56589,17 @@ export namespace Prisma {
     endsWith?: string | StringFieldRefInput<$PrismaModel>
     search?: string
     not?: NestedStringFilter<$PrismaModel> | string
+  }
+
+  export type NestedDateTimeFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    in?: Date[] | string[]
+    notIn?: Date[] | string[]
+    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
+    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
   export type NestedStringNullableFilter<$PrismaModel = never> = {
@@ -55040,7 +56617,36 @@ export namespace Prisma {
     not?: NestedStringNullableFilter<$PrismaModel> | string | null
   }
 
-  export type NestedDateTimeFilter<$PrismaModel = never> = {
+  export type NestedIntFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel>
+    in?: number[]
+    notIn?: number[]
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntFilter<$PrismaModel> | number
+  }
+
+  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel>
+    in?: string[]
+    notIn?: string[]
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedStringFilter<$PrismaModel>
+    _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
     equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     in?: Date[] | string[]
     notIn?: Date[] | string[]
@@ -55048,18 +56654,28 @@ export namespace Prisma {
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeFilter<$PrismaModel> | Date | string
+    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedDateTimeFilter<$PrismaModel>
+    _max?: NestedDateTimeFilter<$PrismaModel>
   }
 
-  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
-    in?: Date[] | string[] | null
-    notIn?: Date[] | string[] | null
-    lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
+  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: string | StringFieldRefInput<$PrismaModel> | null
+    in?: string[] | null
+    notIn?: string[] | null
+    lt?: string | StringFieldRefInput<$PrismaModel>
+    lte?: string | StringFieldRefInput<$PrismaModel>
+    gt?: string | StringFieldRefInput<$PrismaModel>
+    gte?: string | StringFieldRefInput<$PrismaModel>
+    contains?: string | StringFieldRefInput<$PrismaModel>
+    startsWith?: string | StringFieldRefInput<$PrismaModel>
+    endsWith?: string | StringFieldRefInput<$PrismaModel>
+    search?: string
+    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedStringNullableFilter<$PrismaModel>
+    _max?: NestedStringNullableFilter<$PrismaModel>
   }
 
   export type NestedIntNullableFilter<$PrismaModel = never> = {
@@ -55099,55 +56715,39 @@ export namespace Prisma {
     gte?: number | FloatFieldRefInput<$PrismaModel>
     not?: NestedFloatFilter<$PrismaModel> | number
   }
+  export type NestedJsonNullableFilter<$PrismaModel = never> =
+    | PatchUndefined<
+        Either<Required<NestedJsonNullableFilterBase<$PrismaModel>>, Exclude<keyof Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>,
+        Required<NestedJsonNullableFilterBase<$PrismaModel>>
+      >
+    | OptionalFlat<Omit<Required<NestedJsonNullableFilterBase<$PrismaModel>>, 'path'>>
 
-  export type NestedStringWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel>
-    in?: string[]
-    notIn?: string[]
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringWithAggregatesFilter<$PrismaModel> | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedStringFilter<$PrismaModel>
-    _max?: NestedStringFilter<$PrismaModel>
+  export type NestedJsonNullableFilterBase<$PrismaModel = never> = {
+    equals?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
+    path?: string
+    mode?: QueryMode | EnumQueryModeFieldRefInput<$PrismaModel>
+    string_contains?: string | StringFieldRefInput<$PrismaModel>
+    string_starts_with?: string | StringFieldRefInput<$PrismaModel>
+    string_ends_with?: string | StringFieldRefInput<$PrismaModel>
+    array_starts_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_ends_with?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    array_contains?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | null
+    lt?: InputJsonValue
+    lte?: InputJsonValue
+    gt?: InputJsonValue
+    gte?: InputJsonValue
+    not?: InputJsonValue | JsonFieldRefInput<$PrismaModel> | JsonNullValueFilter
   }
 
-  export type NestedStringNullableWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: string | StringFieldRefInput<$PrismaModel> | null
-    in?: string[] | null
-    notIn?: string[] | null
-    lt?: string | StringFieldRefInput<$PrismaModel>
-    lte?: string | StringFieldRefInput<$PrismaModel>
-    gt?: string | StringFieldRefInput<$PrismaModel>
-    gte?: string | StringFieldRefInput<$PrismaModel>
-    contains?: string | StringFieldRefInput<$PrismaModel>
-    startsWith?: string | StringFieldRefInput<$PrismaModel>
-    endsWith?: string | StringFieldRefInput<$PrismaModel>
-    search?: string
-    not?: NestedStringNullableWithAggregatesFilter<$PrismaModel> | string | null
-    _count?: NestedIntNullableFilter<$PrismaModel>
-    _min?: NestedStringNullableFilter<$PrismaModel>
-    _max?: NestedStringNullableFilter<$PrismaModel>
-  }
-
-  export type NestedDateTimeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    in?: Date[] | string[]
-    notIn?: Date[] | string[]
+  export type NestedDateTimeNullableFilter<$PrismaModel = never> = {
+    equals?: Date | string | DateTimeFieldRefInput<$PrismaModel> | null
+    in?: Date[] | string[] | null
+    notIn?: Date[] | string[] | null
     lt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     lte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gt?: Date | string | DateTimeFieldRefInput<$PrismaModel>
     gte?: Date | string | DateTimeFieldRefInput<$PrismaModel>
-    not?: NestedDateTimeWithAggregatesFilter<$PrismaModel> | Date | string
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedDateTimeFilter<$PrismaModel>
-    _max?: NestedDateTimeFilter<$PrismaModel>
+    not?: NestedDateTimeNullableFilter<$PrismaModel> | Date | string | null
   }
 
   export type NestedDateTimeNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -55234,6 +56834,40 @@ export namespace Prisma {
     _max?: NestedEnumGenderNullableFilter<$PrismaModel>
   }
 
+  export type NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel = never> = {
+    equals?: $Enums.email_tracking_handover_recipient_type | Enumemail_tracking_handover_recipient_typeFieldRefInput<$PrismaModel>
+    in?: $Enums.email_tracking_handover_recipient_type[]
+    notIn?: $Enums.email_tracking_handover_recipient_type[]
+    not?: NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel> | $Enums.email_tracking_handover_recipient_type
+  }
+
+  export type NestedEnumemail_tracking_handover_statusFilter<$PrismaModel = never> = {
+    equals?: $Enums.email_tracking_handover_status | Enumemail_tracking_handover_statusFieldRefInput<$PrismaModel>
+    in?: $Enums.email_tracking_handover_status[]
+    notIn?: $Enums.email_tracking_handover_status[]
+    not?: NestedEnumemail_tracking_handover_statusFilter<$PrismaModel> | $Enums.email_tracking_handover_status
+  }
+
+  export type NestedEnumemail_tracking_handover_recipient_typeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.email_tracking_handover_recipient_type | Enumemail_tracking_handover_recipient_typeFieldRefInput<$PrismaModel>
+    in?: $Enums.email_tracking_handover_recipient_type[]
+    notIn?: $Enums.email_tracking_handover_recipient_type[]
+    not?: NestedEnumemail_tracking_handover_recipient_typeWithAggregatesFilter<$PrismaModel> | $Enums.email_tracking_handover_recipient_type
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel>
+    _max?: NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel>
+  }
+
+  export type NestedEnumemail_tracking_handover_statusWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.email_tracking_handover_status | Enumemail_tracking_handover_statusFieldRefInput<$PrismaModel>
+    in?: $Enums.email_tracking_handover_status[]
+    notIn?: $Enums.email_tracking_handover_status[]
+    not?: NestedEnumemail_tracking_handover_statusWithAggregatesFilter<$PrismaModel> | $Enums.email_tracking_handover_status
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnumemail_tracking_handover_statusFilter<$PrismaModel>
+    _max?: NestedEnumemail_tracking_handover_statusFilter<$PrismaModel>
+  }
+
   export type NestedEnumemail_tracking_proposedchanges_recipient_typeFilter<$PrismaModel = never> = {
     equals?: $Enums.email_tracking_proposedchanges_recipient_type | Enumemail_tracking_proposedchanges_recipient_typeFieldRefInput<$PrismaModel>
     in?: $Enums.email_tracking_proposedchanges_recipient_type[]
@@ -55302,40 +56936,6 @@ export namespace Prisma {
     _max?: NestedEnumemail_tracking_authdoc_statusFilter<$PrismaModel>
   }
 
-  export type NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel = never> = {
-    equals?: $Enums.email_tracking_handover_recipient_type | Enumemail_tracking_handover_recipient_typeFieldRefInput<$PrismaModel>
-    in?: $Enums.email_tracking_handover_recipient_type[]
-    notIn?: $Enums.email_tracking_handover_recipient_type[]
-    not?: NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel> | $Enums.email_tracking_handover_recipient_type
-  }
-
-  export type NestedEnumemail_tracking_handover_statusFilter<$PrismaModel = never> = {
-    equals?: $Enums.email_tracking_handover_status | Enumemail_tracking_handover_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.email_tracking_handover_status[]
-    notIn?: $Enums.email_tracking_handover_status[]
-    not?: NestedEnumemail_tracking_handover_statusFilter<$PrismaModel> | $Enums.email_tracking_handover_status
-  }
-
-  export type NestedEnumemail_tracking_handover_recipient_typeWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.email_tracking_handover_recipient_type | Enumemail_tracking_handover_recipient_typeFieldRefInput<$PrismaModel>
-    in?: $Enums.email_tracking_handover_recipient_type[]
-    notIn?: $Enums.email_tracking_handover_recipient_type[]
-    not?: NestedEnumemail_tracking_handover_recipient_typeWithAggregatesFilter<$PrismaModel> | $Enums.email_tracking_handover_recipient_type
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel>
-    _max?: NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel>
-  }
-
-  export type NestedEnumemail_tracking_handover_statusWithAggregatesFilter<$PrismaModel = never> = {
-    equals?: $Enums.email_tracking_handover_status | Enumemail_tracking_handover_statusFieldRefInput<$PrismaModel>
-    in?: $Enums.email_tracking_handover_status[]
-    notIn?: $Enums.email_tracking_handover_status[]
-    not?: NestedEnumemail_tracking_handover_statusWithAggregatesFilter<$PrismaModel> | $Enums.email_tracking_handover_status
-    _count?: NestedIntFilter<$PrismaModel>
-    _min?: NestedEnumemail_tracking_handover_statusFilter<$PrismaModel>
-    _max?: NestedEnumemail_tracking_handover_statusFilter<$PrismaModel>
-  }
-
   export type mst_authorizationCreateWithoutRoleInput = {
     employee_code?: string | null
     employee_name?: string | null
@@ -55359,6 +56959,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -55393,6 +56994,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -55631,6 +57233,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -55665,6 +57268,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -55756,6 +57360,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -55790,6 +57395,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -55871,6 +57477,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -55905,6 +57512,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -55996,6 +57604,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -56030,6 +57639,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -56268,6 +57878,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -56302,6 +57913,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -56539,6 +58151,7 @@ export namespace Prisma {
     is_deleted?: boolean | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
@@ -56557,6 +58170,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     department_id?: number | null
@@ -56606,6 +58220,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
@@ -56646,6 +58261,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -56836,6 +58452,7 @@ export namespace Prisma {
     auth_id2?: IntNullableFilter<"tr_handover"> | number | null
     auth_id3?: IntNullableFilter<"tr_handover"> | number | null
     auth_id4?: IntNullableFilter<"tr_handover"> | number | null
+    auth_id5?: IntNullableFilter<"tr_handover"> | number | null
     proposed_change_id?: IntNullableFilter<"tr_handover"> | number | null
     authdoc_id?: IntNullableFilter<"tr_handover"> | number | null
     plant_id?: IntNullableFilter<"tr_handover"> | number | null
@@ -56898,6 +58515,7 @@ export namespace Prisma {
     other_sytem?: StringNullableFilter<"tr_proposed_changes"> | string | null
     status?: StringNullableFilter<"tr_proposed_changes"> | string | null
     progress?: StringNullableFilter<"tr_proposed_changes"> | string | null
+    progresssupport?: StringNullableFilter<"tr_proposed_changes"> | string | null
     is_deleted?: BoolFilter<"tr_proposed_changes"> | boolean
   }
 
@@ -56924,6 +58542,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -56958,6 +58577,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -57137,6 +58757,7 @@ export namespace Prisma {
     is_deleted?: boolean | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
@@ -57155,6 +58776,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -57204,6 +58826,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
@@ -57244,6 +58867,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -57426,6 +59050,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -57460,6 +59085,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -57724,6 +59350,7 @@ export namespace Prisma {
     is_deleted?: boolean | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
@@ -57742,6 +59369,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -57791,6 +59419,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
@@ -57831,6 +59460,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -58246,6 +59876,7 @@ export namespace Prisma {
     authdocHistories?: tr_authdoc_historyCreateNestedManyWithoutAuthorizationInput
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -58280,6 +59911,7 @@ export namespace Prisma {
     authdocHistories?: tr_authdoc_historyUncheckedCreateNestedManyWithoutAuthorizationInput
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -58420,6 +60052,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
@@ -58460,6 +60093,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -58550,6 +60184,7 @@ export namespace Prisma {
     authdocHistories?: tr_authdoc_historyUpdateManyWithoutAuthorizationNestedInput
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -58584,6 +60219,7 @@ export namespace Prisma {
     authdocHistories?: tr_authdoc_historyUncheckedUpdateManyWithoutAuthorizationNestedInput
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -58755,6 +60391,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -58789,6 +60426,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -58887,6 +60525,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
@@ -58928,6 +60567,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -59009,6 +60649,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -59043,6 +60684,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -59159,6 +60801,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
@@ -59200,6 +60843,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -59359,6 +61003,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -59393,6 +61038,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -59428,6 +61074,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
@@ -59469,6 +61116,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -59518,6 +61166,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -59552,6 +61201,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -59593,6 +61243,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
@@ -59634,6 +61285,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -59667,6 +61319,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -59701,6 +61354,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -59736,6 +61390,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
@@ -59777,6 +61432,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -59826,6 +61482,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -59860,6 +61517,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -59901,6 +61559,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
@@ -59942,6 +61601,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -60376,6 +62036,7 @@ export namespace Prisma {
     updated_by?: string | null
     is_deleted?: boolean | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
@@ -60394,6 +62055,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -60423,6 +62085,67 @@ export namespace Prisma {
     skipDuplicates?: boolean
   }
 
+  export type tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
+    doc_number?: string | null
+    progress?: string | null
+    status?: string | null
+    material?: string | null
+    remark?: string | null
+    created_by?: string | null
+    created_date?: Date | string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    is_deleted?: boolean | null
+    email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
+    mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
+    mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
+    mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
+    tr_proposed_changes?: tr_proposed_changesCreateNestedOneWithoutTr_handoverInput
+    tr_authorization_doc?: tr_authorization_docCreateNestedOneWithoutTr_handoverInput
+    mst_plant?: mst_plantCreateNestedOneWithoutTr_handoverInput
+    mst_department?: mst_departmentCreateNestedOneWithoutTr_handoverInput
+    mst_section_department?: mst_section_departmentCreateNestedOneWithoutTr_handoverInput
+    tr_handover_approval?: tr_handover_approvalCreateNestedManyWithoutTr_handoverInput
+    tr_handover_history?: tr_handover_historyCreateNestedManyWithoutTr_handoverInput
+  }
+
+  export type tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
+    id?: number
+    doc_number?: string | null
+    auth_id?: number | null
+    auth_id2?: number | null
+    auth_id3?: number | null
+    auth_id4?: number | null
+    proposed_change_id?: number | null
+    authdoc_id?: number | null
+    plant_id?: number | null
+    department_id?: number | null
+    section_department_id?: number | null
+    progress?: string | null
+    status?: string | null
+    material?: string | null
+    remark?: string | null
+    created_by?: string | null
+    created_date?: Date | string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    is_deleted?: boolean | null
+    email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
+    tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
+    tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
+  }
+
+  export type tr_handoverCreateOrConnectWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
+    where: tr_handoverWhereUniqueInput
+    create: XOR<tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput, tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput>
+  }
+
+  export type tr_handoverCreateManyMst_authorization_tr_handover_auth_id5Tomst_authorizationInputEnvelope = {
+    data: tr_handoverCreateManyMst_authorization_tr_handover_auth_id5Tomst_authorizationInput | tr_handoverCreateManyMst_authorization_tr_handover_auth_id5Tomst_authorizationInput[]
+    skipDuplicates?: boolean
+  }
+
   export type tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput = {
     doc_number?: string | null
     progress?: string | null
@@ -60436,6 +62159,7 @@ export namespace Prisma {
     is_deleted?: boolean | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
     tr_proposed_changes?: tr_proposed_changesCreateNestedOneWithoutTr_handoverInput
@@ -60453,6 +62177,7 @@ export namespace Prisma {
     auth_id?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -60495,6 +62220,7 @@ export namespace Prisma {
     is_deleted?: boolean | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
     tr_proposed_changes?: tr_proposed_changesCreateNestedOneWithoutTr_handoverInput
@@ -60512,6 +62238,7 @@ export namespace Prisma {
     auth_id?: number | null
     auth_id2?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -60554,6 +62281,7 @@ export namespace Prisma {
     is_deleted?: boolean | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
     tr_proposed_changes?: tr_proposed_changesCreateNestedOneWithoutTr_handoverInput
@@ -60571,6 +62299,7 @@ export namespace Prisma {
     auth_id?: number | null
     auth_id2?: number | null
     auth_id3?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -60685,6 +62414,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
@@ -60725,6 +62455,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -61134,6 +62865,22 @@ export namespace Prisma {
     data: XOR<tr_handoverUpdateManyMutationInput, tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput>
   }
 
+  export type tr_handoverUpsertWithWhereUniqueWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
+    where: tr_handoverWhereUniqueInput
+    update: XOR<tr_handoverUpdateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput, tr_handoverUncheckedUpdateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput>
+    create: XOR<tr_handoverCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput, tr_handoverUncheckedCreateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput>
+  }
+
+  export type tr_handoverUpdateWithWhereUniqueWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
+    where: tr_handoverWhereUniqueInput
+    data: XOR<tr_handoverUpdateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput, tr_handoverUncheckedUpdateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput>
+  }
+
+  export type tr_handoverUpdateManyWithWhereWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
+    where: tr_handoverScalarWhereInput
+    data: XOR<tr_handoverUpdateManyMutationInput, tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput>
+  }
+
   export type tr_handoverUpsertWithWhereUniqueWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput = {
     where: tr_handoverWhereUniqueInput
     update: XOR<tr_handoverUpdateWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput, tr_handoverUncheckedUpdateWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput>
@@ -61345,6 +63092,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
@@ -61386,6 +63134,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -61520,6 +63269,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
@@ -61561,6 +63311,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -62035,6 +63786,7 @@ export namespace Prisma {
     authdocHistories?: tr_authdoc_historyCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -62069,6 +63821,7 @@ export namespace Prisma {
     authdocHistories?: tr_authdoc_historyUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -62181,6 +63934,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
@@ -62222,6 +63976,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -62291,6 +64046,7 @@ export namespace Prisma {
     is_deleted?: boolean | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
@@ -62309,6 +64065,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     plant_id?: number | null
     department_id?: number | null
@@ -62467,6 +64224,7 @@ export namespace Prisma {
     authdocHistories?: tr_authdoc_historyUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -62501,6 +64259,7 @@ export namespace Prisma {
     authdocHistories?: tr_authdoc_historyUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -62631,6 +64390,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
@@ -62672,6 +64432,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -62768,6 +64529,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -62802,6 +64564,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -62907,6 +64670,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -62941,6 +64705,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -63214,6 +64979,7 @@ export namespace Prisma {
     is_deleted?: boolean | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
@@ -63232,6 +64998,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
     department_id?: number | null
@@ -63284,6 +65051,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -63318,6 +65086,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -63694,6 +65463,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -63728,6 +65498,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -63980,6 +65751,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -64014,6 +65786,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -64119,6 +65892,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -64153,6 +65927,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -64405,6 +66180,7 @@ export namespace Prisma {
     authdocHistories?: tr_authdoc_historyCreateNestedManyWithoutAuthorizationInput
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -64439,6 +66215,7 @@ export namespace Prisma {
     authdocHistories?: tr_authdoc_historyUncheckedCreateNestedManyWithoutAuthorizationInput
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -64452,6 +66229,80 @@ export namespace Prisma {
   export type mst_authorizationCreateOrConnectWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput = {
     where: mst_authorizationWhereUniqueInput
     create: XOR<mst_authorizationCreateWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput, mst_authorizationUncheckedCreateWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput>
+  }
+
+  export type mst_authorizationCreateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput = {
+    employee_code?: string | null
+    employee_name?: string | null
+    email?: string | null
+    number_phone?: string | null
+    gender?: $Enums.Gender | null
+    status?: boolean | null
+    created_at?: Date | string
+    created_by?: string | null
+    updated_at?: Date | string
+    updated_by?: string | null
+    is_deleted?: boolean
+    department?: mst_departmentCreateNestedOneWithoutAuthorizationsInput
+    plant?: mst_plantCreateNestedOneWithoutAuthorizationsInput
+    role?: mst_roleCreateNestedOneWithoutAuthorizationsInput
+    section?: mst_section_departmentCreateNestedOneWithoutAuthorizationsInput
+    departmentHeads?: mst_department_headCreateNestedManyWithoutAuthorizationInput
+    sectionHeads?: mst_section_headCreateNestedManyWithoutAuthorizationInput
+    authorization?: tr_additional_docCreateNestedManyWithoutAuthorizationInput
+    authdocApprovals?: tr_authdoc_approvalCreateNestedManyWithoutAuthorizationInput
+    authdocHistories?: tr_authdoc_historyCreateNestedManyWithoutAuthorizationInput
+    authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
+    documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
+    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
+    tr_handover_approval?: tr_handover_approvalCreateNestedManyWithoutMst_authorizationInput
+    tr_handover_history?: tr_handover_historyCreateNestedManyWithoutMst_authorizationInput
+    mainProposedChanges?: tr_proposed_changesCreateNestedManyWithoutMainProposedChangesInput
+    approvals?: tr_proposed_changes_approvalCreateNestedManyWithoutAuthorizationInput
+    historyproposedchanges?: tr_proposed_changes_historyCreateNestedManyWithoutAuthorizationInput
+  }
+
+  export type mst_authorizationUncheckedCreateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput = {
+    id?: number
+    employee_code?: string | null
+    employee_name?: string | null
+    email?: string | null
+    number_phone?: string | null
+    gender?: $Enums.Gender | null
+    department_id?: number | null
+    section_id?: number | null
+    plant_id?: number | null
+    role_id?: number | null
+    status?: boolean | null
+    created_at?: Date | string
+    created_by?: string | null
+    updated_at?: Date | string
+    updated_by?: string | null
+    is_deleted?: boolean
+    departmentHeads?: mst_department_headUncheckedCreateNestedManyWithoutAuthorizationInput
+    sectionHeads?: mst_section_headUncheckedCreateNestedManyWithoutAuthorizationInput
+    authorization?: tr_additional_docUncheckedCreateNestedManyWithoutAuthorizationInput
+    authdocApprovals?: tr_authdoc_approvalUncheckedCreateNestedManyWithoutAuthorizationInput
+    authdocHistories?: tr_authdoc_historyUncheckedCreateNestedManyWithoutAuthorizationInput
+    authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
+    documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
+    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
+    tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutMst_authorizationInput
+    tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutMst_authorizationInput
+    mainProposedChanges?: tr_proposed_changesUncheckedCreateNestedManyWithoutMainProposedChangesInput
+    approvals?: tr_proposed_changes_approvalUncheckedCreateNestedManyWithoutAuthorizationInput
+    historyproposedchanges?: tr_proposed_changes_historyUncheckedCreateNestedManyWithoutAuthorizationInput
+  }
+
+  export type mst_authorizationCreateOrConnectWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput = {
+    where: mst_authorizationWhereUniqueInput
+    create: XOR<mst_authorizationCreateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput, mst_authorizationUncheckedCreateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput>
   }
 
   export type mst_authorizationCreateWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput = {
@@ -64478,6 +66329,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
     tr_handover_approval?: tr_handover_approvalCreateNestedManyWithoutMst_authorizationInput
@@ -64512,6 +66364,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutMst_authorizationInput
@@ -64550,6 +66403,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
     tr_handover_approval?: tr_handover_approvalCreateNestedManyWithoutMst_authorizationInput
@@ -64584,6 +66438,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutMst_authorizationInput
@@ -64622,6 +66477,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_approval?: tr_handover_approvalCreateNestedManyWithoutMst_authorizationInput
@@ -64656,6 +66512,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutMst_authorizationInput
@@ -64691,6 +66548,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
@@ -64732,6 +66590,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -65053,6 +66912,7 @@ export namespace Prisma {
     authdocHistories?: tr_authdoc_historyUpdateManyWithoutAuthorizationNestedInput
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -65087,6 +66947,87 @@ export namespace Prisma {
     authdocHistories?: tr_authdoc_historyUncheckedUpdateManyWithoutAuthorizationNestedInput
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
+    tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutMst_authorizationNestedInput
+    tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutMst_authorizationNestedInput
+    mainProposedChanges?: tr_proposed_changesUncheckedUpdateManyWithoutMainProposedChangesNestedInput
+    approvals?: tr_proposed_changes_approvalUncheckedUpdateManyWithoutAuthorizationNestedInput
+    historyproposedchanges?: tr_proposed_changes_historyUncheckedUpdateManyWithoutAuthorizationNestedInput
+  }
+
+  export type mst_authorizationUpsertWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput = {
+    update: XOR<mst_authorizationUpdateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput, mst_authorizationUncheckedUpdateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput>
+    create: XOR<mst_authorizationCreateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput, mst_authorizationUncheckedCreateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput>
+    where?: mst_authorizationWhereInput
+  }
+
+  export type mst_authorizationUpdateToOneWithWhereWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput = {
+    where?: mst_authorizationWhereInput
+    data: XOR<mst_authorizationUpdateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput, mst_authorizationUncheckedUpdateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput>
+  }
+
+  export type mst_authorizationUpdateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput = {
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    number_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    department?: mst_departmentUpdateOneWithoutAuthorizationsNestedInput
+    plant?: mst_plantUpdateOneWithoutAuthorizationsNestedInput
+    role?: mst_roleUpdateOneWithoutAuthorizationsNestedInput
+    section?: mst_section_departmentUpdateOneWithoutAuthorizationsNestedInput
+    departmentHeads?: mst_department_headUpdateManyWithoutAuthorizationNestedInput
+    sectionHeads?: mst_section_headUpdateManyWithoutAuthorizationNestedInput
+    authorization?: tr_additional_docUpdateManyWithoutAuthorizationNestedInput
+    authdocApprovals?: tr_authdoc_approvalUpdateManyWithoutAuthorizationNestedInput
+    authdocHistories?: tr_authdoc_historyUpdateManyWithoutAuthorizationNestedInput
+    authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
+    documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
+    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
+    tr_handover_approval?: tr_handover_approvalUpdateManyWithoutMst_authorizationNestedInput
+    tr_handover_history?: tr_handover_historyUpdateManyWithoutMst_authorizationNestedInput
+    mainProposedChanges?: tr_proposed_changesUpdateManyWithoutMainProposedChangesNestedInput
+    approvals?: tr_proposed_changes_approvalUpdateManyWithoutAuthorizationNestedInput
+    historyproposedchanges?: tr_proposed_changes_historyUpdateManyWithoutAuthorizationNestedInput
+  }
+
+  export type mst_authorizationUncheckedUpdateWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    number_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    section_id?: NullableIntFieldUpdateOperationsInput | number | null
+    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
+    role_id?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    departmentHeads?: mst_department_headUncheckedUpdateManyWithoutAuthorizationNestedInput
+    sectionHeads?: mst_section_headUncheckedUpdateManyWithoutAuthorizationNestedInput
+    authorization?: tr_additional_docUncheckedUpdateManyWithoutAuthorizationNestedInput
+    authdocApprovals?: tr_authdoc_approvalUncheckedUpdateManyWithoutAuthorizationNestedInput
+    authdocHistories?: tr_authdoc_historyUncheckedUpdateManyWithoutAuthorizationNestedInput
+    authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
+    documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
+    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -65132,6 +67073,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
     tr_handover_approval?: tr_handover_approvalUpdateManyWithoutMst_authorizationNestedInput
@@ -65166,6 +67108,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutMst_authorizationNestedInput
@@ -65210,6 +67153,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
     tr_handover_approval?: tr_handover_approvalUpdateManyWithoutMst_authorizationNestedInput
@@ -65244,6 +67188,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutMst_authorizationNestedInput
@@ -65288,6 +67233,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_approval?: tr_handover_approvalUpdateManyWithoutMst_authorizationNestedInput
@@ -65322,6 +67268,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutMst_authorizationNestedInput
@@ -65363,6 +67310,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
@@ -65404,6 +67352,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -65656,6 +67605,7 @@ export namespace Prisma {
     is_deleted?: boolean | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
@@ -65674,6 +67624,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -65721,6 +67672,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -65755,6 +67707,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -65793,6 +67746,7 @@ export namespace Prisma {
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -65811,6 +67765,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -65864,6 +67819,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -65898,6 +67854,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -65920,6 +67877,7 @@ export namespace Prisma {
     is_deleted?: boolean | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
@@ -65938,6 +67896,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -65985,6 +67944,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -66019,6 +67979,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
     documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
@@ -66057,6 +68018,7 @@ export namespace Prisma {
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -66075,6 +68037,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -66128,6 +68091,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -66162,6 +68126,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -66169,6 +68134,124 @@ export namespace Prisma {
     mainProposedChanges?: tr_proposed_changesUncheckedUpdateManyWithoutMainProposedChangesNestedInput
     approvals?: tr_proposed_changes_approvalUncheckedUpdateManyWithoutAuthorizationNestedInput
     historyproposedchanges?: tr_proposed_changes_historyUncheckedUpdateManyWithoutAuthorizationNestedInput
+  }
+
+  export type tr_handoverCreateWithoutEmail_tracking_handoverInput = {
+    doc_number?: string | null
+    progress?: string | null
+    status?: string | null
+    material?: string | null
+    remark?: string | null
+    created_by?: string | null
+    created_date?: Date | string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    is_deleted?: boolean | null
+    mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
+    mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
+    mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
+    mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
+    tr_proposed_changes?: tr_proposed_changesCreateNestedOneWithoutTr_handoverInput
+    tr_authorization_doc?: tr_authorization_docCreateNestedOneWithoutTr_handoverInput
+    mst_plant?: mst_plantCreateNestedOneWithoutTr_handoverInput
+    mst_department?: mst_departmentCreateNestedOneWithoutTr_handoverInput
+    mst_section_department?: mst_section_departmentCreateNestedOneWithoutTr_handoverInput
+    tr_handover_approval?: tr_handover_approvalCreateNestedManyWithoutTr_handoverInput
+    tr_handover_history?: tr_handover_historyCreateNestedManyWithoutTr_handoverInput
+  }
+
+  export type tr_handoverUncheckedCreateWithoutEmail_tracking_handoverInput = {
+    id?: number
+    doc_number?: string | null
+    auth_id?: number | null
+    auth_id2?: number | null
+    auth_id3?: number | null
+    auth_id4?: number | null
+    auth_id5?: number | null
+    proposed_change_id?: number | null
+    authdoc_id?: number | null
+    plant_id?: number | null
+    department_id?: number | null
+    section_department_id?: number | null
+    progress?: string | null
+    status?: string | null
+    material?: string | null
+    remark?: string | null
+    created_by?: string | null
+    created_date?: Date | string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    is_deleted?: boolean | null
+    tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
+    tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
+  }
+
+  export type tr_handoverCreateOrConnectWithoutEmail_tracking_handoverInput = {
+    where: tr_handoverWhereUniqueInput
+    create: XOR<tr_handoverCreateWithoutEmail_tracking_handoverInput, tr_handoverUncheckedCreateWithoutEmail_tracking_handoverInput>
+  }
+
+  export type tr_handoverUpsertWithoutEmail_tracking_handoverInput = {
+    update: XOR<tr_handoverUpdateWithoutEmail_tracking_handoverInput, tr_handoverUncheckedUpdateWithoutEmail_tracking_handoverInput>
+    create: XOR<tr_handoverCreateWithoutEmail_tracking_handoverInput, tr_handoverUncheckedCreateWithoutEmail_tracking_handoverInput>
+    where?: tr_handoverWhereInput
+  }
+
+  export type tr_handoverUpdateToOneWithWhereWithoutEmail_tracking_handoverInput = {
+    where?: tr_handoverWhereInput
+    data: XOR<tr_handoverUpdateWithoutEmail_tracking_handoverInput, tr_handoverUncheckedUpdateWithoutEmail_tracking_handoverInput>
+  }
+
+  export type tr_handoverUpdateWithoutEmail_tracking_handoverInput = {
+    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
+    progress?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    material?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
+    tr_proposed_changes?: tr_proposed_changesUpdateOneWithoutTr_handoverNestedInput
+    tr_authorization_doc?: tr_authorization_docUpdateOneWithoutTr_handoverNestedInput
+    mst_plant?: mst_plantUpdateOneWithoutTr_handoverNestedInput
+    mst_department?: mst_departmentUpdateOneWithoutTr_handoverNestedInput
+    mst_section_department?: mst_section_departmentUpdateOneWithoutTr_handoverNestedInput
+    tr_handover_approval?: tr_handover_approvalUpdateManyWithoutTr_handoverNestedInput
+    tr_handover_history?: tr_handover_historyUpdateManyWithoutTr_handoverNestedInput
+  }
+
+  export type tr_handoverUncheckedUpdateWithoutEmail_tracking_handoverInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
+    proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
+    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
+    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
+    department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    section_department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    progress?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    material?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
+    tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
   }
 
   export type tr_proposed_changesCreateWithoutEmail_tracking_proposedchangesInput = {
@@ -66192,6 +68275,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
@@ -66233,6 +68317,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -66279,6 +68364,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
@@ -66320,6 +68406,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -66447,120 +68534,6 @@ export namespace Prisma {
     tr_handover?: tr_handoverUncheckedUpdateManyWithoutTr_authorization_docNestedInput
   }
 
-  export type tr_handoverCreateWithoutEmail_tracking_handoverInput = {
-    doc_number?: string | null
-    progress?: string | null
-    status?: string | null
-    material?: string | null
-    remark?: string | null
-    created_by?: string | null
-    created_date?: Date | string | null
-    updated_at?: Date | string | null
-    updated_by?: string | null
-    is_deleted?: boolean | null
-    mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
-    mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
-    mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationInput
-    mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationInput
-    tr_proposed_changes?: tr_proposed_changesCreateNestedOneWithoutTr_handoverInput
-    tr_authorization_doc?: tr_authorization_docCreateNestedOneWithoutTr_handoverInput
-    mst_plant?: mst_plantCreateNestedOneWithoutTr_handoverInput
-    mst_department?: mst_departmentCreateNestedOneWithoutTr_handoverInput
-    mst_section_department?: mst_section_departmentCreateNestedOneWithoutTr_handoverInput
-    tr_handover_approval?: tr_handover_approvalCreateNestedManyWithoutTr_handoverInput
-    tr_handover_history?: tr_handover_historyCreateNestedManyWithoutTr_handoverInput
-  }
-
-  export type tr_handoverUncheckedCreateWithoutEmail_tracking_handoverInput = {
-    id?: number
-    doc_number?: string | null
-    auth_id?: number | null
-    auth_id2?: number | null
-    auth_id3?: number | null
-    auth_id4?: number | null
-    proposed_change_id?: number | null
-    authdoc_id?: number | null
-    plant_id?: number | null
-    department_id?: number | null
-    section_department_id?: number | null
-    progress?: string | null
-    status?: string | null
-    material?: string | null
-    remark?: string | null
-    created_by?: string | null
-    created_date?: Date | string | null
-    updated_at?: Date | string | null
-    updated_by?: string | null
-    is_deleted?: boolean | null
-    tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
-    tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
-  }
-
-  export type tr_handoverCreateOrConnectWithoutEmail_tracking_handoverInput = {
-    where: tr_handoverWhereUniqueInput
-    create: XOR<tr_handoverCreateWithoutEmail_tracking_handoverInput, tr_handoverUncheckedCreateWithoutEmail_tracking_handoverInput>
-  }
-
-  export type tr_handoverUpsertWithoutEmail_tracking_handoverInput = {
-    update: XOR<tr_handoverUpdateWithoutEmail_tracking_handoverInput, tr_handoverUncheckedUpdateWithoutEmail_tracking_handoverInput>
-    create: XOR<tr_handoverCreateWithoutEmail_tracking_handoverInput, tr_handoverUncheckedCreateWithoutEmail_tracking_handoverInput>
-    where?: tr_handoverWhereInput
-  }
-
-  export type tr_handoverUpdateToOneWithWhereWithoutEmail_tracking_handoverInput = {
-    where?: tr_handoverWhereInput
-    data: XOR<tr_handoverUpdateWithoutEmail_tracking_handoverInput, tr_handoverUncheckedUpdateWithoutEmail_tracking_handoverInput>
-  }
-
-  export type tr_handoverUpdateWithoutEmail_tracking_handoverInput = {
-    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
-    progress?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    material?: NullableStringFieldUpdateOperationsInput | string | null
-    remark?: NullableStringFieldUpdateOperationsInput | string | null
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
-    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
-    mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
-    mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
-    mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
-    tr_proposed_changes?: tr_proposed_changesUpdateOneWithoutTr_handoverNestedInput
-    tr_authorization_doc?: tr_authorization_docUpdateOneWithoutTr_handoverNestedInput
-    mst_plant?: mst_plantUpdateOneWithoutTr_handoverNestedInput
-    mst_department?: mst_departmentUpdateOneWithoutTr_handoverNestedInput
-    mst_section_department?: mst_section_departmentUpdateOneWithoutTr_handoverNestedInput
-    tr_handover_approval?: tr_handover_approvalUpdateManyWithoutTr_handoverNestedInput
-    tr_handover_history?: tr_handover_historyUpdateManyWithoutTr_handoverNestedInput
-  }
-
-  export type tr_handoverUncheckedUpdateWithoutEmail_tracking_handoverInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
-    auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
-    auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
-    auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
-    proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
-    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
-    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
-    department_id?: NullableIntFieldUpdateOperationsInput | number | null
-    section_department_id?: NullableIntFieldUpdateOperationsInput | number | null
-    progress?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    material?: NullableStringFieldUpdateOperationsInput | string | null
-    remark?: NullableStringFieldUpdateOperationsInput | string | null
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
-    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
-    tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
-  }
-
   export type mst_authorizationCreateManyRoleInput = {
     id?: number
     employee_code?: string | null
@@ -66602,6 +68575,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -66636,6 +68610,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -66891,6 +68866,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     department_id?: number | null
@@ -66932,6 +68908,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
   }
 
@@ -66958,6 +68935,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -66992,6 +68970,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -67269,6 +69248,7 @@ export namespace Prisma {
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -67287,6 +69267,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     department_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67312,6 +69293,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     department_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67348,6 +69330,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
@@ -67388,6 +69371,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -67424,6 +69408,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -67484,6 +69469,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -67525,6 +69511,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
   }
 
@@ -67551,6 +69538,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -67585,6 +69573,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -67746,6 +69735,7 @@ export namespace Prisma {
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -67764,6 +69754,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67789,6 +69780,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -67825,6 +69817,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
@@ -67865,6 +69858,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -67901,6 +69895,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -67996,6 +69991,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -68037,6 +70033,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
   }
 
@@ -68063,6 +70060,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -68097,6 +70095,7 @@ export namespace Prisma {
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
     documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
     tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -68348,6 +70347,7 @@ export namespace Prisma {
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -68366,6 +70366,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -68391,6 +70392,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -68427,6 +70429,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
@@ -68467,6 +70470,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -68503,6 +70507,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -68690,6 +70695,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
   }
 
@@ -68714,6 +70720,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
@@ -68754,6 +70761,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -68790,6 +70798,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -68943,6 +70952,30 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
+    proposed_change_id?: number | null
+    authdoc_id?: number | null
+    plant_id?: number | null
+    department_id?: number | null
+    section_department_id?: number | null
+    progress?: string | null
+    status?: string | null
+    material?: string | null
+    remark?: string | null
+    created_by?: string | null
+    created_date?: Date | string | null
+    updated_at?: Date | string | null
+    updated_by?: string | null
+    is_deleted?: boolean | null
+  }
+
+  export type tr_handoverCreateManyMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
+    id?: number
+    doc_number?: string | null
+    auth_id?: number | null
+    auth_id2?: number | null
+    auth_id3?: number | null
+    auth_id4?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -68965,6 +70998,7 @@ export namespace Prisma {
     auth_id?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -68987,6 +71021,7 @@ export namespace Prisma {
     auth_id?: number | null
     auth_id2?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -69009,6 +71044,7 @@ export namespace Prisma {
     auth_id?: number | null
     auth_id2?: number | null
     auth_id3?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
@@ -69074,6 +71110,7 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
+    progresssupport?: string | null
     is_deleted?: boolean
   }
 
@@ -69410,6 +71447,7 @@ export namespace Prisma {
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -69428,6 +71466,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69450,6 +71489,81 @@ export namespace Prisma {
   export type tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput = {
     id?: IntFieldUpdateOperationsInput | number
     doc_number?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
+    proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
+    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
+    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
+    department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    section_department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    progress?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    material?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type tr_handoverUpdateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
+    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
+    progress?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    material?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
+    mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
+    tr_proposed_changes?: tr_proposed_changesUpdateOneWithoutTr_handoverNestedInput
+    tr_authorization_doc?: tr_authorization_docUpdateOneWithoutTr_handoverNestedInput
+    mst_plant?: mst_plantUpdateOneWithoutTr_handoverNestedInput
+    mst_department?: mst_departmentUpdateOneWithoutTr_handoverNestedInput
+    mst_section_department?: mst_section_departmentUpdateOneWithoutTr_handoverNestedInput
+    tr_handover_approval?: tr_handover_approvalUpdateManyWithoutTr_handoverNestedInput
+    tr_handover_history?: tr_handover_historyUpdateManyWithoutTr_handoverNestedInput
+  }
+
+  export type tr_handoverUncheckedUpdateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
+    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
+    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
+    department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    section_department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    progress?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    material?: NullableStringFieldUpdateOperationsInput | string | null
+    remark?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
+    tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
+    tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
+  }
+
+  export type tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69482,6 +71596,7 @@ export namespace Prisma {
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
     tr_proposed_changes?: tr_proposed_changesUpdateOneWithoutTr_handoverNestedInput
@@ -69499,6 +71614,7 @@ export namespace Prisma {
     auth_id?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69524,6 +71640,7 @@ export namespace Prisma {
     auth_id?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69553,6 +71670,7 @@ export namespace Prisma {
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
     tr_proposed_changes?: tr_proposed_changesUpdateOneWithoutTr_handoverNestedInput
@@ -69570,6 +71688,7 @@ export namespace Prisma {
     auth_id?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69595,6 +71714,7 @@ export namespace Prisma {
     auth_id?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69624,6 +71744,7 @@ export namespace Prisma {
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
     tr_proposed_changes?: tr_proposed_changesUpdateOneWithoutTr_handoverNestedInput
@@ -69641,6 +71762,7 @@ export namespace Prisma {
     auth_id?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69666,6 +71788,7 @@ export namespace Prisma {
     auth_id?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -69770,6 +71893,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
@@ -69810,6 +71934,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -69846,6 +71971,7 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -70119,6 +72245,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     proposed_change_id?: number | null
     plant_id?: number | null
     department_id?: number | null
@@ -70284,6 +72411,7 @@ export namespace Prisma {
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -70302,6 +72430,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
     department_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70327,6 +72456,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
     department_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70417,6 +72547,7 @@ export namespace Prisma {
     auth_id2?: number | null
     auth_id3?: number | null
     auth_id4?: number | null
+    auth_id5?: number | null
     authdoc_id?: number | null
     plant_id?: number | null
     department_id?: number | null
@@ -70684,6 +72815,7 @@ export namespace Prisma {
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
+    mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id3Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id3Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id4Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id4Tomst_authorizationNestedInput
@@ -70702,6 +72834,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
     department_id?: NullableIntFieldUpdateOperationsInput | number | null
@@ -70727,6 +72860,7 @@ export namespace Prisma {
     auth_id2?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id3?: NullableIntFieldUpdateOperationsInput | number | null
     auth_id4?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id5?: NullableIntFieldUpdateOperationsInput | number | null
     authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
     plant_id?: NullableIntFieldUpdateOperationsInput | number | null
     department_id?: NullableIntFieldUpdateOperationsInput | number | null

@@ -32,7 +32,6 @@ export const getAllAuthDoc = async (req: Request, res: Response): Promise<void> 
         }
 
         const offset = (page - 1) * limit;
-        // const whereCondition: any = { is_deleted: false };
         const andConditions: any[] = [];
 
         // Search condition
@@ -79,13 +78,36 @@ export const getAllAuthDoc = async (req: Request, res: Response): Promise<void> 
             });
         }
 
-        // if (andConditions.length > 0) {
-        //     whereCondition.AND = andConditions;
-        // }
+        // Filter by auth_id if provided
+        if (req.query.auth_id) {
+            andConditions.push({ auth_id: Number(req.query.auth_id) });
+        }
+
+        // Exclude records where authdoc_id in tr_handover matches the id from tr_authorization_doc
+        const excludedAuthDocIds = await prismaDB2.tr_handover.findMany({
+            select: {
+                authdoc_id: true
+            },
+            where: {
+                authdoc_id: {
+                    not: null
+                }
+            }
+        }).then(handoverRecords => handoverRecords.map(record => record.authdoc_id));
+
+        // Final conditions with exclusion
+        const whereCondition: any = {
+            AND: andConditions,
+            NOT: {
+                id: {
+                    in: excludedAuthDocIds
+                }
+            }
+        };
 
         const [data, totalCount] = await prismaDB2.$transaction([
             prismaDB2.tr_authorization_doc.findMany({
-                // where: whereCondition,
+                where: whereCondition,
                 skip: offset,
                 take: limit,
                 orderBy,
@@ -101,7 +123,7 @@ export const getAllAuthDoc = async (req: Request, res: Response): Promise<void> 
                 }
             }),
             prismaDB2.tr_authorization_doc.count({
-                // where: whereCondition
+                where: whereCondition
             })
         ]);
 

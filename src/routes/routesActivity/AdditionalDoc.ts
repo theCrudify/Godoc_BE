@@ -1,58 +1,75 @@
 import express from 'express';
-import { upload } from "../../middleware/uploadMiddleware"; // naik satu folder karena kamu ada di routesActivity
+import { upload } from "../../middleware/uploadMiddleware";
 
-
+// === Handler untuk Additional DOC (Document Number & Metadata) ===
 import {
     SupergetProposedChangeById,
     insertDocumentNumber,
     updateDocumentNumber,
     searchByProposedChangeId
-
 } from '../../main-structure/Activity/Document/3_Additional_DOC/AdditionalAfterProposedChanges';
 
+// === Handler untuk File Operations (upload, view, delete, etc) ===
 import {
-    getDocumentFilesByProposedChangeId,
     getDocumentFilesByDocId,
     uploadDocumentFile,
     downloadDocumentFile,
     viewDocumentFile,
-    deleteDocumentFile,
-
+    deleteAdditionalFile,
+    updateProgressSupport
 } from '../../main-structure/Activity/Document/3_Additional_DOC/AddiotionalDoc_for_file';
-
-
 
 const router = express.Router();
 
-//Halaman Additional Doc  
+
+// ==========================
+// 📂 Additional DOC Metadata
+// ==========================
+
+// GET Proposed Change by ID
 router.get("/superproposed/:id", SupergetProposedChangeById);
+
+// POST Insert document number
 router.post("/superproposed", insertDocumentNumber);
+
+// PUT Update document number
 router.put("/superproposed/:id", updateDocumentNumber);
+
+// GET Additional docs by proposed_change_id
+// Example: /api/additionalbyid/search?proposed_change_id=1
 router.get('/additionalbyid/search', searchByProposedChangeId);
 
 
-// Mendapatkan semua file berdasarkan proposed_change_id
-// GET /api/additionalbyid/search?proposed_change_id=1
-router.get('/additionalbyid/search', getDocumentFilesByProposedChangeId);
+// ============================
+// 📂 File Operations (Upload/View/Download/Delete)
+// ============================
 
-// Mendapatkan semua file berdasarkan tr_additional_doc_id
-// GET /api/document/files?tr_additional_doc_id=1
+// GET files by additional_doc_id
+// Example: /api/document/files?tr_additional_doc_id=1
 router.get('/document/files', getDocumentFilesByDocId);
 
-// Upload file baru untuk dokumen
-// POST /api/document/files
+// GET files by proposed_change_id
+// router.get('/additionalbyid/search', getDocumentFilesByProposedChangeId);
+
+// POST Upload new file
 router.post('/documents/upload', upload.single('file'), uploadDocumentFile);
 
-// Download file dokumen
-// GET /api/document/files/download/:fileId
+// GET Download file
 router.get('/document/files/download/:fileId', downloadDocumentFile);
 
-// View file dokumen
-// GET /api/document/files/view/:fileId
+// GET View file
 router.get('/document/files/view/:fileId', viewDocumentFile);
 
-// Hapus file dokumen (soft delete)
-// DELETE /api/document/files/:fileId
-router.delete('/document/files/:fileId', deleteDocumentFile);
+// DELETE File (soft delete)
+router.delete('/document/files/delete/:fileId', deleteAdditionalFile);
+
+
+// ============================
+// 🔄 Update Progress (Support Percentage)
+// ============================
+
+// PUT Update progresssupport percentage by ID
+router.put('/transaction/proposed-changes/status/:id', updateProgressSupport);
+
 
 export default router;

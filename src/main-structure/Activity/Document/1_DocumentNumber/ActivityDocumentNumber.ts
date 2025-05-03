@@ -20,25 +20,36 @@ export const getAllDocumentNumbers = async (req: Request, res: Response): Promis
         const page = Number(req.query.page) || 1;
         const limit = Number(req.query.limit) || 10;
         const searchTerm = (req.query.search as string) || "";
+        const authId = req.query.auth_id as string;
         const offset = (page - 1) * limit;
 
         const whereCondition: any = {
-            klasifikasi_document: "UP", // hanya tampilkan klasifikasi_document 'UP'
+            klasifikasi_document: "UP",
             NOT: {
                 id: {
-                    in: (await prismaDB2.tr_proposed_changes.findMany({
-                        select: { document_number_id: true },
-                        distinct: ['document_number_id'],
-                        where: {
-                            document_number_id: {
-                                not: null
+                    in: (
+                        await prismaDB2.tr_proposed_changes.findMany({
+                            select: { document_number_id: true },
+                            distinct: ["document_number_id"],
+                            where: {
+                                document_number_id: {
+                                    not: null
+                                }
                             }
-                        }
-                    })).map(pc => pc.document_number_id)
+                        })
+                    ).map(pc => pc.document_number_id)
                 }
             }
         };
 
+        // ✅ Gunakan relasi authorization, bukan field langsung
+        if (authId) {
+            whereCondition.authorization = {
+                id: Number(authId)
+            };
+        }
+
+        // ✅ Tambahkan pencarian jika ada
         if (searchTerm) {
             whereCondition.OR = [
                 { running_number: { contains: searchTerm } },
@@ -100,7 +111,6 @@ export const getAllDocumentNumbers = async (req: Request, res: Response): Promis
         });
     }
 };
-
 
 export const getDocumentNumberById = async (req: Request, res: Response): Promise<void> => {
     try {

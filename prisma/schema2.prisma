@@ -8,6 +8,20 @@ datasource db {
   url      = env("DATABASE_URL_2")
 }
 
+model tr_log {
+  id           String   @id @default(uuid())
+  timestamp    DateTime @default(now())
+  userId       String?  // bisa nullable kalau request tidak butuh login
+  endpoint     String
+  method       String
+  statusCode   Int
+  ipAddress    String?
+  userAgent    String?
+  action       String?   // deskripsi aktivitas (misalnya: "LOGIN", "CREATE_DOC", dll)
+  metadata     Json?     // tambahan data fleksibel (misal: payload, params, error detail)
+}
+
+
 model mst_role {
   id             Int                 @id @default(autoincrement())
   role_name      String              @unique @db.VarChar(255)
@@ -325,6 +339,7 @@ model mst_authorization {
   authorizationDocs                                   tr_authorization_doc[]
   documentNumbers                                     tr_document_number[]
   tr_handover_tr_handover_auth_idTomst_authorization  tr_handover[]                  @relation("tr_handover_auth_idTomst_authorization")
+  tr_handover_tr_handover_auth_id5Tomst_authorization tr_handover[]                  @relation("tr_handover_auth_id5Tomst_authorization")
   tr_handover_tr_handover_auth_id2Tomst_authorization tr_handover[]                  @relation("tr_handover_auth_id2Tomst_authorization")
   tr_handover_tr_handover_auth_id3Tomst_authorization tr_handover[]                  @relation("tr_handover_auth_id3Tomst_authorization")
   tr_handover_tr_handover_auth_id4Tomst_authorization tr_handover[]                  @relation("tr_handover_auth_id4Tomst_authorization")
@@ -489,6 +504,8 @@ model tr_proposed_changes {
   other_sytem                    String?                          @db.VarChar(255)
   status                         String?                          @default("submitted") @db.VarChar(255)
   progress                       String?                          @db.VarChar(255)
+  progresssupport                String?                          @default("0%") @db.VarChar(255)
+
   is_deleted                     Boolean                          @default(false)
   email_tracking_proposedchanges email_tracking_proposedchanges[]
   proposedChange                 tbl_support_document[]
@@ -548,6 +565,7 @@ model tr_handover {
   auth_id2                                                  Int?
   auth_id3                                                  Int?
   auth_id4                                                  Int?
+  auth_id5                                                  Int?
   proposed_change_id                                        Int?
   authdoc_id                                                Int?
   plant_id                                                  Int?
@@ -562,8 +580,11 @@ model tr_handover {
   updated_at                                                DateTime?                 @db.DateTime(0)
   updated_by                                                String?                   @db.VarChar(255)
   is_deleted                                                Boolean?                  @default(false)
+  star                                                      Int?                     // ⭐️ nilai agregat atau akhir rating
+
   email_tracking_handover                                   email_tracking_handover[]
   mst_authorization_tr_handover_auth_idTomst_authorization  mst_authorization?        @relation("tr_handover_auth_idTomst_authorization", fields: [auth_id], references: [id], onUpdate: NoAction, map: "tr_handover_ibfk_1")
+  mst_authorization_tr_handover_auth_id5Tomst_authorization mst_authorization?        @relation("tr_handover_auth_id5Tomst_authorization", fields: [auth_id5], references: [id], onUpdate: NoAction, map: "tr_handover_ibfk_10")
   mst_authorization_tr_handover_auth_id2Tomst_authorization mst_authorization?        @relation("tr_handover_auth_id2Tomst_authorization", fields: [auth_id2], references: [id], onUpdate: NoAction, map: "tr_handover_ibfk_2")
   mst_authorization_tr_handover_auth_id3Tomst_authorization mst_authorization?        @relation("tr_handover_auth_id3Tomst_authorization", fields: [auth_id3], references: [id], onUpdate: NoAction, map: "tr_handover_ibfk_3")
   mst_authorization_tr_handover_auth_id4Tomst_authorization mst_authorization?        @relation("tr_handover_auth_id4Tomst_authorization", fields: [auth_id4], references: [id], onUpdate: NoAction, map: "tr_handover_ibfk_4")
@@ -584,6 +605,7 @@ model tr_handover {
   @@index([plant_id], map: "plant_id")
   @@index([proposed_change_id], map: "proposed_change_id")
   @@index([section_department_id], map: "section_department_id")
+  @@index([auth_id5], map: "auth_id5")
 }
 
 model tr_handover_approval {
@@ -619,6 +641,26 @@ model tr_handover_history {
 
   @@index([auth_id], map: "auth_id")
   @@index([handover_id], map: "handover_id")
+}
+
+model email_tracking_handover {
+  id              Int                                    @id @default(autoincrement())
+  handover_id     Int
+  recipient_email String                                 @db.VarChar(255)
+  recipient_type  email_tracking_handover_recipient_type
+  status          email_tracking_handover_status
+  note_hash       String                                 @db.VarChar(100)
+  note_text       String?                                @db.Text
+  message_id      String?                                @db.VarChar(255)
+  sent_at         DateTime?                              @db.Timestamp(0)
+  is_success      Boolean?                               @default(false)
+  retry_count     Int?                                   @default(0)
+  last_retry_at   DateTime?                              @db.Timestamp(0)
+  created_at      DateTime?                              @default(now()) @db.Timestamp(0)
+  tr_handover     tr_handover                            @relation(fields: [handover_id], references: [id], onDelete: Cascade, map: "fk_tracking_handover")
+
+  @@index([handover_id, recipient_email, recipient_type, status, note_hash], map: "idx_email_tracking_lookup")
+  @@index([is_success, retry_count, last_retry_at], map: "idx_email_tracking_retry")
 }
 
 model email_tracking_proposedchanges {
@@ -658,26 +700,6 @@ model email_tracking_authdoc {
   tr_authorization_doc tr_authorization_doc                  @relation(fields: [authorization_doc_id], references: [id], onDelete: Cascade, map: "fk_tracking_authdoc")
 
   @@index([authorization_doc_id, recipient_email, recipient_type, status, note_hash], map: "idx_email_tracking_lookup")
-  @@index([is_success, retry_count, last_retry_at], map: "idx_email_tracking_retry")
-}
-
-model email_tracking_handover {
-  id              Int                                    @id @default(autoincrement())
-  handover_id     Int
-  recipient_email String                                 @db.VarChar(255)
-  recipient_type  email_tracking_handover_recipient_type
-  status          email_tracking_handover_status
-  note_hash       String                                 @db.VarChar(100)
-  note_text       String?                                @db.Text
-  message_id      String?                                @db.VarChar(255)
-  sent_at         DateTime?                              @db.Timestamp(0)
-  is_success      Boolean?                               @default(false)
-  retry_count     Int?                                   @default(0)
-  last_retry_at   DateTime?                              @db.Timestamp(0)
-  created_at      DateTime?                              @default(now()) @db.Timestamp(0)
-  tr_handover     tr_handover                            @relation(fields: [handover_id], references: [id], onDelete: Cascade, map: "fk_tracking_handover")
-
-  @@index([handover_id, recipient_email, recipient_type, status, note_hash], map: "idx_email_tracking_lookup")
   @@index([is_success, retry_count, last_retry_at], map: "idx_email_tracking_retry")
 }
 

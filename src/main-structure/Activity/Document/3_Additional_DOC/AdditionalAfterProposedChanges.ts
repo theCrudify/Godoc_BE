@@ -97,6 +97,17 @@ export const SupergetProposedChangeById = async (req: Request, res: Response): P
       return;
     }
 
+    const authorizationDoc = await prismaDB2.tr_authorization_doc.findFirst({
+      where: {
+        proposed_change_id: numericId
+      },
+      select: {
+        id: true
+      }
+    });
+
+    const authorization_doc_id = authorizationDoc?.id || "not yet";
+
     const transformedData = {
       id: proposedChange.id,
       project_name: proposedChange.project_name,
@@ -137,10 +148,10 @@ export const SupergetProposedChangeById = async (req: Request, res: Response): P
       is_surat_ketentuan: proposedChange.documentNumber?.is_surat_ketentuan || null,
       id_document_number: proposedChange.document_number_id,
       development_desc: getDevelopmentDescription(proposedChange.documentNumber?.development_code || ""),
-      authorization_doc_id: null,
+      authorization_doc_id,
       id_usulan_perubahan: 1,
 
-      // 🎯 Tambahan ID yang diminta
+      // Tambahan ID tambahan
       category_id: proposedChange.documentNumber?.category?.id || null,
       plant_id: proposedChange.plant?.id || null,
       area_id: proposedChange.documentNumber?.area?.id || null,
@@ -160,6 +171,7 @@ export const SupergetProposedChangeById = async (req: Request, res: Response): P
     });
   }
 };
+
 
 function getDevelopmentDescription(code: string): string {
   const developmentMap: { [key: string]: string } = {
@@ -398,9 +410,9 @@ export const searchByProposedChangeId = async (req: Request, res: Response): Pro
       },
       include: {
         plantsite: true,
-        category: true,
+        // category: true,
         authorization: true,
-        proposedChange: true
+        // proposedChange: true
       },
       orderBy: {
         created_date: 'desc'
