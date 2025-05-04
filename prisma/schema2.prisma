@@ -580,6 +580,7 @@ model tr_handover {
   updated_at                                                DateTime?                 @db.DateTime(0)
   updated_by                                                String?                   @db.VarChar(255)
   is_deleted                                                Boolean?                  @default(false)
+  is_finished                                               Boolean?                  @default(false)
   star                                                      Int?                     // ⭐️ nilai agregat atau akhir rating
 
   email_tracking_handover                                   email_tracking_handover[]
@@ -616,6 +617,8 @@ model tr_handover_approval {
   actor             String?            @db.VarChar(255)
   employee_code     String?            @db.VarChar(255)
   status            String?            @db.VarChar(255)
+  rating            Int?               // 📝 rating dari approver
+  review            String?            @db.Text // 📝 review deskriptif dari approver
   updated_date      DateTime?          @db.DateTime(0)
   created_date      DateTime?          @db.DateTime(0)
   tr_handover       tr_handover?       @relation(fields: [handover_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "tr_handover_approval_ibfk_1")
