@@ -129,20 +129,10 @@ export type tbl_support_document_file = $Result.DefaultSelection<Prisma.$tbl_sup
  */
 export type mst_support_document = $Result.DefaultSelection<Prisma.$mst_support_documentPayload>
 /**
- * Model tr_authorization_doc
- * 
- */
-export type tr_authorization_doc = $Result.DefaultSelection<Prisma.$tr_authorization_docPayload>
-/**
  * Model tr_authdoc_approval
  * 
  */
 export type tr_authdoc_approval = $Result.DefaultSelection<Prisma.$tr_authdoc_approvalPayload>
-/**
- * Model tr_proposed_changes
- * 
- */
-export type tr_proposed_changes = $Result.DefaultSelection<Prisma.$tr_proposed_changesPayload>
 /**
  * Model tr_authdoc_history
  * 
@@ -153,6 +143,16 @@ export type tr_authdoc_history = $Result.DefaultSelection<Prisma.$tr_authdoc_his
  * 
  */
 export type tr_authdoc_member = $Result.DefaultSelection<Prisma.$tr_authdoc_memberPayload>
+/**
+ * Model tr_authorization_doc
+ * 
+ */
+export type tr_authorization_doc = $Result.DefaultSelection<Prisma.$tr_authorization_docPayload>
+/**
+ * Model tr_proposed_changes
+ * 
+ */
+export type tr_proposed_changes = $Result.DefaultSelection<Prisma.$tr_proposed_changesPayload>
 /**
  * Model tr_handover
  * 
@@ -635,16 +635,6 @@ export class PrismaClient<
   get mst_support_document(): Prisma.mst_support_documentDelegate<ExtArgs, ClientOptions>;
 
   /**
-   * `prisma.tr_authorization_doc`: Exposes CRUD operations for the **tr_authorization_doc** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Tr_authorization_docs
-    * const tr_authorization_docs = await prisma.tr_authorization_doc.findMany()
-    * ```
-    */
-  get tr_authorization_doc(): Prisma.tr_authorization_docDelegate<ExtArgs, ClientOptions>;
-
-  /**
    * `prisma.tr_authdoc_approval`: Exposes CRUD operations for the **tr_authdoc_approval** model.
     * Example usage:
     * ```ts
@@ -653,16 +643,6 @@ export class PrismaClient<
     * ```
     */
   get tr_authdoc_approval(): Prisma.tr_authdoc_approvalDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.tr_proposed_changes`: Exposes CRUD operations for the **tr_proposed_changes** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Tr_proposed_changes
-    * const tr_proposed_changes = await prisma.tr_proposed_changes.findMany()
-    * ```
-    */
-  get tr_proposed_changes(): Prisma.tr_proposed_changesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.tr_authdoc_history`: Exposes CRUD operations for the **tr_authdoc_history** model.
@@ -683,6 +663,26 @@ export class PrismaClient<
     * ```
     */
   get tr_authdoc_member(): Prisma.tr_authdoc_memberDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tr_authorization_doc`: Exposes CRUD operations for the **tr_authorization_doc** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tr_authorization_docs
+    * const tr_authorization_docs = await prisma.tr_authorization_doc.findMany()
+    * ```
+    */
+  get tr_authorization_doc(): Prisma.tr_authorization_docDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.tr_proposed_changes`: Exposes CRUD operations for the **tr_proposed_changes** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Tr_proposed_changes
+    * const tr_proposed_changes = await prisma.tr_proposed_changes.findMany()
+    * ```
+    */
+  get tr_proposed_changes(): Prisma.tr_proposed_changesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.tr_handover`: Exposes CRUD operations for the **tr_handover** model.
@@ -1206,11 +1206,11 @@ export namespace Prisma {
     tbl_support_document_noted: 'tbl_support_document_noted',
     tbl_support_document_file: 'tbl_support_document_file',
     mst_support_document: 'mst_support_document',
-    tr_authorization_doc: 'tr_authorization_doc',
     tr_authdoc_approval: 'tr_authdoc_approval',
-    tr_proposed_changes: 'tr_proposed_changes',
     tr_authdoc_history: 'tr_authdoc_history',
     tr_authdoc_member: 'tr_authdoc_member',
+    tr_authorization_doc: 'tr_authorization_doc',
+    tr_proposed_changes: 'tr_proposed_changes',
     tr_handover: 'tr_handover',
     tr_handover_approval: 'tr_handover_approval',
     tr_handover_history: 'tr_handover_history',
@@ -1235,7 +1235,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "tr_log" | "mst_role" | "mst_line" | "mst_department_head" | "mst_section_head" | "mst_sub_document" | "mst_development" | "mst_doc_type" | "mst_area" | "mst_plant" | "mst_department" | "mst_section_department" | "mst_document_categories" | "tr_document_number" | "tr_additional_doc" | "tr_additional_file" | "tr_proposed_changes_history" | "tr_proposed_changes_approval" | "mst_authorization" | "tbl_support_document" | "tbl_support_document_noted" | "tbl_support_document_file" | "mst_support_document" | "tr_authorization_doc" | "tr_authdoc_approval" | "tr_proposed_changes" | "tr_authdoc_history" | "tr_authdoc_member" | "tr_handover" | "tr_handover_approval" | "tr_handover_history" | "email_tracking_handover" | "email_tracking_proposedchanges" | "email_tracking_authdoc"
+      modelProps: "tr_log" | "mst_role" | "mst_line" | "mst_department_head" | "mst_section_head" | "mst_sub_document" | "mst_development" | "mst_doc_type" | "mst_area" | "mst_plant" | "mst_department" | "mst_section_department" | "mst_document_categories" | "tr_document_number" | "tr_additional_doc" | "tr_additional_file" | "tr_proposed_changes_history" | "tr_proposed_changes_approval" | "mst_authorization" | "tbl_support_document" | "tbl_support_document_noted" | "tbl_support_document_file" | "mst_support_document" | "tr_authdoc_approval" | "tr_authdoc_history" | "tr_authdoc_member" | "tr_authorization_doc" | "tr_proposed_changes" | "tr_handover" | "tr_handover_approval" | "tr_handover_history" | "email_tracking_handover" | "email_tracking_proposedchanges" | "email_tracking_authdoc"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2757,72 +2757,6 @@ export namespace Prisma {
           }
         }
       }
-      tr_authorization_doc: {
-        payload: Prisma.$tr_authorization_docPayload<ExtArgs>
-        fields: Prisma.tr_authorization_docFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.tr_authorization_docFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.tr_authorization_docFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>
-          }
-          findFirst: {
-            args: Prisma.tr_authorization_docFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.tr_authorization_docFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>
-          }
-          findMany: {
-            args: Prisma.tr_authorization_docFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>[]
-          }
-          create: {
-            args: Prisma.tr_authorization_docCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>
-          }
-          createMany: {
-            args: Prisma.tr_authorization_docCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          delete: {
-            args: Prisma.tr_authorization_docDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>
-          }
-          update: {
-            args: Prisma.tr_authorization_docUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>
-          }
-          deleteMany: {
-            args: Prisma.tr_authorization_docDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.tr_authorization_docUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.tr_authorization_docUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>
-          }
-          aggregate: {
-            args: Prisma.Tr_authorization_docAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTr_authorization_doc>
-          }
-          groupBy: {
-            args: Prisma.tr_authorization_docGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Tr_authorization_docGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.tr_authorization_docCountArgs<ExtArgs>
-            result: $Utils.Optional<Tr_authorization_docCountAggregateOutputType> | number
-          }
-        }
-      }
       tr_authdoc_approval: {
         payload: Prisma.$tr_authdoc_approvalPayload<ExtArgs>
         fields: Prisma.tr_authdoc_approvalFieldRefs
@@ -2886,72 +2820,6 @@ export namespace Prisma {
           count: {
             args: Prisma.tr_authdoc_approvalCountArgs<ExtArgs>
             result: $Utils.Optional<Tr_authdoc_approvalCountAggregateOutputType> | number
-          }
-        }
-      }
-      tr_proposed_changes: {
-        payload: Prisma.$tr_proposed_changesPayload<ExtArgs>
-        fields: Prisma.tr_proposed_changesFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.tr_proposed_changesFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.tr_proposed_changesFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>
-          }
-          findFirst: {
-            args: Prisma.tr_proposed_changesFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.tr_proposed_changesFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>
-          }
-          findMany: {
-            args: Prisma.tr_proposed_changesFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>[]
-          }
-          create: {
-            args: Prisma.tr_proposed_changesCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>
-          }
-          createMany: {
-            args: Prisma.tr_proposed_changesCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          delete: {
-            args: Prisma.tr_proposed_changesDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>
-          }
-          update: {
-            args: Prisma.tr_proposed_changesUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>
-          }
-          deleteMany: {
-            args: Prisma.tr_proposed_changesDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.tr_proposed_changesUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.tr_proposed_changesUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>
-          }
-          aggregate: {
-            args: Prisma.Tr_proposed_changesAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateTr_proposed_changes>
-          }
-          groupBy: {
-            args: Prisma.tr_proposed_changesGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Tr_proposed_changesGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.tr_proposed_changesCountArgs<ExtArgs>
-            result: $Utils.Optional<Tr_proposed_changesCountAggregateOutputType> | number
           }
         }
       }
@@ -3084,6 +2952,138 @@ export namespace Prisma {
           count: {
             args: Prisma.tr_authdoc_memberCountArgs<ExtArgs>
             result: $Utils.Optional<Tr_authdoc_memberCountAggregateOutputType> | number
+          }
+        }
+      }
+      tr_authorization_doc: {
+        payload: Prisma.$tr_authorization_docPayload<ExtArgs>
+        fields: Prisma.tr_authorization_docFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.tr_authorization_docFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.tr_authorization_docFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>
+          }
+          findFirst: {
+            args: Prisma.tr_authorization_docFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.tr_authorization_docFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>
+          }
+          findMany: {
+            args: Prisma.tr_authorization_docFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>[]
+          }
+          create: {
+            args: Prisma.tr_authorization_docCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>
+          }
+          createMany: {
+            args: Prisma.tr_authorization_docCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.tr_authorization_docDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>
+          }
+          update: {
+            args: Prisma.tr_authorization_docUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>
+          }
+          deleteMany: {
+            args: Prisma.tr_authorization_docDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.tr_authorization_docUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.tr_authorization_docUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_authorization_docPayload>
+          }
+          aggregate: {
+            args: Prisma.Tr_authorization_docAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTr_authorization_doc>
+          }
+          groupBy: {
+            args: Prisma.tr_authorization_docGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Tr_authorization_docGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.tr_authorization_docCountArgs<ExtArgs>
+            result: $Utils.Optional<Tr_authorization_docCountAggregateOutputType> | number
+          }
+        }
+      }
+      tr_proposed_changes: {
+        payload: Prisma.$tr_proposed_changesPayload<ExtArgs>
+        fields: Prisma.tr_proposed_changesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.tr_proposed_changesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.tr_proposed_changesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>
+          }
+          findFirst: {
+            args: Prisma.tr_proposed_changesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.tr_proposed_changesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>
+          }
+          findMany: {
+            args: Prisma.tr_proposed_changesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>[]
+          }
+          create: {
+            args: Prisma.tr_proposed_changesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>
+          }
+          createMany: {
+            args: Prisma.tr_proposed_changesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.tr_proposed_changesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>
+          }
+          update: {
+            args: Prisma.tr_proposed_changesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>
+          }
+          deleteMany: {
+            args: Prisma.tr_proposed_changesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.tr_proposed_changesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.tr_proposed_changesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$tr_proposed_changesPayload>
+          }
+          aggregate: {
+            args: Prisma.Tr_proposed_changesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateTr_proposed_changes>
+          }
+          groupBy: {
+            args: Prisma.tr_proposed_changesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Tr_proposed_changesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.tr_proposed_changesCountArgs<ExtArgs>
+            result: $Utils.Optional<Tr_proposed_changesCountAggregateOutputType> | number
           }
         }
       }
@@ -3590,11 +3590,11 @@ export namespace Prisma {
     tbl_support_document_noted?: tbl_support_document_notedOmit
     tbl_support_document_file?: tbl_support_document_fileOmit
     mst_support_document?: mst_support_documentOmit
-    tr_authorization_doc?: tr_authorization_docOmit
     tr_authdoc_approval?: tr_authdoc_approvalOmit
-    tr_proposed_changes?: tr_proposed_changesOmit
     tr_authdoc_history?: tr_authdoc_historyOmit
     tr_authdoc_member?: tr_authdoc_memberOmit
+    tr_authorization_doc?: tr_authorization_docOmit
+    tr_proposed_changes?: tr_proposed_changesOmit
     tr_handover?: tr_handoverOmit
     tr_handover_approval?: tr_handover_approvalOmit
     tr_handover_history?: tr_handover_historyOmit
@@ -29621,1396 +29621,6 @@ export namespace Prisma {
 
 
   /**
-   * Model tr_authorization_doc
-   */
-
-  export type AggregateTr_authorization_doc = {
-    _count: Tr_authorization_docCountAggregateOutputType | null
-    _avg: Tr_authorization_docAvgAggregateOutputType | null
-    _sum: Tr_authorization_docSumAggregateOutputType | null
-    _min: Tr_authorization_docMinAggregateOutputType | null
-    _max: Tr_authorization_docMaxAggregateOutputType | null
-  }
-
-  export type Tr_authorization_docAvgAggregateOutputType = {
-    id: number | null
-    proposed_change_id: number | null
-    auth_id: number | null
-    plant_id: number | null
-    department_id: number | null
-    section_department_id: number | null
-  }
-
-  export type Tr_authorization_docSumAggregateOutputType = {
-    id: number | null
-    proposed_change_id: number | null
-    auth_id: number | null
-    plant_id: number | null
-    department_id: number | null
-    section_department_id: number | null
-  }
-
-  export type Tr_authorization_docMinAggregateOutputType = {
-    id: number | null
-    proposed_change_id: number | null
-    doc_number: string | null
-    implementation_date: Date | null
-    evaluation: string | null
-    description: string | null
-    conclution: string | null
-    concept: string | null
-    standart: string | null
-    method: string | null
-    status: string | null
-    progress: string | null
-    created_by: string | null
-    auth_id: number | null
-    plant_id: number | null
-    created_date: Date | null
-    department_id: number | null
-    section_department_id: number | null
-    updated_at: Date | null
-  }
-
-  export type Tr_authorization_docMaxAggregateOutputType = {
-    id: number | null
-    proposed_change_id: number | null
-    doc_number: string | null
-    implementation_date: Date | null
-    evaluation: string | null
-    description: string | null
-    conclution: string | null
-    concept: string | null
-    standart: string | null
-    method: string | null
-    status: string | null
-    progress: string | null
-    created_by: string | null
-    auth_id: number | null
-    plant_id: number | null
-    created_date: Date | null
-    department_id: number | null
-    section_department_id: number | null
-    updated_at: Date | null
-  }
-
-  export type Tr_authorization_docCountAggregateOutputType = {
-    id: number
-    proposed_change_id: number
-    doc_number: number
-    implementation_date: number
-    evaluation: number
-    description: number
-    conclution: number
-    concept: number
-    standart: number
-    method: number
-    status: number
-    progress: number
-    created_by: number
-    auth_id: number
-    plant_id: number
-    created_date: number
-    department_id: number
-    section_department_id: number
-    updated_at: number
-    _all: number
-  }
-
-
-  export type Tr_authorization_docAvgAggregateInputType = {
-    id?: true
-    proposed_change_id?: true
-    auth_id?: true
-    plant_id?: true
-    department_id?: true
-    section_department_id?: true
-  }
-
-  export type Tr_authorization_docSumAggregateInputType = {
-    id?: true
-    proposed_change_id?: true
-    auth_id?: true
-    plant_id?: true
-    department_id?: true
-    section_department_id?: true
-  }
-
-  export type Tr_authorization_docMinAggregateInputType = {
-    id?: true
-    proposed_change_id?: true
-    doc_number?: true
-    implementation_date?: true
-    evaluation?: true
-    description?: true
-    conclution?: true
-    concept?: true
-    standart?: true
-    method?: true
-    status?: true
-    progress?: true
-    created_by?: true
-    auth_id?: true
-    plant_id?: true
-    created_date?: true
-    department_id?: true
-    section_department_id?: true
-    updated_at?: true
-  }
-
-  export type Tr_authorization_docMaxAggregateInputType = {
-    id?: true
-    proposed_change_id?: true
-    doc_number?: true
-    implementation_date?: true
-    evaluation?: true
-    description?: true
-    conclution?: true
-    concept?: true
-    standart?: true
-    method?: true
-    status?: true
-    progress?: true
-    created_by?: true
-    auth_id?: true
-    plant_id?: true
-    created_date?: true
-    department_id?: true
-    section_department_id?: true
-    updated_at?: true
-  }
-
-  export type Tr_authorization_docCountAggregateInputType = {
-    id?: true
-    proposed_change_id?: true
-    doc_number?: true
-    implementation_date?: true
-    evaluation?: true
-    description?: true
-    conclution?: true
-    concept?: true
-    standart?: true
-    method?: true
-    status?: true
-    progress?: true
-    created_by?: true
-    auth_id?: true
-    plant_id?: true
-    created_date?: true
-    department_id?: true
-    section_department_id?: true
-    updated_at?: true
-    _all?: true
-  }
-
-  export type Tr_authorization_docAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which tr_authorization_doc to aggregate.
-     */
-    where?: tr_authorization_docWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tr_authorization_docs to fetch.
-     */
-    orderBy?: tr_authorization_docOrderByWithRelationInput | tr_authorization_docOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: tr_authorization_docWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tr_authorization_docs from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tr_authorization_docs.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned tr_authorization_docs
-    **/
-    _count?: true | Tr_authorization_docCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Tr_authorization_docAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Tr_authorization_docSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Tr_authorization_docMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Tr_authorization_docMaxAggregateInputType
-  }
-
-  export type GetTr_authorization_docAggregateType<T extends Tr_authorization_docAggregateArgs> = {
-        [P in keyof T & keyof AggregateTr_authorization_doc]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateTr_authorization_doc[P]>
-      : GetScalarType<T[P], AggregateTr_authorization_doc[P]>
-  }
-
-
-
-
-  export type tr_authorization_docGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: tr_authorization_docWhereInput
-    orderBy?: tr_authorization_docOrderByWithAggregationInput | tr_authorization_docOrderByWithAggregationInput[]
-    by: Tr_authorization_docScalarFieldEnum[] | Tr_authorization_docScalarFieldEnum
-    having?: tr_authorization_docScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Tr_authorization_docCountAggregateInputType | true
-    _avg?: Tr_authorization_docAvgAggregateInputType
-    _sum?: Tr_authorization_docSumAggregateInputType
-    _min?: Tr_authorization_docMinAggregateInputType
-    _max?: Tr_authorization_docMaxAggregateInputType
-  }
-
-  export type Tr_authorization_docGroupByOutputType = {
-    id: number
-    proposed_change_id: number | null
-    doc_number: string | null
-    implementation_date: Date | null
-    evaluation: string | null
-    description: string | null
-    conclution: string | null
-    concept: string | null
-    standart: string | null
-    method: string | null
-    status: string | null
-    progress: string | null
-    created_by: string | null
-    auth_id: number | null
-    plant_id: number | null
-    created_date: Date | null
-    department_id: number | null
-    section_department_id: number | null
-    updated_at: Date | null
-    _count: Tr_authorization_docCountAggregateOutputType | null
-    _avg: Tr_authorization_docAvgAggregateOutputType | null
-    _sum: Tr_authorization_docSumAggregateOutputType | null
-    _min: Tr_authorization_docMinAggregateOutputType | null
-    _max: Tr_authorization_docMaxAggregateOutputType | null
-  }
-
-  type GetTr_authorization_docGroupByPayload<T extends tr_authorization_docGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Tr_authorization_docGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Tr_authorization_docGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Tr_authorization_docGroupByOutputType[P]>
-            : GetScalarType<T[P], Tr_authorization_docGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type tr_authorization_docSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    proposed_change_id?: boolean
-    doc_number?: boolean
-    implementation_date?: boolean
-    evaluation?: boolean
-    description?: boolean
-    conclution?: boolean
-    concept?: boolean
-    standart?: boolean
-    method?: boolean
-    status?: boolean
-    progress?: boolean
-    created_by?: boolean
-    auth_id?: boolean
-    plant_id?: boolean
-    created_date?: boolean
-    department_id?: boolean
-    section_department_id?: boolean
-    updated_at?: boolean
-    email_tracking_authdoc?: boolean | tr_authorization_doc$email_tracking_authdocArgs<ExtArgs>
-    authdocApprovals?: boolean | tr_authorization_doc$authdocApprovalsArgs<ExtArgs>
-    authdocHistories?: boolean | tr_authorization_doc$authdocHistoriesArgs<ExtArgs>
-    authdocMembers?: boolean | tr_authorization_doc$authdocMembersArgs<ExtArgs>
-    authorization?: boolean | tr_authorization_doc$authorizationArgs<ExtArgs>
-    department?: boolean | tr_authorization_doc$departmentArgs<ExtArgs>
-    authorizationPlant?: boolean | tr_authorization_doc$authorizationPlantArgs<ExtArgs>
-    proposedChange?: boolean | tr_authorization_doc$proposedChangeArgs<ExtArgs>
-    section_department?: boolean | tr_authorization_doc$section_departmentArgs<ExtArgs>
-    tr_handover?: boolean | tr_authorization_doc$tr_handoverArgs<ExtArgs>
-    _count?: boolean | Tr_authorization_docCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["tr_authorization_doc"]>
-
-
-
-  export type tr_authorization_docSelectScalar = {
-    id?: boolean
-    proposed_change_id?: boolean
-    doc_number?: boolean
-    implementation_date?: boolean
-    evaluation?: boolean
-    description?: boolean
-    conclution?: boolean
-    concept?: boolean
-    standart?: boolean
-    method?: boolean
-    status?: boolean
-    progress?: boolean
-    created_by?: boolean
-    auth_id?: boolean
-    plant_id?: boolean
-    created_date?: boolean
-    department_id?: boolean
-    section_department_id?: boolean
-    updated_at?: boolean
-  }
-
-  export type tr_authorization_docOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "proposed_change_id" | "doc_number" | "implementation_date" | "evaluation" | "description" | "conclution" | "concept" | "standart" | "method" | "status" | "progress" | "created_by" | "auth_id" | "plant_id" | "created_date" | "department_id" | "section_department_id" | "updated_at", ExtArgs["result"]["tr_authorization_doc"]>
-  export type tr_authorization_docInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    email_tracking_authdoc?: boolean | tr_authorization_doc$email_tracking_authdocArgs<ExtArgs>
-    authdocApprovals?: boolean | tr_authorization_doc$authdocApprovalsArgs<ExtArgs>
-    authdocHistories?: boolean | tr_authorization_doc$authdocHistoriesArgs<ExtArgs>
-    authdocMembers?: boolean | tr_authorization_doc$authdocMembersArgs<ExtArgs>
-    authorization?: boolean | tr_authorization_doc$authorizationArgs<ExtArgs>
-    department?: boolean | tr_authorization_doc$departmentArgs<ExtArgs>
-    authorizationPlant?: boolean | tr_authorization_doc$authorizationPlantArgs<ExtArgs>
-    proposedChange?: boolean | tr_authorization_doc$proposedChangeArgs<ExtArgs>
-    section_department?: boolean | tr_authorization_doc$section_departmentArgs<ExtArgs>
-    tr_handover?: boolean | tr_authorization_doc$tr_handoverArgs<ExtArgs>
-    _count?: boolean | Tr_authorization_docCountOutputTypeDefaultArgs<ExtArgs>
-  }
-
-  export type $tr_authorization_docPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "tr_authorization_doc"
-    objects: {
-      email_tracking_authdoc: Prisma.$email_tracking_authdocPayload<ExtArgs>[]
-      authdocApprovals: Prisma.$tr_authdoc_approvalPayload<ExtArgs>[]
-      authdocHistories: Prisma.$tr_authdoc_historyPayload<ExtArgs>[]
-      authdocMembers: Prisma.$tr_authdoc_memberPayload<ExtArgs>[]
-      authorization: Prisma.$mst_authorizationPayload<ExtArgs> | null
-      department: Prisma.$mst_departmentPayload<ExtArgs> | null
-      authorizationPlant: Prisma.$mst_plantPayload<ExtArgs> | null
-      proposedChange: Prisma.$tr_proposed_changesPayload<ExtArgs> | null
-      section_department: Prisma.$mst_section_departmentPayload<ExtArgs> | null
-      tr_handover: Prisma.$tr_handoverPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      proposed_change_id: number | null
-      doc_number: string | null
-      implementation_date: Date | null
-      evaluation: string | null
-      description: string | null
-      conclution: string | null
-      concept: string | null
-      standart: string | null
-      method: string | null
-      status: string | null
-      progress: string | null
-      created_by: string | null
-      auth_id: number | null
-      plant_id: number | null
-      created_date: Date | null
-      department_id: number | null
-      section_department_id: number | null
-      updated_at: Date | null
-    }, ExtArgs["result"]["tr_authorization_doc"]>
-    composites: {}
-  }
-
-  type tr_authorization_docGetPayload<S extends boolean | null | undefined | tr_authorization_docDefaultArgs> = $Result.GetResult<Prisma.$tr_authorization_docPayload, S>
-
-  type tr_authorization_docCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<tr_authorization_docFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Tr_authorization_docCountAggregateInputType | true
-    }
-
-  export interface tr_authorization_docDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tr_authorization_doc'], meta: { name: 'tr_authorization_doc' } }
-    /**
-     * Find zero or one Tr_authorization_doc that matches the filter.
-     * @param {tr_authorization_docFindUniqueArgs} args - Arguments to find a Tr_authorization_doc
-     * @example
-     * // Get one Tr_authorization_doc
-     * const tr_authorization_doc = await prisma.tr_authorization_doc.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends tr_authorization_docFindUniqueArgs>(args: SelectSubset<T, tr_authorization_docFindUniqueArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Tr_authorization_doc that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {tr_authorization_docFindUniqueOrThrowArgs} args - Arguments to find a Tr_authorization_doc
-     * @example
-     * // Get one Tr_authorization_doc
-     * const tr_authorization_doc = await prisma.tr_authorization_doc.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends tr_authorization_docFindUniqueOrThrowArgs>(args: SelectSubset<T, tr_authorization_docFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Tr_authorization_doc that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tr_authorization_docFindFirstArgs} args - Arguments to find a Tr_authorization_doc
-     * @example
-     * // Get one Tr_authorization_doc
-     * const tr_authorization_doc = await prisma.tr_authorization_doc.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends tr_authorization_docFindFirstArgs>(args?: SelectSubset<T, tr_authorization_docFindFirstArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Tr_authorization_doc that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tr_authorization_docFindFirstOrThrowArgs} args - Arguments to find a Tr_authorization_doc
-     * @example
-     * // Get one Tr_authorization_doc
-     * const tr_authorization_doc = await prisma.tr_authorization_doc.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends tr_authorization_docFindFirstOrThrowArgs>(args?: SelectSubset<T, tr_authorization_docFindFirstOrThrowArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Tr_authorization_docs that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tr_authorization_docFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Tr_authorization_docs
-     * const tr_authorization_docs = await prisma.tr_authorization_doc.findMany()
-     * 
-     * // Get first 10 Tr_authorization_docs
-     * const tr_authorization_docs = await prisma.tr_authorization_doc.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const tr_authorization_docWithIdOnly = await prisma.tr_authorization_doc.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends tr_authorization_docFindManyArgs>(args?: SelectSubset<T, tr_authorization_docFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Tr_authorization_doc.
-     * @param {tr_authorization_docCreateArgs} args - Arguments to create a Tr_authorization_doc.
-     * @example
-     * // Create one Tr_authorization_doc
-     * const Tr_authorization_doc = await prisma.tr_authorization_doc.create({
-     *   data: {
-     *     // ... data to create a Tr_authorization_doc
-     *   }
-     * })
-     * 
-     */
-    create<T extends tr_authorization_docCreateArgs>(args: SelectSubset<T, tr_authorization_docCreateArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Tr_authorization_docs.
-     * @param {tr_authorization_docCreateManyArgs} args - Arguments to create many Tr_authorization_docs.
-     * @example
-     * // Create many Tr_authorization_docs
-     * const tr_authorization_doc = await prisma.tr_authorization_doc.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends tr_authorization_docCreateManyArgs>(args?: SelectSubset<T, tr_authorization_docCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Tr_authorization_doc.
-     * @param {tr_authorization_docDeleteArgs} args - Arguments to delete one Tr_authorization_doc.
-     * @example
-     * // Delete one Tr_authorization_doc
-     * const Tr_authorization_doc = await prisma.tr_authorization_doc.delete({
-     *   where: {
-     *     // ... filter to delete one Tr_authorization_doc
-     *   }
-     * })
-     * 
-     */
-    delete<T extends tr_authorization_docDeleteArgs>(args: SelectSubset<T, tr_authorization_docDeleteArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Tr_authorization_doc.
-     * @param {tr_authorization_docUpdateArgs} args - Arguments to update one Tr_authorization_doc.
-     * @example
-     * // Update one Tr_authorization_doc
-     * const tr_authorization_doc = await prisma.tr_authorization_doc.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends tr_authorization_docUpdateArgs>(args: SelectSubset<T, tr_authorization_docUpdateArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Tr_authorization_docs.
-     * @param {tr_authorization_docDeleteManyArgs} args - Arguments to filter Tr_authorization_docs to delete.
-     * @example
-     * // Delete a few Tr_authorization_docs
-     * const { count } = await prisma.tr_authorization_doc.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends tr_authorization_docDeleteManyArgs>(args?: SelectSubset<T, tr_authorization_docDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Tr_authorization_docs.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tr_authorization_docUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Tr_authorization_docs
-     * const tr_authorization_doc = await prisma.tr_authorization_doc.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends tr_authorization_docUpdateManyArgs>(args: SelectSubset<T, tr_authorization_docUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Tr_authorization_doc.
-     * @param {tr_authorization_docUpsertArgs} args - Arguments to update or create a Tr_authorization_doc.
-     * @example
-     * // Update or create a Tr_authorization_doc
-     * const tr_authorization_doc = await prisma.tr_authorization_doc.upsert({
-     *   create: {
-     *     // ... data to create a Tr_authorization_doc
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Tr_authorization_doc we want to update
-     *   }
-     * })
-     */
-    upsert<T extends tr_authorization_docUpsertArgs>(args: SelectSubset<T, tr_authorization_docUpsertArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Tr_authorization_docs.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tr_authorization_docCountArgs} args - Arguments to filter Tr_authorization_docs to count.
-     * @example
-     * // Count the number of Tr_authorization_docs
-     * const count = await prisma.tr_authorization_doc.count({
-     *   where: {
-     *     // ... the filter for the Tr_authorization_docs we want to count
-     *   }
-     * })
-    **/
-    count<T extends tr_authorization_docCountArgs>(
-      args?: Subset<T, tr_authorization_docCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Tr_authorization_docCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Tr_authorization_doc.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Tr_authorization_docAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Tr_authorization_docAggregateArgs>(args: Subset<T, Tr_authorization_docAggregateArgs>): Prisma.PrismaPromise<GetTr_authorization_docAggregateType<T>>
-
-    /**
-     * Group by Tr_authorization_doc.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tr_authorization_docGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends tr_authorization_docGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: tr_authorization_docGroupByArgs['orderBy'] }
-        : { orderBy?: tr_authorization_docGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, tr_authorization_docGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTr_authorization_docGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the tr_authorization_doc model
-   */
-  readonly fields: tr_authorization_docFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for tr_authorization_doc.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__tr_authorization_docClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    email_tracking_authdoc<T extends tr_authorization_doc$email_tracking_authdocArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$email_tracking_authdocArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$email_tracking_authdocPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    authdocApprovals<T extends tr_authorization_doc$authdocApprovalsArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$authdocApprovalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_authdoc_approvalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    authdocHistories<T extends tr_authorization_doc$authdocHistoriesArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$authdocHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_authdoc_historyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    authdocMembers<T extends tr_authorization_doc$authdocMembersArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$authdocMembersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_authdoc_memberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    authorization<T extends tr_authorization_doc$authorizationArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$authorizationArgs<ExtArgs>>): Prisma__mst_authorizationClient<$Result.GetResult<Prisma.$mst_authorizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    department<T extends tr_authorization_doc$departmentArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$departmentArgs<ExtArgs>>): Prisma__mst_departmentClient<$Result.GetResult<Prisma.$mst_departmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    authorizationPlant<T extends tr_authorization_doc$authorizationPlantArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$authorizationPlantArgs<ExtArgs>>): Prisma__mst_plantClient<$Result.GetResult<Prisma.$mst_plantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    proposedChange<T extends tr_authorization_doc$proposedChangeArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$proposedChangeArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    section_department<T extends tr_authorization_doc$section_departmentArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$section_departmentArgs<ExtArgs>>): Prisma__mst_section_departmentClient<$Result.GetResult<Prisma.$mst_section_departmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    tr_handover<T extends tr_authorization_doc$tr_handoverArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$tr_handoverArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_handoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the tr_authorization_doc model
-   */
-  interface tr_authorization_docFieldRefs {
-    readonly id: FieldRef<"tr_authorization_doc", 'Int'>
-    readonly proposed_change_id: FieldRef<"tr_authorization_doc", 'Int'>
-    readonly doc_number: FieldRef<"tr_authorization_doc", 'String'>
-    readonly implementation_date: FieldRef<"tr_authorization_doc", 'DateTime'>
-    readonly evaluation: FieldRef<"tr_authorization_doc", 'String'>
-    readonly description: FieldRef<"tr_authorization_doc", 'String'>
-    readonly conclution: FieldRef<"tr_authorization_doc", 'String'>
-    readonly concept: FieldRef<"tr_authorization_doc", 'String'>
-    readonly standart: FieldRef<"tr_authorization_doc", 'String'>
-    readonly method: FieldRef<"tr_authorization_doc", 'String'>
-    readonly status: FieldRef<"tr_authorization_doc", 'String'>
-    readonly progress: FieldRef<"tr_authorization_doc", 'String'>
-    readonly created_by: FieldRef<"tr_authorization_doc", 'String'>
-    readonly auth_id: FieldRef<"tr_authorization_doc", 'Int'>
-    readonly plant_id: FieldRef<"tr_authorization_doc", 'Int'>
-    readonly created_date: FieldRef<"tr_authorization_doc", 'DateTime'>
-    readonly department_id: FieldRef<"tr_authorization_doc", 'Int'>
-    readonly section_department_id: FieldRef<"tr_authorization_doc", 'Int'>
-    readonly updated_at: FieldRef<"tr_authorization_doc", 'DateTime'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * tr_authorization_doc findUnique
-   */
-  export type tr_authorization_docFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authorization_doc
-     */
-    select?: tr_authorization_docSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authorization_doc
-     */
-    omit?: tr_authorization_docOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authorization_docInclude<ExtArgs> | null
-    /**
-     * Filter, which tr_authorization_doc to fetch.
-     */
-    where: tr_authorization_docWhereUniqueInput
-  }
-
-  /**
-   * tr_authorization_doc findUniqueOrThrow
-   */
-  export type tr_authorization_docFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authorization_doc
-     */
-    select?: tr_authorization_docSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authorization_doc
-     */
-    omit?: tr_authorization_docOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authorization_docInclude<ExtArgs> | null
-    /**
-     * Filter, which tr_authorization_doc to fetch.
-     */
-    where: tr_authorization_docWhereUniqueInput
-  }
-
-  /**
-   * tr_authorization_doc findFirst
-   */
-  export type tr_authorization_docFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authorization_doc
-     */
-    select?: tr_authorization_docSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authorization_doc
-     */
-    omit?: tr_authorization_docOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authorization_docInclude<ExtArgs> | null
-    /**
-     * Filter, which tr_authorization_doc to fetch.
-     */
-    where?: tr_authorization_docWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tr_authorization_docs to fetch.
-     */
-    orderBy?: tr_authorization_docOrderByWithRelationInput | tr_authorization_docOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for tr_authorization_docs.
-     */
-    cursor?: tr_authorization_docWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tr_authorization_docs from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tr_authorization_docs.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of tr_authorization_docs.
-     */
-    distinct?: Tr_authorization_docScalarFieldEnum | Tr_authorization_docScalarFieldEnum[]
-  }
-
-  /**
-   * tr_authorization_doc findFirstOrThrow
-   */
-  export type tr_authorization_docFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authorization_doc
-     */
-    select?: tr_authorization_docSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authorization_doc
-     */
-    omit?: tr_authorization_docOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authorization_docInclude<ExtArgs> | null
-    /**
-     * Filter, which tr_authorization_doc to fetch.
-     */
-    where?: tr_authorization_docWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tr_authorization_docs to fetch.
-     */
-    orderBy?: tr_authorization_docOrderByWithRelationInput | tr_authorization_docOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for tr_authorization_docs.
-     */
-    cursor?: tr_authorization_docWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tr_authorization_docs from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tr_authorization_docs.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of tr_authorization_docs.
-     */
-    distinct?: Tr_authorization_docScalarFieldEnum | Tr_authorization_docScalarFieldEnum[]
-  }
-
-  /**
-   * tr_authorization_doc findMany
-   */
-  export type tr_authorization_docFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authorization_doc
-     */
-    select?: tr_authorization_docSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authorization_doc
-     */
-    omit?: tr_authorization_docOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authorization_docInclude<ExtArgs> | null
-    /**
-     * Filter, which tr_authorization_docs to fetch.
-     */
-    where?: tr_authorization_docWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tr_authorization_docs to fetch.
-     */
-    orderBy?: tr_authorization_docOrderByWithRelationInput | tr_authorization_docOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing tr_authorization_docs.
-     */
-    cursor?: tr_authorization_docWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tr_authorization_docs from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tr_authorization_docs.
-     */
-    skip?: number
-    distinct?: Tr_authorization_docScalarFieldEnum | Tr_authorization_docScalarFieldEnum[]
-  }
-
-  /**
-   * tr_authorization_doc create
-   */
-  export type tr_authorization_docCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authorization_doc
-     */
-    select?: tr_authorization_docSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authorization_doc
-     */
-    omit?: tr_authorization_docOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authorization_docInclude<ExtArgs> | null
-    /**
-     * The data needed to create a tr_authorization_doc.
-     */
-    data?: XOR<tr_authorization_docCreateInput, tr_authorization_docUncheckedCreateInput>
-  }
-
-  /**
-   * tr_authorization_doc createMany
-   */
-  export type tr_authorization_docCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many tr_authorization_docs.
-     */
-    data: tr_authorization_docCreateManyInput | tr_authorization_docCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * tr_authorization_doc update
-   */
-  export type tr_authorization_docUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authorization_doc
-     */
-    select?: tr_authorization_docSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authorization_doc
-     */
-    omit?: tr_authorization_docOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authorization_docInclude<ExtArgs> | null
-    /**
-     * The data needed to update a tr_authorization_doc.
-     */
-    data: XOR<tr_authorization_docUpdateInput, tr_authorization_docUncheckedUpdateInput>
-    /**
-     * Choose, which tr_authorization_doc to update.
-     */
-    where: tr_authorization_docWhereUniqueInput
-  }
-
-  /**
-   * tr_authorization_doc updateMany
-   */
-  export type tr_authorization_docUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update tr_authorization_docs.
-     */
-    data: XOR<tr_authorization_docUpdateManyMutationInput, tr_authorization_docUncheckedUpdateManyInput>
-    /**
-     * Filter which tr_authorization_docs to update
-     */
-    where?: tr_authorization_docWhereInput
-    /**
-     * Limit how many tr_authorization_docs to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * tr_authorization_doc upsert
-   */
-  export type tr_authorization_docUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authorization_doc
-     */
-    select?: tr_authorization_docSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authorization_doc
-     */
-    omit?: tr_authorization_docOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authorization_docInclude<ExtArgs> | null
-    /**
-     * The filter to search for the tr_authorization_doc to update in case it exists.
-     */
-    where: tr_authorization_docWhereUniqueInput
-    /**
-     * In case the tr_authorization_doc found by the `where` argument doesn't exist, create a new tr_authorization_doc with this data.
-     */
-    create: XOR<tr_authorization_docCreateInput, tr_authorization_docUncheckedCreateInput>
-    /**
-     * In case the tr_authorization_doc was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<tr_authorization_docUpdateInput, tr_authorization_docUncheckedUpdateInput>
-  }
-
-  /**
-   * tr_authorization_doc delete
-   */
-  export type tr_authorization_docDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authorization_doc
-     */
-    select?: tr_authorization_docSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authorization_doc
-     */
-    omit?: tr_authorization_docOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authorization_docInclude<ExtArgs> | null
-    /**
-     * Filter which tr_authorization_doc to delete.
-     */
-    where: tr_authorization_docWhereUniqueInput
-  }
-
-  /**
-   * tr_authorization_doc deleteMany
-   */
-  export type tr_authorization_docDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which tr_authorization_docs to delete
-     */
-    where?: tr_authorization_docWhereInput
-    /**
-     * Limit how many tr_authorization_docs to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * tr_authorization_doc.email_tracking_authdoc
-   */
-  export type tr_authorization_doc$email_tracking_authdocArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the email_tracking_authdoc
-     */
-    select?: email_tracking_authdocSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the email_tracking_authdoc
-     */
-    omit?: email_tracking_authdocOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: email_tracking_authdocInclude<ExtArgs> | null
-    where?: email_tracking_authdocWhereInput
-    orderBy?: email_tracking_authdocOrderByWithRelationInput | email_tracking_authdocOrderByWithRelationInput[]
-    cursor?: email_tracking_authdocWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Email_tracking_authdocScalarFieldEnum | Email_tracking_authdocScalarFieldEnum[]
-  }
-
-  /**
-   * tr_authorization_doc.authdocApprovals
-   */
-  export type tr_authorization_doc$authdocApprovalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authdoc_approval
-     */
-    select?: tr_authdoc_approvalSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authdoc_approval
-     */
-    omit?: tr_authdoc_approvalOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authdoc_approvalInclude<ExtArgs> | null
-    where?: tr_authdoc_approvalWhereInput
-    orderBy?: tr_authdoc_approvalOrderByWithRelationInput | tr_authdoc_approvalOrderByWithRelationInput[]
-    cursor?: tr_authdoc_approvalWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Tr_authdoc_approvalScalarFieldEnum | Tr_authdoc_approvalScalarFieldEnum[]
-  }
-
-  /**
-   * tr_authorization_doc.authdocHistories
-   */
-  export type tr_authorization_doc$authdocHistoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authdoc_history
-     */
-    select?: tr_authdoc_historySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authdoc_history
-     */
-    omit?: tr_authdoc_historyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authdoc_historyInclude<ExtArgs> | null
-    where?: tr_authdoc_historyWhereInput
-    orderBy?: tr_authdoc_historyOrderByWithRelationInput | tr_authdoc_historyOrderByWithRelationInput[]
-    cursor?: tr_authdoc_historyWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Tr_authdoc_historyScalarFieldEnum | Tr_authdoc_historyScalarFieldEnum[]
-  }
-
-  /**
-   * tr_authorization_doc.authdocMembers
-   */
-  export type tr_authorization_doc$authdocMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authdoc_member
-     */
-    select?: tr_authdoc_memberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authdoc_member
-     */
-    omit?: tr_authdoc_memberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authdoc_memberInclude<ExtArgs> | null
-    where?: tr_authdoc_memberWhereInput
-    orderBy?: tr_authdoc_memberOrderByWithRelationInput | tr_authdoc_memberOrderByWithRelationInput[]
-    cursor?: tr_authdoc_memberWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Tr_authdoc_memberScalarFieldEnum | Tr_authdoc_memberScalarFieldEnum[]
-  }
-
-  /**
-   * tr_authorization_doc.authorization
-   */
-  export type tr_authorization_doc$authorizationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mst_authorization
-     */
-    select?: mst_authorizationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the mst_authorization
-     */
-    omit?: mst_authorizationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mst_authorizationInclude<ExtArgs> | null
-    where?: mst_authorizationWhereInput
-  }
-
-  /**
-   * tr_authorization_doc.department
-   */
-  export type tr_authorization_doc$departmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mst_department
-     */
-    select?: mst_departmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the mst_department
-     */
-    omit?: mst_departmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mst_departmentInclude<ExtArgs> | null
-    where?: mst_departmentWhereInput
-  }
-
-  /**
-   * tr_authorization_doc.authorizationPlant
-   */
-  export type tr_authorization_doc$authorizationPlantArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mst_plant
-     */
-    select?: mst_plantSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the mst_plant
-     */
-    omit?: mst_plantOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mst_plantInclude<ExtArgs> | null
-    where?: mst_plantWhereInput
-  }
-
-  /**
-   * tr_authorization_doc.proposedChange
-   */
-  export type tr_authorization_doc$proposedChangeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes
-     */
-    select?: tr_proposed_changesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes
-     */
-    omit?: tr_proposed_changesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changesInclude<ExtArgs> | null
-    where?: tr_proposed_changesWhereInput
-  }
-
-  /**
-   * tr_authorization_doc.section_department
-   */
-  export type tr_authorization_doc$section_departmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mst_section_department
-     */
-    select?: mst_section_departmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the mst_section_department
-     */
-    omit?: mst_section_departmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mst_section_departmentInclude<ExtArgs> | null
-    where?: mst_section_departmentWhereInput
-  }
-
-  /**
-   * tr_authorization_doc.tr_handover
-   */
-  export type tr_authorization_doc$tr_handoverArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_handover
-     */
-    select?: tr_handoverSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_handover
-     */
-    omit?: tr_handoverOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_handoverInclude<ExtArgs> | null
-    where?: tr_handoverWhereInput
-    orderBy?: tr_handoverOrderByWithRelationInput | tr_handoverOrderByWithRelationInput[]
-    cursor?: tr_handoverWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Tr_handoverScalarFieldEnum | Tr_handoverScalarFieldEnum[]
-  }
-
-  /**
-   * tr_authorization_doc without action
-   */
-  export type tr_authorization_docDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authorization_doc
-     */
-    select?: tr_authorization_docSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authorization_doc
-     */
-    omit?: tr_authorization_docOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authorization_docInclude<ExtArgs> | null
-  }
-
-
-  /**
    * Model tr_authdoc_approval
    */
 
@@ -32068,1551 +30678,6 @@ export namespace Prisma {
      * Choose, which related nodes to fetch as well
      */
     include?: tr_authdoc_approvalInclude<ExtArgs> | null
-  }
-
-
-  /**
-   * Model tr_proposed_changes
-   */
-
-  export type AggregateTr_proposed_changes = {
-    _count: Tr_proposed_changesCountAggregateOutputType | null
-    _avg: Tr_proposed_changesAvgAggregateOutputType | null
-    _sum: Tr_proposed_changesSumAggregateOutputType | null
-    _min: Tr_proposed_changesMinAggregateOutputType | null
-    _max: Tr_proposed_changesMaxAggregateOutputType | null
-  }
-
-  export type Tr_proposed_changesAvgAggregateOutputType = {
-    id: number | null
-    document_number_id: number | null
-    department_id: number | null
-    section_department_id: number | null
-    plant_id: number | null
-    auth_id: number | null
-  }
-
-  export type Tr_proposed_changesSumAggregateOutputType = {
-    id: number | null
-    document_number_id: number | null
-    department_id: number | null
-    section_department_id: number | null
-    plant_id: number | null
-    auth_id: number | null
-  }
-
-  export type Tr_proposed_changesMinAggregateOutputType = {
-    id: number | null
-    project_name: string | null
-    document_number_id: number | null
-    item_changes: string | null
-    line_code: string | null
-    section_code: string | null
-    section_name: string | null
-    department_id: number | null
-    section_department_id: number | null
-    plant_id: number | null
-    auth_id: number | null
-    change_type: string | null
-    description: string | null
-    reason: string | null
-    cost: string | null
-    cost_text: string | null
-    planning_start: Date | null
-    planning_end: Date | null
-    created_date: Date | null
-    created_by: string | null
-    updated_at: Date | null
-    need_engineering_approval: boolean | null
-    need_production_approval: boolean | null
-    other_sytem: string | null
-    status: string | null
-    progress: string | null
-    progresssupport: string | null
-    is_deleted: boolean | null
-  }
-
-  export type Tr_proposed_changesMaxAggregateOutputType = {
-    id: number | null
-    project_name: string | null
-    document_number_id: number | null
-    item_changes: string | null
-    line_code: string | null
-    section_code: string | null
-    section_name: string | null
-    department_id: number | null
-    section_department_id: number | null
-    plant_id: number | null
-    auth_id: number | null
-    change_type: string | null
-    description: string | null
-    reason: string | null
-    cost: string | null
-    cost_text: string | null
-    planning_start: Date | null
-    planning_end: Date | null
-    created_date: Date | null
-    created_by: string | null
-    updated_at: Date | null
-    need_engineering_approval: boolean | null
-    need_production_approval: boolean | null
-    other_sytem: string | null
-    status: string | null
-    progress: string | null
-    progresssupport: string | null
-    is_deleted: boolean | null
-  }
-
-  export type Tr_proposed_changesCountAggregateOutputType = {
-    id: number
-    project_name: number
-    document_number_id: number
-    item_changes: number
-    line_code: number
-    section_code: number
-    section_name: number
-    department_id: number
-    section_department_id: number
-    plant_id: number
-    auth_id: number
-    change_type: number
-    description: number
-    reason: number
-    cost: number
-    cost_text: number
-    planning_start: number
-    planning_end: number
-    created_date: number
-    created_by: number
-    updated_at: number
-    need_engineering_approval: number
-    need_production_approval: number
-    other_sytem: number
-    status: number
-    progress: number
-    progresssupport: number
-    is_deleted: number
-    _all: number
-  }
-
-
-  export type Tr_proposed_changesAvgAggregateInputType = {
-    id?: true
-    document_number_id?: true
-    department_id?: true
-    section_department_id?: true
-    plant_id?: true
-    auth_id?: true
-  }
-
-  export type Tr_proposed_changesSumAggregateInputType = {
-    id?: true
-    document_number_id?: true
-    department_id?: true
-    section_department_id?: true
-    plant_id?: true
-    auth_id?: true
-  }
-
-  export type Tr_proposed_changesMinAggregateInputType = {
-    id?: true
-    project_name?: true
-    document_number_id?: true
-    item_changes?: true
-    line_code?: true
-    section_code?: true
-    section_name?: true
-    department_id?: true
-    section_department_id?: true
-    plant_id?: true
-    auth_id?: true
-    change_type?: true
-    description?: true
-    reason?: true
-    cost?: true
-    cost_text?: true
-    planning_start?: true
-    planning_end?: true
-    created_date?: true
-    created_by?: true
-    updated_at?: true
-    need_engineering_approval?: true
-    need_production_approval?: true
-    other_sytem?: true
-    status?: true
-    progress?: true
-    progresssupport?: true
-    is_deleted?: true
-  }
-
-  export type Tr_proposed_changesMaxAggregateInputType = {
-    id?: true
-    project_name?: true
-    document_number_id?: true
-    item_changes?: true
-    line_code?: true
-    section_code?: true
-    section_name?: true
-    department_id?: true
-    section_department_id?: true
-    plant_id?: true
-    auth_id?: true
-    change_type?: true
-    description?: true
-    reason?: true
-    cost?: true
-    cost_text?: true
-    planning_start?: true
-    planning_end?: true
-    created_date?: true
-    created_by?: true
-    updated_at?: true
-    need_engineering_approval?: true
-    need_production_approval?: true
-    other_sytem?: true
-    status?: true
-    progress?: true
-    progresssupport?: true
-    is_deleted?: true
-  }
-
-  export type Tr_proposed_changesCountAggregateInputType = {
-    id?: true
-    project_name?: true
-    document_number_id?: true
-    item_changes?: true
-    line_code?: true
-    section_code?: true
-    section_name?: true
-    department_id?: true
-    section_department_id?: true
-    plant_id?: true
-    auth_id?: true
-    change_type?: true
-    description?: true
-    reason?: true
-    cost?: true
-    cost_text?: true
-    planning_start?: true
-    planning_end?: true
-    created_date?: true
-    created_by?: true
-    updated_at?: true
-    need_engineering_approval?: true
-    need_production_approval?: true
-    other_sytem?: true
-    status?: true
-    progress?: true
-    progresssupport?: true
-    is_deleted?: true
-    _all?: true
-  }
-
-  export type Tr_proposed_changesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which tr_proposed_changes to aggregate.
-     */
-    where?: tr_proposed_changesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tr_proposed_changes to fetch.
-     */
-    orderBy?: tr_proposed_changesOrderByWithRelationInput | tr_proposed_changesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: tr_proposed_changesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tr_proposed_changes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tr_proposed_changes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned tr_proposed_changes
-    **/
-    _count?: true | Tr_proposed_changesCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Tr_proposed_changesAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Tr_proposed_changesSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Tr_proposed_changesMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Tr_proposed_changesMaxAggregateInputType
-  }
-
-  export type GetTr_proposed_changesAggregateType<T extends Tr_proposed_changesAggregateArgs> = {
-        [P in keyof T & keyof AggregateTr_proposed_changes]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateTr_proposed_changes[P]>
-      : GetScalarType<T[P], AggregateTr_proposed_changes[P]>
-  }
-
-
-
-
-  export type tr_proposed_changesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: tr_proposed_changesWhereInput
-    orderBy?: tr_proposed_changesOrderByWithAggregationInput | tr_proposed_changesOrderByWithAggregationInput[]
-    by: Tr_proposed_changesScalarFieldEnum[] | Tr_proposed_changesScalarFieldEnum
-    having?: tr_proposed_changesScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Tr_proposed_changesCountAggregateInputType | true
-    _avg?: Tr_proposed_changesAvgAggregateInputType
-    _sum?: Tr_proposed_changesSumAggregateInputType
-    _min?: Tr_proposed_changesMinAggregateInputType
-    _max?: Tr_proposed_changesMaxAggregateInputType
-  }
-
-  export type Tr_proposed_changesGroupByOutputType = {
-    id: number
-    project_name: string | null
-    document_number_id: number | null
-    item_changes: string | null
-    line_code: string | null
-    section_code: string | null
-    section_name: string | null
-    department_id: number | null
-    section_department_id: number | null
-    plant_id: number | null
-    auth_id: number | null
-    change_type: string | null
-    description: string | null
-    reason: string | null
-    cost: string | null
-    cost_text: string | null
-    planning_start: Date | null
-    planning_end: Date | null
-    created_date: Date | null
-    created_by: string | null
-    updated_at: Date | null
-    need_engineering_approval: boolean | null
-    need_production_approval: boolean | null
-    other_sytem: string | null
-    status: string | null
-    progress: string | null
-    progresssupport: string | null
-    is_deleted: boolean
-    _count: Tr_proposed_changesCountAggregateOutputType | null
-    _avg: Tr_proposed_changesAvgAggregateOutputType | null
-    _sum: Tr_proposed_changesSumAggregateOutputType | null
-    _min: Tr_proposed_changesMinAggregateOutputType | null
-    _max: Tr_proposed_changesMaxAggregateOutputType | null
-  }
-
-  type GetTr_proposed_changesGroupByPayload<T extends tr_proposed_changesGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Tr_proposed_changesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Tr_proposed_changesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Tr_proposed_changesGroupByOutputType[P]>
-            : GetScalarType<T[P], Tr_proposed_changesGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type tr_proposed_changesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    project_name?: boolean
-    document_number_id?: boolean
-    item_changes?: boolean
-    line_code?: boolean
-    section_code?: boolean
-    section_name?: boolean
-    department_id?: boolean
-    section_department_id?: boolean
-    plant_id?: boolean
-    auth_id?: boolean
-    change_type?: boolean
-    description?: boolean
-    reason?: boolean
-    cost?: boolean
-    cost_text?: boolean
-    planning_start?: boolean
-    planning_end?: boolean
-    created_date?: boolean
-    created_by?: boolean
-    updated_at?: boolean
-    need_engineering_approval?: boolean
-    need_production_approval?: boolean
-    other_sytem?: boolean
-    status?: boolean
-    progress?: boolean
-    progresssupport?: boolean
-    is_deleted?: boolean
-    email_tracking_proposedchanges?: boolean | tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs>
-    proposedChange?: boolean | tr_proposed_changes$proposedChangeArgs<ExtArgs>
-    additionalDocs?: boolean | tr_proposed_changes$additionalDocsArgs<ExtArgs>
-    authorizationDocs?: boolean | tr_proposed_changes$authorizationDocsArgs<ExtArgs>
-    tr_handover?: boolean | tr_proposed_changes$tr_handoverArgs<ExtArgs>
-    mainProposedChanges?: boolean | tr_proposed_changes$mainProposedChangesArgs<ExtArgs>
-    department?: boolean | tr_proposed_changes$departmentArgs<ExtArgs>
-    documentNumber?: boolean | tr_proposed_changes$documentNumberArgs<ExtArgs>
-    plant?: boolean | tr_proposed_changes$plantArgs<ExtArgs>
-    section_department?: boolean | tr_proposed_changes$section_departmentArgs<ExtArgs>
-    approvals?: boolean | tr_proposed_changes$approvalsArgs<ExtArgs>
-    changeHistories?: boolean | tr_proposed_changes$changeHistoriesArgs<ExtArgs>
-    _count?: boolean | Tr_proposed_changesCountOutputTypeDefaultArgs<ExtArgs>
-  }, ExtArgs["result"]["tr_proposed_changes"]>
-
-
-
-  export type tr_proposed_changesSelectScalar = {
-    id?: boolean
-    project_name?: boolean
-    document_number_id?: boolean
-    item_changes?: boolean
-    line_code?: boolean
-    section_code?: boolean
-    section_name?: boolean
-    department_id?: boolean
-    section_department_id?: boolean
-    plant_id?: boolean
-    auth_id?: boolean
-    change_type?: boolean
-    description?: boolean
-    reason?: boolean
-    cost?: boolean
-    cost_text?: boolean
-    planning_start?: boolean
-    planning_end?: boolean
-    created_date?: boolean
-    created_by?: boolean
-    updated_at?: boolean
-    need_engineering_approval?: boolean
-    need_production_approval?: boolean
-    other_sytem?: boolean
-    status?: boolean
-    progress?: boolean
-    progresssupport?: boolean
-    is_deleted?: boolean
-  }
-
-  export type tr_proposed_changesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "project_name" | "document_number_id" | "item_changes" | "line_code" | "section_code" | "section_name" | "department_id" | "section_department_id" | "plant_id" | "auth_id" | "change_type" | "description" | "reason" | "cost" | "cost_text" | "planning_start" | "planning_end" | "created_date" | "created_by" | "updated_at" | "need_engineering_approval" | "need_production_approval" | "other_sytem" | "status" | "progress" | "progresssupport" | "is_deleted", ExtArgs["result"]["tr_proposed_changes"]>
-  export type tr_proposed_changesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    email_tracking_proposedchanges?: boolean | tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs>
-    proposedChange?: boolean | tr_proposed_changes$proposedChangeArgs<ExtArgs>
-    additionalDocs?: boolean | tr_proposed_changes$additionalDocsArgs<ExtArgs>
-    authorizationDocs?: boolean | tr_proposed_changes$authorizationDocsArgs<ExtArgs>
-    tr_handover?: boolean | tr_proposed_changes$tr_handoverArgs<ExtArgs>
-    mainProposedChanges?: boolean | tr_proposed_changes$mainProposedChangesArgs<ExtArgs>
-    department?: boolean | tr_proposed_changes$departmentArgs<ExtArgs>
-    documentNumber?: boolean | tr_proposed_changes$documentNumberArgs<ExtArgs>
-    plant?: boolean | tr_proposed_changes$plantArgs<ExtArgs>
-    section_department?: boolean | tr_proposed_changes$section_departmentArgs<ExtArgs>
-    approvals?: boolean | tr_proposed_changes$approvalsArgs<ExtArgs>
-    changeHistories?: boolean | tr_proposed_changes$changeHistoriesArgs<ExtArgs>
-    _count?: boolean | Tr_proposed_changesCountOutputTypeDefaultArgs<ExtArgs>
-  }
-
-  export type $tr_proposed_changesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "tr_proposed_changes"
-    objects: {
-      email_tracking_proposedchanges: Prisma.$email_tracking_proposedchangesPayload<ExtArgs>[]
-      proposedChange: Prisma.$tbl_support_documentPayload<ExtArgs>[]
-      additionalDocs: Prisma.$tr_additional_docPayload<ExtArgs>[]
-      authorizationDocs: Prisma.$tr_authorization_docPayload<ExtArgs>[]
-      tr_handover: Prisma.$tr_handoverPayload<ExtArgs>[]
-      mainProposedChanges: Prisma.$mst_authorizationPayload<ExtArgs> | null
-      department: Prisma.$mst_departmentPayload<ExtArgs> | null
-      documentNumber: Prisma.$tr_document_numberPayload<ExtArgs> | null
-      plant: Prisma.$mst_plantPayload<ExtArgs> | null
-      section_department: Prisma.$mst_section_departmentPayload<ExtArgs> | null
-      approvals: Prisma.$tr_proposed_changes_approvalPayload<ExtArgs>[]
-      changeHistories: Prisma.$tr_proposed_changes_historyPayload<ExtArgs>[]
-    }
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      project_name: string | null
-      document_number_id: number | null
-      item_changes: string | null
-      line_code: string | null
-      section_code: string | null
-      section_name: string | null
-      department_id: number | null
-      section_department_id: number | null
-      plant_id: number | null
-      auth_id: number | null
-      change_type: string | null
-      description: string | null
-      reason: string | null
-      cost: string | null
-      cost_text: string | null
-      planning_start: Date | null
-      planning_end: Date | null
-      created_date: Date | null
-      created_by: string | null
-      updated_at: Date | null
-      need_engineering_approval: boolean | null
-      need_production_approval: boolean | null
-      other_sytem: string | null
-      status: string | null
-      progress: string | null
-      progresssupport: string | null
-      is_deleted: boolean
-    }, ExtArgs["result"]["tr_proposed_changes"]>
-    composites: {}
-  }
-
-  type tr_proposed_changesGetPayload<S extends boolean | null | undefined | tr_proposed_changesDefaultArgs> = $Result.GetResult<Prisma.$tr_proposed_changesPayload, S>
-
-  type tr_proposed_changesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<tr_proposed_changesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Tr_proposed_changesCountAggregateInputType | true
-    }
-
-  export interface tr_proposed_changesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tr_proposed_changes'], meta: { name: 'tr_proposed_changes' } }
-    /**
-     * Find zero or one Tr_proposed_changes that matches the filter.
-     * @param {tr_proposed_changesFindUniqueArgs} args - Arguments to find a Tr_proposed_changes
-     * @example
-     * // Get one Tr_proposed_changes
-     * const tr_proposed_changes = await prisma.tr_proposed_changes.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends tr_proposed_changesFindUniqueArgs>(args: SelectSubset<T, tr_proposed_changesFindUniqueArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Tr_proposed_changes that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {tr_proposed_changesFindUniqueOrThrowArgs} args - Arguments to find a Tr_proposed_changes
-     * @example
-     * // Get one Tr_proposed_changes
-     * const tr_proposed_changes = await prisma.tr_proposed_changes.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends tr_proposed_changesFindUniqueOrThrowArgs>(args: SelectSubset<T, tr_proposed_changesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Tr_proposed_changes that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tr_proposed_changesFindFirstArgs} args - Arguments to find a Tr_proposed_changes
-     * @example
-     * // Get one Tr_proposed_changes
-     * const tr_proposed_changes = await prisma.tr_proposed_changes.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends tr_proposed_changesFindFirstArgs>(args?: SelectSubset<T, tr_proposed_changesFindFirstArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Tr_proposed_changes that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tr_proposed_changesFindFirstOrThrowArgs} args - Arguments to find a Tr_proposed_changes
-     * @example
-     * // Get one Tr_proposed_changes
-     * const tr_proposed_changes = await prisma.tr_proposed_changes.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends tr_proposed_changesFindFirstOrThrowArgs>(args?: SelectSubset<T, tr_proposed_changesFindFirstOrThrowArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Tr_proposed_changes that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tr_proposed_changesFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Tr_proposed_changes
-     * const tr_proposed_changes = await prisma.tr_proposed_changes.findMany()
-     * 
-     * // Get first 10 Tr_proposed_changes
-     * const tr_proposed_changes = await prisma.tr_proposed_changes.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const tr_proposed_changesWithIdOnly = await prisma.tr_proposed_changes.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends tr_proposed_changesFindManyArgs>(args?: SelectSubset<T, tr_proposed_changesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Tr_proposed_changes.
-     * @param {tr_proposed_changesCreateArgs} args - Arguments to create a Tr_proposed_changes.
-     * @example
-     * // Create one Tr_proposed_changes
-     * const Tr_proposed_changes = await prisma.tr_proposed_changes.create({
-     *   data: {
-     *     // ... data to create a Tr_proposed_changes
-     *   }
-     * })
-     * 
-     */
-    create<T extends tr_proposed_changesCreateArgs>(args: SelectSubset<T, tr_proposed_changesCreateArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Tr_proposed_changes.
-     * @param {tr_proposed_changesCreateManyArgs} args - Arguments to create many Tr_proposed_changes.
-     * @example
-     * // Create many Tr_proposed_changes
-     * const tr_proposed_changes = await prisma.tr_proposed_changes.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends tr_proposed_changesCreateManyArgs>(args?: SelectSubset<T, tr_proposed_changesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Tr_proposed_changes.
-     * @param {tr_proposed_changesDeleteArgs} args - Arguments to delete one Tr_proposed_changes.
-     * @example
-     * // Delete one Tr_proposed_changes
-     * const Tr_proposed_changes = await prisma.tr_proposed_changes.delete({
-     *   where: {
-     *     // ... filter to delete one Tr_proposed_changes
-     *   }
-     * })
-     * 
-     */
-    delete<T extends tr_proposed_changesDeleteArgs>(args: SelectSubset<T, tr_proposed_changesDeleteArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Tr_proposed_changes.
-     * @param {tr_proposed_changesUpdateArgs} args - Arguments to update one Tr_proposed_changes.
-     * @example
-     * // Update one Tr_proposed_changes
-     * const tr_proposed_changes = await prisma.tr_proposed_changes.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends tr_proposed_changesUpdateArgs>(args: SelectSubset<T, tr_proposed_changesUpdateArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Tr_proposed_changes.
-     * @param {tr_proposed_changesDeleteManyArgs} args - Arguments to filter Tr_proposed_changes to delete.
-     * @example
-     * // Delete a few Tr_proposed_changes
-     * const { count } = await prisma.tr_proposed_changes.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends tr_proposed_changesDeleteManyArgs>(args?: SelectSubset<T, tr_proposed_changesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Tr_proposed_changes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tr_proposed_changesUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Tr_proposed_changes
-     * const tr_proposed_changes = await prisma.tr_proposed_changes.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends tr_proposed_changesUpdateManyArgs>(args: SelectSubset<T, tr_proposed_changesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Tr_proposed_changes.
-     * @param {tr_proposed_changesUpsertArgs} args - Arguments to update or create a Tr_proposed_changes.
-     * @example
-     * // Update or create a Tr_proposed_changes
-     * const tr_proposed_changes = await prisma.tr_proposed_changes.upsert({
-     *   create: {
-     *     // ... data to create a Tr_proposed_changes
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Tr_proposed_changes we want to update
-     *   }
-     * })
-     */
-    upsert<T extends tr_proposed_changesUpsertArgs>(args: SelectSubset<T, tr_proposed_changesUpsertArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Tr_proposed_changes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tr_proposed_changesCountArgs} args - Arguments to filter Tr_proposed_changes to count.
-     * @example
-     * // Count the number of Tr_proposed_changes
-     * const count = await prisma.tr_proposed_changes.count({
-     *   where: {
-     *     // ... the filter for the Tr_proposed_changes we want to count
-     *   }
-     * })
-    **/
-    count<T extends tr_proposed_changesCountArgs>(
-      args?: Subset<T, tr_proposed_changesCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Tr_proposed_changesCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Tr_proposed_changes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Tr_proposed_changesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Tr_proposed_changesAggregateArgs>(args: Subset<T, Tr_proposed_changesAggregateArgs>): Prisma.PrismaPromise<GetTr_proposed_changesAggregateType<T>>
-
-    /**
-     * Group by Tr_proposed_changes.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {tr_proposed_changesGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends tr_proposed_changesGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: tr_proposed_changesGroupByArgs['orderBy'] }
-        : { orderBy?: tr_proposed_changesGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, tr_proposed_changesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTr_proposed_changesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the tr_proposed_changes model
-   */
-  readonly fields: tr_proposed_changesFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for tr_proposed_changes.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__tr_proposed_changesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    email_tracking_proposedchanges<T extends tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$email_tracking_proposedchangesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    proposedChange<T extends tr_proposed_changes$proposedChangeArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$proposedChangeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tbl_support_documentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    additionalDocs<T extends tr_proposed_changes$additionalDocsArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$additionalDocsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_additional_docPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    authorizationDocs<T extends tr_proposed_changes$authorizationDocsArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$authorizationDocsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    tr_handover<T extends tr_proposed_changes$tr_handoverArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$tr_handoverArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_handoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    mainProposedChanges<T extends tr_proposed_changes$mainProposedChangesArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$mainProposedChangesArgs<ExtArgs>>): Prisma__mst_authorizationClient<$Result.GetResult<Prisma.$mst_authorizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    department<T extends tr_proposed_changes$departmentArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$departmentArgs<ExtArgs>>): Prisma__mst_departmentClient<$Result.GetResult<Prisma.$mst_departmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    documentNumber<T extends tr_proposed_changes$documentNumberArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$documentNumberArgs<ExtArgs>>): Prisma__tr_document_numberClient<$Result.GetResult<Prisma.$tr_document_numberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    plant<T extends tr_proposed_changes$plantArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$plantArgs<ExtArgs>>): Prisma__mst_plantClient<$Result.GetResult<Prisma.$mst_plantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    section_department<T extends tr_proposed_changes$section_departmentArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$section_departmentArgs<ExtArgs>>): Prisma__mst_section_departmentClient<$Result.GetResult<Prisma.$mst_section_departmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-    approvals<T extends tr_proposed_changes$approvalsArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$approvalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_proposed_changes_approvalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    changeHistories<T extends tr_proposed_changes$changeHistoriesArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$changeHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_proposed_changes_historyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the tr_proposed_changes model
-   */
-  interface tr_proposed_changesFieldRefs {
-    readonly id: FieldRef<"tr_proposed_changes", 'Int'>
-    readonly project_name: FieldRef<"tr_proposed_changes", 'String'>
-    readonly document_number_id: FieldRef<"tr_proposed_changes", 'Int'>
-    readonly item_changes: FieldRef<"tr_proposed_changes", 'String'>
-    readonly line_code: FieldRef<"tr_proposed_changes", 'String'>
-    readonly section_code: FieldRef<"tr_proposed_changes", 'String'>
-    readonly section_name: FieldRef<"tr_proposed_changes", 'String'>
-    readonly department_id: FieldRef<"tr_proposed_changes", 'Int'>
-    readonly section_department_id: FieldRef<"tr_proposed_changes", 'Int'>
-    readonly plant_id: FieldRef<"tr_proposed_changes", 'Int'>
-    readonly auth_id: FieldRef<"tr_proposed_changes", 'Int'>
-    readonly change_type: FieldRef<"tr_proposed_changes", 'String'>
-    readonly description: FieldRef<"tr_proposed_changes", 'String'>
-    readonly reason: FieldRef<"tr_proposed_changes", 'String'>
-    readonly cost: FieldRef<"tr_proposed_changes", 'String'>
-    readonly cost_text: FieldRef<"tr_proposed_changes", 'String'>
-    readonly planning_start: FieldRef<"tr_proposed_changes", 'DateTime'>
-    readonly planning_end: FieldRef<"tr_proposed_changes", 'DateTime'>
-    readonly created_date: FieldRef<"tr_proposed_changes", 'DateTime'>
-    readonly created_by: FieldRef<"tr_proposed_changes", 'String'>
-    readonly updated_at: FieldRef<"tr_proposed_changes", 'DateTime'>
-    readonly need_engineering_approval: FieldRef<"tr_proposed_changes", 'Boolean'>
-    readonly need_production_approval: FieldRef<"tr_proposed_changes", 'Boolean'>
-    readonly other_sytem: FieldRef<"tr_proposed_changes", 'String'>
-    readonly status: FieldRef<"tr_proposed_changes", 'String'>
-    readonly progress: FieldRef<"tr_proposed_changes", 'String'>
-    readonly progresssupport: FieldRef<"tr_proposed_changes", 'String'>
-    readonly is_deleted: FieldRef<"tr_proposed_changes", 'Boolean'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * tr_proposed_changes findUnique
-   */
-  export type tr_proposed_changesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes
-     */
-    select?: tr_proposed_changesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes
-     */
-    omit?: tr_proposed_changesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changesInclude<ExtArgs> | null
-    /**
-     * Filter, which tr_proposed_changes to fetch.
-     */
-    where: tr_proposed_changesWhereUniqueInput
-  }
-
-  /**
-   * tr_proposed_changes findUniqueOrThrow
-   */
-  export type tr_proposed_changesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes
-     */
-    select?: tr_proposed_changesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes
-     */
-    omit?: tr_proposed_changesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changesInclude<ExtArgs> | null
-    /**
-     * Filter, which tr_proposed_changes to fetch.
-     */
-    where: tr_proposed_changesWhereUniqueInput
-  }
-
-  /**
-   * tr_proposed_changes findFirst
-   */
-  export type tr_proposed_changesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes
-     */
-    select?: tr_proposed_changesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes
-     */
-    omit?: tr_proposed_changesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changesInclude<ExtArgs> | null
-    /**
-     * Filter, which tr_proposed_changes to fetch.
-     */
-    where?: tr_proposed_changesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tr_proposed_changes to fetch.
-     */
-    orderBy?: tr_proposed_changesOrderByWithRelationInput | tr_proposed_changesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for tr_proposed_changes.
-     */
-    cursor?: tr_proposed_changesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tr_proposed_changes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tr_proposed_changes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of tr_proposed_changes.
-     */
-    distinct?: Tr_proposed_changesScalarFieldEnum | Tr_proposed_changesScalarFieldEnum[]
-  }
-
-  /**
-   * tr_proposed_changes findFirstOrThrow
-   */
-  export type tr_proposed_changesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes
-     */
-    select?: tr_proposed_changesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes
-     */
-    omit?: tr_proposed_changesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changesInclude<ExtArgs> | null
-    /**
-     * Filter, which tr_proposed_changes to fetch.
-     */
-    where?: tr_proposed_changesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tr_proposed_changes to fetch.
-     */
-    orderBy?: tr_proposed_changesOrderByWithRelationInput | tr_proposed_changesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for tr_proposed_changes.
-     */
-    cursor?: tr_proposed_changesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tr_proposed_changes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tr_proposed_changes.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of tr_proposed_changes.
-     */
-    distinct?: Tr_proposed_changesScalarFieldEnum | Tr_proposed_changesScalarFieldEnum[]
-  }
-
-  /**
-   * tr_proposed_changes findMany
-   */
-  export type tr_proposed_changesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes
-     */
-    select?: tr_proposed_changesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes
-     */
-    omit?: tr_proposed_changesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changesInclude<ExtArgs> | null
-    /**
-     * Filter, which tr_proposed_changes to fetch.
-     */
-    where?: tr_proposed_changesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of tr_proposed_changes to fetch.
-     */
-    orderBy?: tr_proposed_changesOrderByWithRelationInput | tr_proposed_changesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing tr_proposed_changes.
-     */
-    cursor?: tr_proposed_changesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` tr_proposed_changes from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` tr_proposed_changes.
-     */
-    skip?: number
-    distinct?: Tr_proposed_changesScalarFieldEnum | Tr_proposed_changesScalarFieldEnum[]
-  }
-
-  /**
-   * tr_proposed_changes create
-   */
-  export type tr_proposed_changesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes
-     */
-    select?: tr_proposed_changesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes
-     */
-    omit?: tr_proposed_changesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changesInclude<ExtArgs> | null
-    /**
-     * The data needed to create a tr_proposed_changes.
-     */
-    data?: XOR<tr_proposed_changesCreateInput, tr_proposed_changesUncheckedCreateInput>
-  }
-
-  /**
-   * tr_proposed_changes createMany
-   */
-  export type tr_proposed_changesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many tr_proposed_changes.
-     */
-    data: tr_proposed_changesCreateManyInput | tr_proposed_changesCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * tr_proposed_changes update
-   */
-  export type tr_proposed_changesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes
-     */
-    select?: tr_proposed_changesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes
-     */
-    omit?: tr_proposed_changesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changesInclude<ExtArgs> | null
-    /**
-     * The data needed to update a tr_proposed_changes.
-     */
-    data: XOR<tr_proposed_changesUpdateInput, tr_proposed_changesUncheckedUpdateInput>
-    /**
-     * Choose, which tr_proposed_changes to update.
-     */
-    where: tr_proposed_changesWhereUniqueInput
-  }
-
-  /**
-   * tr_proposed_changes updateMany
-   */
-  export type tr_proposed_changesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update tr_proposed_changes.
-     */
-    data: XOR<tr_proposed_changesUpdateManyMutationInput, tr_proposed_changesUncheckedUpdateManyInput>
-    /**
-     * Filter which tr_proposed_changes to update
-     */
-    where?: tr_proposed_changesWhereInput
-    /**
-     * Limit how many tr_proposed_changes to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * tr_proposed_changes upsert
-   */
-  export type tr_proposed_changesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes
-     */
-    select?: tr_proposed_changesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes
-     */
-    omit?: tr_proposed_changesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changesInclude<ExtArgs> | null
-    /**
-     * The filter to search for the tr_proposed_changes to update in case it exists.
-     */
-    where: tr_proposed_changesWhereUniqueInput
-    /**
-     * In case the tr_proposed_changes found by the `where` argument doesn't exist, create a new tr_proposed_changes with this data.
-     */
-    create: XOR<tr_proposed_changesCreateInput, tr_proposed_changesUncheckedCreateInput>
-    /**
-     * In case the tr_proposed_changes was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<tr_proposed_changesUpdateInput, tr_proposed_changesUncheckedUpdateInput>
-  }
-
-  /**
-   * tr_proposed_changes delete
-   */
-  export type tr_proposed_changesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes
-     */
-    select?: tr_proposed_changesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes
-     */
-    omit?: tr_proposed_changesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changesInclude<ExtArgs> | null
-    /**
-     * Filter which tr_proposed_changes to delete.
-     */
-    where: tr_proposed_changesWhereUniqueInput
-  }
-
-  /**
-   * tr_proposed_changes deleteMany
-   */
-  export type tr_proposed_changesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which tr_proposed_changes to delete
-     */
-    where?: tr_proposed_changesWhereInput
-    /**
-     * Limit how many tr_proposed_changes to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * tr_proposed_changes.email_tracking_proposedchanges
-   */
-  export type tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the email_tracking_proposedchanges
-     */
-    select?: email_tracking_proposedchangesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the email_tracking_proposedchanges
-     */
-    omit?: email_tracking_proposedchangesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: email_tracking_proposedchangesInclude<ExtArgs> | null
-    where?: email_tracking_proposedchangesWhereInput
-    orderBy?: email_tracking_proposedchangesOrderByWithRelationInput | email_tracking_proposedchangesOrderByWithRelationInput[]
-    cursor?: email_tracking_proposedchangesWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Email_tracking_proposedchangesScalarFieldEnum | Email_tracking_proposedchangesScalarFieldEnum[]
-  }
-
-  /**
-   * tr_proposed_changes.proposedChange
-   */
-  export type tr_proposed_changes$proposedChangeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tbl_support_document
-     */
-    select?: tbl_support_documentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tbl_support_document
-     */
-    omit?: tbl_support_documentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tbl_support_documentInclude<ExtArgs> | null
-    where?: tbl_support_documentWhereInput
-    orderBy?: tbl_support_documentOrderByWithRelationInput | tbl_support_documentOrderByWithRelationInput[]
-    cursor?: tbl_support_documentWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Tbl_support_documentScalarFieldEnum | Tbl_support_documentScalarFieldEnum[]
-  }
-
-  /**
-   * tr_proposed_changes.additionalDocs
-   */
-  export type tr_proposed_changes$additionalDocsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_additional_doc
-     */
-    select?: tr_additional_docSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_additional_doc
-     */
-    omit?: tr_additional_docOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_additional_docInclude<ExtArgs> | null
-    where?: tr_additional_docWhereInput
-    orderBy?: tr_additional_docOrderByWithRelationInput | tr_additional_docOrderByWithRelationInput[]
-    cursor?: tr_additional_docWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Tr_additional_docScalarFieldEnum | Tr_additional_docScalarFieldEnum[]
-  }
-
-  /**
-   * tr_proposed_changes.authorizationDocs
-   */
-  export type tr_proposed_changes$authorizationDocsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_authorization_doc
-     */
-    select?: tr_authorization_docSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_authorization_doc
-     */
-    omit?: tr_authorization_docOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_authorization_docInclude<ExtArgs> | null
-    where?: tr_authorization_docWhereInput
-    orderBy?: tr_authorization_docOrderByWithRelationInput | tr_authorization_docOrderByWithRelationInput[]
-    cursor?: tr_authorization_docWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Tr_authorization_docScalarFieldEnum | Tr_authorization_docScalarFieldEnum[]
-  }
-
-  /**
-   * tr_proposed_changes.tr_handover
-   */
-  export type tr_proposed_changes$tr_handoverArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_handover
-     */
-    select?: tr_handoverSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_handover
-     */
-    omit?: tr_handoverOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_handoverInclude<ExtArgs> | null
-    where?: tr_handoverWhereInput
-    orderBy?: tr_handoverOrderByWithRelationInput | tr_handoverOrderByWithRelationInput[]
-    cursor?: tr_handoverWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Tr_handoverScalarFieldEnum | Tr_handoverScalarFieldEnum[]
-  }
-
-  /**
-   * tr_proposed_changes.mainProposedChanges
-   */
-  export type tr_proposed_changes$mainProposedChangesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mst_authorization
-     */
-    select?: mst_authorizationSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the mst_authorization
-     */
-    omit?: mst_authorizationOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mst_authorizationInclude<ExtArgs> | null
-    where?: mst_authorizationWhereInput
-  }
-
-  /**
-   * tr_proposed_changes.department
-   */
-  export type tr_proposed_changes$departmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mst_department
-     */
-    select?: mst_departmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the mst_department
-     */
-    omit?: mst_departmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mst_departmentInclude<ExtArgs> | null
-    where?: mst_departmentWhereInput
-  }
-
-  /**
-   * tr_proposed_changes.documentNumber
-   */
-  export type tr_proposed_changes$documentNumberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_document_number
-     */
-    select?: tr_document_numberSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_document_number
-     */
-    omit?: tr_document_numberOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_document_numberInclude<ExtArgs> | null
-    where?: tr_document_numberWhereInput
-  }
-
-  /**
-   * tr_proposed_changes.plant
-   */
-  export type tr_proposed_changes$plantArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mst_plant
-     */
-    select?: mst_plantSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the mst_plant
-     */
-    omit?: mst_plantOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mst_plantInclude<ExtArgs> | null
-    where?: mst_plantWhereInput
-  }
-
-  /**
-   * tr_proposed_changes.section_department
-   */
-  export type tr_proposed_changes$section_departmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the mst_section_department
-     */
-    select?: mst_section_departmentSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the mst_section_department
-     */
-    omit?: mst_section_departmentOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: mst_section_departmentInclude<ExtArgs> | null
-    where?: mst_section_departmentWhereInput
-  }
-
-  /**
-   * tr_proposed_changes.approvals
-   */
-  export type tr_proposed_changes$approvalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes_approval
-     */
-    select?: tr_proposed_changes_approvalSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes_approval
-     */
-    omit?: tr_proposed_changes_approvalOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changes_approvalInclude<ExtArgs> | null
-    where?: tr_proposed_changes_approvalWhereInput
-    orderBy?: tr_proposed_changes_approvalOrderByWithRelationInput | tr_proposed_changes_approvalOrderByWithRelationInput[]
-    cursor?: tr_proposed_changes_approvalWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Tr_proposed_changes_approvalScalarFieldEnum | Tr_proposed_changes_approvalScalarFieldEnum[]
-  }
-
-  /**
-   * tr_proposed_changes.changeHistories
-   */
-  export type tr_proposed_changes$changeHistoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes_history
-     */
-    select?: tr_proposed_changes_historySelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes_history
-     */
-    omit?: tr_proposed_changes_historyOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changes_historyInclude<ExtArgs> | null
-    where?: tr_proposed_changes_historyWhereInput
-    orderBy?: tr_proposed_changes_historyOrderByWithRelationInput | tr_proposed_changes_historyOrderByWithRelationInput[]
-    cursor?: tr_proposed_changes_historyWhereUniqueInput
-    take?: number
-    skip?: number
-    distinct?: Tr_proposed_changes_historyScalarFieldEnum | Tr_proposed_changes_historyScalarFieldEnum[]
-  }
-
-  /**
-   * tr_proposed_changes without action
-   */
-  export type tr_proposed_changesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the tr_proposed_changes
-     */
-    select?: tr_proposed_changesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the tr_proposed_changes
-     */
-    omit?: tr_proposed_changesOmit<ExtArgs> | null
-    /**
-     * Choose, which related nodes to fetch as well
-     */
-    include?: tr_proposed_changesInclude<ExtArgs> | null
   }
 
 
@@ -35693,6 +32758,2941 @@ export namespace Prisma {
 
 
   /**
+   * Model tr_authorization_doc
+   */
+
+  export type AggregateTr_authorization_doc = {
+    _count: Tr_authorization_docCountAggregateOutputType | null
+    _avg: Tr_authorization_docAvgAggregateOutputType | null
+    _sum: Tr_authorization_docSumAggregateOutputType | null
+    _min: Tr_authorization_docMinAggregateOutputType | null
+    _max: Tr_authorization_docMaxAggregateOutputType | null
+  }
+
+  export type Tr_authorization_docAvgAggregateOutputType = {
+    id: number | null
+    proposed_change_id: number | null
+    auth_id: number | null
+    plant_id: number | null
+    department_id: number | null
+    section_department_id: number | null
+  }
+
+  export type Tr_authorization_docSumAggregateOutputType = {
+    id: number | null
+    proposed_change_id: number | null
+    auth_id: number | null
+    plant_id: number | null
+    department_id: number | null
+    section_department_id: number | null
+  }
+
+  export type Tr_authorization_docMinAggregateOutputType = {
+    id: number | null
+    proposed_change_id: number | null
+    doc_number: string | null
+    implementation_date: Date | null
+    evaluation: string | null
+    description: string | null
+    conclution: string | null
+    concept: string | null
+    standart: string | null
+    method: string | null
+    status: string | null
+    progress: string | null
+    created_by: string | null
+    auth_id: number | null
+    plant_id: number | null
+    created_date: Date | null
+    department_id: number | null
+    section_department_id: number | null
+    updated_at: Date | null
+  }
+
+  export type Tr_authorization_docMaxAggregateOutputType = {
+    id: number | null
+    proposed_change_id: number | null
+    doc_number: string | null
+    implementation_date: Date | null
+    evaluation: string | null
+    description: string | null
+    conclution: string | null
+    concept: string | null
+    standart: string | null
+    method: string | null
+    status: string | null
+    progress: string | null
+    created_by: string | null
+    auth_id: number | null
+    plant_id: number | null
+    created_date: Date | null
+    department_id: number | null
+    section_department_id: number | null
+    updated_at: Date | null
+  }
+
+  export type Tr_authorization_docCountAggregateOutputType = {
+    id: number
+    proposed_change_id: number
+    doc_number: number
+    implementation_date: number
+    evaluation: number
+    description: number
+    conclution: number
+    concept: number
+    standart: number
+    method: number
+    status: number
+    progress: number
+    created_by: number
+    auth_id: number
+    plant_id: number
+    created_date: number
+    department_id: number
+    section_department_id: number
+    updated_at: number
+    _all: number
+  }
+
+
+  export type Tr_authorization_docAvgAggregateInputType = {
+    id?: true
+    proposed_change_id?: true
+    auth_id?: true
+    plant_id?: true
+    department_id?: true
+    section_department_id?: true
+  }
+
+  export type Tr_authorization_docSumAggregateInputType = {
+    id?: true
+    proposed_change_id?: true
+    auth_id?: true
+    plant_id?: true
+    department_id?: true
+    section_department_id?: true
+  }
+
+  export type Tr_authorization_docMinAggregateInputType = {
+    id?: true
+    proposed_change_id?: true
+    doc_number?: true
+    implementation_date?: true
+    evaluation?: true
+    description?: true
+    conclution?: true
+    concept?: true
+    standart?: true
+    method?: true
+    status?: true
+    progress?: true
+    created_by?: true
+    auth_id?: true
+    plant_id?: true
+    created_date?: true
+    department_id?: true
+    section_department_id?: true
+    updated_at?: true
+  }
+
+  export type Tr_authorization_docMaxAggregateInputType = {
+    id?: true
+    proposed_change_id?: true
+    doc_number?: true
+    implementation_date?: true
+    evaluation?: true
+    description?: true
+    conclution?: true
+    concept?: true
+    standart?: true
+    method?: true
+    status?: true
+    progress?: true
+    created_by?: true
+    auth_id?: true
+    plant_id?: true
+    created_date?: true
+    department_id?: true
+    section_department_id?: true
+    updated_at?: true
+  }
+
+  export type Tr_authorization_docCountAggregateInputType = {
+    id?: true
+    proposed_change_id?: true
+    doc_number?: true
+    implementation_date?: true
+    evaluation?: true
+    description?: true
+    conclution?: true
+    concept?: true
+    standart?: true
+    method?: true
+    status?: true
+    progress?: true
+    created_by?: true
+    auth_id?: true
+    plant_id?: true
+    created_date?: true
+    department_id?: true
+    section_department_id?: true
+    updated_at?: true
+    _all?: true
+  }
+
+  export type Tr_authorization_docAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tr_authorization_doc to aggregate.
+     */
+    where?: tr_authorization_docWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_authorization_docs to fetch.
+     */
+    orderBy?: tr_authorization_docOrderByWithRelationInput | tr_authorization_docOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: tr_authorization_docWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_authorization_docs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_authorization_docs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned tr_authorization_docs
+    **/
+    _count?: true | Tr_authorization_docCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Tr_authorization_docAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Tr_authorization_docSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Tr_authorization_docMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Tr_authorization_docMaxAggregateInputType
+  }
+
+  export type GetTr_authorization_docAggregateType<T extends Tr_authorization_docAggregateArgs> = {
+        [P in keyof T & keyof AggregateTr_authorization_doc]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTr_authorization_doc[P]>
+      : GetScalarType<T[P], AggregateTr_authorization_doc[P]>
+  }
+
+
+
+
+  export type tr_authorization_docGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tr_authorization_docWhereInput
+    orderBy?: tr_authorization_docOrderByWithAggregationInput | tr_authorization_docOrderByWithAggregationInput[]
+    by: Tr_authorization_docScalarFieldEnum[] | Tr_authorization_docScalarFieldEnum
+    having?: tr_authorization_docScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Tr_authorization_docCountAggregateInputType | true
+    _avg?: Tr_authorization_docAvgAggregateInputType
+    _sum?: Tr_authorization_docSumAggregateInputType
+    _min?: Tr_authorization_docMinAggregateInputType
+    _max?: Tr_authorization_docMaxAggregateInputType
+  }
+
+  export type Tr_authorization_docGroupByOutputType = {
+    id: number
+    proposed_change_id: number | null
+    doc_number: string | null
+    implementation_date: Date | null
+    evaluation: string | null
+    description: string | null
+    conclution: string | null
+    concept: string | null
+    standart: string | null
+    method: string | null
+    status: string | null
+    progress: string | null
+    created_by: string | null
+    auth_id: number | null
+    plant_id: number | null
+    created_date: Date | null
+    department_id: number | null
+    section_department_id: number | null
+    updated_at: Date | null
+    _count: Tr_authorization_docCountAggregateOutputType | null
+    _avg: Tr_authorization_docAvgAggregateOutputType | null
+    _sum: Tr_authorization_docSumAggregateOutputType | null
+    _min: Tr_authorization_docMinAggregateOutputType | null
+    _max: Tr_authorization_docMaxAggregateOutputType | null
+  }
+
+  type GetTr_authorization_docGroupByPayload<T extends tr_authorization_docGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Tr_authorization_docGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Tr_authorization_docGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Tr_authorization_docGroupByOutputType[P]>
+            : GetScalarType<T[P], Tr_authorization_docGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type tr_authorization_docSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    proposed_change_id?: boolean
+    doc_number?: boolean
+    implementation_date?: boolean
+    evaluation?: boolean
+    description?: boolean
+    conclution?: boolean
+    concept?: boolean
+    standart?: boolean
+    method?: boolean
+    status?: boolean
+    progress?: boolean
+    created_by?: boolean
+    auth_id?: boolean
+    plant_id?: boolean
+    created_date?: boolean
+    department_id?: boolean
+    section_department_id?: boolean
+    updated_at?: boolean
+    email_tracking_authdoc?: boolean | tr_authorization_doc$email_tracking_authdocArgs<ExtArgs>
+    authdocApprovals?: boolean | tr_authorization_doc$authdocApprovalsArgs<ExtArgs>
+    authdocHistories?: boolean | tr_authorization_doc$authdocHistoriesArgs<ExtArgs>
+    authdocMembers?: boolean | tr_authorization_doc$authdocMembersArgs<ExtArgs>
+    authorization?: boolean | tr_authorization_doc$authorizationArgs<ExtArgs>
+    department?: boolean | tr_authorization_doc$departmentArgs<ExtArgs>
+    authorizationPlant?: boolean | tr_authorization_doc$authorizationPlantArgs<ExtArgs>
+    proposedChange?: boolean | tr_authorization_doc$proposedChangeArgs<ExtArgs>
+    section_department?: boolean | tr_authorization_doc$section_departmentArgs<ExtArgs>
+    tr_handover?: boolean | tr_authorization_doc$tr_handoverArgs<ExtArgs>
+    _count?: boolean | Tr_authorization_docCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tr_authorization_doc"]>
+
+
+
+  export type tr_authorization_docSelectScalar = {
+    id?: boolean
+    proposed_change_id?: boolean
+    doc_number?: boolean
+    implementation_date?: boolean
+    evaluation?: boolean
+    description?: boolean
+    conclution?: boolean
+    concept?: boolean
+    standart?: boolean
+    method?: boolean
+    status?: boolean
+    progress?: boolean
+    created_by?: boolean
+    auth_id?: boolean
+    plant_id?: boolean
+    created_date?: boolean
+    department_id?: boolean
+    section_department_id?: boolean
+    updated_at?: boolean
+  }
+
+  export type tr_authorization_docOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "proposed_change_id" | "doc_number" | "implementation_date" | "evaluation" | "description" | "conclution" | "concept" | "standart" | "method" | "status" | "progress" | "created_by" | "auth_id" | "plant_id" | "created_date" | "department_id" | "section_department_id" | "updated_at", ExtArgs["result"]["tr_authorization_doc"]>
+  export type tr_authorization_docInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    email_tracking_authdoc?: boolean | tr_authorization_doc$email_tracking_authdocArgs<ExtArgs>
+    authdocApprovals?: boolean | tr_authorization_doc$authdocApprovalsArgs<ExtArgs>
+    authdocHistories?: boolean | tr_authorization_doc$authdocHistoriesArgs<ExtArgs>
+    authdocMembers?: boolean | tr_authorization_doc$authdocMembersArgs<ExtArgs>
+    authorization?: boolean | tr_authorization_doc$authorizationArgs<ExtArgs>
+    department?: boolean | tr_authorization_doc$departmentArgs<ExtArgs>
+    authorizationPlant?: boolean | tr_authorization_doc$authorizationPlantArgs<ExtArgs>
+    proposedChange?: boolean | tr_authorization_doc$proposedChangeArgs<ExtArgs>
+    section_department?: boolean | tr_authorization_doc$section_departmentArgs<ExtArgs>
+    tr_handover?: boolean | tr_authorization_doc$tr_handoverArgs<ExtArgs>
+    _count?: boolean | Tr_authorization_docCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $tr_authorization_docPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "tr_authorization_doc"
+    objects: {
+      email_tracking_authdoc: Prisma.$email_tracking_authdocPayload<ExtArgs>[]
+      authdocApprovals: Prisma.$tr_authdoc_approvalPayload<ExtArgs>[]
+      authdocHistories: Prisma.$tr_authdoc_historyPayload<ExtArgs>[]
+      authdocMembers: Prisma.$tr_authdoc_memberPayload<ExtArgs>[]
+      authorization: Prisma.$mst_authorizationPayload<ExtArgs> | null
+      department: Prisma.$mst_departmentPayload<ExtArgs> | null
+      authorizationPlant: Prisma.$mst_plantPayload<ExtArgs> | null
+      proposedChange: Prisma.$tr_proposed_changesPayload<ExtArgs> | null
+      section_department: Prisma.$mst_section_departmentPayload<ExtArgs> | null
+      tr_handover: Prisma.$tr_handoverPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      proposed_change_id: number | null
+      doc_number: string | null
+      implementation_date: Date | null
+      evaluation: string | null
+      description: string | null
+      conclution: string | null
+      concept: string | null
+      standart: string | null
+      method: string | null
+      status: string | null
+      progress: string | null
+      created_by: string | null
+      auth_id: number | null
+      plant_id: number | null
+      created_date: Date | null
+      department_id: number | null
+      section_department_id: number | null
+      updated_at: Date | null
+    }, ExtArgs["result"]["tr_authorization_doc"]>
+    composites: {}
+  }
+
+  type tr_authorization_docGetPayload<S extends boolean | null | undefined | tr_authorization_docDefaultArgs> = $Result.GetResult<Prisma.$tr_authorization_docPayload, S>
+
+  type tr_authorization_docCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<tr_authorization_docFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Tr_authorization_docCountAggregateInputType | true
+    }
+
+  export interface tr_authorization_docDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tr_authorization_doc'], meta: { name: 'tr_authorization_doc' } }
+    /**
+     * Find zero or one Tr_authorization_doc that matches the filter.
+     * @param {tr_authorization_docFindUniqueArgs} args - Arguments to find a Tr_authorization_doc
+     * @example
+     * // Get one Tr_authorization_doc
+     * const tr_authorization_doc = await prisma.tr_authorization_doc.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends tr_authorization_docFindUniqueArgs>(args: SelectSubset<T, tr_authorization_docFindUniqueArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Tr_authorization_doc that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {tr_authorization_docFindUniqueOrThrowArgs} args - Arguments to find a Tr_authorization_doc
+     * @example
+     * // Get one Tr_authorization_doc
+     * const tr_authorization_doc = await prisma.tr_authorization_doc.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends tr_authorization_docFindUniqueOrThrowArgs>(args: SelectSubset<T, tr_authorization_docFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tr_authorization_doc that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_authorization_docFindFirstArgs} args - Arguments to find a Tr_authorization_doc
+     * @example
+     * // Get one Tr_authorization_doc
+     * const tr_authorization_doc = await prisma.tr_authorization_doc.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends tr_authorization_docFindFirstArgs>(args?: SelectSubset<T, tr_authorization_docFindFirstArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tr_authorization_doc that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_authorization_docFindFirstOrThrowArgs} args - Arguments to find a Tr_authorization_doc
+     * @example
+     * // Get one Tr_authorization_doc
+     * const tr_authorization_doc = await prisma.tr_authorization_doc.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends tr_authorization_docFindFirstOrThrowArgs>(args?: SelectSubset<T, tr_authorization_docFindFirstOrThrowArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tr_authorization_docs that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_authorization_docFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tr_authorization_docs
+     * const tr_authorization_docs = await prisma.tr_authorization_doc.findMany()
+     * 
+     * // Get first 10 Tr_authorization_docs
+     * const tr_authorization_docs = await prisma.tr_authorization_doc.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tr_authorization_docWithIdOnly = await prisma.tr_authorization_doc.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends tr_authorization_docFindManyArgs>(args?: SelectSubset<T, tr_authorization_docFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Tr_authorization_doc.
+     * @param {tr_authorization_docCreateArgs} args - Arguments to create a Tr_authorization_doc.
+     * @example
+     * // Create one Tr_authorization_doc
+     * const Tr_authorization_doc = await prisma.tr_authorization_doc.create({
+     *   data: {
+     *     // ... data to create a Tr_authorization_doc
+     *   }
+     * })
+     * 
+     */
+    create<T extends tr_authorization_docCreateArgs>(args: SelectSubset<T, tr_authorization_docCreateArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tr_authorization_docs.
+     * @param {tr_authorization_docCreateManyArgs} args - Arguments to create many Tr_authorization_docs.
+     * @example
+     * // Create many Tr_authorization_docs
+     * const tr_authorization_doc = await prisma.tr_authorization_doc.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends tr_authorization_docCreateManyArgs>(args?: SelectSubset<T, tr_authorization_docCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Tr_authorization_doc.
+     * @param {tr_authorization_docDeleteArgs} args - Arguments to delete one Tr_authorization_doc.
+     * @example
+     * // Delete one Tr_authorization_doc
+     * const Tr_authorization_doc = await prisma.tr_authorization_doc.delete({
+     *   where: {
+     *     // ... filter to delete one Tr_authorization_doc
+     *   }
+     * })
+     * 
+     */
+    delete<T extends tr_authorization_docDeleteArgs>(args: SelectSubset<T, tr_authorization_docDeleteArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Tr_authorization_doc.
+     * @param {tr_authorization_docUpdateArgs} args - Arguments to update one Tr_authorization_doc.
+     * @example
+     * // Update one Tr_authorization_doc
+     * const tr_authorization_doc = await prisma.tr_authorization_doc.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends tr_authorization_docUpdateArgs>(args: SelectSubset<T, tr_authorization_docUpdateArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tr_authorization_docs.
+     * @param {tr_authorization_docDeleteManyArgs} args - Arguments to filter Tr_authorization_docs to delete.
+     * @example
+     * // Delete a few Tr_authorization_docs
+     * const { count } = await prisma.tr_authorization_doc.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends tr_authorization_docDeleteManyArgs>(args?: SelectSubset<T, tr_authorization_docDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tr_authorization_docs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_authorization_docUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tr_authorization_docs
+     * const tr_authorization_doc = await prisma.tr_authorization_doc.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends tr_authorization_docUpdateManyArgs>(args: SelectSubset<T, tr_authorization_docUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Tr_authorization_doc.
+     * @param {tr_authorization_docUpsertArgs} args - Arguments to update or create a Tr_authorization_doc.
+     * @example
+     * // Update or create a Tr_authorization_doc
+     * const tr_authorization_doc = await prisma.tr_authorization_doc.upsert({
+     *   create: {
+     *     // ... data to create a Tr_authorization_doc
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tr_authorization_doc we want to update
+     *   }
+     * })
+     */
+    upsert<T extends tr_authorization_docUpsertArgs>(args: SelectSubset<T, tr_authorization_docUpsertArgs<ExtArgs>>): Prisma__tr_authorization_docClient<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tr_authorization_docs.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_authorization_docCountArgs} args - Arguments to filter Tr_authorization_docs to count.
+     * @example
+     * // Count the number of Tr_authorization_docs
+     * const count = await prisma.tr_authorization_doc.count({
+     *   where: {
+     *     // ... the filter for the Tr_authorization_docs we want to count
+     *   }
+     * })
+    **/
+    count<T extends tr_authorization_docCountArgs>(
+      args?: Subset<T, tr_authorization_docCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Tr_authorization_docCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tr_authorization_doc.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Tr_authorization_docAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Tr_authorization_docAggregateArgs>(args: Subset<T, Tr_authorization_docAggregateArgs>): Prisma.PrismaPromise<GetTr_authorization_docAggregateType<T>>
+
+    /**
+     * Group by Tr_authorization_doc.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_authorization_docGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends tr_authorization_docGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: tr_authorization_docGroupByArgs['orderBy'] }
+        : { orderBy?: tr_authorization_docGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, tr_authorization_docGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTr_authorization_docGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the tr_authorization_doc model
+   */
+  readonly fields: tr_authorization_docFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for tr_authorization_doc.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__tr_authorization_docClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    email_tracking_authdoc<T extends tr_authorization_doc$email_tracking_authdocArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$email_tracking_authdocArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$email_tracking_authdocPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    authdocApprovals<T extends tr_authorization_doc$authdocApprovalsArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$authdocApprovalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_authdoc_approvalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    authdocHistories<T extends tr_authorization_doc$authdocHistoriesArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$authdocHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_authdoc_historyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    authdocMembers<T extends tr_authorization_doc$authdocMembersArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$authdocMembersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_authdoc_memberPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    authorization<T extends tr_authorization_doc$authorizationArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$authorizationArgs<ExtArgs>>): Prisma__mst_authorizationClient<$Result.GetResult<Prisma.$mst_authorizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    department<T extends tr_authorization_doc$departmentArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$departmentArgs<ExtArgs>>): Prisma__mst_departmentClient<$Result.GetResult<Prisma.$mst_departmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    authorizationPlant<T extends tr_authorization_doc$authorizationPlantArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$authorizationPlantArgs<ExtArgs>>): Prisma__mst_plantClient<$Result.GetResult<Prisma.$mst_plantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    proposedChange<T extends tr_authorization_doc$proposedChangeArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$proposedChangeArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    section_department<T extends tr_authorization_doc$section_departmentArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$section_departmentArgs<ExtArgs>>): Prisma__mst_section_departmentClient<$Result.GetResult<Prisma.$mst_section_departmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    tr_handover<T extends tr_authorization_doc$tr_handoverArgs<ExtArgs> = {}>(args?: Subset<T, tr_authorization_doc$tr_handoverArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_handoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the tr_authorization_doc model
+   */
+  interface tr_authorization_docFieldRefs {
+    readonly id: FieldRef<"tr_authorization_doc", 'Int'>
+    readonly proposed_change_id: FieldRef<"tr_authorization_doc", 'Int'>
+    readonly doc_number: FieldRef<"tr_authorization_doc", 'String'>
+    readonly implementation_date: FieldRef<"tr_authorization_doc", 'DateTime'>
+    readonly evaluation: FieldRef<"tr_authorization_doc", 'String'>
+    readonly description: FieldRef<"tr_authorization_doc", 'String'>
+    readonly conclution: FieldRef<"tr_authorization_doc", 'String'>
+    readonly concept: FieldRef<"tr_authorization_doc", 'String'>
+    readonly standart: FieldRef<"tr_authorization_doc", 'String'>
+    readonly method: FieldRef<"tr_authorization_doc", 'String'>
+    readonly status: FieldRef<"tr_authorization_doc", 'String'>
+    readonly progress: FieldRef<"tr_authorization_doc", 'String'>
+    readonly created_by: FieldRef<"tr_authorization_doc", 'String'>
+    readonly auth_id: FieldRef<"tr_authorization_doc", 'Int'>
+    readonly plant_id: FieldRef<"tr_authorization_doc", 'Int'>
+    readonly created_date: FieldRef<"tr_authorization_doc", 'DateTime'>
+    readonly department_id: FieldRef<"tr_authorization_doc", 'Int'>
+    readonly section_department_id: FieldRef<"tr_authorization_doc", 'Int'>
+    readonly updated_at: FieldRef<"tr_authorization_doc", 'DateTime'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * tr_authorization_doc findUnique
+   */
+  export type tr_authorization_docFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authorization_doc
+     */
+    select?: tr_authorization_docSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authorization_doc
+     */
+    omit?: tr_authorization_docOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authorization_docInclude<ExtArgs> | null
+    /**
+     * Filter, which tr_authorization_doc to fetch.
+     */
+    where: tr_authorization_docWhereUniqueInput
+  }
+
+  /**
+   * tr_authorization_doc findUniqueOrThrow
+   */
+  export type tr_authorization_docFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authorization_doc
+     */
+    select?: tr_authorization_docSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authorization_doc
+     */
+    omit?: tr_authorization_docOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authorization_docInclude<ExtArgs> | null
+    /**
+     * Filter, which tr_authorization_doc to fetch.
+     */
+    where: tr_authorization_docWhereUniqueInput
+  }
+
+  /**
+   * tr_authorization_doc findFirst
+   */
+  export type tr_authorization_docFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authorization_doc
+     */
+    select?: tr_authorization_docSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authorization_doc
+     */
+    omit?: tr_authorization_docOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authorization_docInclude<ExtArgs> | null
+    /**
+     * Filter, which tr_authorization_doc to fetch.
+     */
+    where?: tr_authorization_docWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_authorization_docs to fetch.
+     */
+    orderBy?: tr_authorization_docOrderByWithRelationInput | tr_authorization_docOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tr_authorization_docs.
+     */
+    cursor?: tr_authorization_docWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_authorization_docs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_authorization_docs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tr_authorization_docs.
+     */
+    distinct?: Tr_authorization_docScalarFieldEnum | Tr_authorization_docScalarFieldEnum[]
+  }
+
+  /**
+   * tr_authorization_doc findFirstOrThrow
+   */
+  export type tr_authorization_docFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authorization_doc
+     */
+    select?: tr_authorization_docSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authorization_doc
+     */
+    omit?: tr_authorization_docOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authorization_docInclude<ExtArgs> | null
+    /**
+     * Filter, which tr_authorization_doc to fetch.
+     */
+    where?: tr_authorization_docWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_authorization_docs to fetch.
+     */
+    orderBy?: tr_authorization_docOrderByWithRelationInput | tr_authorization_docOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tr_authorization_docs.
+     */
+    cursor?: tr_authorization_docWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_authorization_docs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_authorization_docs.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tr_authorization_docs.
+     */
+    distinct?: Tr_authorization_docScalarFieldEnum | Tr_authorization_docScalarFieldEnum[]
+  }
+
+  /**
+   * tr_authorization_doc findMany
+   */
+  export type tr_authorization_docFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authorization_doc
+     */
+    select?: tr_authorization_docSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authorization_doc
+     */
+    omit?: tr_authorization_docOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authorization_docInclude<ExtArgs> | null
+    /**
+     * Filter, which tr_authorization_docs to fetch.
+     */
+    where?: tr_authorization_docWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_authorization_docs to fetch.
+     */
+    orderBy?: tr_authorization_docOrderByWithRelationInput | tr_authorization_docOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing tr_authorization_docs.
+     */
+    cursor?: tr_authorization_docWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_authorization_docs from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_authorization_docs.
+     */
+    skip?: number
+    distinct?: Tr_authorization_docScalarFieldEnum | Tr_authorization_docScalarFieldEnum[]
+  }
+
+  /**
+   * tr_authorization_doc create
+   */
+  export type tr_authorization_docCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authorization_doc
+     */
+    select?: tr_authorization_docSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authorization_doc
+     */
+    omit?: tr_authorization_docOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authorization_docInclude<ExtArgs> | null
+    /**
+     * The data needed to create a tr_authorization_doc.
+     */
+    data?: XOR<tr_authorization_docCreateInput, tr_authorization_docUncheckedCreateInput>
+  }
+
+  /**
+   * tr_authorization_doc createMany
+   */
+  export type tr_authorization_docCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many tr_authorization_docs.
+     */
+    data: tr_authorization_docCreateManyInput | tr_authorization_docCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * tr_authorization_doc update
+   */
+  export type tr_authorization_docUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authorization_doc
+     */
+    select?: tr_authorization_docSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authorization_doc
+     */
+    omit?: tr_authorization_docOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authorization_docInclude<ExtArgs> | null
+    /**
+     * The data needed to update a tr_authorization_doc.
+     */
+    data: XOR<tr_authorization_docUpdateInput, tr_authorization_docUncheckedUpdateInput>
+    /**
+     * Choose, which tr_authorization_doc to update.
+     */
+    where: tr_authorization_docWhereUniqueInput
+  }
+
+  /**
+   * tr_authorization_doc updateMany
+   */
+  export type tr_authorization_docUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update tr_authorization_docs.
+     */
+    data: XOR<tr_authorization_docUpdateManyMutationInput, tr_authorization_docUncheckedUpdateManyInput>
+    /**
+     * Filter which tr_authorization_docs to update
+     */
+    where?: tr_authorization_docWhereInput
+    /**
+     * Limit how many tr_authorization_docs to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * tr_authorization_doc upsert
+   */
+  export type tr_authorization_docUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authorization_doc
+     */
+    select?: tr_authorization_docSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authorization_doc
+     */
+    omit?: tr_authorization_docOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authorization_docInclude<ExtArgs> | null
+    /**
+     * The filter to search for the tr_authorization_doc to update in case it exists.
+     */
+    where: tr_authorization_docWhereUniqueInput
+    /**
+     * In case the tr_authorization_doc found by the `where` argument doesn't exist, create a new tr_authorization_doc with this data.
+     */
+    create: XOR<tr_authorization_docCreateInput, tr_authorization_docUncheckedCreateInput>
+    /**
+     * In case the tr_authorization_doc was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<tr_authorization_docUpdateInput, tr_authorization_docUncheckedUpdateInput>
+  }
+
+  /**
+   * tr_authorization_doc delete
+   */
+  export type tr_authorization_docDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authorization_doc
+     */
+    select?: tr_authorization_docSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authorization_doc
+     */
+    omit?: tr_authorization_docOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authorization_docInclude<ExtArgs> | null
+    /**
+     * Filter which tr_authorization_doc to delete.
+     */
+    where: tr_authorization_docWhereUniqueInput
+  }
+
+  /**
+   * tr_authorization_doc deleteMany
+   */
+  export type tr_authorization_docDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tr_authorization_docs to delete
+     */
+    where?: tr_authorization_docWhereInput
+    /**
+     * Limit how many tr_authorization_docs to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * tr_authorization_doc.email_tracking_authdoc
+   */
+  export type tr_authorization_doc$email_tracking_authdocArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the email_tracking_authdoc
+     */
+    select?: email_tracking_authdocSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the email_tracking_authdoc
+     */
+    omit?: email_tracking_authdocOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: email_tracking_authdocInclude<ExtArgs> | null
+    where?: email_tracking_authdocWhereInput
+    orderBy?: email_tracking_authdocOrderByWithRelationInput | email_tracking_authdocOrderByWithRelationInput[]
+    cursor?: email_tracking_authdocWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Email_tracking_authdocScalarFieldEnum | Email_tracking_authdocScalarFieldEnum[]
+  }
+
+  /**
+   * tr_authorization_doc.authdocApprovals
+   */
+  export type tr_authorization_doc$authdocApprovalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authdoc_approval
+     */
+    select?: tr_authdoc_approvalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authdoc_approval
+     */
+    omit?: tr_authdoc_approvalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authdoc_approvalInclude<ExtArgs> | null
+    where?: tr_authdoc_approvalWhereInput
+    orderBy?: tr_authdoc_approvalOrderByWithRelationInput | tr_authdoc_approvalOrderByWithRelationInput[]
+    cursor?: tr_authdoc_approvalWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Tr_authdoc_approvalScalarFieldEnum | Tr_authdoc_approvalScalarFieldEnum[]
+  }
+
+  /**
+   * tr_authorization_doc.authdocHistories
+   */
+  export type tr_authorization_doc$authdocHistoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authdoc_history
+     */
+    select?: tr_authdoc_historySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authdoc_history
+     */
+    omit?: tr_authdoc_historyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authdoc_historyInclude<ExtArgs> | null
+    where?: tr_authdoc_historyWhereInput
+    orderBy?: tr_authdoc_historyOrderByWithRelationInput | tr_authdoc_historyOrderByWithRelationInput[]
+    cursor?: tr_authdoc_historyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Tr_authdoc_historyScalarFieldEnum | Tr_authdoc_historyScalarFieldEnum[]
+  }
+
+  /**
+   * tr_authorization_doc.authdocMembers
+   */
+  export type tr_authorization_doc$authdocMembersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authdoc_member
+     */
+    select?: tr_authdoc_memberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authdoc_member
+     */
+    omit?: tr_authdoc_memberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authdoc_memberInclude<ExtArgs> | null
+    where?: tr_authdoc_memberWhereInput
+    orderBy?: tr_authdoc_memberOrderByWithRelationInput | tr_authdoc_memberOrderByWithRelationInput[]
+    cursor?: tr_authdoc_memberWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Tr_authdoc_memberScalarFieldEnum | Tr_authdoc_memberScalarFieldEnum[]
+  }
+
+  /**
+   * tr_authorization_doc.authorization
+   */
+  export type tr_authorization_doc$authorizationArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_authorization
+     */
+    select?: mst_authorizationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_authorization
+     */
+    omit?: mst_authorizationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mst_authorizationInclude<ExtArgs> | null
+    where?: mst_authorizationWhereInput
+  }
+
+  /**
+   * tr_authorization_doc.department
+   */
+  export type tr_authorization_doc$departmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_department
+     */
+    select?: mst_departmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_department
+     */
+    omit?: mst_departmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mst_departmentInclude<ExtArgs> | null
+    where?: mst_departmentWhereInput
+  }
+
+  /**
+   * tr_authorization_doc.authorizationPlant
+   */
+  export type tr_authorization_doc$authorizationPlantArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_plant
+     */
+    select?: mst_plantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_plant
+     */
+    omit?: mst_plantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mst_plantInclude<ExtArgs> | null
+    where?: mst_plantWhereInput
+  }
+
+  /**
+   * tr_authorization_doc.proposedChange
+   */
+  export type tr_authorization_doc$proposedChangeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes
+     */
+    select?: tr_proposed_changesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes
+     */
+    omit?: tr_proposed_changesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changesInclude<ExtArgs> | null
+    where?: tr_proposed_changesWhereInput
+  }
+
+  /**
+   * tr_authorization_doc.section_department
+   */
+  export type tr_authorization_doc$section_departmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_section_department
+     */
+    select?: mst_section_departmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_section_department
+     */
+    omit?: mst_section_departmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mst_section_departmentInclude<ExtArgs> | null
+    where?: mst_section_departmentWhereInput
+  }
+
+  /**
+   * tr_authorization_doc.tr_handover
+   */
+  export type tr_authorization_doc$tr_handoverArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_handover
+     */
+    select?: tr_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_handover
+     */
+    omit?: tr_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_handoverInclude<ExtArgs> | null
+    where?: tr_handoverWhereInput
+    orderBy?: tr_handoverOrderByWithRelationInput | tr_handoverOrderByWithRelationInput[]
+    cursor?: tr_handoverWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Tr_handoverScalarFieldEnum | Tr_handoverScalarFieldEnum[]
+  }
+
+  /**
+   * tr_authorization_doc without action
+   */
+  export type tr_authorization_docDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authorization_doc
+     */
+    select?: tr_authorization_docSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authorization_doc
+     */
+    omit?: tr_authorization_docOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authorization_docInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model tr_proposed_changes
+   */
+
+  export type AggregateTr_proposed_changes = {
+    _count: Tr_proposed_changesCountAggregateOutputType | null
+    _avg: Tr_proposed_changesAvgAggregateOutputType | null
+    _sum: Tr_proposed_changesSumAggregateOutputType | null
+    _min: Tr_proposed_changesMinAggregateOutputType | null
+    _max: Tr_proposed_changesMaxAggregateOutputType | null
+  }
+
+  export type Tr_proposed_changesAvgAggregateOutputType = {
+    id: number | null
+    document_number_id: number | null
+    department_id: number | null
+    section_department_id: number | null
+    plant_id: number | null
+    auth_id: number | null
+  }
+
+  export type Tr_proposed_changesSumAggregateOutputType = {
+    id: number | null
+    document_number_id: number | null
+    department_id: number | null
+    section_department_id: number | null
+    plant_id: number | null
+    auth_id: number | null
+  }
+
+  export type Tr_proposed_changesMinAggregateOutputType = {
+    id: number | null
+    project_name: string | null
+    document_number_id: number | null
+    item_changes: string | null
+    line_code: string | null
+    section_code: string | null
+    section_name: string | null
+    department_id: number | null
+    section_department_id: number | null
+    plant_id: number | null
+    auth_id: number | null
+    change_type: string | null
+    description: string | null
+    reason: string | null
+    cost: string | null
+    cost_text: string | null
+    planning_start: Date | null
+    planning_end: Date | null
+    created_date: Date | null
+    created_by: string | null
+    updated_at: Date | null
+    need_engineering_approval: boolean | null
+    need_production_approval: boolean | null
+    other_sytem: string | null
+    status: string | null
+    progress: string | null
+    progresssupport: string | null
+    is_deleted: boolean | null
+  }
+
+  export type Tr_proposed_changesMaxAggregateOutputType = {
+    id: number | null
+    project_name: string | null
+    document_number_id: number | null
+    item_changes: string | null
+    line_code: string | null
+    section_code: string | null
+    section_name: string | null
+    department_id: number | null
+    section_department_id: number | null
+    plant_id: number | null
+    auth_id: number | null
+    change_type: string | null
+    description: string | null
+    reason: string | null
+    cost: string | null
+    cost_text: string | null
+    planning_start: Date | null
+    planning_end: Date | null
+    created_date: Date | null
+    created_by: string | null
+    updated_at: Date | null
+    need_engineering_approval: boolean | null
+    need_production_approval: boolean | null
+    other_sytem: string | null
+    status: string | null
+    progress: string | null
+    progresssupport: string | null
+    is_deleted: boolean | null
+  }
+
+  export type Tr_proposed_changesCountAggregateOutputType = {
+    id: number
+    project_name: number
+    document_number_id: number
+    item_changes: number
+    line_code: number
+    section_code: number
+    section_name: number
+    department_id: number
+    section_department_id: number
+    plant_id: number
+    auth_id: number
+    change_type: number
+    description: number
+    reason: number
+    cost: number
+    cost_text: number
+    planning_start: number
+    planning_end: number
+    created_date: number
+    created_by: number
+    updated_at: number
+    need_engineering_approval: number
+    need_production_approval: number
+    other_sytem: number
+    status: number
+    progress: number
+    progresssupport: number
+    is_deleted: number
+    _all: number
+  }
+
+
+  export type Tr_proposed_changesAvgAggregateInputType = {
+    id?: true
+    document_number_id?: true
+    department_id?: true
+    section_department_id?: true
+    plant_id?: true
+    auth_id?: true
+  }
+
+  export type Tr_proposed_changesSumAggregateInputType = {
+    id?: true
+    document_number_id?: true
+    department_id?: true
+    section_department_id?: true
+    plant_id?: true
+    auth_id?: true
+  }
+
+  export type Tr_proposed_changesMinAggregateInputType = {
+    id?: true
+    project_name?: true
+    document_number_id?: true
+    item_changes?: true
+    line_code?: true
+    section_code?: true
+    section_name?: true
+    department_id?: true
+    section_department_id?: true
+    plant_id?: true
+    auth_id?: true
+    change_type?: true
+    description?: true
+    reason?: true
+    cost?: true
+    cost_text?: true
+    planning_start?: true
+    planning_end?: true
+    created_date?: true
+    created_by?: true
+    updated_at?: true
+    need_engineering_approval?: true
+    need_production_approval?: true
+    other_sytem?: true
+    status?: true
+    progress?: true
+    progresssupport?: true
+    is_deleted?: true
+  }
+
+  export type Tr_proposed_changesMaxAggregateInputType = {
+    id?: true
+    project_name?: true
+    document_number_id?: true
+    item_changes?: true
+    line_code?: true
+    section_code?: true
+    section_name?: true
+    department_id?: true
+    section_department_id?: true
+    plant_id?: true
+    auth_id?: true
+    change_type?: true
+    description?: true
+    reason?: true
+    cost?: true
+    cost_text?: true
+    planning_start?: true
+    planning_end?: true
+    created_date?: true
+    created_by?: true
+    updated_at?: true
+    need_engineering_approval?: true
+    need_production_approval?: true
+    other_sytem?: true
+    status?: true
+    progress?: true
+    progresssupport?: true
+    is_deleted?: true
+  }
+
+  export type Tr_proposed_changesCountAggregateInputType = {
+    id?: true
+    project_name?: true
+    document_number_id?: true
+    item_changes?: true
+    line_code?: true
+    section_code?: true
+    section_name?: true
+    department_id?: true
+    section_department_id?: true
+    plant_id?: true
+    auth_id?: true
+    change_type?: true
+    description?: true
+    reason?: true
+    cost?: true
+    cost_text?: true
+    planning_start?: true
+    planning_end?: true
+    created_date?: true
+    created_by?: true
+    updated_at?: true
+    need_engineering_approval?: true
+    need_production_approval?: true
+    other_sytem?: true
+    status?: true
+    progress?: true
+    progresssupport?: true
+    is_deleted?: true
+    _all?: true
+  }
+
+  export type Tr_proposed_changesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tr_proposed_changes to aggregate.
+     */
+    where?: tr_proposed_changesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_proposed_changes to fetch.
+     */
+    orderBy?: tr_proposed_changesOrderByWithRelationInput | tr_proposed_changesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: tr_proposed_changesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_proposed_changes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_proposed_changes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned tr_proposed_changes
+    **/
+    _count?: true | Tr_proposed_changesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Tr_proposed_changesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Tr_proposed_changesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Tr_proposed_changesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Tr_proposed_changesMaxAggregateInputType
+  }
+
+  export type GetTr_proposed_changesAggregateType<T extends Tr_proposed_changesAggregateArgs> = {
+        [P in keyof T & keyof AggregateTr_proposed_changes]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateTr_proposed_changes[P]>
+      : GetScalarType<T[P], AggregateTr_proposed_changes[P]>
+  }
+
+
+
+
+  export type tr_proposed_changesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: tr_proposed_changesWhereInput
+    orderBy?: tr_proposed_changesOrderByWithAggregationInput | tr_proposed_changesOrderByWithAggregationInput[]
+    by: Tr_proposed_changesScalarFieldEnum[] | Tr_proposed_changesScalarFieldEnum
+    having?: tr_proposed_changesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Tr_proposed_changesCountAggregateInputType | true
+    _avg?: Tr_proposed_changesAvgAggregateInputType
+    _sum?: Tr_proposed_changesSumAggregateInputType
+    _min?: Tr_proposed_changesMinAggregateInputType
+    _max?: Tr_proposed_changesMaxAggregateInputType
+  }
+
+  export type Tr_proposed_changesGroupByOutputType = {
+    id: number
+    project_name: string | null
+    document_number_id: number | null
+    item_changes: string | null
+    line_code: string | null
+    section_code: string | null
+    section_name: string | null
+    department_id: number | null
+    section_department_id: number | null
+    plant_id: number | null
+    auth_id: number | null
+    change_type: string | null
+    description: string | null
+    reason: string | null
+    cost: string | null
+    cost_text: string | null
+    planning_start: Date | null
+    planning_end: Date | null
+    created_date: Date | null
+    created_by: string | null
+    updated_at: Date | null
+    need_engineering_approval: boolean | null
+    need_production_approval: boolean | null
+    other_sytem: string | null
+    status: string | null
+    progress: string | null
+    progresssupport: string | null
+    is_deleted: boolean
+    _count: Tr_proposed_changesCountAggregateOutputType | null
+    _avg: Tr_proposed_changesAvgAggregateOutputType | null
+    _sum: Tr_proposed_changesSumAggregateOutputType | null
+    _min: Tr_proposed_changesMinAggregateOutputType | null
+    _max: Tr_proposed_changesMaxAggregateOutputType | null
+  }
+
+  type GetTr_proposed_changesGroupByPayload<T extends tr_proposed_changesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Tr_proposed_changesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Tr_proposed_changesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Tr_proposed_changesGroupByOutputType[P]>
+            : GetScalarType<T[P], Tr_proposed_changesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type tr_proposed_changesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    project_name?: boolean
+    document_number_id?: boolean
+    item_changes?: boolean
+    line_code?: boolean
+    section_code?: boolean
+    section_name?: boolean
+    department_id?: boolean
+    section_department_id?: boolean
+    plant_id?: boolean
+    auth_id?: boolean
+    change_type?: boolean
+    description?: boolean
+    reason?: boolean
+    cost?: boolean
+    cost_text?: boolean
+    planning_start?: boolean
+    planning_end?: boolean
+    created_date?: boolean
+    created_by?: boolean
+    updated_at?: boolean
+    need_engineering_approval?: boolean
+    need_production_approval?: boolean
+    other_sytem?: boolean
+    status?: boolean
+    progress?: boolean
+    progresssupport?: boolean
+    is_deleted?: boolean
+    email_tracking_proposedchanges?: boolean | tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs>
+    proposedChange?: boolean | tr_proposed_changes$proposedChangeArgs<ExtArgs>
+    additionalDocs?: boolean | tr_proposed_changes$additionalDocsArgs<ExtArgs>
+    authorizationDocs?: boolean | tr_proposed_changes$authorizationDocsArgs<ExtArgs>
+    tr_handover?: boolean | tr_proposed_changes$tr_handoverArgs<ExtArgs>
+    mainProposedChanges?: boolean | tr_proposed_changes$mainProposedChangesArgs<ExtArgs>
+    department?: boolean | tr_proposed_changes$departmentArgs<ExtArgs>
+    documentNumber?: boolean | tr_proposed_changes$documentNumberArgs<ExtArgs>
+    plant?: boolean | tr_proposed_changes$plantArgs<ExtArgs>
+    section_department?: boolean | tr_proposed_changes$section_departmentArgs<ExtArgs>
+    approvals?: boolean | tr_proposed_changes$approvalsArgs<ExtArgs>
+    changeHistories?: boolean | tr_proposed_changes$changeHistoriesArgs<ExtArgs>
+    _count?: boolean | Tr_proposed_changesCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["tr_proposed_changes"]>
+
+
+
+  export type tr_proposed_changesSelectScalar = {
+    id?: boolean
+    project_name?: boolean
+    document_number_id?: boolean
+    item_changes?: boolean
+    line_code?: boolean
+    section_code?: boolean
+    section_name?: boolean
+    department_id?: boolean
+    section_department_id?: boolean
+    plant_id?: boolean
+    auth_id?: boolean
+    change_type?: boolean
+    description?: boolean
+    reason?: boolean
+    cost?: boolean
+    cost_text?: boolean
+    planning_start?: boolean
+    planning_end?: boolean
+    created_date?: boolean
+    created_by?: boolean
+    updated_at?: boolean
+    need_engineering_approval?: boolean
+    need_production_approval?: boolean
+    other_sytem?: boolean
+    status?: boolean
+    progress?: boolean
+    progresssupport?: boolean
+    is_deleted?: boolean
+  }
+
+  export type tr_proposed_changesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "project_name" | "document_number_id" | "item_changes" | "line_code" | "section_code" | "section_name" | "department_id" | "section_department_id" | "plant_id" | "auth_id" | "change_type" | "description" | "reason" | "cost" | "cost_text" | "planning_start" | "planning_end" | "created_date" | "created_by" | "updated_at" | "need_engineering_approval" | "need_production_approval" | "other_sytem" | "status" | "progress" | "progresssupport" | "is_deleted", ExtArgs["result"]["tr_proposed_changes"]>
+  export type tr_proposed_changesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    email_tracking_proposedchanges?: boolean | tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs>
+    proposedChange?: boolean | tr_proposed_changes$proposedChangeArgs<ExtArgs>
+    additionalDocs?: boolean | tr_proposed_changes$additionalDocsArgs<ExtArgs>
+    authorizationDocs?: boolean | tr_proposed_changes$authorizationDocsArgs<ExtArgs>
+    tr_handover?: boolean | tr_proposed_changes$tr_handoverArgs<ExtArgs>
+    mainProposedChanges?: boolean | tr_proposed_changes$mainProposedChangesArgs<ExtArgs>
+    department?: boolean | tr_proposed_changes$departmentArgs<ExtArgs>
+    documentNumber?: boolean | tr_proposed_changes$documentNumberArgs<ExtArgs>
+    plant?: boolean | tr_proposed_changes$plantArgs<ExtArgs>
+    section_department?: boolean | tr_proposed_changes$section_departmentArgs<ExtArgs>
+    approvals?: boolean | tr_proposed_changes$approvalsArgs<ExtArgs>
+    changeHistories?: boolean | tr_proposed_changes$changeHistoriesArgs<ExtArgs>
+    _count?: boolean | Tr_proposed_changesCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $tr_proposed_changesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "tr_proposed_changes"
+    objects: {
+      email_tracking_proposedchanges: Prisma.$email_tracking_proposedchangesPayload<ExtArgs>[]
+      proposedChange: Prisma.$tbl_support_documentPayload<ExtArgs>[]
+      additionalDocs: Prisma.$tr_additional_docPayload<ExtArgs>[]
+      authorizationDocs: Prisma.$tr_authorization_docPayload<ExtArgs>[]
+      tr_handover: Prisma.$tr_handoverPayload<ExtArgs>[]
+      mainProposedChanges: Prisma.$mst_authorizationPayload<ExtArgs> | null
+      department: Prisma.$mst_departmentPayload<ExtArgs> | null
+      documentNumber: Prisma.$tr_document_numberPayload<ExtArgs> | null
+      plant: Prisma.$mst_plantPayload<ExtArgs> | null
+      section_department: Prisma.$mst_section_departmentPayload<ExtArgs> | null
+      approvals: Prisma.$tr_proposed_changes_approvalPayload<ExtArgs>[]
+      changeHistories: Prisma.$tr_proposed_changes_historyPayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      project_name: string | null
+      document_number_id: number | null
+      item_changes: string | null
+      line_code: string | null
+      section_code: string | null
+      section_name: string | null
+      department_id: number | null
+      section_department_id: number | null
+      plant_id: number | null
+      auth_id: number | null
+      change_type: string | null
+      description: string | null
+      reason: string | null
+      cost: string | null
+      cost_text: string | null
+      planning_start: Date | null
+      planning_end: Date | null
+      created_date: Date | null
+      created_by: string | null
+      updated_at: Date | null
+      need_engineering_approval: boolean | null
+      need_production_approval: boolean | null
+      other_sytem: string | null
+      status: string | null
+      progress: string | null
+      progresssupport: string | null
+      is_deleted: boolean
+    }, ExtArgs["result"]["tr_proposed_changes"]>
+    composites: {}
+  }
+
+  type tr_proposed_changesGetPayload<S extends boolean | null | undefined | tr_proposed_changesDefaultArgs> = $Result.GetResult<Prisma.$tr_proposed_changesPayload, S>
+
+  type tr_proposed_changesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<tr_proposed_changesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Tr_proposed_changesCountAggregateInputType | true
+    }
+
+  export interface tr_proposed_changesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['tr_proposed_changes'], meta: { name: 'tr_proposed_changes' } }
+    /**
+     * Find zero or one Tr_proposed_changes that matches the filter.
+     * @param {tr_proposed_changesFindUniqueArgs} args - Arguments to find a Tr_proposed_changes
+     * @example
+     * // Get one Tr_proposed_changes
+     * const tr_proposed_changes = await prisma.tr_proposed_changes.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends tr_proposed_changesFindUniqueArgs>(args: SelectSubset<T, tr_proposed_changesFindUniqueArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Tr_proposed_changes that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {tr_proposed_changesFindUniqueOrThrowArgs} args - Arguments to find a Tr_proposed_changes
+     * @example
+     * // Get one Tr_proposed_changes
+     * const tr_proposed_changes = await prisma.tr_proposed_changes.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends tr_proposed_changesFindUniqueOrThrowArgs>(args: SelectSubset<T, tr_proposed_changesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tr_proposed_changes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_proposed_changesFindFirstArgs} args - Arguments to find a Tr_proposed_changes
+     * @example
+     * // Get one Tr_proposed_changes
+     * const tr_proposed_changes = await prisma.tr_proposed_changes.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends tr_proposed_changesFindFirstArgs>(args?: SelectSubset<T, tr_proposed_changesFindFirstArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Tr_proposed_changes that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_proposed_changesFindFirstOrThrowArgs} args - Arguments to find a Tr_proposed_changes
+     * @example
+     * // Get one Tr_proposed_changes
+     * const tr_proposed_changes = await prisma.tr_proposed_changes.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends tr_proposed_changesFindFirstOrThrowArgs>(args?: SelectSubset<T, tr_proposed_changesFindFirstOrThrowArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Tr_proposed_changes that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_proposed_changesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Tr_proposed_changes
+     * const tr_proposed_changes = await prisma.tr_proposed_changes.findMany()
+     * 
+     * // Get first 10 Tr_proposed_changes
+     * const tr_proposed_changes = await prisma.tr_proposed_changes.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const tr_proposed_changesWithIdOnly = await prisma.tr_proposed_changes.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends tr_proposed_changesFindManyArgs>(args?: SelectSubset<T, tr_proposed_changesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Tr_proposed_changes.
+     * @param {tr_proposed_changesCreateArgs} args - Arguments to create a Tr_proposed_changes.
+     * @example
+     * // Create one Tr_proposed_changes
+     * const Tr_proposed_changes = await prisma.tr_proposed_changes.create({
+     *   data: {
+     *     // ... data to create a Tr_proposed_changes
+     *   }
+     * })
+     * 
+     */
+    create<T extends tr_proposed_changesCreateArgs>(args: SelectSubset<T, tr_proposed_changesCreateArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Tr_proposed_changes.
+     * @param {tr_proposed_changesCreateManyArgs} args - Arguments to create many Tr_proposed_changes.
+     * @example
+     * // Create many Tr_proposed_changes
+     * const tr_proposed_changes = await prisma.tr_proposed_changes.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends tr_proposed_changesCreateManyArgs>(args?: SelectSubset<T, tr_proposed_changesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Tr_proposed_changes.
+     * @param {tr_proposed_changesDeleteArgs} args - Arguments to delete one Tr_proposed_changes.
+     * @example
+     * // Delete one Tr_proposed_changes
+     * const Tr_proposed_changes = await prisma.tr_proposed_changes.delete({
+     *   where: {
+     *     // ... filter to delete one Tr_proposed_changes
+     *   }
+     * })
+     * 
+     */
+    delete<T extends tr_proposed_changesDeleteArgs>(args: SelectSubset<T, tr_proposed_changesDeleteArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Tr_proposed_changes.
+     * @param {tr_proposed_changesUpdateArgs} args - Arguments to update one Tr_proposed_changes.
+     * @example
+     * // Update one Tr_proposed_changes
+     * const tr_proposed_changes = await prisma.tr_proposed_changes.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends tr_proposed_changesUpdateArgs>(args: SelectSubset<T, tr_proposed_changesUpdateArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Tr_proposed_changes.
+     * @param {tr_proposed_changesDeleteManyArgs} args - Arguments to filter Tr_proposed_changes to delete.
+     * @example
+     * // Delete a few Tr_proposed_changes
+     * const { count } = await prisma.tr_proposed_changes.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends tr_proposed_changesDeleteManyArgs>(args?: SelectSubset<T, tr_proposed_changesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Tr_proposed_changes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_proposed_changesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Tr_proposed_changes
+     * const tr_proposed_changes = await prisma.tr_proposed_changes.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends tr_proposed_changesUpdateManyArgs>(args: SelectSubset<T, tr_proposed_changesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Tr_proposed_changes.
+     * @param {tr_proposed_changesUpsertArgs} args - Arguments to update or create a Tr_proposed_changes.
+     * @example
+     * // Update or create a Tr_proposed_changes
+     * const tr_proposed_changes = await prisma.tr_proposed_changes.upsert({
+     *   create: {
+     *     // ... data to create a Tr_proposed_changes
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Tr_proposed_changes we want to update
+     *   }
+     * })
+     */
+    upsert<T extends tr_proposed_changesUpsertArgs>(args: SelectSubset<T, tr_proposed_changesUpsertArgs<ExtArgs>>): Prisma__tr_proposed_changesClient<$Result.GetResult<Prisma.$tr_proposed_changesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Tr_proposed_changes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_proposed_changesCountArgs} args - Arguments to filter Tr_proposed_changes to count.
+     * @example
+     * // Count the number of Tr_proposed_changes
+     * const count = await prisma.tr_proposed_changes.count({
+     *   where: {
+     *     // ... the filter for the Tr_proposed_changes we want to count
+     *   }
+     * })
+    **/
+    count<T extends tr_proposed_changesCountArgs>(
+      args?: Subset<T, tr_proposed_changesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Tr_proposed_changesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Tr_proposed_changes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Tr_proposed_changesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Tr_proposed_changesAggregateArgs>(args: Subset<T, Tr_proposed_changesAggregateArgs>): Prisma.PrismaPromise<GetTr_proposed_changesAggregateType<T>>
+
+    /**
+     * Group by Tr_proposed_changes.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {tr_proposed_changesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends tr_proposed_changesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: tr_proposed_changesGroupByArgs['orderBy'] }
+        : { orderBy?: tr_proposed_changesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, tr_proposed_changesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetTr_proposed_changesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the tr_proposed_changes model
+   */
+  readonly fields: tr_proposed_changesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for tr_proposed_changes.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__tr_proposed_changesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    email_tracking_proposedchanges<T extends tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$email_tracking_proposedchangesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    proposedChange<T extends tr_proposed_changes$proposedChangeArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$proposedChangeArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tbl_support_documentPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    additionalDocs<T extends tr_proposed_changes$additionalDocsArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$additionalDocsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_additional_docPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    authorizationDocs<T extends tr_proposed_changes$authorizationDocsArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$authorizationDocsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_authorization_docPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    tr_handover<T extends tr_proposed_changes$tr_handoverArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$tr_handoverArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_handoverPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    mainProposedChanges<T extends tr_proposed_changes$mainProposedChangesArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$mainProposedChangesArgs<ExtArgs>>): Prisma__mst_authorizationClient<$Result.GetResult<Prisma.$mst_authorizationPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    department<T extends tr_proposed_changes$departmentArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$departmentArgs<ExtArgs>>): Prisma__mst_departmentClient<$Result.GetResult<Prisma.$mst_departmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    documentNumber<T extends tr_proposed_changes$documentNumberArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$documentNumberArgs<ExtArgs>>): Prisma__tr_document_numberClient<$Result.GetResult<Prisma.$tr_document_numberPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    plant<T extends tr_proposed_changes$plantArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$plantArgs<ExtArgs>>): Prisma__mst_plantClient<$Result.GetResult<Prisma.$mst_plantPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    section_department<T extends tr_proposed_changes$section_departmentArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$section_departmentArgs<ExtArgs>>): Prisma__mst_section_departmentClient<$Result.GetResult<Prisma.$mst_section_departmentPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+    approvals<T extends tr_proposed_changes$approvalsArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$approvalsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_proposed_changes_approvalPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    changeHistories<T extends tr_proposed_changes$changeHistoriesArgs<ExtArgs> = {}>(args?: Subset<T, tr_proposed_changes$changeHistoriesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$tr_proposed_changes_historyPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the tr_proposed_changes model
+   */
+  interface tr_proposed_changesFieldRefs {
+    readonly id: FieldRef<"tr_proposed_changes", 'Int'>
+    readonly project_name: FieldRef<"tr_proposed_changes", 'String'>
+    readonly document_number_id: FieldRef<"tr_proposed_changes", 'Int'>
+    readonly item_changes: FieldRef<"tr_proposed_changes", 'String'>
+    readonly line_code: FieldRef<"tr_proposed_changes", 'String'>
+    readonly section_code: FieldRef<"tr_proposed_changes", 'String'>
+    readonly section_name: FieldRef<"tr_proposed_changes", 'String'>
+    readonly department_id: FieldRef<"tr_proposed_changes", 'Int'>
+    readonly section_department_id: FieldRef<"tr_proposed_changes", 'Int'>
+    readonly plant_id: FieldRef<"tr_proposed_changes", 'Int'>
+    readonly auth_id: FieldRef<"tr_proposed_changes", 'Int'>
+    readonly change_type: FieldRef<"tr_proposed_changes", 'String'>
+    readonly description: FieldRef<"tr_proposed_changes", 'String'>
+    readonly reason: FieldRef<"tr_proposed_changes", 'String'>
+    readonly cost: FieldRef<"tr_proposed_changes", 'String'>
+    readonly cost_text: FieldRef<"tr_proposed_changes", 'String'>
+    readonly planning_start: FieldRef<"tr_proposed_changes", 'DateTime'>
+    readonly planning_end: FieldRef<"tr_proposed_changes", 'DateTime'>
+    readonly created_date: FieldRef<"tr_proposed_changes", 'DateTime'>
+    readonly created_by: FieldRef<"tr_proposed_changes", 'String'>
+    readonly updated_at: FieldRef<"tr_proposed_changes", 'DateTime'>
+    readonly need_engineering_approval: FieldRef<"tr_proposed_changes", 'Boolean'>
+    readonly need_production_approval: FieldRef<"tr_proposed_changes", 'Boolean'>
+    readonly other_sytem: FieldRef<"tr_proposed_changes", 'String'>
+    readonly status: FieldRef<"tr_proposed_changes", 'String'>
+    readonly progress: FieldRef<"tr_proposed_changes", 'String'>
+    readonly progresssupport: FieldRef<"tr_proposed_changes", 'String'>
+    readonly is_deleted: FieldRef<"tr_proposed_changes", 'Boolean'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * tr_proposed_changes findUnique
+   */
+  export type tr_proposed_changesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes
+     */
+    select?: tr_proposed_changesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes
+     */
+    omit?: tr_proposed_changesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changesInclude<ExtArgs> | null
+    /**
+     * Filter, which tr_proposed_changes to fetch.
+     */
+    where: tr_proposed_changesWhereUniqueInput
+  }
+
+  /**
+   * tr_proposed_changes findUniqueOrThrow
+   */
+  export type tr_proposed_changesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes
+     */
+    select?: tr_proposed_changesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes
+     */
+    omit?: tr_proposed_changesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changesInclude<ExtArgs> | null
+    /**
+     * Filter, which tr_proposed_changes to fetch.
+     */
+    where: tr_proposed_changesWhereUniqueInput
+  }
+
+  /**
+   * tr_proposed_changes findFirst
+   */
+  export type tr_proposed_changesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes
+     */
+    select?: tr_proposed_changesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes
+     */
+    omit?: tr_proposed_changesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changesInclude<ExtArgs> | null
+    /**
+     * Filter, which tr_proposed_changes to fetch.
+     */
+    where?: tr_proposed_changesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_proposed_changes to fetch.
+     */
+    orderBy?: tr_proposed_changesOrderByWithRelationInput | tr_proposed_changesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tr_proposed_changes.
+     */
+    cursor?: tr_proposed_changesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_proposed_changes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_proposed_changes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tr_proposed_changes.
+     */
+    distinct?: Tr_proposed_changesScalarFieldEnum | Tr_proposed_changesScalarFieldEnum[]
+  }
+
+  /**
+   * tr_proposed_changes findFirstOrThrow
+   */
+  export type tr_proposed_changesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes
+     */
+    select?: tr_proposed_changesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes
+     */
+    omit?: tr_proposed_changesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changesInclude<ExtArgs> | null
+    /**
+     * Filter, which tr_proposed_changes to fetch.
+     */
+    where?: tr_proposed_changesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_proposed_changes to fetch.
+     */
+    orderBy?: tr_proposed_changesOrderByWithRelationInput | tr_proposed_changesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for tr_proposed_changes.
+     */
+    cursor?: tr_proposed_changesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_proposed_changes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_proposed_changes.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of tr_proposed_changes.
+     */
+    distinct?: Tr_proposed_changesScalarFieldEnum | Tr_proposed_changesScalarFieldEnum[]
+  }
+
+  /**
+   * tr_proposed_changes findMany
+   */
+  export type tr_proposed_changesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes
+     */
+    select?: tr_proposed_changesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes
+     */
+    omit?: tr_proposed_changesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changesInclude<ExtArgs> | null
+    /**
+     * Filter, which tr_proposed_changes to fetch.
+     */
+    where?: tr_proposed_changesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of tr_proposed_changes to fetch.
+     */
+    orderBy?: tr_proposed_changesOrderByWithRelationInput | tr_proposed_changesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing tr_proposed_changes.
+     */
+    cursor?: tr_proposed_changesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` tr_proposed_changes from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` tr_proposed_changes.
+     */
+    skip?: number
+    distinct?: Tr_proposed_changesScalarFieldEnum | Tr_proposed_changesScalarFieldEnum[]
+  }
+
+  /**
+   * tr_proposed_changes create
+   */
+  export type tr_proposed_changesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes
+     */
+    select?: tr_proposed_changesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes
+     */
+    omit?: tr_proposed_changesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a tr_proposed_changes.
+     */
+    data?: XOR<tr_proposed_changesCreateInput, tr_proposed_changesUncheckedCreateInput>
+  }
+
+  /**
+   * tr_proposed_changes createMany
+   */
+  export type tr_proposed_changesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many tr_proposed_changes.
+     */
+    data: tr_proposed_changesCreateManyInput | tr_proposed_changesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * tr_proposed_changes update
+   */
+  export type tr_proposed_changesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes
+     */
+    select?: tr_proposed_changesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes
+     */
+    omit?: tr_proposed_changesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a tr_proposed_changes.
+     */
+    data: XOR<tr_proposed_changesUpdateInput, tr_proposed_changesUncheckedUpdateInput>
+    /**
+     * Choose, which tr_proposed_changes to update.
+     */
+    where: tr_proposed_changesWhereUniqueInput
+  }
+
+  /**
+   * tr_proposed_changes updateMany
+   */
+  export type tr_proposed_changesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update tr_proposed_changes.
+     */
+    data: XOR<tr_proposed_changesUpdateManyMutationInput, tr_proposed_changesUncheckedUpdateManyInput>
+    /**
+     * Filter which tr_proposed_changes to update
+     */
+    where?: tr_proposed_changesWhereInput
+    /**
+     * Limit how many tr_proposed_changes to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * tr_proposed_changes upsert
+   */
+  export type tr_proposed_changesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes
+     */
+    select?: tr_proposed_changesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes
+     */
+    omit?: tr_proposed_changesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the tr_proposed_changes to update in case it exists.
+     */
+    where: tr_proposed_changesWhereUniqueInput
+    /**
+     * In case the tr_proposed_changes found by the `where` argument doesn't exist, create a new tr_proposed_changes with this data.
+     */
+    create: XOR<tr_proposed_changesCreateInput, tr_proposed_changesUncheckedCreateInput>
+    /**
+     * In case the tr_proposed_changes was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<tr_proposed_changesUpdateInput, tr_proposed_changesUncheckedUpdateInput>
+  }
+
+  /**
+   * tr_proposed_changes delete
+   */
+  export type tr_proposed_changesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes
+     */
+    select?: tr_proposed_changesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes
+     */
+    omit?: tr_proposed_changesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changesInclude<ExtArgs> | null
+    /**
+     * Filter which tr_proposed_changes to delete.
+     */
+    where: tr_proposed_changesWhereUniqueInput
+  }
+
+  /**
+   * tr_proposed_changes deleteMany
+   */
+  export type tr_proposed_changesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which tr_proposed_changes to delete
+     */
+    where?: tr_proposed_changesWhereInput
+    /**
+     * Limit how many tr_proposed_changes to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * tr_proposed_changes.email_tracking_proposedchanges
+   */
+  export type tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the email_tracking_proposedchanges
+     */
+    select?: email_tracking_proposedchangesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the email_tracking_proposedchanges
+     */
+    omit?: email_tracking_proposedchangesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: email_tracking_proposedchangesInclude<ExtArgs> | null
+    where?: email_tracking_proposedchangesWhereInput
+    orderBy?: email_tracking_proposedchangesOrderByWithRelationInput | email_tracking_proposedchangesOrderByWithRelationInput[]
+    cursor?: email_tracking_proposedchangesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Email_tracking_proposedchangesScalarFieldEnum | Email_tracking_proposedchangesScalarFieldEnum[]
+  }
+
+  /**
+   * tr_proposed_changes.proposedChange
+   */
+  export type tr_proposed_changes$proposedChangeArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tbl_support_document
+     */
+    select?: tbl_support_documentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tbl_support_document
+     */
+    omit?: tbl_support_documentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tbl_support_documentInclude<ExtArgs> | null
+    where?: tbl_support_documentWhereInput
+    orderBy?: tbl_support_documentOrderByWithRelationInput | tbl_support_documentOrderByWithRelationInput[]
+    cursor?: tbl_support_documentWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Tbl_support_documentScalarFieldEnum | Tbl_support_documentScalarFieldEnum[]
+  }
+
+  /**
+   * tr_proposed_changes.additionalDocs
+   */
+  export type tr_proposed_changes$additionalDocsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_additional_doc
+     */
+    select?: tr_additional_docSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_additional_doc
+     */
+    omit?: tr_additional_docOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_additional_docInclude<ExtArgs> | null
+    where?: tr_additional_docWhereInput
+    orderBy?: tr_additional_docOrderByWithRelationInput | tr_additional_docOrderByWithRelationInput[]
+    cursor?: tr_additional_docWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Tr_additional_docScalarFieldEnum | Tr_additional_docScalarFieldEnum[]
+  }
+
+  /**
+   * tr_proposed_changes.authorizationDocs
+   */
+  export type tr_proposed_changes$authorizationDocsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_authorization_doc
+     */
+    select?: tr_authorization_docSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_authorization_doc
+     */
+    omit?: tr_authorization_docOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_authorization_docInclude<ExtArgs> | null
+    where?: tr_authorization_docWhereInput
+    orderBy?: tr_authorization_docOrderByWithRelationInput | tr_authorization_docOrderByWithRelationInput[]
+    cursor?: tr_authorization_docWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Tr_authorization_docScalarFieldEnum | Tr_authorization_docScalarFieldEnum[]
+  }
+
+  /**
+   * tr_proposed_changes.tr_handover
+   */
+  export type tr_proposed_changes$tr_handoverArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_handover
+     */
+    select?: tr_handoverSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_handover
+     */
+    omit?: tr_handoverOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_handoverInclude<ExtArgs> | null
+    where?: tr_handoverWhereInput
+    orderBy?: tr_handoverOrderByWithRelationInput | tr_handoverOrderByWithRelationInput[]
+    cursor?: tr_handoverWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Tr_handoverScalarFieldEnum | Tr_handoverScalarFieldEnum[]
+  }
+
+  /**
+   * tr_proposed_changes.mainProposedChanges
+   */
+  export type tr_proposed_changes$mainProposedChangesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_authorization
+     */
+    select?: mst_authorizationSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_authorization
+     */
+    omit?: mst_authorizationOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mst_authorizationInclude<ExtArgs> | null
+    where?: mst_authorizationWhereInput
+  }
+
+  /**
+   * tr_proposed_changes.department
+   */
+  export type tr_proposed_changes$departmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_department
+     */
+    select?: mst_departmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_department
+     */
+    omit?: mst_departmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mst_departmentInclude<ExtArgs> | null
+    where?: mst_departmentWhereInput
+  }
+
+  /**
+   * tr_proposed_changes.documentNumber
+   */
+  export type tr_proposed_changes$documentNumberArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_document_number
+     */
+    select?: tr_document_numberSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_document_number
+     */
+    omit?: tr_document_numberOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_document_numberInclude<ExtArgs> | null
+    where?: tr_document_numberWhereInput
+  }
+
+  /**
+   * tr_proposed_changes.plant
+   */
+  export type tr_proposed_changes$plantArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_plant
+     */
+    select?: mst_plantSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_plant
+     */
+    omit?: mst_plantOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mst_plantInclude<ExtArgs> | null
+    where?: mst_plantWhereInput
+  }
+
+  /**
+   * tr_proposed_changes.section_department
+   */
+  export type tr_proposed_changes$section_departmentArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_section_department
+     */
+    select?: mst_section_departmentSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_section_department
+     */
+    omit?: mst_section_departmentOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mst_section_departmentInclude<ExtArgs> | null
+    where?: mst_section_departmentWhereInput
+  }
+
+  /**
+   * tr_proposed_changes.approvals
+   */
+  export type tr_proposed_changes$approvalsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes_approval
+     */
+    select?: tr_proposed_changes_approvalSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes_approval
+     */
+    omit?: tr_proposed_changes_approvalOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changes_approvalInclude<ExtArgs> | null
+    where?: tr_proposed_changes_approvalWhereInput
+    orderBy?: tr_proposed_changes_approvalOrderByWithRelationInput | tr_proposed_changes_approvalOrderByWithRelationInput[]
+    cursor?: tr_proposed_changes_approvalWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Tr_proposed_changes_approvalScalarFieldEnum | Tr_proposed_changes_approvalScalarFieldEnum[]
+  }
+
+  /**
+   * tr_proposed_changes.changeHistories
+   */
+  export type tr_proposed_changes$changeHistoriesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes_history
+     */
+    select?: tr_proposed_changes_historySelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes_history
+     */
+    omit?: tr_proposed_changes_historyOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changes_historyInclude<ExtArgs> | null
+    where?: tr_proposed_changes_historyWhereInput
+    orderBy?: tr_proposed_changes_historyOrderByWithRelationInput | tr_proposed_changes_historyOrderByWithRelationInput[]
+    cursor?: tr_proposed_changes_historyWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Tr_proposed_changes_historyScalarFieldEnum | Tr_proposed_changes_historyScalarFieldEnum[]
+  }
+
+  /**
+   * tr_proposed_changes without action
+   */
+  export type tr_proposed_changesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the tr_proposed_changes
+     */
+    select?: tr_proposed_changesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the tr_proposed_changes
+     */
+    omit?: tr_proposed_changesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: tr_proposed_changesInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Model tr_handover
    */
 
@@ -35716,6 +35716,7 @@ export namespace Prisma {
     plant_id: number | null
     department_id: number | null
     section_department_id: number | null
+    star: Decimal | null
   }
 
   export type Tr_handoverSumAggregateOutputType = {
@@ -35730,6 +35731,7 @@ export namespace Prisma {
     plant_id: number | null
     department_id: number | null
     section_department_id: number | null
+    star: Decimal | null
   }
 
   export type Tr_handoverMinAggregateOutputType = {
@@ -35751,9 +35753,12 @@ export namespace Prisma {
     remark: string | null
     created_by: string | null
     created_date: Date | null
+    finished_date: Date | null
     updated_at: Date | null
     updated_by: string | null
     is_deleted: boolean | null
+    is_finished: boolean | null
+    star: Decimal | null
   }
 
   export type Tr_handoverMaxAggregateOutputType = {
@@ -35775,9 +35780,12 @@ export namespace Prisma {
     remark: string | null
     created_by: string | null
     created_date: Date | null
+    finished_date: Date | null
     updated_at: Date | null
     updated_by: string | null
     is_deleted: boolean | null
+    is_finished: boolean | null
+    star: Decimal | null
   }
 
   export type Tr_handoverCountAggregateOutputType = {
@@ -35799,9 +35807,12 @@ export namespace Prisma {
     remark: number
     created_by: number
     created_date: number
+    finished_date: number
     updated_at: number
     updated_by: number
     is_deleted: number
+    is_finished: number
+    star: number
     _all: number
   }
 
@@ -35818,6 +35829,7 @@ export namespace Prisma {
     plant_id?: true
     department_id?: true
     section_department_id?: true
+    star?: true
   }
 
   export type Tr_handoverSumAggregateInputType = {
@@ -35832,6 +35844,7 @@ export namespace Prisma {
     plant_id?: true
     department_id?: true
     section_department_id?: true
+    star?: true
   }
 
   export type Tr_handoverMinAggregateInputType = {
@@ -35853,9 +35866,12 @@ export namespace Prisma {
     remark?: true
     created_by?: true
     created_date?: true
+    finished_date?: true
     updated_at?: true
     updated_by?: true
     is_deleted?: true
+    is_finished?: true
+    star?: true
   }
 
   export type Tr_handoverMaxAggregateInputType = {
@@ -35877,9 +35893,12 @@ export namespace Prisma {
     remark?: true
     created_by?: true
     created_date?: true
+    finished_date?: true
     updated_at?: true
     updated_by?: true
     is_deleted?: true
+    is_finished?: true
+    star?: true
   }
 
   export type Tr_handoverCountAggregateInputType = {
@@ -35901,9 +35920,12 @@ export namespace Prisma {
     remark?: true
     created_by?: true
     created_date?: true
+    finished_date?: true
     updated_at?: true
     updated_by?: true
     is_deleted?: true
+    is_finished?: true
+    star?: true
     _all?: true
   }
 
@@ -36012,9 +36034,12 @@ export namespace Prisma {
     remark: string | null
     created_by: string | null
     created_date: Date | null
+    finished_date: Date | null
     updated_at: Date | null
     updated_by: string | null
     is_deleted: boolean | null
+    is_finished: boolean | null
+    star: Decimal | null
     _count: Tr_handoverCountAggregateOutputType | null
     _avg: Tr_handoverAvgAggregateOutputType | null
     _sum: Tr_handoverSumAggregateOutputType | null
@@ -36055,9 +36080,12 @@ export namespace Prisma {
     remark?: boolean
     created_by?: boolean
     created_date?: boolean
+    finished_date?: boolean
     updated_at?: boolean
     updated_by?: boolean
     is_deleted?: boolean
+    is_finished?: boolean
+    star?: boolean
     email_tracking_handover?: boolean | tr_handover$email_tracking_handoverArgs<ExtArgs>
     mst_authorization_tr_handover_auth_idTomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_idTomst_authorizationArgs<ExtArgs>
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_id5Tomst_authorizationArgs<ExtArgs>
@@ -36095,12 +36123,15 @@ export namespace Prisma {
     remark?: boolean
     created_by?: boolean
     created_date?: boolean
+    finished_date?: boolean
     updated_at?: boolean
     updated_by?: boolean
     is_deleted?: boolean
+    is_finished?: boolean
+    star?: boolean
   }
 
-  export type tr_handoverOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "doc_number" | "auth_id" | "auth_id2" | "auth_id3" | "auth_id4" | "auth_id5" | "proposed_change_id" | "authdoc_id" | "plant_id" | "department_id" | "section_department_id" | "progress" | "status" | "material" | "remark" | "created_by" | "created_date" | "updated_at" | "updated_by" | "is_deleted", ExtArgs["result"]["tr_handover"]>
+  export type tr_handoverOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "doc_number" | "auth_id" | "auth_id2" | "auth_id3" | "auth_id4" | "auth_id5" | "proposed_change_id" | "authdoc_id" | "plant_id" | "department_id" | "section_department_id" | "progress" | "status" | "material" | "remark" | "created_by" | "created_date" | "finished_date" | "updated_at" | "updated_by" | "is_deleted" | "is_finished" | "star", ExtArgs["result"]["tr_handover"]>
   export type tr_handoverInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     email_tracking_handover?: boolean | tr_handover$email_tracking_handoverArgs<ExtArgs>
     mst_authorization_tr_handover_auth_idTomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_idTomst_authorizationArgs<ExtArgs>
@@ -36154,9 +36185,12 @@ export namespace Prisma {
       remark: string | null
       created_by: string | null
       created_date: Date | null
+      finished_date: Date | null
       updated_at: Date | null
       updated_by: string | null
       is_deleted: boolean | null
+      is_finished: boolean | null
+      star: Prisma.Decimal | null
     }, ExtArgs["result"]["tr_handover"]>
     composites: {}
   }
@@ -36557,9 +36591,12 @@ export namespace Prisma {
     readonly remark: FieldRef<"tr_handover", 'String'>
     readonly created_by: FieldRef<"tr_handover", 'String'>
     readonly created_date: FieldRef<"tr_handover", 'DateTime'>
+    readonly finished_date: FieldRef<"tr_handover", 'DateTime'>
     readonly updated_at: FieldRef<"tr_handover", 'DateTime'>
     readonly updated_by: FieldRef<"tr_handover", 'String'>
     readonly is_deleted: FieldRef<"tr_handover", 'Boolean'>
+    readonly is_finished: FieldRef<"tr_handover", 'Boolean'>
+    readonly star: FieldRef<"tr_handover", 'Decimal'>
   }
     
 
@@ -37200,6 +37237,8 @@ export namespace Prisma {
     handover_id: number | null
     auth_id: number | null
     step: number | null
+    rating: number | null
+    rating_reminder_count: number | null
   }
 
   export type Tr_handover_approvalSumAggregateOutputType = {
@@ -37207,6 +37246,8 @@ export namespace Prisma {
     handover_id: number | null
     auth_id: number | null
     step: number | null
+    rating: number | null
+    rating_reminder_count: number | null
   }
 
   export type Tr_handover_approvalMinAggregateOutputType = {
@@ -37217,6 +37258,12 @@ export namespace Prisma {
     actor: string | null
     employee_code: string | null
     status: string | null
+    rating: number | null
+    review: string | null
+    rating_date: Date | null
+    last_rating_reminder_sent: Date | null
+    rating_reminder_count: number | null
+    finished_date: Date | null
     updated_date: Date | null
     created_date: Date | null
   }
@@ -37229,6 +37276,12 @@ export namespace Prisma {
     actor: string | null
     employee_code: string | null
     status: string | null
+    rating: number | null
+    review: string | null
+    rating_date: Date | null
+    last_rating_reminder_sent: Date | null
+    rating_reminder_count: number | null
+    finished_date: Date | null
     updated_date: Date | null
     created_date: Date | null
   }
@@ -37241,6 +37294,12 @@ export namespace Prisma {
     actor: number
     employee_code: number
     status: number
+    rating: number
+    review: number
+    rating_date: number
+    last_rating_reminder_sent: number
+    rating_reminder_count: number
+    finished_date: number
     updated_date: number
     created_date: number
     _all: number
@@ -37252,6 +37311,8 @@ export namespace Prisma {
     handover_id?: true
     auth_id?: true
     step?: true
+    rating?: true
+    rating_reminder_count?: true
   }
 
   export type Tr_handover_approvalSumAggregateInputType = {
@@ -37259,6 +37320,8 @@ export namespace Prisma {
     handover_id?: true
     auth_id?: true
     step?: true
+    rating?: true
+    rating_reminder_count?: true
   }
 
   export type Tr_handover_approvalMinAggregateInputType = {
@@ -37269,6 +37332,12 @@ export namespace Prisma {
     actor?: true
     employee_code?: true
     status?: true
+    rating?: true
+    review?: true
+    rating_date?: true
+    last_rating_reminder_sent?: true
+    rating_reminder_count?: true
+    finished_date?: true
     updated_date?: true
     created_date?: true
   }
@@ -37281,6 +37350,12 @@ export namespace Prisma {
     actor?: true
     employee_code?: true
     status?: true
+    rating?: true
+    review?: true
+    rating_date?: true
+    last_rating_reminder_sent?: true
+    rating_reminder_count?: true
+    finished_date?: true
     updated_date?: true
     created_date?: true
   }
@@ -37293,6 +37368,12 @@ export namespace Prisma {
     actor?: true
     employee_code?: true
     status?: true
+    rating?: true
+    review?: true
+    rating_date?: true
+    last_rating_reminder_sent?: true
+    rating_reminder_count?: true
+    finished_date?: true
     updated_date?: true
     created_date?: true
     _all?: true
@@ -37392,6 +37473,12 @@ export namespace Prisma {
     actor: string | null
     employee_code: string | null
     status: string | null
+    rating: number | null
+    review: string | null
+    rating_date: Date | null
+    last_rating_reminder_sent: Date | null
+    rating_reminder_count: number | null
+    finished_date: Date | null
     updated_date: Date | null
     created_date: Date | null
     _count: Tr_handover_approvalCountAggregateOutputType | null
@@ -37423,6 +37510,12 @@ export namespace Prisma {
     actor?: boolean
     employee_code?: boolean
     status?: boolean
+    rating?: boolean
+    review?: boolean
+    rating_date?: boolean
+    last_rating_reminder_sent?: boolean
+    rating_reminder_count?: boolean
+    finished_date?: boolean
     updated_date?: boolean
     created_date?: boolean
     tr_handover?: boolean | tr_handover_approval$tr_handoverArgs<ExtArgs>
@@ -37439,11 +37532,17 @@ export namespace Prisma {
     actor?: boolean
     employee_code?: boolean
     status?: boolean
+    rating?: boolean
+    review?: boolean
+    rating_date?: boolean
+    last_rating_reminder_sent?: boolean
+    rating_reminder_count?: boolean
+    finished_date?: boolean
     updated_date?: boolean
     created_date?: boolean
   }
 
-  export type tr_handover_approvalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "handover_id" | "auth_id" | "step" | "actor" | "employee_code" | "status" | "updated_date" | "created_date", ExtArgs["result"]["tr_handover_approval"]>
+  export type tr_handover_approvalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "handover_id" | "auth_id" | "step" | "actor" | "employee_code" | "status" | "rating" | "review" | "rating_date" | "last_rating_reminder_sent" | "rating_reminder_count" | "finished_date" | "updated_date" | "created_date", ExtArgs["result"]["tr_handover_approval"]>
   export type tr_handover_approvalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tr_handover?: boolean | tr_handover_approval$tr_handoverArgs<ExtArgs>
     mst_authorization?: boolean | tr_handover_approval$mst_authorizationArgs<ExtArgs>
@@ -37463,6 +37562,12 @@ export namespace Prisma {
       actor: string | null
       employee_code: string | null
       status: string | null
+      rating: number | null
+      review: string | null
+      rating_date: Date | null
+      last_rating_reminder_sent: Date | null
+      rating_reminder_count: number | null
+      finished_date: Date | null
       updated_date: Date | null
       created_date: Date | null
     }, ExtArgs["result"]["tr_handover_approval"]>
@@ -37843,6 +37948,12 @@ export namespace Prisma {
     readonly actor: FieldRef<"tr_handover_approval", 'String'>
     readonly employee_code: FieldRef<"tr_handover_approval", 'String'>
     readonly status: FieldRef<"tr_handover_approval", 'String'>
+    readonly rating: FieldRef<"tr_handover_approval", 'Int'>
+    readonly review: FieldRef<"tr_handover_approval", 'String'>
+    readonly rating_date: FieldRef<"tr_handover_approval", 'DateTime'>
+    readonly last_rating_reminder_sent: FieldRef<"tr_handover_approval", 'DateTime'>
+    readonly rating_reminder_count: FieldRef<"tr_handover_approval", 'Int'>
+    readonly finished_date: FieldRef<"tr_handover_approval", 'DateTime'>
     readonly updated_date: FieldRef<"tr_handover_approval", 'DateTime'>
     readonly created_date: FieldRef<"tr_handover_approval", 'DateTime'>
   }
@@ -42855,6 +42966,50 @@ export namespace Prisma {
   export type Mst_support_documentScalarFieldEnum = (typeof Mst_support_documentScalarFieldEnum)[keyof typeof Mst_support_documentScalarFieldEnum]
 
 
+  export const Tr_authdoc_approvalScalarFieldEnum: {
+    id: 'id',
+    authdoc_id: 'authdoc_id',
+    auth_id: 'auth_id',
+    step: 'step',
+    actor: 'actor',
+    employee_code: 'employee_code',
+    status: 'status',
+    updated_date: 'updated_date',
+    created_date: 'created_date'
+  };
+
+  export type Tr_authdoc_approvalScalarFieldEnum = (typeof Tr_authdoc_approvalScalarFieldEnum)[keyof typeof Tr_authdoc_approvalScalarFieldEnum]
+
+
+  export const Tr_authdoc_historyScalarFieldEnum: {
+    id: 'id',
+    description: 'description',
+    employee_code: 'employee_code',
+    authdoc_id: 'authdoc_id',
+    auth_id: 'auth_id',
+    note: 'note',
+    status: 'status',
+    created_date: 'created_date',
+    updated_date: 'updated_date',
+    created_by: 'created_by'
+  };
+
+  export type Tr_authdoc_historyScalarFieldEnum = (typeof Tr_authdoc_historyScalarFieldEnum)[keyof typeof Tr_authdoc_historyScalarFieldEnum]
+
+
+  export const Tr_authdoc_memberScalarFieldEnum: {
+    id: 'id',
+    authdoc_id: 'authdoc_id',
+    employee_code: 'employee_code',
+    employee_name: 'employee_name',
+    status: 'status',
+    created_date: 'created_date',
+    is_deleted: 'is_deleted'
+  };
+
+  export type Tr_authdoc_memberScalarFieldEnum = (typeof Tr_authdoc_memberScalarFieldEnum)[keyof typeof Tr_authdoc_memberScalarFieldEnum]
+
+
   export const Tr_authorization_docScalarFieldEnum: {
     id: 'id',
     proposed_change_id: 'proposed_change_id',
@@ -42878,21 +43033,6 @@ export namespace Prisma {
   };
 
   export type Tr_authorization_docScalarFieldEnum = (typeof Tr_authorization_docScalarFieldEnum)[keyof typeof Tr_authorization_docScalarFieldEnum]
-
-
-  export const Tr_authdoc_approvalScalarFieldEnum: {
-    id: 'id',
-    authdoc_id: 'authdoc_id',
-    auth_id: 'auth_id',
-    step: 'step',
-    actor: 'actor',
-    employee_code: 'employee_code',
-    status: 'status',
-    updated_date: 'updated_date',
-    created_date: 'created_date'
-  };
-
-  export type Tr_authdoc_approvalScalarFieldEnum = (typeof Tr_authdoc_approvalScalarFieldEnum)[keyof typeof Tr_authdoc_approvalScalarFieldEnum]
 
 
   export const Tr_proposed_changesScalarFieldEnum: {
@@ -42929,35 +43069,6 @@ export namespace Prisma {
   export type Tr_proposed_changesScalarFieldEnum = (typeof Tr_proposed_changesScalarFieldEnum)[keyof typeof Tr_proposed_changesScalarFieldEnum]
 
 
-  export const Tr_authdoc_historyScalarFieldEnum: {
-    id: 'id',
-    description: 'description',
-    employee_code: 'employee_code',
-    authdoc_id: 'authdoc_id',
-    auth_id: 'auth_id',
-    note: 'note',
-    status: 'status',
-    created_date: 'created_date',
-    updated_date: 'updated_date',
-    created_by: 'created_by'
-  };
-
-  export type Tr_authdoc_historyScalarFieldEnum = (typeof Tr_authdoc_historyScalarFieldEnum)[keyof typeof Tr_authdoc_historyScalarFieldEnum]
-
-
-  export const Tr_authdoc_memberScalarFieldEnum: {
-    id: 'id',
-    authdoc_id: 'authdoc_id',
-    employee_code: 'employee_code',
-    employee_name: 'employee_name',
-    status: 'status',
-    created_date: 'created_date',
-    is_deleted: 'is_deleted'
-  };
-
-  export type Tr_authdoc_memberScalarFieldEnum = (typeof Tr_authdoc_memberScalarFieldEnum)[keyof typeof Tr_authdoc_memberScalarFieldEnum]
-
-
   export const Tr_handoverScalarFieldEnum: {
     id: 'id',
     doc_number: 'doc_number',
@@ -42977,9 +43088,12 @@ export namespace Prisma {
     remark: 'remark',
     created_by: 'created_by',
     created_date: 'created_date',
+    finished_date: 'finished_date',
     updated_at: 'updated_at',
     updated_by: 'updated_by',
-    is_deleted: 'is_deleted'
+    is_deleted: 'is_deleted',
+    is_finished: 'is_finished',
+    star: 'star'
   };
 
   export type Tr_handoverScalarFieldEnum = (typeof Tr_handoverScalarFieldEnum)[keyof typeof Tr_handoverScalarFieldEnum]
@@ -42993,6 +43107,12 @@ export namespace Prisma {
     actor: 'actor',
     employee_code: 'employee_code',
     status: 'status',
+    rating: 'rating',
+    review: 'review',
+    rating_date: 'rating_date',
+    last_rating_reminder_sent: 'last_rating_reminder_sent',
+    rating_reminder_count: 'rating_reminder_count',
+    finished_date: 'finished_date',
     updated_date: 'updated_date',
     created_date: 'created_date'
   };
@@ -43341,6 +43461,35 @@ export namespace Prisma {
   export type mst_support_documentOrderByRelevanceFieldEnum = (typeof mst_support_documentOrderByRelevanceFieldEnum)[keyof typeof mst_support_documentOrderByRelevanceFieldEnum]
 
 
+  export const tr_authdoc_approvalOrderByRelevanceFieldEnum: {
+    actor: 'actor',
+    employee_code: 'employee_code',
+    status: 'status'
+  };
+
+  export type tr_authdoc_approvalOrderByRelevanceFieldEnum = (typeof tr_authdoc_approvalOrderByRelevanceFieldEnum)[keyof typeof tr_authdoc_approvalOrderByRelevanceFieldEnum]
+
+
+  export const tr_authdoc_historyOrderByRelevanceFieldEnum: {
+    description: 'description',
+    employee_code: 'employee_code',
+    note: 'note',
+    status: 'status',
+    created_by: 'created_by'
+  };
+
+  export type tr_authdoc_historyOrderByRelevanceFieldEnum = (typeof tr_authdoc_historyOrderByRelevanceFieldEnum)[keyof typeof tr_authdoc_historyOrderByRelevanceFieldEnum]
+
+
+  export const tr_authdoc_memberOrderByRelevanceFieldEnum: {
+    employee_code: 'employee_code',
+    employee_name: 'employee_name',
+    status: 'status'
+  };
+
+  export type tr_authdoc_memberOrderByRelevanceFieldEnum = (typeof tr_authdoc_memberOrderByRelevanceFieldEnum)[keyof typeof tr_authdoc_memberOrderByRelevanceFieldEnum]
+
+
   export const tr_authorization_docOrderByRelevanceFieldEnum: {
     doc_number: 'doc_number',
     evaluation: 'evaluation',
@@ -43355,15 +43504,6 @@ export namespace Prisma {
   };
 
   export type tr_authorization_docOrderByRelevanceFieldEnum = (typeof tr_authorization_docOrderByRelevanceFieldEnum)[keyof typeof tr_authorization_docOrderByRelevanceFieldEnum]
-
-
-  export const tr_authdoc_approvalOrderByRelevanceFieldEnum: {
-    actor: 'actor',
-    employee_code: 'employee_code',
-    status: 'status'
-  };
-
-  export type tr_authdoc_approvalOrderByRelevanceFieldEnum = (typeof tr_authdoc_approvalOrderByRelevanceFieldEnum)[keyof typeof tr_authdoc_approvalOrderByRelevanceFieldEnum]
 
 
   export const tr_proposed_changesOrderByRelevanceFieldEnum: {
@@ -43387,26 +43527,6 @@ export namespace Prisma {
   export type tr_proposed_changesOrderByRelevanceFieldEnum = (typeof tr_proposed_changesOrderByRelevanceFieldEnum)[keyof typeof tr_proposed_changesOrderByRelevanceFieldEnum]
 
 
-  export const tr_authdoc_historyOrderByRelevanceFieldEnum: {
-    description: 'description',
-    employee_code: 'employee_code',
-    note: 'note',
-    status: 'status',
-    created_by: 'created_by'
-  };
-
-  export type tr_authdoc_historyOrderByRelevanceFieldEnum = (typeof tr_authdoc_historyOrderByRelevanceFieldEnum)[keyof typeof tr_authdoc_historyOrderByRelevanceFieldEnum]
-
-
-  export const tr_authdoc_memberOrderByRelevanceFieldEnum: {
-    employee_code: 'employee_code',
-    employee_name: 'employee_name',
-    status: 'status'
-  };
-
-  export type tr_authdoc_memberOrderByRelevanceFieldEnum = (typeof tr_authdoc_memberOrderByRelevanceFieldEnum)[keyof typeof tr_authdoc_memberOrderByRelevanceFieldEnum]
-
-
   export const tr_handoverOrderByRelevanceFieldEnum: {
     doc_number: 'doc_number',
     progress: 'progress',
@@ -43423,7 +43543,8 @@ export namespace Prisma {
   export const tr_handover_approvalOrderByRelevanceFieldEnum: {
     actor: 'actor',
     employee_code: 'employee_code',
-    status: 'status'
+    status: 'status',
+    review: 'review'
   };
 
   export type tr_handover_approvalOrderByRelevanceFieldEnum = (typeof tr_handover_approvalOrderByRelevanceFieldEnum)[keyof typeof tr_handover_approvalOrderByRelevanceFieldEnum]
@@ -43521,6 +43642,13 @@ export namespace Prisma {
    * Reference to a field of type 'Gender'
    */
   export type EnumGenderFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Gender'>
+    
+
+
+  /**
+   * Reference to a field of type 'Decimal'
+   */
+  export type DecimalFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'Decimal'>
     
 
 
@@ -45569,6 +45697,241 @@ export namespace Prisma {
     updated_by?: StringNullableWithAggregatesFilter<"mst_support_document"> | string | null
   }
 
+  export type tr_authdoc_approvalWhereInput = {
+    AND?: tr_authdoc_approvalWhereInput | tr_authdoc_approvalWhereInput[]
+    OR?: tr_authdoc_approvalWhereInput[]
+    NOT?: tr_authdoc_approvalWhereInput | tr_authdoc_approvalWhereInput[]
+    id?: IntFilter<"tr_authdoc_approval"> | number
+    authdoc_id?: IntNullableFilter<"tr_authdoc_approval"> | number | null
+    auth_id?: IntNullableFilter<"tr_authdoc_approval"> | number | null
+    step?: IntNullableFilter<"tr_authdoc_approval"> | number | null
+    actor?: StringNullableFilter<"tr_authdoc_approval"> | string | null
+    employee_code?: StringNullableFilter<"tr_authdoc_approval"> | string | null
+    status?: StringNullableFilter<"tr_authdoc_approval"> | string | null
+    updated_date?: DateTimeNullableFilter<"tr_authdoc_approval"> | Date | string | null
+    created_date?: DateTimeNullableFilter<"tr_authdoc_approval"> | Date | string | null
+    authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
+    authorization_doc?: XOR<Tr_authorization_docNullableScalarRelationFilter, tr_authorization_docWhereInput> | null
+  }
+
+  export type tr_authdoc_approvalOrderByWithRelationInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrderInput | SortOrder
+    auth_id?: SortOrderInput | SortOrder
+    step?: SortOrderInput | SortOrder
+    actor?: SortOrderInput | SortOrder
+    employee_code?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    updated_date?: SortOrderInput | SortOrder
+    created_date?: SortOrderInput | SortOrder
+    authorization?: mst_authorizationOrderByWithRelationInput
+    authorization_doc?: tr_authorization_docOrderByWithRelationInput
+    _relevance?: tr_authdoc_approvalOrderByRelevanceInput
+  }
+
+  export type tr_authdoc_approvalWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: tr_authdoc_approvalWhereInput | tr_authdoc_approvalWhereInput[]
+    OR?: tr_authdoc_approvalWhereInput[]
+    NOT?: tr_authdoc_approvalWhereInput | tr_authdoc_approvalWhereInput[]
+    authdoc_id?: IntNullableFilter<"tr_authdoc_approval"> | number | null
+    auth_id?: IntNullableFilter<"tr_authdoc_approval"> | number | null
+    step?: IntNullableFilter<"tr_authdoc_approval"> | number | null
+    actor?: StringNullableFilter<"tr_authdoc_approval"> | string | null
+    employee_code?: StringNullableFilter<"tr_authdoc_approval"> | string | null
+    status?: StringNullableFilter<"tr_authdoc_approval"> | string | null
+    updated_date?: DateTimeNullableFilter<"tr_authdoc_approval"> | Date | string | null
+    created_date?: DateTimeNullableFilter<"tr_authdoc_approval"> | Date | string | null
+    authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
+    authorization_doc?: XOR<Tr_authorization_docNullableScalarRelationFilter, tr_authorization_docWhereInput> | null
+  }, "id">
+
+  export type tr_authdoc_approvalOrderByWithAggregationInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrderInput | SortOrder
+    auth_id?: SortOrderInput | SortOrder
+    step?: SortOrderInput | SortOrder
+    actor?: SortOrderInput | SortOrder
+    employee_code?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    updated_date?: SortOrderInput | SortOrder
+    created_date?: SortOrderInput | SortOrder
+    _count?: tr_authdoc_approvalCountOrderByAggregateInput
+    _avg?: tr_authdoc_approvalAvgOrderByAggregateInput
+    _max?: tr_authdoc_approvalMaxOrderByAggregateInput
+    _min?: tr_authdoc_approvalMinOrderByAggregateInput
+    _sum?: tr_authdoc_approvalSumOrderByAggregateInput
+  }
+
+  export type tr_authdoc_approvalScalarWhereWithAggregatesInput = {
+    AND?: tr_authdoc_approvalScalarWhereWithAggregatesInput | tr_authdoc_approvalScalarWhereWithAggregatesInput[]
+    OR?: tr_authdoc_approvalScalarWhereWithAggregatesInput[]
+    NOT?: tr_authdoc_approvalScalarWhereWithAggregatesInput | tr_authdoc_approvalScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"tr_authdoc_approval"> | number
+    authdoc_id?: IntNullableWithAggregatesFilter<"tr_authdoc_approval"> | number | null
+    auth_id?: IntNullableWithAggregatesFilter<"tr_authdoc_approval"> | number | null
+    step?: IntNullableWithAggregatesFilter<"tr_authdoc_approval"> | number | null
+    actor?: StringNullableWithAggregatesFilter<"tr_authdoc_approval"> | string | null
+    employee_code?: StringNullableWithAggregatesFilter<"tr_authdoc_approval"> | string | null
+    status?: StringNullableWithAggregatesFilter<"tr_authdoc_approval"> | string | null
+    updated_date?: DateTimeNullableWithAggregatesFilter<"tr_authdoc_approval"> | Date | string | null
+    created_date?: DateTimeNullableWithAggregatesFilter<"tr_authdoc_approval"> | Date | string | null
+  }
+
+  export type tr_authdoc_historyWhereInput = {
+    AND?: tr_authdoc_historyWhereInput | tr_authdoc_historyWhereInput[]
+    OR?: tr_authdoc_historyWhereInput[]
+    NOT?: tr_authdoc_historyWhereInput | tr_authdoc_historyWhereInput[]
+    id?: IntFilter<"tr_authdoc_history"> | number
+    description?: StringNullableFilter<"tr_authdoc_history"> | string | null
+    employee_code?: StringNullableFilter<"tr_authdoc_history"> | string | null
+    authdoc_id?: IntNullableFilter<"tr_authdoc_history"> | number | null
+    auth_id?: IntNullableFilter<"tr_authdoc_history"> | number | null
+    note?: StringNullableFilter<"tr_authdoc_history"> | string | null
+    status?: StringNullableFilter<"tr_authdoc_history"> | string | null
+    created_date?: DateTimeNullableFilter<"tr_authdoc_history"> | Date | string | null
+    updated_date?: DateTimeNullableFilter<"tr_authdoc_history"> | Date | string | null
+    created_by?: StringNullableFilter<"tr_authdoc_history"> | string | null
+    authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
+    authorization_doc?: XOR<Tr_authorization_docNullableScalarRelationFilter, tr_authorization_docWhereInput> | null
+  }
+
+  export type tr_authdoc_historyOrderByWithRelationInput = {
+    id?: SortOrder
+    description?: SortOrderInput | SortOrder
+    employee_code?: SortOrderInput | SortOrder
+    authdoc_id?: SortOrderInput | SortOrder
+    auth_id?: SortOrderInput | SortOrder
+    note?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    created_date?: SortOrderInput | SortOrder
+    updated_date?: SortOrderInput | SortOrder
+    created_by?: SortOrderInput | SortOrder
+    authorization?: mst_authorizationOrderByWithRelationInput
+    authorization_doc?: tr_authorization_docOrderByWithRelationInput
+    _relevance?: tr_authdoc_historyOrderByRelevanceInput
+  }
+
+  export type tr_authdoc_historyWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: tr_authdoc_historyWhereInput | tr_authdoc_historyWhereInput[]
+    OR?: tr_authdoc_historyWhereInput[]
+    NOT?: tr_authdoc_historyWhereInput | tr_authdoc_historyWhereInput[]
+    description?: StringNullableFilter<"tr_authdoc_history"> | string | null
+    employee_code?: StringNullableFilter<"tr_authdoc_history"> | string | null
+    authdoc_id?: IntNullableFilter<"tr_authdoc_history"> | number | null
+    auth_id?: IntNullableFilter<"tr_authdoc_history"> | number | null
+    note?: StringNullableFilter<"tr_authdoc_history"> | string | null
+    status?: StringNullableFilter<"tr_authdoc_history"> | string | null
+    created_date?: DateTimeNullableFilter<"tr_authdoc_history"> | Date | string | null
+    updated_date?: DateTimeNullableFilter<"tr_authdoc_history"> | Date | string | null
+    created_by?: StringNullableFilter<"tr_authdoc_history"> | string | null
+    authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
+    authorization_doc?: XOR<Tr_authorization_docNullableScalarRelationFilter, tr_authorization_docWhereInput> | null
+  }, "id">
+
+  export type tr_authdoc_historyOrderByWithAggregationInput = {
+    id?: SortOrder
+    description?: SortOrderInput | SortOrder
+    employee_code?: SortOrderInput | SortOrder
+    authdoc_id?: SortOrderInput | SortOrder
+    auth_id?: SortOrderInput | SortOrder
+    note?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    created_date?: SortOrderInput | SortOrder
+    updated_date?: SortOrderInput | SortOrder
+    created_by?: SortOrderInput | SortOrder
+    _count?: tr_authdoc_historyCountOrderByAggregateInput
+    _avg?: tr_authdoc_historyAvgOrderByAggregateInput
+    _max?: tr_authdoc_historyMaxOrderByAggregateInput
+    _min?: tr_authdoc_historyMinOrderByAggregateInput
+    _sum?: tr_authdoc_historySumOrderByAggregateInput
+  }
+
+  export type tr_authdoc_historyScalarWhereWithAggregatesInput = {
+    AND?: tr_authdoc_historyScalarWhereWithAggregatesInput | tr_authdoc_historyScalarWhereWithAggregatesInput[]
+    OR?: tr_authdoc_historyScalarWhereWithAggregatesInput[]
+    NOT?: tr_authdoc_historyScalarWhereWithAggregatesInput | tr_authdoc_historyScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"tr_authdoc_history"> | number
+    description?: StringNullableWithAggregatesFilter<"tr_authdoc_history"> | string | null
+    employee_code?: StringNullableWithAggregatesFilter<"tr_authdoc_history"> | string | null
+    authdoc_id?: IntNullableWithAggregatesFilter<"tr_authdoc_history"> | number | null
+    auth_id?: IntNullableWithAggregatesFilter<"tr_authdoc_history"> | number | null
+    note?: StringNullableWithAggregatesFilter<"tr_authdoc_history"> | string | null
+    status?: StringNullableWithAggregatesFilter<"tr_authdoc_history"> | string | null
+    created_date?: DateTimeNullableWithAggregatesFilter<"tr_authdoc_history"> | Date | string | null
+    updated_date?: DateTimeNullableWithAggregatesFilter<"tr_authdoc_history"> | Date | string | null
+    created_by?: StringNullableWithAggregatesFilter<"tr_authdoc_history"> | string | null
+  }
+
+  export type tr_authdoc_memberWhereInput = {
+    AND?: tr_authdoc_memberWhereInput | tr_authdoc_memberWhereInput[]
+    OR?: tr_authdoc_memberWhereInput[]
+    NOT?: tr_authdoc_memberWhereInput | tr_authdoc_memberWhereInput[]
+    id?: IntFilter<"tr_authdoc_member"> | number
+    authdoc_id?: IntNullableFilter<"tr_authdoc_member"> | number | null
+    employee_code?: StringNullableFilter<"tr_authdoc_member"> | string | null
+    employee_name?: StringNullableFilter<"tr_authdoc_member"> | string | null
+    status?: StringNullableFilter<"tr_authdoc_member"> | string | null
+    created_date?: DateTimeNullableFilter<"tr_authdoc_member"> | Date | string | null
+    is_deleted?: BoolFilter<"tr_authdoc_member"> | boolean
+    authorization_doc?: XOR<Tr_authorization_docNullableScalarRelationFilter, tr_authorization_docWhereInput> | null
+  }
+
+  export type tr_authdoc_memberOrderByWithRelationInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrderInput | SortOrder
+    employee_code?: SortOrderInput | SortOrder
+    employee_name?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    created_date?: SortOrderInput | SortOrder
+    is_deleted?: SortOrder
+    authorization_doc?: tr_authorization_docOrderByWithRelationInput
+    _relevance?: tr_authdoc_memberOrderByRelevanceInput
+  }
+
+  export type tr_authdoc_memberWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: tr_authdoc_memberWhereInput | tr_authdoc_memberWhereInput[]
+    OR?: tr_authdoc_memberWhereInput[]
+    NOT?: tr_authdoc_memberWhereInput | tr_authdoc_memberWhereInput[]
+    authdoc_id?: IntNullableFilter<"tr_authdoc_member"> | number | null
+    employee_code?: StringNullableFilter<"tr_authdoc_member"> | string | null
+    employee_name?: StringNullableFilter<"tr_authdoc_member"> | string | null
+    status?: StringNullableFilter<"tr_authdoc_member"> | string | null
+    created_date?: DateTimeNullableFilter<"tr_authdoc_member"> | Date | string | null
+    is_deleted?: BoolFilter<"tr_authdoc_member"> | boolean
+    authorization_doc?: XOR<Tr_authorization_docNullableScalarRelationFilter, tr_authorization_docWhereInput> | null
+  }, "id">
+
+  export type tr_authdoc_memberOrderByWithAggregationInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrderInput | SortOrder
+    employee_code?: SortOrderInput | SortOrder
+    employee_name?: SortOrderInput | SortOrder
+    status?: SortOrderInput | SortOrder
+    created_date?: SortOrderInput | SortOrder
+    is_deleted?: SortOrder
+    _count?: tr_authdoc_memberCountOrderByAggregateInput
+    _avg?: tr_authdoc_memberAvgOrderByAggregateInput
+    _max?: tr_authdoc_memberMaxOrderByAggregateInput
+    _min?: tr_authdoc_memberMinOrderByAggregateInput
+    _sum?: tr_authdoc_memberSumOrderByAggregateInput
+  }
+
+  export type tr_authdoc_memberScalarWhereWithAggregatesInput = {
+    AND?: tr_authdoc_memberScalarWhereWithAggregatesInput | tr_authdoc_memberScalarWhereWithAggregatesInput[]
+    OR?: tr_authdoc_memberScalarWhereWithAggregatesInput[]
+    NOT?: tr_authdoc_memberScalarWhereWithAggregatesInput | tr_authdoc_memberScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"tr_authdoc_member"> | number
+    authdoc_id?: IntNullableWithAggregatesFilter<"tr_authdoc_member"> | number | null
+    employee_code?: StringNullableWithAggregatesFilter<"tr_authdoc_member"> | string | null
+    employee_name?: StringNullableWithAggregatesFilter<"tr_authdoc_member"> | string | null
+    status?: StringNullableWithAggregatesFilter<"tr_authdoc_member"> | string | null
+    created_date?: DateTimeNullableWithAggregatesFilter<"tr_authdoc_member"> | Date | string | null
+    is_deleted?: BoolWithAggregatesFilter<"tr_authdoc_member"> | boolean
+  }
+
   export type tr_authorization_docWhereInput = {
     AND?: tr_authorization_docWhereInput | tr_authorization_docWhereInput[]
     OR?: tr_authorization_docWhereInput[]
@@ -45722,87 +46085,6 @@ export namespace Prisma {
     department_id?: IntNullableWithAggregatesFilter<"tr_authorization_doc"> | number | null
     section_department_id?: IntNullableWithAggregatesFilter<"tr_authorization_doc"> | number | null
     updated_at?: DateTimeNullableWithAggregatesFilter<"tr_authorization_doc"> | Date | string | null
-  }
-
-  export type tr_authdoc_approvalWhereInput = {
-    AND?: tr_authdoc_approvalWhereInput | tr_authdoc_approvalWhereInput[]
-    OR?: tr_authdoc_approvalWhereInput[]
-    NOT?: tr_authdoc_approvalWhereInput | tr_authdoc_approvalWhereInput[]
-    id?: IntFilter<"tr_authdoc_approval"> | number
-    authdoc_id?: IntNullableFilter<"tr_authdoc_approval"> | number | null
-    auth_id?: IntNullableFilter<"tr_authdoc_approval"> | number | null
-    step?: IntNullableFilter<"tr_authdoc_approval"> | number | null
-    actor?: StringNullableFilter<"tr_authdoc_approval"> | string | null
-    employee_code?: StringNullableFilter<"tr_authdoc_approval"> | string | null
-    status?: StringNullableFilter<"tr_authdoc_approval"> | string | null
-    updated_date?: DateTimeNullableFilter<"tr_authdoc_approval"> | Date | string | null
-    created_date?: DateTimeNullableFilter<"tr_authdoc_approval"> | Date | string | null
-    authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
-    authorization_doc?: XOR<Tr_authorization_docNullableScalarRelationFilter, tr_authorization_docWhereInput> | null
-  }
-
-  export type tr_authdoc_approvalOrderByWithRelationInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrderInput | SortOrder
-    auth_id?: SortOrderInput | SortOrder
-    step?: SortOrderInput | SortOrder
-    actor?: SortOrderInput | SortOrder
-    employee_code?: SortOrderInput | SortOrder
-    status?: SortOrderInput | SortOrder
-    updated_date?: SortOrderInput | SortOrder
-    created_date?: SortOrderInput | SortOrder
-    authorization?: mst_authorizationOrderByWithRelationInput
-    authorization_doc?: tr_authorization_docOrderByWithRelationInput
-    _relevance?: tr_authdoc_approvalOrderByRelevanceInput
-  }
-
-  export type tr_authdoc_approvalWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: tr_authdoc_approvalWhereInput | tr_authdoc_approvalWhereInput[]
-    OR?: tr_authdoc_approvalWhereInput[]
-    NOT?: tr_authdoc_approvalWhereInput | tr_authdoc_approvalWhereInput[]
-    authdoc_id?: IntNullableFilter<"tr_authdoc_approval"> | number | null
-    auth_id?: IntNullableFilter<"tr_authdoc_approval"> | number | null
-    step?: IntNullableFilter<"tr_authdoc_approval"> | number | null
-    actor?: StringNullableFilter<"tr_authdoc_approval"> | string | null
-    employee_code?: StringNullableFilter<"tr_authdoc_approval"> | string | null
-    status?: StringNullableFilter<"tr_authdoc_approval"> | string | null
-    updated_date?: DateTimeNullableFilter<"tr_authdoc_approval"> | Date | string | null
-    created_date?: DateTimeNullableFilter<"tr_authdoc_approval"> | Date | string | null
-    authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
-    authorization_doc?: XOR<Tr_authorization_docNullableScalarRelationFilter, tr_authorization_docWhereInput> | null
-  }, "id">
-
-  export type tr_authdoc_approvalOrderByWithAggregationInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrderInput | SortOrder
-    auth_id?: SortOrderInput | SortOrder
-    step?: SortOrderInput | SortOrder
-    actor?: SortOrderInput | SortOrder
-    employee_code?: SortOrderInput | SortOrder
-    status?: SortOrderInput | SortOrder
-    updated_date?: SortOrderInput | SortOrder
-    created_date?: SortOrderInput | SortOrder
-    _count?: tr_authdoc_approvalCountOrderByAggregateInput
-    _avg?: tr_authdoc_approvalAvgOrderByAggregateInput
-    _max?: tr_authdoc_approvalMaxOrderByAggregateInput
-    _min?: tr_authdoc_approvalMinOrderByAggregateInput
-    _sum?: tr_authdoc_approvalSumOrderByAggregateInput
-  }
-
-  export type tr_authdoc_approvalScalarWhereWithAggregatesInput = {
-    AND?: tr_authdoc_approvalScalarWhereWithAggregatesInput | tr_authdoc_approvalScalarWhereWithAggregatesInput[]
-    OR?: tr_authdoc_approvalScalarWhereWithAggregatesInput[]
-    NOT?: tr_authdoc_approvalScalarWhereWithAggregatesInput | tr_authdoc_approvalScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"tr_authdoc_approval"> | number
-    authdoc_id?: IntNullableWithAggregatesFilter<"tr_authdoc_approval"> | number | null
-    auth_id?: IntNullableWithAggregatesFilter<"tr_authdoc_approval"> | number | null
-    step?: IntNullableWithAggregatesFilter<"tr_authdoc_approval"> | number | null
-    actor?: StringNullableWithAggregatesFilter<"tr_authdoc_approval"> | string | null
-    employee_code?: StringNullableWithAggregatesFilter<"tr_authdoc_approval"> | string | null
-    status?: StringNullableWithAggregatesFilter<"tr_authdoc_approval"> | string | null
-    updated_date?: DateTimeNullableWithAggregatesFilter<"tr_authdoc_approval"> | Date | string | null
-    created_date?: DateTimeNullableWithAggregatesFilter<"tr_authdoc_approval"> | Date | string | null
   }
 
   export type tr_proposed_changesWhereInput = {
@@ -46011,160 +46293,6 @@ export namespace Prisma {
     is_deleted?: BoolWithAggregatesFilter<"tr_proposed_changes"> | boolean
   }
 
-  export type tr_authdoc_historyWhereInput = {
-    AND?: tr_authdoc_historyWhereInput | tr_authdoc_historyWhereInput[]
-    OR?: tr_authdoc_historyWhereInput[]
-    NOT?: tr_authdoc_historyWhereInput | tr_authdoc_historyWhereInput[]
-    id?: IntFilter<"tr_authdoc_history"> | number
-    description?: StringNullableFilter<"tr_authdoc_history"> | string | null
-    employee_code?: StringNullableFilter<"tr_authdoc_history"> | string | null
-    authdoc_id?: IntNullableFilter<"tr_authdoc_history"> | number | null
-    auth_id?: IntNullableFilter<"tr_authdoc_history"> | number | null
-    note?: StringNullableFilter<"tr_authdoc_history"> | string | null
-    status?: StringNullableFilter<"tr_authdoc_history"> | string | null
-    created_date?: DateTimeNullableFilter<"tr_authdoc_history"> | Date | string | null
-    updated_date?: DateTimeNullableFilter<"tr_authdoc_history"> | Date | string | null
-    created_by?: StringNullableFilter<"tr_authdoc_history"> | string | null
-    authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
-    authorization_doc?: XOR<Tr_authorization_docNullableScalarRelationFilter, tr_authorization_docWhereInput> | null
-  }
-
-  export type tr_authdoc_historyOrderByWithRelationInput = {
-    id?: SortOrder
-    description?: SortOrderInput | SortOrder
-    employee_code?: SortOrderInput | SortOrder
-    authdoc_id?: SortOrderInput | SortOrder
-    auth_id?: SortOrderInput | SortOrder
-    note?: SortOrderInput | SortOrder
-    status?: SortOrderInput | SortOrder
-    created_date?: SortOrderInput | SortOrder
-    updated_date?: SortOrderInput | SortOrder
-    created_by?: SortOrderInput | SortOrder
-    authorization?: mst_authorizationOrderByWithRelationInput
-    authorization_doc?: tr_authorization_docOrderByWithRelationInput
-    _relevance?: tr_authdoc_historyOrderByRelevanceInput
-  }
-
-  export type tr_authdoc_historyWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: tr_authdoc_historyWhereInput | tr_authdoc_historyWhereInput[]
-    OR?: tr_authdoc_historyWhereInput[]
-    NOT?: tr_authdoc_historyWhereInput | tr_authdoc_historyWhereInput[]
-    description?: StringNullableFilter<"tr_authdoc_history"> | string | null
-    employee_code?: StringNullableFilter<"tr_authdoc_history"> | string | null
-    authdoc_id?: IntNullableFilter<"tr_authdoc_history"> | number | null
-    auth_id?: IntNullableFilter<"tr_authdoc_history"> | number | null
-    note?: StringNullableFilter<"tr_authdoc_history"> | string | null
-    status?: StringNullableFilter<"tr_authdoc_history"> | string | null
-    created_date?: DateTimeNullableFilter<"tr_authdoc_history"> | Date | string | null
-    updated_date?: DateTimeNullableFilter<"tr_authdoc_history"> | Date | string | null
-    created_by?: StringNullableFilter<"tr_authdoc_history"> | string | null
-    authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
-    authorization_doc?: XOR<Tr_authorization_docNullableScalarRelationFilter, tr_authorization_docWhereInput> | null
-  }, "id">
-
-  export type tr_authdoc_historyOrderByWithAggregationInput = {
-    id?: SortOrder
-    description?: SortOrderInput | SortOrder
-    employee_code?: SortOrderInput | SortOrder
-    authdoc_id?: SortOrderInput | SortOrder
-    auth_id?: SortOrderInput | SortOrder
-    note?: SortOrderInput | SortOrder
-    status?: SortOrderInput | SortOrder
-    created_date?: SortOrderInput | SortOrder
-    updated_date?: SortOrderInput | SortOrder
-    created_by?: SortOrderInput | SortOrder
-    _count?: tr_authdoc_historyCountOrderByAggregateInput
-    _avg?: tr_authdoc_historyAvgOrderByAggregateInput
-    _max?: tr_authdoc_historyMaxOrderByAggregateInput
-    _min?: tr_authdoc_historyMinOrderByAggregateInput
-    _sum?: tr_authdoc_historySumOrderByAggregateInput
-  }
-
-  export type tr_authdoc_historyScalarWhereWithAggregatesInput = {
-    AND?: tr_authdoc_historyScalarWhereWithAggregatesInput | tr_authdoc_historyScalarWhereWithAggregatesInput[]
-    OR?: tr_authdoc_historyScalarWhereWithAggregatesInput[]
-    NOT?: tr_authdoc_historyScalarWhereWithAggregatesInput | tr_authdoc_historyScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"tr_authdoc_history"> | number
-    description?: StringNullableWithAggregatesFilter<"tr_authdoc_history"> | string | null
-    employee_code?: StringNullableWithAggregatesFilter<"tr_authdoc_history"> | string | null
-    authdoc_id?: IntNullableWithAggregatesFilter<"tr_authdoc_history"> | number | null
-    auth_id?: IntNullableWithAggregatesFilter<"tr_authdoc_history"> | number | null
-    note?: StringNullableWithAggregatesFilter<"tr_authdoc_history"> | string | null
-    status?: StringNullableWithAggregatesFilter<"tr_authdoc_history"> | string | null
-    created_date?: DateTimeNullableWithAggregatesFilter<"tr_authdoc_history"> | Date | string | null
-    updated_date?: DateTimeNullableWithAggregatesFilter<"tr_authdoc_history"> | Date | string | null
-    created_by?: StringNullableWithAggregatesFilter<"tr_authdoc_history"> | string | null
-  }
-
-  export type tr_authdoc_memberWhereInput = {
-    AND?: tr_authdoc_memberWhereInput | tr_authdoc_memberWhereInput[]
-    OR?: tr_authdoc_memberWhereInput[]
-    NOT?: tr_authdoc_memberWhereInput | tr_authdoc_memberWhereInput[]
-    id?: IntFilter<"tr_authdoc_member"> | number
-    authdoc_id?: IntNullableFilter<"tr_authdoc_member"> | number | null
-    employee_code?: StringNullableFilter<"tr_authdoc_member"> | string | null
-    employee_name?: StringNullableFilter<"tr_authdoc_member"> | string | null
-    status?: StringNullableFilter<"tr_authdoc_member"> | string | null
-    created_date?: DateTimeNullableFilter<"tr_authdoc_member"> | Date | string | null
-    is_deleted?: BoolFilter<"tr_authdoc_member"> | boolean
-    authorization_doc?: XOR<Tr_authorization_docNullableScalarRelationFilter, tr_authorization_docWhereInput> | null
-  }
-
-  export type tr_authdoc_memberOrderByWithRelationInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrderInput | SortOrder
-    employee_code?: SortOrderInput | SortOrder
-    employee_name?: SortOrderInput | SortOrder
-    status?: SortOrderInput | SortOrder
-    created_date?: SortOrderInput | SortOrder
-    is_deleted?: SortOrder
-    authorization_doc?: tr_authorization_docOrderByWithRelationInput
-    _relevance?: tr_authdoc_memberOrderByRelevanceInput
-  }
-
-  export type tr_authdoc_memberWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: tr_authdoc_memberWhereInput | tr_authdoc_memberWhereInput[]
-    OR?: tr_authdoc_memberWhereInput[]
-    NOT?: tr_authdoc_memberWhereInput | tr_authdoc_memberWhereInput[]
-    authdoc_id?: IntNullableFilter<"tr_authdoc_member"> | number | null
-    employee_code?: StringNullableFilter<"tr_authdoc_member"> | string | null
-    employee_name?: StringNullableFilter<"tr_authdoc_member"> | string | null
-    status?: StringNullableFilter<"tr_authdoc_member"> | string | null
-    created_date?: DateTimeNullableFilter<"tr_authdoc_member"> | Date | string | null
-    is_deleted?: BoolFilter<"tr_authdoc_member"> | boolean
-    authorization_doc?: XOR<Tr_authorization_docNullableScalarRelationFilter, tr_authorization_docWhereInput> | null
-  }, "id">
-
-  export type tr_authdoc_memberOrderByWithAggregationInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrderInput | SortOrder
-    employee_code?: SortOrderInput | SortOrder
-    employee_name?: SortOrderInput | SortOrder
-    status?: SortOrderInput | SortOrder
-    created_date?: SortOrderInput | SortOrder
-    is_deleted?: SortOrder
-    _count?: tr_authdoc_memberCountOrderByAggregateInput
-    _avg?: tr_authdoc_memberAvgOrderByAggregateInput
-    _max?: tr_authdoc_memberMaxOrderByAggregateInput
-    _min?: tr_authdoc_memberMinOrderByAggregateInput
-    _sum?: tr_authdoc_memberSumOrderByAggregateInput
-  }
-
-  export type tr_authdoc_memberScalarWhereWithAggregatesInput = {
-    AND?: tr_authdoc_memberScalarWhereWithAggregatesInput | tr_authdoc_memberScalarWhereWithAggregatesInput[]
-    OR?: tr_authdoc_memberScalarWhereWithAggregatesInput[]
-    NOT?: tr_authdoc_memberScalarWhereWithAggregatesInput | tr_authdoc_memberScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"tr_authdoc_member"> | number
-    authdoc_id?: IntNullableWithAggregatesFilter<"tr_authdoc_member"> | number | null
-    employee_code?: StringNullableWithAggregatesFilter<"tr_authdoc_member"> | string | null
-    employee_name?: StringNullableWithAggregatesFilter<"tr_authdoc_member"> | string | null
-    status?: StringNullableWithAggregatesFilter<"tr_authdoc_member"> | string | null
-    created_date?: DateTimeNullableWithAggregatesFilter<"tr_authdoc_member"> | Date | string | null
-    is_deleted?: BoolWithAggregatesFilter<"tr_authdoc_member"> | boolean
-  }
-
   export type tr_handoverWhereInput = {
     AND?: tr_handoverWhereInput | tr_handoverWhereInput[]
     OR?: tr_handoverWhereInput[]
@@ -46187,9 +46315,12 @@ export namespace Prisma {
     remark?: StringNullableFilter<"tr_handover"> | string | null
     created_by?: StringNullableFilter<"tr_handover"> | string | null
     created_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
+    finished_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     updated_by?: StringNullableFilter<"tr_handover"> | string | null
     is_deleted?: BoolNullableFilter<"tr_handover"> | boolean | null
+    is_finished?: BoolNullableFilter<"tr_handover"> | boolean | null
+    star?: DecimalNullableFilter<"tr_handover"> | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: Email_tracking_handoverListRelationFilter
     mst_authorization_tr_handover_auth_idTomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
@@ -46224,9 +46355,12 @@ export namespace Prisma {
     remark?: SortOrderInput | SortOrder
     created_by?: SortOrderInput | SortOrder
     created_date?: SortOrderInput | SortOrder
+    finished_date?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
     updated_by?: SortOrderInput | SortOrder
     is_deleted?: SortOrderInput | SortOrder
+    is_finished?: SortOrderInput | SortOrder
+    star?: SortOrderInput | SortOrder
     email_tracking_handover?: email_tracking_handoverOrderByRelationAggregateInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationOrderByWithRelationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationOrderByWithRelationInput
@@ -46265,9 +46399,12 @@ export namespace Prisma {
     remark?: StringNullableFilter<"tr_handover"> | string | null
     created_by?: StringNullableFilter<"tr_handover"> | string | null
     created_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
+    finished_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     updated_by?: StringNullableFilter<"tr_handover"> | string | null
     is_deleted?: BoolNullableFilter<"tr_handover"> | boolean | null
+    is_finished?: BoolNullableFilter<"tr_handover"> | boolean | null
+    star?: DecimalNullableFilter<"tr_handover"> | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: Email_tracking_handoverListRelationFilter
     mst_authorization_tr_handover_auth_idTomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
@@ -46302,9 +46439,12 @@ export namespace Prisma {
     remark?: SortOrderInput | SortOrder
     created_by?: SortOrderInput | SortOrder
     created_date?: SortOrderInput | SortOrder
+    finished_date?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
     updated_by?: SortOrderInput | SortOrder
     is_deleted?: SortOrderInput | SortOrder
+    is_finished?: SortOrderInput | SortOrder
+    star?: SortOrderInput | SortOrder
     _count?: tr_handoverCountOrderByAggregateInput
     _avg?: tr_handoverAvgOrderByAggregateInput
     _max?: tr_handoverMaxOrderByAggregateInput
@@ -46334,9 +46474,12 @@ export namespace Prisma {
     remark?: StringNullableWithAggregatesFilter<"tr_handover"> | string | null
     created_by?: StringNullableWithAggregatesFilter<"tr_handover"> | string | null
     created_date?: DateTimeNullableWithAggregatesFilter<"tr_handover"> | Date | string | null
+    finished_date?: DateTimeNullableWithAggregatesFilter<"tr_handover"> | Date | string | null
     updated_at?: DateTimeNullableWithAggregatesFilter<"tr_handover"> | Date | string | null
     updated_by?: StringNullableWithAggregatesFilter<"tr_handover"> | string | null
     is_deleted?: BoolNullableWithAggregatesFilter<"tr_handover"> | boolean | null
+    is_finished?: BoolNullableWithAggregatesFilter<"tr_handover"> | boolean | null
+    star?: DecimalNullableWithAggregatesFilter<"tr_handover"> | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handover_approvalWhereInput = {
@@ -46350,6 +46493,12 @@ export namespace Prisma {
     actor?: StringNullableFilter<"tr_handover_approval"> | string | null
     employee_code?: StringNullableFilter<"tr_handover_approval"> | string | null
     status?: StringNullableFilter<"tr_handover_approval"> | string | null
+    rating?: IntNullableFilter<"tr_handover_approval"> | number | null
+    review?: StringNullableFilter<"tr_handover_approval"> | string | null
+    rating_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    last_rating_reminder_sent?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    rating_reminder_count?: IntNullableFilter<"tr_handover_approval"> | number | null
+    finished_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     updated_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     created_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     tr_handover?: XOR<Tr_handoverNullableScalarRelationFilter, tr_handoverWhereInput> | null
@@ -46364,6 +46513,12 @@ export namespace Prisma {
     actor?: SortOrderInput | SortOrder
     employee_code?: SortOrderInput | SortOrder
     status?: SortOrderInput | SortOrder
+    rating?: SortOrderInput | SortOrder
+    review?: SortOrderInput | SortOrder
+    rating_date?: SortOrderInput | SortOrder
+    last_rating_reminder_sent?: SortOrderInput | SortOrder
+    rating_reminder_count?: SortOrderInput | SortOrder
+    finished_date?: SortOrderInput | SortOrder
     updated_date?: SortOrderInput | SortOrder
     created_date?: SortOrderInput | SortOrder
     tr_handover?: tr_handoverOrderByWithRelationInput
@@ -46382,6 +46537,12 @@ export namespace Prisma {
     actor?: StringNullableFilter<"tr_handover_approval"> | string | null
     employee_code?: StringNullableFilter<"tr_handover_approval"> | string | null
     status?: StringNullableFilter<"tr_handover_approval"> | string | null
+    rating?: IntNullableFilter<"tr_handover_approval"> | number | null
+    review?: StringNullableFilter<"tr_handover_approval"> | string | null
+    rating_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    last_rating_reminder_sent?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    rating_reminder_count?: IntNullableFilter<"tr_handover_approval"> | number | null
+    finished_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     updated_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     created_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     tr_handover?: XOR<Tr_handoverNullableScalarRelationFilter, tr_handoverWhereInput> | null
@@ -46396,6 +46557,12 @@ export namespace Prisma {
     actor?: SortOrderInput | SortOrder
     employee_code?: SortOrderInput | SortOrder
     status?: SortOrderInput | SortOrder
+    rating?: SortOrderInput | SortOrder
+    review?: SortOrderInput | SortOrder
+    rating_date?: SortOrderInput | SortOrder
+    last_rating_reminder_sent?: SortOrderInput | SortOrder
+    rating_reminder_count?: SortOrderInput | SortOrder
+    finished_date?: SortOrderInput | SortOrder
     updated_date?: SortOrderInput | SortOrder
     created_date?: SortOrderInput | SortOrder
     _count?: tr_handover_approvalCountOrderByAggregateInput
@@ -46416,6 +46583,12 @@ export namespace Prisma {
     actor?: StringNullableWithAggregatesFilter<"tr_handover_approval"> | string | null
     employee_code?: StringNullableWithAggregatesFilter<"tr_handover_approval"> | string | null
     status?: StringNullableWithAggregatesFilter<"tr_handover_approval"> | string | null
+    rating?: IntNullableWithAggregatesFilter<"tr_handover_approval"> | number | null
+    review?: StringNullableWithAggregatesFilter<"tr_handover_approval"> | string | null
+    rating_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
+    last_rating_reminder_sent?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
+    rating_reminder_count?: IntNullableWithAggregatesFilter<"tr_handover_approval"> | number | null
+    finished_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
     updated_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
     created_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
   }
@@ -48873,6 +49046,237 @@ export namespace Prisma {
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
+  export type tr_authdoc_approvalCreateInput = {
+    step?: number | null
+    actor?: string | null
+    employee_code?: string | null
+    status?: string | null
+    updated_date?: Date | string | null
+    created_date?: Date | string | null
+    authorization?: mst_authorizationCreateNestedOneWithoutAuthdocApprovalsInput
+    authorization_doc?: tr_authorization_docCreateNestedOneWithoutAuthdocApprovalsInput
+  }
+
+  export type tr_authdoc_approvalUncheckedCreateInput = {
+    id?: number
+    authdoc_id?: number | null
+    auth_id?: number | null
+    step?: number | null
+    actor?: string | null
+    employee_code?: string | null
+    status?: string | null
+    updated_date?: Date | string | null
+    created_date?: Date | string | null
+  }
+
+  export type tr_authdoc_approvalUpdateInput = {
+    step?: NullableIntFieldUpdateOperationsInput | number | null
+    actor?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    authorization?: mst_authorizationUpdateOneWithoutAuthdocApprovalsNestedInput
+    authorization_doc?: tr_authorization_docUpdateOneWithoutAuthdocApprovalsNestedInput
+  }
+
+  export type tr_authdoc_approvalUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
+    step?: NullableIntFieldUpdateOperationsInput | number | null
+    actor?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type tr_authdoc_approvalCreateManyInput = {
+    id?: number
+    authdoc_id?: number | null
+    auth_id?: number | null
+    step?: number | null
+    actor?: string | null
+    employee_code?: string | null
+    status?: string | null
+    updated_date?: Date | string | null
+    created_date?: Date | string | null
+  }
+
+  export type tr_authdoc_approvalUpdateManyMutationInput = {
+    step?: NullableIntFieldUpdateOperationsInput | number | null
+    actor?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type tr_authdoc_approvalUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
+    step?: NullableIntFieldUpdateOperationsInput | number | null
+    actor?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type tr_authdoc_historyCreateInput = {
+    description?: string | null
+    employee_code?: string | null
+    note?: string | null
+    status?: string | null
+    created_date?: Date | string | null
+    updated_date?: Date | string | null
+    created_by?: string | null
+    authorization?: mst_authorizationCreateNestedOneWithoutAuthdocHistoriesInput
+    authorization_doc?: tr_authorization_docCreateNestedOneWithoutAuthdocHistoriesInput
+  }
+
+  export type tr_authdoc_historyUncheckedCreateInput = {
+    id?: number
+    description?: string | null
+    employee_code?: string | null
+    authdoc_id?: number | null
+    auth_id?: number | null
+    note?: string | null
+    status?: string | null
+    created_date?: Date | string | null
+    updated_date?: Date | string | null
+    created_by?: string | null
+  }
+
+  export type tr_authdoc_historyUpdateInput = {
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    authorization?: mst_authorizationUpdateOneWithoutAuthdocHistoriesNestedInput
+    authorization_doc?: tr_authorization_docUpdateOneWithoutAuthdocHistoriesNestedInput
+  }
+
+  export type tr_authdoc_historyUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type tr_authdoc_historyCreateManyInput = {
+    id?: number
+    description?: string | null
+    employee_code?: string | null
+    authdoc_id?: number | null
+    auth_id?: number | null
+    note?: string | null
+    status?: string | null
+    created_date?: Date | string | null
+    updated_date?: Date | string | null
+    created_by?: string | null
+  }
+
+  export type tr_authdoc_historyUpdateManyMutationInput = {
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type tr_authdoc_historyUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
+    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
+    note?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type tr_authdoc_memberCreateInput = {
+    employee_code?: string | null
+    employee_name?: string | null
+    status?: string | null
+    created_date?: Date | string | null
+    is_deleted: boolean
+    authorization_doc?: tr_authorization_docCreateNestedOneWithoutAuthdocMembersInput
+  }
+
+  export type tr_authdoc_memberUncheckedCreateInput = {
+    id?: number
+    authdoc_id?: number | null
+    employee_code?: string | null
+    employee_name?: string | null
+    status?: string | null
+    created_date?: Date | string | null
+    is_deleted: boolean
+  }
+
+  export type tr_authdoc_memberUpdateInput = {
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    authorization_doc?: tr_authorization_docUpdateOneWithoutAuthdocMembersNestedInput
+  }
+
+  export type tr_authdoc_memberUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type tr_authdoc_memberCreateManyInput = {
+    id?: number
+    authdoc_id?: number | null
+    employee_code?: string | null
+    employee_name?: string | null
+    status?: string | null
+    created_date?: Date | string | null
+    is_deleted: boolean
+  }
+
+  export type tr_authdoc_memberUpdateManyMutationInput = {
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type tr_authdoc_memberUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+  }
+
   export type tr_authorization_docCreateInput = {
     doc_number?: string | null
     implementation_date?: Date | string | null
@@ -49037,85 +49441,6 @@ export namespace Prisma {
     department_id?: NullableIntFieldUpdateOperationsInput | number | null
     section_department_id?: NullableIntFieldUpdateOperationsInput | number | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type tr_authdoc_approvalCreateInput = {
-    step?: number | null
-    actor?: string | null
-    employee_code?: string | null
-    status?: string | null
-    updated_date?: Date | string | null
-    created_date?: Date | string | null
-    authorization?: mst_authorizationCreateNestedOneWithoutAuthdocApprovalsInput
-    authorization_doc?: tr_authorization_docCreateNestedOneWithoutAuthdocApprovalsInput
-  }
-
-  export type tr_authdoc_approvalUncheckedCreateInput = {
-    id?: number
-    authdoc_id?: number | null
-    auth_id?: number | null
-    step?: number | null
-    actor?: string | null
-    employee_code?: string | null
-    status?: string | null
-    updated_date?: Date | string | null
-    created_date?: Date | string | null
-  }
-
-  export type tr_authdoc_approvalUpdateInput = {
-    step?: NullableIntFieldUpdateOperationsInput | number | null
-    actor?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    authorization?: mst_authorizationUpdateOneWithoutAuthdocApprovalsNestedInput
-    authorization_doc?: tr_authorization_docUpdateOneWithoutAuthdocApprovalsNestedInput
-  }
-
-  export type tr_authdoc_approvalUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
-    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
-    step?: NullableIntFieldUpdateOperationsInput | number | null
-    actor?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type tr_authdoc_approvalCreateManyInput = {
-    id?: number
-    authdoc_id?: number | null
-    auth_id?: number | null
-    step?: number | null
-    actor?: string | null
-    employee_code?: string | null
-    status?: string | null
-    updated_date?: Date | string | null
-    created_date?: Date | string | null
-  }
-
-  export type tr_authdoc_approvalUpdateManyMutationInput = {
-    step?: NullableIntFieldUpdateOperationsInput | number | null
-    actor?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-  }
-
-  export type tr_authdoc_approvalUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
-    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
-    step?: NullableIntFieldUpdateOperationsInput | number | null
-    actor?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tr_proposed_changesCreateInput = {
@@ -49355,158 +49680,6 @@ export namespace Prisma {
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
   }
 
-  export type tr_authdoc_historyCreateInput = {
-    description?: string | null
-    employee_code?: string | null
-    note?: string | null
-    status?: string | null
-    created_date?: Date | string | null
-    updated_date?: Date | string | null
-    created_by?: string | null
-    authorization?: mst_authorizationCreateNestedOneWithoutAuthdocHistoriesInput
-    authorization_doc?: tr_authorization_docCreateNestedOneWithoutAuthdocHistoriesInput
-  }
-
-  export type tr_authdoc_historyUncheckedCreateInput = {
-    id?: number
-    description?: string | null
-    employee_code?: string | null
-    authdoc_id?: number | null
-    auth_id?: number | null
-    note?: string | null
-    status?: string | null
-    created_date?: Date | string | null
-    updated_date?: Date | string | null
-    created_by?: string | null
-  }
-
-  export type tr_authdoc_historyUpdateInput = {
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    authorization?: mst_authorizationUpdateOneWithoutAuthdocHistoriesNestedInput
-    authorization_doc?: tr_authorization_docUpdateOneWithoutAuthdocHistoriesNestedInput
-  }
-
-  export type tr_authdoc_historyUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
-    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type tr_authdoc_historyCreateManyInput = {
-    id?: number
-    description?: string | null
-    employee_code?: string | null
-    authdoc_id?: number | null
-    auth_id?: number | null
-    note?: string | null
-    status?: string | null
-    created_date?: Date | string | null
-    updated_date?: Date | string | null
-    created_by?: string | null
-  }
-
-  export type tr_authdoc_historyUpdateManyMutationInput = {
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type tr_authdoc_historyUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
-    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
-    note?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-  }
-
-  export type tr_authdoc_memberCreateInput = {
-    employee_code?: string | null
-    employee_name?: string | null
-    status?: string | null
-    created_date?: Date | string | null
-    is_deleted: boolean
-    authorization_doc?: tr_authorization_docCreateNestedOneWithoutAuthdocMembersInput
-  }
-
-  export type tr_authdoc_memberUncheckedCreateInput = {
-    id?: number
-    authdoc_id?: number | null
-    employee_code?: string | null
-    employee_name?: string | null
-    status?: string | null
-    created_date?: Date | string | null
-    is_deleted: boolean
-  }
-
-  export type tr_authdoc_memberUpdateInput = {
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    authorization_doc?: tr_authorization_docUpdateOneWithoutAuthdocMembersNestedInput
-  }
-
-  export type tr_authdoc_memberUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    is_deleted?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type tr_authdoc_memberCreateManyInput = {
-    id?: number
-    authdoc_id?: number | null
-    employee_code?: string | null
-    employee_name?: string | null
-    status?: string | null
-    created_date?: Date | string | null
-    is_deleted: boolean
-  }
-
-  export type tr_authdoc_memberUpdateManyMutationInput = {
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    is_deleted?: BoolFieldUpdateOperationsInput | boolean
-  }
-
-  export type tr_authdoc_memberUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    authdoc_id?: NullableIntFieldUpdateOperationsInput | number | null
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    is_deleted?: BoolFieldUpdateOperationsInput | boolean
-  }
-
   export type tr_handoverCreateInput = {
     doc_number?: string | null
     progress?: string | null
@@ -49515,9 +49688,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
@@ -49552,9 +49728,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -49568,9 +49747,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
@@ -49605,9 +49787,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -49632,9 +49817,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handoverUpdateManyMutationInput = {
@@ -49645,9 +49833,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handoverUncheckedUpdateManyInput = {
@@ -49669,9 +49860,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handover_approvalCreateInput = {
@@ -49679,6 +49873,12 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
+    last_rating_reminder_sent?: Date | string | null
+    rating_reminder_count?: number | null
+    finished_date?: Date | string | null
     updated_date?: Date | string | null
     created_date?: Date | string | null
     tr_handover?: tr_handoverCreateNestedOneWithoutTr_handover_approvalInput
@@ -49693,6 +49893,12 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
+    last_rating_reminder_sent?: Date | string | null
+    rating_reminder_count?: number | null
+    finished_date?: Date | string | null
     updated_date?: Date | string | null
     created_date?: Date | string | null
   }
@@ -49702,6 +49908,12 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tr_handover?: tr_handoverUpdateOneWithoutTr_handover_approvalNestedInput
@@ -49716,6 +49928,12 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -49728,6 +49946,12 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
+    last_rating_reminder_sent?: Date | string | null
+    rating_reminder_count?: number | null
+    finished_date?: Date | string | null
     updated_date?: Date | string | null
     created_date?: Date | string | null
   }
@@ -49737,6 +49961,12 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -49749,6 +49979,12 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -51975,6 +52211,170 @@ export namespace Prisma {
     is_deleted?: SortOrder
   }
 
+  export type Tr_authorization_docNullableScalarRelationFilter = {
+    is?: tr_authorization_docWhereInput | null
+    isNot?: tr_authorization_docWhereInput | null
+  }
+
+  export type tr_authdoc_approvalOrderByRelevanceInput = {
+    fields: tr_authdoc_approvalOrderByRelevanceFieldEnum | tr_authdoc_approvalOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type tr_authdoc_approvalCountOrderByAggregateInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrder
+    auth_id?: SortOrder
+    step?: SortOrder
+    actor?: SortOrder
+    employee_code?: SortOrder
+    status?: SortOrder
+    updated_date?: SortOrder
+    created_date?: SortOrder
+  }
+
+  export type tr_authdoc_approvalAvgOrderByAggregateInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrder
+    auth_id?: SortOrder
+    step?: SortOrder
+  }
+
+  export type tr_authdoc_approvalMaxOrderByAggregateInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrder
+    auth_id?: SortOrder
+    step?: SortOrder
+    actor?: SortOrder
+    employee_code?: SortOrder
+    status?: SortOrder
+    updated_date?: SortOrder
+    created_date?: SortOrder
+  }
+
+  export type tr_authdoc_approvalMinOrderByAggregateInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrder
+    auth_id?: SortOrder
+    step?: SortOrder
+    actor?: SortOrder
+    employee_code?: SortOrder
+    status?: SortOrder
+    updated_date?: SortOrder
+    created_date?: SortOrder
+  }
+
+  export type tr_authdoc_approvalSumOrderByAggregateInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrder
+    auth_id?: SortOrder
+    step?: SortOrder
+  }
+
+  export type tr_authdoc_historyOrderByRelevanceInput = {
+    fields: tr_authdoc_historyOrderByRelevanceFieldEnum | tr_authdoc_historyOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type tr_authdoc_historyCountOrderByAggregateInput = {
+    id?: SortOrder
+    description?: SortOrder
+    employee_code?: SortOrder
+    authdoc_id?: SortOrder
+    auth_id?: SortOrder
+    note?: SortOrder
+    status?: SortOrder
+    created_date?: SortOrder
+    updated_date?: SortOrder
+    created_by?: SortOrder
+  }
+
+  export type tr_authdoc_historyAvgOrderByAggregateInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrder
+    auth_id?: SortOrder
+  }
+
+  export type tr_authdoc_historyMaxOrderByAggregateInput = {
+    id?: SortOrder
+    description?: SortOrder
+    employee_code?: SortOrder
+    authdoc_id?: SortOrder
+    auth_id?: SortOrder
+    note?: SortOrder
+    status?: SortOrder
+    created_date?: SortOrder
+    updated_date?: SortOrder
+    created_by?: SortOrder
+  }
+
+  export type tr_authdoc_historyMinOrderByAggregateInput = {
+    id?: SortOrder
+    description?: SortOrder
+    employee_code?: SortOrder
+    authdoc_id?: SortOrder
+    auth_id?: SortOrder
+    note?: SortOrder
+    status?: SortOrder
+    created_date?: SortOrder
+    updated_date?: SortOrder
+    created_by?: SortOrder
+  }
+
+  export type tr_authdoc_historySumOrderByAggregateInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrder
+    auth_id?: SortOrder
+  }
+
+  export type tr_authdoc_memberOrderByRelevanceInput = {
+    fields: tr_authdoc_memberOrderByRelevanceFieldEnum | tr_authdoc_memberOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type tr_authdoc_memberCountOrderByAggregateInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrder
+    employee_code?: SortOrder
+    employee_name?: SortOrder
+    status?: SortOrder
+    created_date?: SortOrder
+    is_deleted?: SortOrder
+  }
+
+  export type tr_authdoc_memberAvgOrderByAggregateInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrder
+  }
+
+  export type tr_authdoc_memberMaxOrderByAggregateInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrder
+    employee_code?: SortOrder
+    employee_name?: SortOrder
+    status?: SortOrder
+    created_date?: SortOrder
+    is_deleted?: SortOrder
+  }
+
+  export type tr_authdoc_memberMinOrderByAggregateInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrder
+    employee_code?: SortOrder
+    employee_name?: SortOrder
+    status?: SortOrder
+    created_date?: SortOrder
+    is_deleted?: SortOrder
+  }
+
+  export type tr_authdoc_memberSumOrderByAggregateInput = {
+    id?: SortOrder
+    authdoc_id?: SortOrder
+  }
+
   export type Email_tracking_authdocListRelationFilter = {
     every?: email_tracking_authdocWhereInput
     some?: email_tracking_authdocWhereInput
@@ -52083,67 +52483,6 @@ export namespace Prisma {
     plant_id?: SortOrder
     department_id?: SortOrder
     section_department_id?: SortOrder
-  }
-
-  export type Tr_authorization_docNullableScalarRelationFilter = {
-    is?: tr_authorization_docWhereInput | null
-    isNot?: tr_authorization_docWhereInput | null
-  }
-
-  export type tr_authdoc_approvalOrderByRelevanceInput = {
-    fields: tr_authdoc_approvalOrderByRelevanceFieldEnum | tr_authdoc_approvalOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
-  export type tr_authdoc_approvalCountOrderByAggregateInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrder
-    auth_id?: SortOrder
-    step?: SortOrder
-    actor?: SortOrder
-    employee_code?: SortOrder
-    status?: SortOrder
-    updated_date?: SortOrder
-    created_date?: SortOrder
-  }
-
-  export type tr_authdoc_approvalAvgOrderByAggregateInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrder
-    auth_id?: SortOrder
-    step?: SortOrder
-  }
-
-  export type tr_authdoc_approvalMaxOrderByAggregateInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrder
-    auth_id?: SortOrder
-    step?: SortOrder
-    actor?: SortOrder
-    employee_code?: SortOrder
-    status?: SortOrder
-    updated_date?: SortOrder
-    created_date?: SortOrder
-  }
-
-  export type tr_authdoc_approvalMinOrderByAggregateInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrder
-    auth_id?: SortOrder
-    step?: SortOrder
-    actor?: SortOrder
-    employee_code?: SortOrder
-    status?: SortOrder
-    updated_date?: SortOrder
-    created_date?: SortOrder
-  }
-
-  export type tr_authdoc_approvalSumOrderByAggregateInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrder
-    auth_id?: SortOrder
-    step?: SortOrder
   }
 
   export type Email_tracking_proposedchangesListRelationFilter = {
@@ -52278,107 +52617,15 @@ export namespace Prisma {
     auth_id?: SortOrder
   }
 
-  export type tr_authdoc_historyOrderByRelevanceInput = {
-    fields: tr_authdoc_historyOrderByRelevanceFieldEnum | tr_authdoc_historyOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
-  export type tr_authdoc_historyCountOrderByAggregateInput = {
-    id?: SortOrder
-    description?: SortOrder
-    employee_code?: SortOrder
-    authdoc_id?: SortOrder
-    auth_id?: SortOrder
-    note?: SortOrder
-    status?: SortOrder
-    created_date?: SortOrder
-    updated_date?: SortOrder
-    created_by?: SortOrder
-  }
-
-  export type tr_authdoc_historyAvgOrderByAggregateInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrder
-    auth_id?: SortOrder
-  }
-
-  export type tr_authdoc_historyMaxOrderByAggregateInput = {
-    id?: SortOrder
-    description?: SortOrder
-    employee_code?: SortOrder
-    authdoc_id?: SortOrder
-    auth_id?: SortOrder
-    note?: SortOrder
-    status?: SortOrder
-    created_date?: SortOrder
-    updated_date?: SortOrder
-    created_by?: SortOrder
-  }
-
-  export type tr_authdoc_historyMinOrderByAggregateInput = {
-    id?: SortOrder
-    description?: SortOrder
-    employee_code?: SortOrder
-    authdoc_id?: SortOrder
-    auth_id?: SortOrder
-    note?: SortOrder
-    status?: SortOrder
-    created_date?: SortOrder
-    updated_date?: SortOrder
-    created_by?: SortOrder
-  }
-
-  export type tr_authdoc_historySumOrderByAggregateInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrder
-    auth_id?: SortOrder
-  }
-
-  export type tr_authdoc_memberOrderByRelevanceInput = {
-    fields: tr_authdoc_memberOrderByRelevanceFieldEnum | tr_authdoc_memberOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
-  export type tr_authdoc_memberCountOrderByAggregateInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrder
-    employee_code?: SortOrder
-    employee_name?: SortOrder
-    status?: SortOrder
-    created_date?: SortOrder
-    is_deleted?: SortOrder
-  }
-
-  export type tr_authdoc_memberAvgOrderByAggregateInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrder
-  }
-
-  export type tr_authdoc_memberMaxOrderByAggregateInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrder
-    employee_code?: SortOrder
-    employee_name?: SortOrder
-    status?: SortOrder
-    created_date?: SortOrder
-    is_deleted?: SortOrder
-  }
-
-  export type tr_authdoc_memberMinOrderByAggregateInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrder
-    employee_code?: SortOrder
-    employee_name?: SortOrder
-    status?: SortOrder
-    created_date?: SortOrder
-    is_deleted?: SortOrder
-  }
-
-  export type tr_authdoc_memberSumOrderByAggregateInput = {
-    id?: SortOrder
-    authdoc_id?: SortOrder
+  export type DecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
   }
 
   export type Email_tracking_handoverListRelationFilter = {
@@ -52416,9 +52663,12 @@ export namespace Prisma {
     remark?: SortOrder
     created_by?: SortOrder
     created_date?: SortOrder
+    finished_date?: SortOrder
     updated_at?: SortOrder
     updated_by?: SortOrder
     is_deleted?: SortOrder
+    is_finished?: SortOrder
+    star?: SortOrder
   }
 
   export type tr_handoverAvgOrderByAggregateInput = {
@@ -52433,6 +52683,7 @@ export namespace Prisma {
     plant_id?: SortOrder
     department_id?: SortOrder
     section_department_id?: SortOrder
+    star?: SortOrder
   }
 
   export type tr_handoverMaxOrderByAggregateInput = {
@@ -52454,9 +52705,12 @@ export namespace Prisma {
     remark?: SortOrder
     created_by?: SortOrder
     created_date?: SortOrder
+    finished_date?: SortOrder
     updated_at?: SortOrder
     updated_by?: SortOrder
     is_deleted?: SortOrder
+    is_finished?: SortOrder
+    star?: SortOrder
   }
 
   export type tr_handoverMinOrderByAggregateInput = {
@@ -52478,9 +52732,12 @@ export namespace Prisma {
     remark?: SortOrder
     created_by?: SortOrder
     created_date?: SortOrder
+    finished_date?: SortOrder
     updated_at?: SortOrder
     updated_by?: SortOrder
     is_deleted?: SortOrder
+    is_finished?: SortOrder
+    star?: SortOrder
   }
 
   export type tr_handoverSumOrderByAggregateInput = {
@@ -52495,6 +52752,23 @@ export namespace Prisma {
     plant_id?: SortOrder
     department_id?: SortOrder
     section_department_id?: SortOrder
+    star?: SortOrder
+  }
+
+  export type DecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type Tr_handoverNullableScalarRelationFilter = {
@@ -52516,6 +52790,12 @@ export namespace Prisma {
     actor?: SortOrder
     employee_code?: SortOrder
     status?: SortOrder
+    rating?: SortOrder
+    review?: SortOrder
+    rating_date?: SortOrder
+    last_rating_reminder_sent?: SortOrder
+    rating_reminder_count?: SortOrder
+    finished_date?: SortOrder
     updated_date?: SortOrder
     created_date?: SortOrder
   }
@@ -52525,6 +52805,8 @@ export namespace Prisma {
     handover_id?: SortOrder
     auth_id?: SortOrder
     step?: SortOrder
+    rating?: SortOrder
+    rating_reminder_count?: SortOrder
   }
 
   export type tr_handover_approvalMaxOrderByAggregateInput = {
@@ -52535,6 +52817,12 @@ export namespace Prisma {
     actor?: SortOrder
     employee_code?: SortOrder
     status?: SortOrder
+    rating?: SortOrder
+    review?: SortOrder
+    rating_date?: SortOrder
+    last_rating_reminder_sent?: SortOrder
+    rating_reminder_count?: SortOrder
+    finished_date?: SortOrder
     updated_date?: SortOrder
     created_date?: SortOrder
   }
@@ -52547,6 +52835,12 @@ export namespace Prisma {
     actor?: SortOrder
     employee_code?: SortOrder
     status?: SortOrder
+    rating?: SortOrder
+    review?: SortOrder
+    rating_date?: SortOrder
+    last_rating_reminder_sent?: SortOrder
+    rating_reminder_count?: SortOrder
+    finished_date?: SortOrder
     updated_date?: SortOrder
     created_date?: SortOrder
   }
@@ -52556,6 +52850,8 @@ export namespace Prisma {
     handover_id?: SortOrder
     auth_id?: SortOrder
     step?: SortOrder
+    rating?: SortOrder
+    rating_reminder_count?: SortOrder
   }
 
   export type tr_handover_historyOrderByRelevanceInput = {
@@ -55416,6 +55712,86 @@ export namespace Prisma {
     deleteMany?: tbl_support_documentScalarWhereInput | tbl_support_documentScalarWhereInput[]
   }
 
+  export type mst_authorizationCreateNestedOneWithoutAuthdocApprovalsInput = {
+    create?: XOR<mst_authorizationCreateWithoutAuthdocApprovalsInput, mst_authorizationUncheckedCreateWithoutAuthdocApprovalsInput>
+    connectOrCreate?: mst_authorizationCreateOrConnectWithoutAuthdocApprovalsInput
+    connect?: mst_authorizationWhereUniqueInput
+  }
+
+  export type tr_authorization_docCreateNestedOneWithoutAuthdocApprovalsInput = {
+    create?: XOR<tr_authorization_docCreateWithoutAuthdocApprovalsInput, tr_authorization_docUncheckedCreateWithoutAuthdocApprovalsInput>
+    connectOrCreate?: tr_authorization_docCreateOrConnectWithoutAuthdocApprovalsInput
+    connect?: tr_authorization_docWhereUniqueInput
+  }
+
+  export type mst_authorizationUpdateOneWithoutAuthdocApprovalsNestedInput = {
+    create?: XOR<mst_authorizationCreateWithoutAuthdocApprovalsInput, mst_authorizationUncheckedCreateWithoutAuthdocApprovalsInput>
+    connectOrCreate?: mst_authorizationCreateOrConnectWithoutAuthdocApprovalsInput
+    upsert?: mst_authorizationUpsertWithoutAuthdocApprovalsInput
+    disconnect?: mst_authorizationWhereInput | boolean
+    delete?: mst_authorizationWhereInput | boolean
+    connect?: mst_authorizationWhereUniqueInput
+    update?: XOR<XOR<mst_authorizationUpdateToOneWithWhereWithoutAuthdocApprovalsInput, mst_authorizationUpdateWithoutAuthdocApprovalsInput>, mst_authorizationUncheckedUpdateWithoutAuthdocApprovalsInput>
+  }
+
+  export type tr_authorization_docUpdateOneWithoutAuthdocApprovalsNestedInput = {
+    create?: XOR<tr_authorization_docCreateWithoutAuthdocApprovalsInput, tr_authorization_docUncheckedCreateWithoutAuthdocApprovalsInput>
+    connectOrCreate?: tr_authorization_docCreateOrConnectWithoutAuthdocApprovalsInput
+    upsert?: tr_authorization_docUpsertWithoutAuthdocApprovalsInput
+    disconnect?: tr_authorization_docWhereInput | boolean
+    delete?: tr_authorization_docWhereInput | boolean
+    connect?: tr_authorization_docWhereUniqueInput
+    update?: XOR<XOR<tr_authorization_docUpdateToOneWithWhereWithoutAuthdocApprovalsInput, tr_authorization_docUpdateWithoutAuthdocApprovalsInput>, tr_authorization_docUncheckedUpdateWithoutAuthdocApprovalsInput>
+  }
+
+  export type mst_authorizationCreateNestedOneWithoutAuthdocHistoriesInput = {
+    create?: XOR<mst_authorizationCreateWithoutAuthdocHistoriesInput, mst_authorizationUncheckedCreateWithoutAuthdocHistoriesInput>
+    connectOrCreate?: mst_authorizationCreateOrConnectWithoutAuthdocHistoriesInput
+    connect?: mst_authorizationWhereUniqueInput
+  }
+
+  export type tr_authorization_docCreateNestedOneWithoutAuthdocHistoriesInput = {
+    create?: XOR<tr_authorization_docCreateWithoutAuthdocHistoriesInput, tr_authorization_docUncheckedCreateWithoutAuthdocHistoriesInput>
+    connectOrCreate?: tr_authorization_docCreateOrConnectWithoutAuthdocHistoriesInput
+    connect?: tr_authorization_docWhereUniqueInput
+  }
+
+  export type mst_authorizationUpdateOneWithoutAuthdocHistoriesNestedInput = {
+    create?: XOR<mst_authorizationCreateWithoutAuthdocHistoriesInput, mst_authorizationUncheckedCreateWithoutAuthdocHistoriesInput>
+    connectOrCreate?: mst_authorizationCreateOrConnectWithoutAuthdocHistoriesInput
+    upsert?: mst_authorizationUpsertWithoutAuthdocHistoriesInput
+    disconnect?: mst_authorizationWhereInput | boolean
+    delete?: mst_authorizationWhereInput | boolean
+    connect?: mst_authorizationWhereUniqueInput
+    update?: XOR<XOR<mst_authorizationUpdateToOneWithWhereWithoutAuthdocHistoriesInput, mst_authorizationUpdateWithoutAuthdocHistoriesInput>, mst_authorizationUncheckedUpdateWithoutAuthdocHistoriesInput>
+  }
+
+  export type tr_authorization_docUpdateOneWithoutAuthdocHistoriesNestedInput = {
+    create?: XOR<tr_authorization_docCreateWithoutAuthdocHistoriesInput, tr_authorization_docUncheckedCreateWithoutAuthdocHistoriesInput>
+    connectOrCreate?: tr_authorization_docCreateOrConnectWithoutAuthdocHistoriesInput
+    upsert?: tr_authorization_docUpsertWithoutAuthdocHistoriesInput
+    disconnect?: tr_authorization_docWhereInput | boolean
+    delete?: tr_authorization_docWhereInput | boolean
+    connect?: tr_authorization_docWhereUniqueInput
+    update?: XOR<XOR<tr_authorization_docUpdateToOneWithWhereWithoutAuthdocHistoriesInput, tr_authorization_docUpdateWithoutAuthdocHistoriesInput>, tr_authorization_docUncheckedUpdateWithoutAuthdocHistoriesInput>
+  }
+
+  export type tr_authorization_docCreateNestedOneWithoutAuthdocMembersInput = {
+    create?: XOR<tr_authorization_docCreateWithoutAuthdocMembersInput, tr_authorization_docUncheckedCreateWithoutAuthdocMembersInput>
+    connectOrCreate?: tr_authorization_docCreateOrConnectWithoutAuthdocMembersInput
+    connect?: tr_authorization_docWhereUniqueInput
+  }
+
+  export type tr_authorization_docUpdateOneWithoutAuthdocMembersNestedInput = {
+    create?: XOR<tr_authorization_docCreateWithoutAuthdocMembersInput, tr_authorization_docUncheckedCreateWithoutAuthdocMembersInput>
+    connectOrCreate?: tr_authorization_docCreateOrConnectWithoutAuthdocMembersInput
+    upsert?: tr_authorization_docUpsertWithoutAuthdocMembersInput
+    disconnect?: tr_authorization_docWhereInput | boolean
+    delete?: tr_authorization_docWhereInput | boolean
+    connect?: tr_authorization_docWhereUniqueInput
+    update?: XOR<XOR<tr_authorization_docUpdateToOneWithWhereWithoutAuthdocMembersInput, tr_authorization_docUpdateWithoutAuthdocMembersInput>, tr_authorization_docUncheckedUpdateWithoutAuthdocMembersInput>
+  }
+
   export type email_tracking_authdocCreateNestedManyWithoutTr_authorization_docInput = {
     create?: XOR<email_tracking_authdocCreateWithoutTr_authorization_docInput, email_tracking_authdocUncheckedCreateWithoutTr_authorization_docInput> | email_tracking_authdocCreateWithoutTr_authorization_docInput[] | email_tracking_authdocUncheckedCreateWithoutTr_authorization_docInput[]
     connectOrCreate?: email_tracking_authdocCreateOrConnectWithoutTr_authorization_docInput | email_tracking_authdocCreateOrConnectWithoutTr_authorization_docInput[]
@@ -55704,38 +56080,6 @@ export namespace Prisma {
     update?: tr_handoverUpdateWithWhereUniqueWithoutTr_authorization_docInput | tr_handoverUpdateWithWhereUniqueWithoutTr_authorization_docInput[]
     updateMany?: tr_handoverUpdateManyWithWhereWithoutTr_authorization_docInput | tr_handoverUpdateManyWithWhereWithoutTr_authorization_docInput[]
     deleteMany?: tr_handoverScalarWhereInput | tr_handoverScalarWhereInput[]
-  }
-
-  export type mst_authorizationCreateNestedOneWithoutAuthdocApprovalsInput = {
-    create?: XOR<mst_authorizationCreateWithoutAuthdocApprovalsInput, mst_authorizationUncheckedCreateWithoutAuthdocApprovalsInput>
-    connectOrCreate?: mst_authorizationCreateOrConnectWithoutAuthdocApprovalsInput
-    connect?: mst_authorizationWhereUniqueInput
-  }
-
-  export type tr_authorization_docCreateNestedOneWithoutAuthdocApprovalsInput = {
-    create?: XOR<tr_authorization_docCreateWithoutAuthdocApprovalsInput, tr_authorization_docUncheckedCreateWithoutAuthdocApprovalsInput>
-    connectOrCreate?: tr_authorization_docCreateOrConnectWithoutAuthdocApprovalsInput
-    connect?: tr_authorization_docWhereUniqueInput
-  }
-
-  export type mst_authorizationUpdateOneWithoutAuthdocApprovalsNestedInput = {
-    create?: XOR<mst_authorizationCreateWithoutAuthdocApprovalsInput, mst_authorizationUncheckedCreateWithoutAuthdocApprovalsInput>
-    connectOrCreate?: mst_authorizationCreateOrConnectWithoutAuthdocApprovalsInput
-    upsert?: mst_authorizationUpsertWithoutAuthdocApprovalsInput
-    disconnect?: mst_authorizationWhereInput | boolean
-    delete?: mst_authorizationWhereInput | boolean
-    connect?: mst_authorizationWhereUniqueInput
-    update?: XOR<XOR<mst_authorizationUpdateToOneWithWhereWithoutAuthdocApprovalsInput, mst_authorizationUpdateWithoutAuthdocApprovalsInput>, mst_authorizationUncheckedUpdateWithoutAuthdocApprovalsInput>
-  }
-
-  export type tr_authorization_docUpdateOneWithoutAuthdocApprovalsNestedInput = {
-    create?: XOR<tr_authorization_docCreateWithoutAuthdocApprovalsInput, tr_authorization_docUncheckedCreateWithoutAuthdocApprovalsInput>
-    connectOrCreate?: tr_authorization_docCreateOrConnectWithoutAuthdocApprovalsInput
-    upsert?: tr_authorization_docUpsertWithoutAuthdocApprovalsInput
-    disconnect?: tr_authorization_docWhereInput | boolean
-    delete?: tr_authorization_docWhereInput | boolean
-    connect?: tr_authorization_docWhereUniqueInput
-    update?: XOR<XOR<tr_authorization_docUpdateToOneWithWhereWithoutAuthdocApprovalsInput, tr_authorization_docUpdateWithoutAuthdocApprovalsInput>, tr_authorization_docUncheckedUpdateWithoutAuthdocApprovalsInput>
   }
 
   export type email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput = {
@@ -56112,54 +56456,6 @@ export namespace Prisma {
     deleteMany?: tr_proposed_changes_historyScalarWhereInput | tr_proposed_changes_historyScalarWhereInput[]
   }
 
-  export type mst_authorizationCreateNestedOneWithoutAuthdocHistoriesInput = {
-    create?: XOR<mst_authorizationCreateWithoutAuthdocHistoriesInput, mst_authorizationUncheckedCreateWithoutAuthdocHistoriesInput>
-    connectOrCreate?: mst_authorizationCreateOrConnectWithoutAuthdocHistoriesInput
-    connect?: mst_authorizationWhereUniqueInput
-  }
-
-  export type tr_authorization_docCreateNestedOneWithoutAuthdocHistoriesInput = {
-    create?: XOR<tr_authorization_docCreateWithoutAuthdocHistoriesInput, tr_authorization_docUncheckedCreateWithoutAuthdocHistoriesInput>
-    connectOrCreate?: tr_authorization_docCreateOrConnectWithoutAuthdocHistoriesInput
-    connect?: tr_authorization_docWhereUniqueInput
-  }
-
-  export type mst_authorizationUpdateOneWithoutAuthdocHistoriesNestedInput = {
-    create?: XOR<mst_authorizationCreateWithoutAuthdocHistoriesInput, mst_authorizationUncheckedCreateWithoutAuthdocHistoriesInput>
-    connectOrCreate?: mst_authorizationCreateOrConnectWithoutAuthdocHistoriesInput
-    upsert?: mst_authorizationUpsertWithoutAuthdocHistoriesInput
-    disconnect?: mst_authorizationWhereInput | boolean
-    delete?: mst_authorizationWhereInput | boolean
-    connect?: mst_authorizationWhereUniqueInput
-    update?: XOR<XOR<mst_authorizationUpdateToOneWithWhereWithoutAuthdocHistoriesInput, mst_authorizationUpdateWithoutAuthdocHistoriesInput>, mst_authorizationUncheckedUpdateWithoutAuthdocHistoriesInput>
-  }
-
-  export type tr_authorization_docUpdateOneWithoutAuthdocHistoriesNestedInput = {
-    create?: XOR<tr_authorization_docCreateWithoutAuthdocHistoriesInput, tr_authorization_docUncheckedCreateWithoutAuthdocHistoriesInput>
-    connectOrCreate?: tr_authorization_docCreateOrConnectWithoutAuthdocHistoriesInput
-    upsert?: tr_authorization_docUpsertWithoutAuthdocHistoriesInput
-    disconnect?: tr_authorization_docWhereInput | boolean
-    delete?: tr_authorization_docWhereInput | boolean
-    connect?: tr_authorization_docWhereUniqueInput
-    update?: XOR<XOR<tr_authorization_docUpdateToOneWithWhereWithoutAuthdocHistoriesInput, tr_authorization_docUpdateWithoutAuthdocHistoriesInput>, tr_authorization_docUncheckedUpdateWithoutAuthdocHistoriesInput>
-  }
-
-  export type tr_authorization_docCreateNestedOneWithoutAuthdocMembersInput = {
-    create?: XOR<tr_authorization_docCreateWithoutAuthdocMembersInput, tr_authorization_docUncheckedCreateWithoutAuthdocMembersInput>
-    connectOrCreate?: tr_authorization_docCreateOrConnectWithoutAuthdocMembersInput
-    connect?: tr_authorization_docWhereUniqueInput
-  }
-
-  export type tr_authorization_docUpdateOneWithoutAuthdocMembersNestedInput = {
-    create?: XOR<tr_authorization_docCreateWithoutAuthdocMembersInput, tr_authorization_docUncheckedCreateWithoutAuthdocMembersInput>
-    connectOrCreate?: tr_authorization_docCreateOrConnectWithoutAuthdocMembersInput
-    upsert?: tr_authorization_docUpsertWithoutAuthdocMembersInput
-    disconnect?: tr_authorization_docWhereInput | boolean
-    delete?: tr_authorization_docWhereInput | boolean
-    connect?: tr_authorization_docWhereUniqueInput
-    update?: XOR<XOR<tr_authorization_docUpdateToOneWithWhereWithoutAuthdocMembersInput, tr_authorization_docUpdateWithoutAuthdocMembersInput>, tr_authorization_docUncheckedUpdateWithoutAuthdocMembersInput>
-  }
-
   export type email_tracking_handoverCreateNestedManyWithoutTr_handoverInput = {
     create?: XOR<email_tracking_handoverCreateWithoutTr_handoverInput, email_tracking_handoverUncheckedCreateWithoutTr_handoverInput> | email_tracking_handoverCreateWithoutTr_handoverInput[] | email_tracking_handoverUncheckedCreateWithoutTr_handoverInput[]
     connectOrCreate?: email_tracking_handoverCreateOrConnectWithoutTr_handoverInput | email_tracking_handoverCreateOrConnectWithoutTr_handoverInput[]
@@ -56260,6 +56556,14 @@ export namespace Prisma {
     connectOrCreate?: tr_handover_historyCreateOrConnectWithoutTr_handoverInput | tr_handover_historyCreateOrConnectWithoutTr_handoverInput[]
     createMany?: tr_handover_historyCreateManyTr_handoverInputEnvelope
     connect?: tr_handover_historyWhereUniqueInput | tr_handover_historyWhereUniqueInput[]
+  }
+
+  export type NullableDecimalFieldUpdateOperationsInput = {
+    set?: Decimal | DecimalJsLike | number | string | null
+    increment?: Decimal | DecimalJsLike | number | string
+    decrement?: Decimal | DecimalJsLike | number | string
+    multiply?: Decimal | DecimalJsLike | number | string
+    divide?: Decimal | DecimalJsLike | number | string
   }
 
   export type email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput = {
@@ -56832,6 +57136,33 @@ export namespace Prisma {
     _count?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedEnumGenderNullableFilter<$PrismaModel>
     _max?: NestedEnumGenderNullableFilter<$PrismaModel>
+  }
+
+  export type NestedDecimalNullableFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+  }
+
+  export type NestedDecimalNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel> | null
+    in?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    notIn?: Decimal[] | DecimalJsLike[] | number[] | string[] | null
+    lt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    lte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gt?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    gte?: Decimal | DecimalJsLike | number | string | DecimalFieldRefInput<$PrismaModel>
+    not?: NestedDecimalNullableWithAggregatesFilter<$PrismaModel> | Decimal | DecimalJsLike | number | string | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedDecimalNullableFilter<$PrismaModel>
+    _sum?: NestedDecimalNullableFilter<$PrismaModel>
+    _min?: NestedDecimalNullableFilter<$PrismaModel>
+    _max?: NestedDecimalNullableFilter<$PrismaModel>
   }
 
   export type NestedEnumemail_tracking_handover_recipient_typeFilter<$PrismaModel = never> = {
@@ -58146,9 +58477,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
@@ -58181,9 +58515,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -58464,9 +58801,12 @@ export namespace Prisma {
     remark?: StringNullableFilter<"tr_handover"> | string | null
     created_by?: StringNullableFilter<"tr_handover"> | string | null
     created_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
+    finished_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     updated_by?: StringNullableFilter<"tr_handover"> | string | null
     is_deleted?: BoolNullableFilter<"tr_handover"> | boolean | null
+    is_finished?: BoolNullableFilter<"tr_handover"> | boolean | null
+    star?: DecimalNullableFilter<"tr_handover"> | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_proposed_changesUpsertWithWhereUniqueWithoutPlantInput = {
@@ -58752,9 +59092,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
@@ -58787,9 +59130,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -59345,9 +59691,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
@@ -59380,9 +59729,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -62032,9 +62384,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
@@ -62067,9 +62422,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -62093,9 +62451,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
@@ -62128,9 +62489,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -62154,9 +62518,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
@@ -62189,9 +62556,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -62215,9 +62585,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
@@ -62250,9 +62623,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -62276,9 +62652,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
@@ -62311,9 +62690,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -62334,6 +62716,12 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
+    last_rating_reminder_sent?: Date | string | null
+    rating_reminder_count?: number | null
+    finished_date?: Date | string | null
     updated_date?: Date | string | null
     created_date?: Date | string | null
     tr_handover?: tr_handoverCreateNestedOneWithoutTr_handover_approvalInput
@@ -62346,6 +62734,12 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
+    last_rating_reminder_sent?: Date | string | null
+    rating_reminder_count?: number | null
+    finished_date?: Date | string | null
     updated_date?: Date | string | null
     created_date?: Date | string | null
   }
@@ -62956,6 +63350,12 @@ export namespace Prisma {
     actor?: StringNullableFilter<"tr_handover_approval"> | string | null
     employee_code?: StringNullableFilter<"tr_handover_approval"> | string | null
     status?: StringNullableFilter<"tr_handover_approval"> | string | null
+    rating?: IntNullableFilter<"tr_handover_approval"> | number | null
+    review?: StringNullableFilter<"tr_handover_approval"> | string | null
+    rating_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    last_rating_reminder_sent?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    rating_reminder_count?: IntNullableFilter<"tr_handover_approval"> | number | null
+    finished_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     updated_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     created_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
   }
@@ -63633,6 +64033,668 @@ export namespace Prisma {
     is_deleted?: BoolFilter<"tbl_support_document"> | boolean
   }
 
+  export type mst_authorizationCreateWithoutAuthdocApprovalsInput = {
+    employee_code?: string | null
+    employee_name?: string | null
+    email?: string | null
+    number_phone?: string | null
+    gender?: $Enums.Gender | null
+    status?: boolean | null
+    created_at?: Date | string
+    created_by?: string | null
+    updated_at?: Date | string
+    updated_by?: string | null
+    is_deleted?: boolean
+    department?: mst_departmentCreateNestedOneWithoutAuthorizationsInput
+    plant?: mst_plantCreateNestedOneWithoutAuthorizationsInput
+    role?: mst_roleCreateNestedOneWithoutAuthorizationsInput
+    section?: mst_section_departmentCreateNestedOneWithoutAuthorizationsInput
+    departmentHeads?: mst_department_headCreateNestedManyWithoutAuthorizationInput
+    sectionHeads?: mst_section_headCreateNestedManyWithoutAuthorizationInput
+    authorization?: tr_additional_docCreateNestedManyWithoutAuthorizationInput
+    authdocHistories?: tr_authdoc_historyCreateNestedManyWithoutAuthorizationInput
+    authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
+    documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
+    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
+    tr_handover_approval?: tr_handover_approvalCreateNestedManyWithoutMst_authorizationInput
+    tr_handover_history?: tr_handover_historyCreateNestedManyWithoutMst_authorizationInput
+    mainProposedChanges?: tr_proposed_changesCreateNestedManyWithoutMainProposedChangesInput
+    approvals?: tr_proposed_changes_approvalCreateNestedManyWithoutAuthorizationInput
+    historyproposedchanges?: tr_proposed_changes_historyCreateNestedManyWithoutAuthorizationInput
+  }
+
+  export type mst_authorizationUncheckedCreateWithoutAuthdocApprovalsInput = {
+    id?: number
+    employee_code?: string | null
+    employee_name?: string | null
+    email?: string | null
+    number_phone?: string | null
+    gender?: $Enums.Gender | null
+    department_id?: number | null
+    section_id?: number | null
+    plant_id?: number | null
+    role_id?: number | null
+    status?: boolean | null
+    created_at?: Date | string
+    created_by?: string | null
+    updated_at?: Date | string
+    updated_by?: string | null
+    is_deleted?: boolean
+    departmentHeads?: mst_department_headUncheckedCreateNestedManyWithoutAuthorizationInput
+    sectionHeads?: mst_section_headUncheckedCreateNestedManyWithoutAuthorizationInput
+    authorization?: tr_additional_docUncheckedCreateNestedManyWithoutAuthorizationInput
+    authdocHistories?: tr_authdoc_historyUncheckedCreateNestedManyWithoutAuthorizationInput
+    authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
+    documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
+    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
+    tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutMst_authorizationInput
+    tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutMst_authorizationInput
+    mainProposedChanges?: tr_proposed_changesUncheckedCreateNestedManyWithoutMainProposedChangesInput
+    approvals?: tr_proposed_changes_approvalUncheckedCreateNestedManyWithoutAuthorizationInput
+    historyproposedchanges?: tr_proposed_changes_historyUncheckedCreateNestedManyWithoutAuthorizationInput
+  }
+
+  export type mst_authorizationCreateOrConnectWithoutAuthdocApprovalsInput = {
+    where: mst_authorizationWhereUniqueInput
+    create: XOR<mst_authorizationCreateWithoutAuthdocApprovalsInput, mst_authorizationUncheckedCreateWithoutAuthdocApprovalsInput>
+  }
+
+  export type tr_authorization_docCreateWithoutAuthdocApprovalsInput = {
+    doc_number?: string | null
+    implementation_date?: Date | string | null
+    evaluation?: string | null
+    description?: string | null
+    conclution?: string | null
+    concept?: string | null
+    standart?: string | null
+    method?: string | null
+    status?: string | null
+    progress?: string | null
+    created_by?: string | null
+    created_date?: Date | string | null
+    updated_at?: Date | string | null
+    email_tracking_authdoc?: email_tracking_authdocCreateNestedManyWithoutTr_authorization_docInput
+    authdocHistories?: tr_authdoc_historyCreateNestedManyWithoutAuthorization_docInput
+    authdocMembers?: tr_authdoc_memberCreateNestedManyWithoutAuthorization_docInput
+    authorization?: mst_authorizationCreateNestedOneWithoutAuthorizationDocsInput
+    department?: mst_departmentCreateNestedOneWithoutDepartmentAuthInput
+    authorizationPlant?: mst_plantCreateNestedOneWithoutAuthorizationPlantInput
+    proposedChange?: tr_proposed_changesCreateNestedOneWithoutAuthorizationDocsInput
+    section_department?: mst_section_departmentCreateNestedOneWithoutSectionDepartmentAuthInput
+    tr_handover?: tr_handoverCreateNestedManyWithoutTr_authorization_docInput
+  }
+
+  export type tr_authorization_docUncheckedCreateWithoutAuthdocApprovalsInput = {
+    id?: number
+    proposed_change_id?: number | null
+    doc_number?: string | null
+    implementation_date?: Date | string | null
+    evaluation?: string | null
+    description?: string | null
+    conclution?: string | null
+    concept?: string | null
+    standart?: string | null
+    method?: string | null
+    status?: string | null
+    progress?: string | null
+    created_by?: string | null
+    auth_id?: number | null
+    plant_id?: number | null
+    created_date?: Date | string | null
+    department_id?: number | null
+    section_department_id?: number | null
+    updated_at?: Date | string | null
+    email_tracking_authdoc?: email_tracking_authdocUncheckedCreateNestedManyWithoutTr_authorization_docInput
+    authdocHistories?: tr_authdoc_historyUncheckedCreateNestedManyWithoutAuthorization_docInput
+    authdocMembers?: tr_authdoc_memberUncheckedCreateNestedManyWithoutAuthorization_docInput
+    tr_handover?: tr_handoverUncheckedCreateNestedManyWithoutTr_authorization_docInput
+  }
+
+  export type tr_authorization_docCreateOrConnectWithoutAuthdocApprovalsInput = {
+    where: tr_authorization_docWhereUniqueInput
+    create: XOR<tr_authorization_docCreateWithoutAuthdocApprovalsInput, tr_authorization_docUncheckedCreateWithoutAuthdocApprovalsInput>
+  }
+
+  export type mst_authorizationUpsertWithoutAuthdocApprovalsInput = {
+    update: XOR<mst_authorizationUpdateWithoutAuthdocApprovalsInput, mst_authorizationUncheckedUpdateWithoutAuthdocApprovalsInput>
+    create: XOR<mst_authorizationCreateWithoutAuthdocApprovalsInput, mst_authorizationUncheckedCreateWithoutAuthdocApprovalsInput>
+    where?: mst_authorizationWhereInput
+  }
+
+  export type mst_authorizationUpdateToOneWithWhereWithoutAuthdocApprovalsInput = {
+    where?: mst_authorizationWhereInput
+    data: XOR<mst_authorizationUpdateWithoutAuthdocApprovalsInput, mst_authorizationUncheckedUpdateWithoutAuthdocApprovalsInput>
+  }
+
+  export type mst_authorizationUpdateWithoutAuthdocApprovalsInput = {
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    number_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    department?: mst_departmentUpdateOneWithoutAuthorizationsNestedInput
+    plant?: mst_plantUpdateOneWithoutAuthorizationsNestedInput
+    role?: mst_roleUpdateOneWithoutAuthorizationsNestedInput
+    section?: mst_section_departmentUpdateOneWithoutAuthorizationsNestedInput
+    departmentHeads?: mst_department_headUpdateManyWithoutAuthorizationNestedInput
+    sectionHeads?: mst_section_headUpdateManyWithoutAuthorizationNestedInput
+    authorization?: tr_additional_docUpdateManyWithoutAuthorizationNestedInput
+    authdocHistories?: tr_authdoc_historyUpdateManyWithoutAuthorizationNestedInput
+    authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
+    documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
+    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
+    tr_handover_approval?: tr_handover_approvalUpdateManyWithoutMst_authorizationNestedInput
+    tr_handover_history?: tr_handover_historyUpdateManyWithoutMst_authorizationNestedInput
+    mainProposedChanges?: tr_proposed_changesUpdateManyWithoutMainProposedChangesNestedInput
+    approvals?: tr_proposed_changes_approvalUpdateManyWithoutAuthorizationNestedInput
+    historyproposedchanges?: tr_proposed_changes_historyUpdateManyWithoutAuthorizationNestedInput
+  }
+
+  export type mst_authorizationUncheckedUpdateWithoutAuthdocApprovalsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    number_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    section_id?: NullableIntFieldUpdateOperationsInput | number | null
+    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
+    role_id?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    departmentHeads?: mst_department_headUncheckedUpdateManyWithoutAuthorizationNestedInput
+    sectionHeads?: mst_section_headUncheckedUpdateManyWithoutAuthorizationNestedInput
+    authorization?: tr_additional_docUncheckedUpdateManyWithoutAuthorizationNestedInput
+    authdocHistories?: tr_authdoc_historyUncheckedUpdateManyWithoutAuthorizationNestedInput
+    authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
+    documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
+    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
+    tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutMst_authorizationNestedInput
+    tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutMst_authorizationNestedInput
+    mainProposedChanges?: tr_proposed_changesUncheckedUpdateManyWithoutMainProposedChangesNestedInput
+    approvals?: tr_proposed_changes_approvalUncheckedUpdateManyWithoutAuthorizationNestedInput
+    historyproposedchanges?: tr_proposed_changes_historyUncheckedUpdateManyWithoutAuthorizationNestedInput
+  }
+
+  export type tr_authorization_docUpsertWithoutAuthdocApprovalsInput = {
+    update: XOR<tr_authorization_docUpdateWithoutAuthdocApprovalsInput, tr_authorization_docUncheckedUpdateWithoutAuthdocApprovalsInput>
+    create: XOR<tr_authorization_docCreateWithoutAuthdocApprovalsInput, tr_authorization_docUncheckedCreateWithoutAuthdocApprovalsInput>
+    where?: tr_authorization_docWhereInput
+  }
+
+  export type tr_authorization_docUpdateToOneWithWhereWithoutAuthdocApprovalsInput = {
+    where?: tr_authorization_docWhereInput
+    data: XOR<tr_authorization_docUpdateWithoutAuthdocApprovalsInput, tr_authorization_docUncheckedUpdateWithoutAuthdocApprovalsInput>
+  }
+
+  export type tr_authorization_docUpdateWithoutAuthdocApprovalsInput = {
+    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
+    implementation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    evaluation?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    conclution?: NullableStringFieldUpdateOperationsInput | string | null
+    concept?: NullableStringFieldUpdateOperationsInput | string | null
+    standart?: NullableStringFieldUpdateOperationsInput | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    progress?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    email_tracking_authdoc?: email_tracking_authdocUpdateManyWithoutTr_authorization_docNestedInput
+    authdocHistories?: tr_authdoc_historyUpdateManyWithoutAuthorization_docNestedInput
+    authdocMembers?: tr_authdoc_memberUpdateManyWithoutAuthorization_docNestedInput
+    authorization?: mst_authorizationUpdateOneWithoutAuthorizationDocsNestedInput
+    department?: mst_departmentUpdateOneWithoutDepartmentAuthNestedInput
+    authorizationPlant?: mst_plantUpdateOneWithoutAuthorizationPlantNestedInput
+    proposedChange?: tr_proposed_changesUpdateOneWithoutAuthorizationDocsNestedInput
+    section_department?: mst_section_departmentUpdateOneWithoutSectionDepartmentAuthNestedInput
+    tr_handover?: tr_handoverUpdateManyWithoutTr_authorization_docNestedInput
+  }
+
+  export type tr_authorization_docUncheckedUpdateWithoutAuthdocApprovalsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
+    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
+    implementation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    evaluation?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    conclution?: NullableStringFieldUpdateOperationsInput | string | null
+    concept?: NullableStringFieldUpdateOperationsInput | string | null
+    standart?: NullableStringFieldUpdateOperationsInput | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    progress?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
+    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    section_department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    email_tracking_authdoc?: email_tracking_authdocUncheckedUpdateManyWithoutTr_authorization_docNestedInput
+    authdocHistories?: tr_authdoc_historyUncheckedUpdateManyWithoutAuthorization_docNestedInput
+    authdocMembers?: tr_authdoc_memberUncheckedUpdateManyWithoutAuthorization_docNestedInput
+    tr_handover?: tr_handoverUncheckedUpdateManyWithoutTr_authorization_docNestedInput
+  }
+
+  export type mst_authorizationCreateWithoutAuthdocHistoriesInput = {
+    employee_code?: string | null
+    employee_name?: string | null
+    email?: string | null
+    number_phone?: string | null
+    gender?: $Enums.Gender | null
+    status?: boolean | null
+    created_at?: Date | string
+    created_by?: string | null
+    updated_at?: Date | string
+    updated_by?: string | null
+    is_deleted?: boolean
+    department?: mst_departmentCreateNestedOneWithoutAuthorizationsInput
+    plant?: mst_plantCreateNestedOneWithoutAuthorizationsInput
+    role?: mst_roleCreateNestedOneWithoutAuthorizationsInput
+    section?: mst_section_departmentCreateNestedOneWithoutAuthorizationsInput
+    departmentHeads?: mst_department_headCreateNestedManyWithoutAuthorizationInput
+    sectionHeads?: mst_section_headCreateNestedManyWithoutAuthorizationInput
+    authorization?: tr_additional_docCreateNestedManyWithoutAuthorizationInput
+    authdocApprovals?: tr_authdoc_approvalCreateNestedManyWithoutAuthorizationInput
+    authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
+    documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
+    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
+    tr_handover_approval?: tr_handover_approvalCreateNestedManyWithoutMst_authorizationInput
+    tr_handover_history?: tr_handover_historyCreateNestedManyWithoutMst_authorizationInput
+    mainProposedChanges?: tr_proposed_changesCreateNestedManyWithoutMainProposedChangesInput
+    approvals?: tr_proposed_changes_approvalCreateNestedManyWithoutAuthorizationInput
+    historyproposedchanges?: tr_proposed_changes_historyCreateNestedManyWithoutAuthorizationInput
+  }
+
+  export type mst_authorizationUncheckedCreateWithoutAuthdocHistoriesInput = {
+    id?: number
+    employee_code?: string | null
+    employee_name?: string | null
+    email?: string | null
+    number_phone?: string | null
+    gender?: $Enums.Gender | null
+    department_id?: number | null
+    section_id?: number | null
+    plant_id?: number | null
+    role_id?: number | null
+    status?: boolean | null
+    created_at?: Date | string
+    created_by?: string | null
+    updated_at?: Date | string
+    updated_by?: string | null
+    is_deleted?: boolean
+    departmentHeads?: mst_department_headUncheckedCreateNestedManyWithoutAuthorizationInput
+    sectionHeads?: mst_section_headUncheckedCreateNestedManyWithoutAuthorizationInput
+    authorization?: tr_additional_docUncheckedCreateNestedManyWithoutAuthorizationInput
+    authdocApprovals?: tr_authdoc_approvalUncheckedCreateNestedManyWithoutAuthorizationInput
+    authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
+    documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
+    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
+    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
+    tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutMst_authorizationInput
+    tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutMst_authorizationInput
+    mainProposedChanges?: tr_proposed_changesUncheckedCreateNestedManyWithoutMainProposedChangesInput
+    approvals?: tr_proposed_changes_approvalUncheckedCreateNestedManyWithoutAuthorizationInput
+    historyproposedchanges?: tr_proposed_changes_historyUncheckedCreateNestedManyWithoutAuthorizationInput
+  }
+
+  export type mst_authorizationCreateOrConnectWithoutAuthdocHistoriesInput = {
+    where: mst_authorizationWhereUniqueInput
+    create: XOR<mst_authorizationCreateWithoutAuthdocHistoriesInput, mst_authorizationUncheckedCreateWithoutAuthdocHistoriesInput>
+  }
+
+  export type tr_authorization_docCreateWithoutAuthdocHistoriesInput = {
+    doc_number?: string | null
+    implementation_date?: Date | string | null
+    evaluation?: string | null
+    description?: string | null
+    conclution?: string | null
+    concept?: string | null
+    standart?: string | null
+    method?: string | null
+    status?: string | null
+    progress?: string | null
+    created_by?: string | null
+    created_date?: Date | string | null
+    updated_at?: Date | string | null
+    email_tracking_authdoc?: email_tracking_authdocCreateNestedManyWithoutTr_authorization_docInput
+    authdocApprovals?: tr_authdoc_approvalCreateNestedManyWithoutAuthorization_docInput
+    authdocMembers?: tr_authdoc_memberCreateNestedManyWithoutAuthorization_docInput
+    authorization?: mst_authorizationCreateNestedOneWithoutAuthorizationDocsInput
+    department?: mst_departmentCreateNestedOneWithoutDepartmentAuthInput
+    authorizationPlant?: mst_plantCreateNestedOneWithoutAuthorizationPlantInput
+    proposedChange?: tr_proposed_changesCreateNestedOneWithoutAuthorizationDocsInput
+    section_department?: mst_section_departmentCreateNestedOneWithoutSectionDepartmentAuthInput
+    tr_handover?: tr_handoverCreateNestedManyWithoutTr_authorization_docInput
+  }
+
+  export type tr_authorization_docUncheckedCreateWithoutAuthdocHistoriesInput = {
+    id?: number
+    proposed_change_id?: number | null
+    doc_number?: string | null
+    implementation_date?: Date | string | null
+    evaluation?: string | null
+    description?: string | null
+    conclution?: string | null
+    concept?: string | null
+    standart?: string | null
+    method?: string | null
+    status?: string | null
+    progress?: string | null
+    created_by?: string | null
+    auth_id?: number | null
+    plant_id?: number | null
+    created_date?: Date | string | null
+    department_id?: number | null
+    section_department_id?: number | null
+    updated_at?: Date | string | null
+    email_tracking_authdoc?: email_tracking_authdocUncheckedCreateNestedManyWithoutTr_authorization_docInput
+    authdocApprovals?: tr_authdoc_approvalUncheckedCreateNestedManyWithoutAuthorization_docInput
+    authdocMembers?: tr_authdoc_memberUncheckedCreateNestedManyWithoutAuthorization_docInput
+    tr_handover?: tr_handoverUncheckedCreateNestedManyWithoutTr_authorization_docInput
+  }
+
+  export type tr_authorization_docCreateOrConnectWithoutAuthdocHistoriesInput = {
+    where: tr_authorization_docWhereUniqueInput
+    create: XOR<tr_authorization_docCreateWithoutAuthdocHistoriesInput, tr_authorization_docUncheckedCreateWithoutAuthdocHistoriesInput>
+  }
+
+  export type mst_authorizationUpsertWithoutAuthdocHistoriesInput = {
+    update: XOR<mst_authorizationUpdateWithoutAuthdocHistoriesInput, mst_authorizationUncheckedUpdateWithoutAuthdocHistoriesInput>
+    create: XOR<mst_authorizationCreateWithoutAuthdocHistoriesInput, mst_authorizationUncheckedCreateWithoutAuthdocHistoriesInput>
+    where?: mst_authorizationWhereInput
+  }
+
+  export type mst_authorizationUpdateToOneWithWhereWithoutAuthdocHistoriesInput = {
+    where?: mst_authorizationWhereInput
+    data: XOR<mst_authorizationUpdateWithoutAuthdocHistoriesInput, mst_authorizationUncheckedUpdateWithoutAuthdocHistoriesInput>
+  }
+
+  export type mst_authorizationUpdateWithoutAuthdocHistoriesInput = {
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    number_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    department?: mst_departmentUpdateOneWithoutAuthorizationsNestedInput
+    plant?: mst_plantUpdateOneWithoutAuthorizationsNestedInput
+    role?: mst_roleUpdateOneWithoutAuthorizationsNestedInput
+    section?: mst_section_departmentUpdateOneWithoutAuthorizationsNestedInput
+    departmentHeads?: mst_department_headUpdateManyWithoutAuthorizationNestedInput
+    sectionHeads?: mst_section_headUpdateManyWithoutAuthorizationNestedInput
+    authorization?: tr_additional_docUpdateManyWithoutAuthorizationNestedInput
+    authdocApprovals?: tr_authdoc_approvalUpdateManyWithoutAuthorizationNestedInput
+    authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
+    documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
+    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
+    tr_handover_approval?: tr_handover_approvalUpdateManyWithoutMst_authorizationNestedInput
+    tr_handover_history?: tr_handover_historyUpdateManyWithoutMst_authorizationNestedInput
+    mainProposedChanges?: tr_proposed_changesUpdateManyWithoutMainProposedChangesNestedInput
+    approvals?: tr_proposed_changes_approvalUpdateManyWithoutAuthorizationNestedInput
+    historyproposedchanges?: tr_proposed_changes_historyUpdateManyWithoutAuthorizationNestedInput
+  }
+
+  export type mst_authorizationUncheckedUpdateWithoutAuthdocHistoriesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
+    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
+    email?: NullableStringFieldUpdateOperationsInput | string | null
+    number_phone?: NullableStringFieldUpdateOperationsInput | string | null
+    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
+    department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    section_id?: NullableIntFieldUpdateOperationsInput | number | null
+    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
+    role_id?: NullableIntFieldUpdateOperationsInput | number | null
+    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    departmentHeads?: mst_department_headUncheckedUpdateManyWithoutAuthorizationNestedInput
+    sectionHeads?: mst_section_headUncheckedUpdateManyWithoutAuthorizationNestedInput
+    authorization?: tr_additional_docUncheckedUpdateManyWithoutAuthorizationNestedInput
+    authdocApprovals?: tr_authdoc_approvalUncheckedUpdateManyWithoutAuthorizationNestedInput
+    authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
+    documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
+    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
+    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
+    tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutMst_authorizationNestedInput
+    tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutMst_authorizationNestedInput
+    mainProposedChanges?: tr_proposed_changesUncheckedUpdateManyWithoutMainProposedChangesNestedInput
+    approvals?: tr_proposed_changes_approvalUncheckedUpdateManyWithoutAuthorizationNestedInput
+    historyproposedchanges?: tr_proposed_changes_historyUncheckedUpdateManyWithoutAuthorizationNestedInput
+  }
+
+  export type tr_authorization_docUpsertWithoutAuthdocHistoriesInput = {
+    update: XOR<tr_authorization_docUpdateWithoutAuthdocHistoriesInput, tr_authorization_docUncheckedUpdateWithoutAuthdocHistoriesInput>
+    create: XOR<tr_authorization_docCreateWithoutAuthdocHistoriesInput, tr_authorization_docUncheckedCreateWithoutAuthdocHistoriesInput>
+    where?: tr_authorization_docWhereInput
+  }
+
+  export type tr_authorization_docUpdateToOneWithWhereWithoutAuthdocHistoriesInput = {
+    where?: tr_authorization_docWhereInput
+    data: XOR<tr_authorization_docUpdateWithoutAuthdocHistoriesInput, tr_authorization_docUncheckedUpdateWithoutAuthdocHistoriesInput>
+  }
+
+  export type tr_authorization_docUpdateWithoutAuthdocHistoriesInput = {
+    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
+    implementation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    evaluation?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    conclution?: NullableStringFieldUpdateOperationsInput | string | null
+    concept?: NullableStringFieldUpdateOperationsInput | string | null
+    standart?: NullableStringFieldUpdateOperationsInput | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    progress?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    email_tracking_authdoc?: email_tracking_authdocUpdateManyWithoutTr_authorization_docNestedInput
+    authdocApprovals?: tr_authdoc_approvalUpdateManyWithoutAuthorization_docNestedInput
+    authdocMembers?: tr_authdoc_memberUpdateManyWithoutAuthorization_docNestedInput
+    authorization?: mst_authorizationUpdateOneWithoutAuthorizationDocsNestedInput
+    department?: mst_departmentUpdateOneWithoutDepartmentAuthNestedInput
+    authorizationPlant?: mst_plantUpdateOneWithoutAuthorizationPlantNestedInput
+    proposedChange?: tr_proposed_changesUpdateOneWithoutAuthorizationDocsNestedInput
+    section_department?: mst_section_departmentUpdateOneWithoutSectionDepartmentAuthNestedInput
+    tr_handover?: tr_handoverUpdateManyWithoutTr_authorization_docNestedInput
+  }
+
+  export type tr_authorization_docUncheckedUpdateWithoutAuthdocHistoriesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
+    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
+    implementation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    evaluation?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    conclution?: NullableStringFieldUpdateOperationsInput | string | null
+    concept?: NullableStringFieldUpdateOperationsInput | string | null
+    standart?: NullableStringFieldUpdateOperationsInput | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    progress?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
+    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    section_department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    email_tracking_authdoc?: email_tracking_authdocUncheckedUpdateManyWithoutTr_authorization_docNestedInput
+    authdocApprovals?: tr_authdoc_approvalUncheckedUpdateManyWithoutAuthorization_docNestedInput
+    authdocMembers?: tr_authdoc_memberUncheckedUpdateManyWithoutAuthorization_docNestedInput
+    tr_handover?: tr_handoverUncheckedUpdateManyWithoutTr_authorization_docNestedInput
+  }
+
+  export type tr_authorization_docCreateWithoutAuthdocMembersInput = {
+    doc_number?: string | null
+    implementation_date?: Date | string | null
+    evaluation?: string | null
+    description?: string | null
+    conclution?: string | null
+    concept?: string | null
+    standart?: string | null
+    method?: string | null
+    status?: string | null
+    progress?: string | null
+    created_by?: string | null
+    created_date?: Date | string | null
+    updated_at?: Date | string | null
+    email_tracking_authdoc?: email_tracking_authdocCreateNestedManyWithoutTr_authorization_docInput
+    authdocApprovals?: tr_authdoc_approvalCreateNestedManyWithoutAuthorization_docInput
+    authdocHistories?: tr_authdoc_historyCreateNestedManyWithoutAuthorization_docInput
+    authorization?: mst_authorizationCreateNestedOneWithoutAuthorizationDocsInput
+    department?: mst_departmentCreateNestedOneWithoutDepartmentAuthInput
+    authorizationPlant?: mst_plantCreateNestedOneWithoutAuthorizationPlantInput
+    proposedChange?: tr_proposed_changesCreateNestedOneWithoutAuthorizationDocsInput
+    section_department?: mst_section_departmentCreateNestedOneWithoutSectionDepartmentAuthInput
+    tr_handover?: tr_handoverCreateNestedManyWithoutTr_authorization_docInput
+  }
+
+  export type tr_authorization_docUncheckedCreateWithoutAuthdocMembersInput = {
+    id?: number
+    proposed_change_id?: number | null
+    doc_number?: string | null
+    implementation_date?: Date | string | null
+    evaluation?: string | null
+    description?: string | null
+    conclution?: string | null
+    concept?: string | null
+    standart?: string | null
+    method?: string | null
+    status?: string | null
+    progress?: string | null
+    created_by?: string | null
+    auth_id?: number | null
+    plant_id?: number | null
+    created_date?: Date | string | null
+    department_id?: number | null
+    section_department_id?: number | null
+    updated_at?: Date | string | null
+    email_tracking_authdoc?: email_tracking_authdocUncheckedCreateNestedManyWithoutTr_authorization_docInput
+    authdocApprovals?: tr_authdoc_approvalUncheckedCreateNestedManyWithoutAuthorization_docInput
+    authdocHistories?: tr_authdoc_historyUncheckedCreateNestedManyWithoutAuthorization_docInput
+    tr_handover?: tr_handoverUncheckedCreateNestedManyWithoutTr_authorization_docInput
+  }
+
+  export type tr_authorization_docCreateOrConnectWithoutAuthdocMembersInput = {
+    where: tr_authorization_docWhereUniqueInput
+    create: XOR<tr_authorization_docCreateWithoutAuthdocMembersInput, tr_authorization_docUncheckedCreateWithoutAuthdocMembersInput>
+  }
+
+  export type tr_authorization_docUpsertWithoutAuthdocMembersInput = {
+    update: XOR<tr_authorization_docUpdateWithoutAuthdocMembersInput, tr_authorization_docUncheckedUpdateWithoutAuthdocMembersInput>
+    create: XOR<tr_authorization_docCreateWithoutAuthdocMembersInput, tr_authorization_docUncheckedCreateWithoutAuthdocMembersInput>
+    where?: tr_authorization_docWhereInput
+  }
+
+  export type tr_authorization_docUpdateToOneWithWhereWithoutAuthdocMembersInput = {
+    where?: tr_authorization_docWhereInput
+    data: XOR<tr_authorization_docUpdateWithoutAuthdocMembersInput, tr_authorization_docUncheckedUpdateWithoutAuthdocMembersInput>
+  }
+
+  export type tr_authorization_docUpdateWithoutAuthdocMembersInput = {
+    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
+    implementation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    evaluation?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    conclution?: NullableStringFieldUpdateOperationsInput | string | null
+    concept?: NullableStringFieldUpdateOperationsInput | string | null
+    standart?: NullableStringFieldUpdateOperationsInput | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    progress?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    email_tracking_authdoc?: email_tracking_authdocUpdateManyWithoutTr_authorization_docNestedInput
+    authdocApprovals?: tr_authdoc_approvalUpdateManyWithoutAuthorization_docNestedInput
+    authdocHistories?: tr_authdoc_historyUpdateManyWithoutAuthorization_docNestedInput
+    authorization?: mst_authorizationUpdateOneWithoutAuthorizationDocsNestedInput
+    department?: mst_departmentUpdateOneWithoutDepartmentAuthNestedInput
+    authorizationPlant?: mst_plantUpdateOneWithoutAuthorizationPlantNestedInput
+    proposedChange?: tr_proposed_changesUpdateOneWithoutAuthorizationDocsNestedInput
+    section_department?: mst_section_departmentUpdateOneWithoutSectionDepartmentAuthNestedInput
+    tr_handover?: tr_handoverUpdateManyWithoutTr_authorization_docNestedInput
+  }
+
+  export type tr_authorization_docUncheckedUpdateWithoutAuthdocMembersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
+    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
+    implementation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    evaluation?: NullableStringFieldUpdateOperationsInput | string | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    conclution?: NullableStringFieldUpdateOperationsInput | string | null
+    concept?: NullableStringFieldUpdateOperationsInput | string | null
+    standart?: NullableStringFieldUpdateOperationsInput | string | null
+    method?: NullableStringFieldUpdateOperationsInput | string | null
+    status?: NullableStringFieldUpdateOperationsInput | string | null
+    progress?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: NullableStringFieldUpdateOperationsInput | string | null
+    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
+    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    section_department_id?: NullableIntFieldUpdateOperationsInput | number | null
+    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    email_tracking_authdoc?: email_tracking_authdocUncheckedUpdateManyWithoutTr_authorization_docNestedInput
+    authdocApprovals?: tr_authdoc_approvalUncheckedUpdateManyWithoutAuthorization_docNestedInput
+    authdocHistories?: tr_authdoc_historyUncheckedUpdateManyWithoutAuthorization_docNestedInput
+    tr_handover?: tr_handoverUncheckedUpdateManyWithoutTr_authorization_docNestedInput
+  }
+
   export type email_tracking_authdocCreateWithoutTr_authorization_docInput = {
     recipient_email: string
     recipient_type: $Enums.email_tracking_authdoc_recipient_type
@@ -64041,9 +65103,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
@@ -64076,9 +65141,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -64506,278 +65574,6 @@ export namespace Prisma {
     data: XOR<tr_handoverUpdateManyMutationInput, tr_handoverUncheckedUpdateManyWithoutTr_authorization_docInput>
   }
 
-  export type mst_authorizationCreateWithoutAuthdocApprovalsInput = {
-    employee_code?: string | null
-    employee_name?: string | null
-    email?: string | null
-    number_phone?: string | null
-    gender?: $Enums.Gender | null
-    status?: boolean | null
-    created_at?: Date | string
-    created_by?: string | null
-    updated_at?: Date | string
-    updated_by?: string | null
-    is_deleted?: boolean
-    department?: mst_departmentCreateNestedOneWithoutAuthorizationsInput
-    plant?: mst_plantCreateNestedOneWithoutAuthorizationsInput
-    role?: mst_roleCreateNestedOneWithoutAuthorizationsInput
-    section?: mst_section_departmentCreateNestedOneWithoutAuthorizationsInput
-    departmentHeads?: mst_department_headCreateNestedManyWithoutAuthorizationInput
-    sectionHeads?: mst_section_headCreateNestedManyWithoutAuthorizationInput
-    authorization?: tr_additional_docCreateNestedManyWithoutAuthorizationInput
-    authdocHistories?: tr_authdoc_historyCreateNestedManyWithoutAuthorizationInput
-    authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
-    documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
-    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
-    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
-    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
-    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
-    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
-    tr_handover_approval?: tr_handover_approvalCreateNestedManyWithoutMst_authorizationInput
-    tr_handover_history?: tr_handover_historyCreateNestedManyWithoutMst_authorizationInput
-    mainProposedChanges?: tr_proposed_changesCreateNestedManyWithoutMainProposedChangesInput
-    approvals?: tr_proposed_changes_approvalCreateNestedManyWithoutAuthorizationInput
-    historyproposedchanges?: tr_proposed_changes_historyCreateNestedManyWithoutAuthorizationInput
-  }
-
-  export type mst_authorizationUncheckedCreateWithoutAuthdocApprovalsInput = {
-    id?: number
-    employee_code?: string | null
-    employee_name?: string | null
-    email?: string | null
-    number_phone?: string | null
-    gender?: $Enums.Gender | null
-    department_id?: number | null
-    section_id?: number | null
-    plant_id?: number | null
-    role_id?: number | null
-    status?: boolean | null
-    created_at?: Date | string
-    created_by?: string | null
-    updated_at?: Date | string
-    updated_by?: string | null
-    is_deleted?: boolean
-    departmentHeads?: mst_department_headUncheckedCreateNestedManyWithoutAuthorizationInput
-    sectionHeads?: mst_section_headUncheckedCreateNestedManyWithoutAuthorizationInput
-    authorization?: tr_additional_docUncheckedCreateNestedManyWithoutAuthorizationInput
-    authdocHistories?: tr_authdoc_historyUncheckedCreateNestedManyWithoutAuthorizationInput
-    authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
-    documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
-    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
-    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
-    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
-    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
-    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
-    tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutMst_authorizationInput
-    tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutMst_authorizationInput
-    mainProposedChanges?: tr_proposed_changesUncheckedCreateNestedManyWithoutMainProposedChangesInput
-    approvals?: tr_proposed_changes_approvalUncheckedCreateNestedManyWithoutAuthorizationInput
-    historyproposedchanges?: tr_proposed_changes_historyUncheckedCreateNestedManyWithoutAuthorizationInput
-  }
-
-  export type mst_authorizationCreateOrConnectWithoutAuthdocApprovalsInput = {
-    where: mst_authorizationWhereUniqueInput
-    create: XOR<mst_authorizationCreateWithoutAuthdocApprovalsInput, mst_authorizationUncheckedCreateWithoutAuthdocApprovalsInput>
-  }
-
-  export type tr_authorization_docCreateWithoutAuthdocApprovalsInput = {
-    doc_number?: string | null
-    implementation_date?: Date | string | null
-    evaluation?: string | null
-    description?: string | null
-    conclution?: string | null
-    concept?: string | null
-    standart?: string | null
-    method?: string | null
-    status?: string | null
-    progress?: string | null
-    created_by?: string | null
-    created_date?: Date | string | null
-    updated_at?: Date | string | null
-    email_tracking_authdoc?: email_tracking_authdocCreateNestedManyWithoutTr_authorization_docInput
-    authdocHistories?: tr_authdoc_historyCreateNestedManyWithoutAuthorization_docInput
-    authdocMembers?: tr_authdoc_memberCreateNestedManyWithoutAuthorization_docInput
-    authorization?: mst_authorizationCreateNestedOneWithoutAuthorizationDocsInput
-    department?: mst_departmentCreateNestedOneWithoutDepartmentAuthInput
-    authorizationPlant?: mst_plantCreateNestedOneWithoutAuthorizationPlantInput
-    proposedChange?: tr_proposed_changesCreateNestedOneWithoutAuthorizationDocsInput
-    section_department?: mst_section_departmentCreateNestedOneWithoutSectionDepartmentAuthInput
-    tr_handover?: tr_handoverCreateNestedManyWithoutTr_authorization_docInput
-  }
-
-  export type tr_authorization_docUncheckedCreateWithoutAuthdocApprovalsInput = {
-    id?: number
-    proposed_change_id?: number | null
-    doc_number?: string | null
-    implementation_date?: Date | string | null
-    evaluation?: string | null
-    description?: string | null
-    conclution?: string | null
-    concept?: string | null
-    standart?: string | null
-    method?: string | null
-    status?: string | null
-    progress?: string | null
-    created_by?: string | null
-    auth_id?: number | null
-    plant_id?: number | null
-    created_date?: Date | string | null
-    department_id?: number | null
-    section_department_id?: number | null
-    updated_at?: Date | string | null
-    email_tracking_authdoc?: email_tracking_authdocUncheckedCreateNestedManyWithoutTr_authorization_docInput
-    authdocHistories?: tr_authdoc_historyUncheckedCreateNestedManyWithoutAuthorization_docInput
-    authdocMembers?: tr_authdoc_memberUncheckedCreateNestedManyWithoutAuthorization_docInput
-    tr_handover?: tr_handoverUncheckedCreateNestedManyWithoutTr_authorization_docInput
-  }
-
-  export type tr_authorization_docCreateOrConnectWithoutAuthdocApprovalsInput = {
-    where: tr_authorization_docWhereUniqueInput
-    create: XOR<tr_authorization_docCreateWithoutAuthdocApprovalsInput, tr_authorization_docUncheckedCreateWithoutAuthdocApprovalsInput>
-  }
-
-  export type mst_authorizationUpsertWithoutAuthdocApprovalsInput = {
-    update: XOR<mst_authorizationUpdateWithoutAuthdocApprovalsInput, mst_authorizationUncheckedUpdateWithoutAuthdocApprovalsInput>
-    create: XOR<mst_authorizationCreateWithoutAuthdocApprovalsInput, mst_authorizationUncheckedCreateWithoutAuthdocApprovalsInput>
-    where?: mst_authorizationWhereInput
-  }
-
-  export type mst_authorizationUpdateToOneWithWhereWithoutAuthdocApprovalsInput = {
-    where?: mst_authorizationWhereInput
-    data: XOR<mst_authorizationUpdateWithoutAuthdocApprovalsInput, mst_authorizationUncheckedUpdateWithoutAuthdocApprovalsInput>
-  }
-
-  export type mst_authorizationUpdateWithoutAuthdocApprovalsInput = {
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    number_phone?: NullableStringFieldUpdateOperationsInput | string | null
-    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
-    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
-    is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    department?: mst_departmentUpdateOneWithoutAuthorizationsNestedInput
-    plant?: mst_plantUpdateOneWithoutAuthorizationsNestedInput
-    role?: mst_roleUpdateOneWithoutAuthorizationsNestedInput
-    section?: mst_section_departmentUpdateOneWithoutAuthorizationsNestedInput
-    departmentHeads?: mst_department_headUpdateManyWithoutAuthorizationNestedInput
-    sectionHeads?: mst_section_headUpdateManyWithoutAuthorizationNestedInput
-    authorization?: tr_additional_docUpdateManyWithoutAuthorizationNestedInput
-    authdocHistories?: tr_authdoc_historyUpdateManyWithoutAuthorizationNestedInput
-    authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
-    documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
-    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
-    tr_handover_approval?: tr_handover_approvalUpdateManyWithoutMst_authorizationNestedInput
-    tr_handover_history?: tr_handover_historyUpdateManyWithoutMst_authorizationNestedInput
-    mainProposedChanges?: tr_proposed_changesUpdateManyWithoutMainProposedChangesNestedInput
-    approvals?: tr_proposed_changes_approvalUpdateManyWithoutAuthorizationNestedInput
-    historyproposedchanges?: tr_proposed_changes_historyUpdateManyWithoutAuthorizationNestedInput
-  }
-
-  export type mst_authorizationUncheckedUpdateWithoutAuthdocApprovalsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    number_phone?: NullableStringFieldUpdateOperationsInput | string | null
-    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
-    department_id?: NullableIntFieldUpdateOperationsInput | number | null
-    section_id?: NullableIntFieldUpdateOperationsInput | number | null
-    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
-    role_id?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
-    is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    departmentHeads?: mst_department_headUncheckedUpdateManyWithoutAuthorizationNestedInput
-    sectionHeads?: mst_section_headUncheckedUpdateManyWithoutAuthorizationNestedInput
-    authorization?: tr_additional_docUncheckedUpdateManyWithoutAuthorizationNestedInput
-    authdocHistories?: tr_authdoc_historyUncheckedUpdateManyWithoutAuthorizationNestedInput
-    authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
-    documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
-    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
-    tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutMst_authorizationNestedInput
-    tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutMst_authorizationNestedInput
-    mainProposedChanges?: tr_proposed_changesUncheckedUpdateManyWithoutMainProposedChangesNestedInput
-    approvals?: tr_proposed_changes_approvalUncheckedUpdateManyWithoutAuthorizationNestedInput
-    historyproposedchanges?: tr_proposed_changes_historyUncheckedUpdateManyWithoutAuthorizationNestedInput
-  }
-
-  export type tr_authorization_docUpsertWithoutAuthdocApprovalsInput = {
-    update: XOR<tr_authorization_docUpdateWithoutAuthdocApprovalsInput, tr_authorization_docUncheckedUpdateWithoutAuthdocApprovalsInput>
-    create: XOR<tr_authorization_docCreateWithoutAuthdocApprovalsInput, tr_authorization_docUncheckedCreateWithoutAuthdocApprovalsInput>
-    where?: tr_authorization_docWhereInput
-  }
-
-  export type tr_authorization_docUpdateToOneWithWhereWithoutAuthdocApprovalsInput = {
-    where?: tr_authorization_docWhereInput
-    data: XOR<tr_authorization_docUpdateWithoutAuthdocApprovalsInput, tr_authorization_docUncheckedUpdateWithoutAuthdocApprovalsInput>
-  }
-
-  export type tr_authorization_docUpdateWithoutAuthdocApprovalsInput = {
-    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
-    implementation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    evaluation?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    conclution?: NullableStringFieldUpdateOperationsInput | string | null
-    concept?: NullableStringFieldUpdateOperationsInput | string | null
-    standart?: NullableStringFieldUpdateOperationsInput | string | null
-    method?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    progress?: NullableStringFieldUpdateOperationsInput | string | null
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email_tracking_authdoc?: email_tracking_authdocUpdateManyWithoutTr_authorization_docNestedInput
-    authdocHistories?: tr_authdoc_historyUpdateManyWithoutAuthorization_docNestedInput
-    authdocMembers?: tr_authdoc_memberUpdateManyWithoutAuthorization_docNestedInput
-    authorization?: mst_authorizationUpdateOneWithoutAuthorizationDocsNestedInput
-    department?: mst_departmentUpdateOneWithoutDepartmentAuthNestedInput
-    authorizationPlant?: mst_plantUpdateOneWithoutAuthorizationPlantNestedInput
-    proposedChange?: tr_proposed_changesUpdateOneWithoutAuthorizationDocsNestedInput
-    section_department?: mst_section_departmentUpdateOneWithoutSectionDepartmentAuthNestedInput
-    tr_handover?: tr_handoverUpdateManyWithoutTr_authorization_docNestedInput
-  }
-
-  export type tr_authorization_docUncheckedUpdateWithoutAuthdocApprovalsInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
-    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
-    implementation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    evaluation?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    conclution?: NullableStringFieldUpdateOperationsInput | string | null
-    concept?: NullableStringFieldUpdateOperationsInput | string | null
-    standart?: NullableStringFieldUpdateOperationsInput | string | null
-    method?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    progress?: NullableStringFieldUpdateOperationsInput | string | null
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
-    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department_id?: NullableIntFieldUpdateOperationsInput | number | null
-    section_department_id?: NullableIntFieldUpdateOperationsInput | number | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email_tracking_authdoc?: email_tracking_authdocUncheckedUpdateManyWithoutTr_authorization_docNestedInput
-    authdocHistories?: tr_authdoc_historyUncheckedUpdateManyWithoutAuthorization_docNestedInput
-    authdocMembers?: tr_authdoc_memberUncheckedUpdateManyWithoutAuthorization_docNestedInput
-    tr_handover?: tr_handoverUncheckedUpdateManyWithoutTr_authorization_docNestedInput
-  }
-
   export type email_tracking_proposedchangesCreateWithoutTr_proposed_changesInput = {
     recipient_email: string
     recipient_type: $Enums.email_tracking_proposedchanges_recipient_type
@@ -64974,9 +65770,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
@@ -65009,9 +65808,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -65728,396 +66530,6 @@ export namespace Prisma {
     data: XOR<tr_proposed_changes_historyUpdateManyMutationInput, tr_proposed_changes_historyUncheckedUpdateManyWithoutProposedChangeInput>
   }
 
-  export type mst_authorizationCreateWithoutAuthdocHistoriesInput = {
-    employee_code?: string | null
-    employee_name?: string | null
-    email?: string | null
-    number_phone?: string | null
-    gender?: $Enums.Gender | null
-    status?: boolean | null
-    created_at?: Date | string
-    created_by?: string | null
-    updated_at?: Date | string
-    updated_by?: string | null
-    is_deleted?: boolean
-    department?: mst_departmentCreateNestedOneWithoutAuthorizationsInput
-    plant?: mst_plantCreateNestedOneWithoutAuthorizationsInput
-    role?: mst_roleCreateNestedOneWithoutAuthorizationsInput
-    section?: mst_section_departmentCreateNestedOneWithoutAuthorizationsInput
-    departmentHeads?: mst_department_headCreateNestedManyWithoutAuthorizationInput
-    sectionHeads?: mst_section_headCreateNestedManyWithoutAuthorizationInput
-    authorization?: tr_additional_docCreateNestedManyWithoutAuthorizationInput
-    authdocApprovals?: tr_authdoc_approvalCreateNestedManyWithoutAuthorizationInput
-    authorizationDocs?: tr_authorization_docCreateNestedManyWithoutAuthorizationInput
-    documentNumbers?: tr_document_numberCreateNestedManyWithoutAuthorizationInput
-    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
-    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
-    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
-    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
-    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
-    tr_handover_approval?: tr_handover_approvalCreateNestedManyWithoutMst_authorizationInput
-    tr_handover_history?: tr_handover_historyCreateNestedManyWithoutMst_authorizationInput
-    mainProposedChanges?: tr_proposed_changesCreateNestedManyWithoutMainProposedChangesInput
-    approvals?: tr_proposed_changes_approvalCreateNestedManyWithoutAuthorizationInput
-    historyproposedchanges?: tr_proposed_changes_historyCreateNestedManyWithoutAuthorizationInput
-  }
-
-  export type mst_authorizationUncheckedCreateWithoutAuthdocHistoriesInput = {
-    id?: number
-    employee_code?: string | null
-    employee_name?: string | null
-    email?: string | null
-    number_phone?: string | null
-    gender?: $Enums.Gender | null
-    department_id?: number | null
-    section_id?: number | null
-    plant_id?: number | null
-    role_id?: number | null
-    status?: boolean | null
-    created_at?: Date | string
-    created_by?: string | null
-    updated_at?: Date | string
-    updated_by?: string | null
-    is_deleted?: boolean
-    departmentHeads?: mst_department_headUncheckedCreateNestedManyWithoutAuthorizationInput
-    sectionHeads?: mst_section_headUncheckedCreateNestedManyWithoutAuthorizationInput
-    authorization?: tr_additional_docUncheckedCreateNestedManyWithoutAuthorizationInput
-    authdocApprovals?: tr_authdoc_approvalUncheckedCreateNestedManyWithoutAuthorizationInput
-    authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutAuthorizationInput
-    documentNumbers?: tr_document_numberUncheckedCreateNestedManyWithoutAuthorizationInput
-    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationInput
-    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput
-    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput
-    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput
-    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedCreateNestedManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput
-    tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutMst_authorizationInput
-    tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutMst_authorizationInput
-    mainProposedChanges?: tr_proposed_changesUncheckedCreateNestedManyWithoutMainProposedChangesInput
-    approvals?: tr_proposed_changes_approvalUncheckedCreateNestedManyWithoutAuthorizationInput
-    historyproposedchanges?: tr_proposed_changes_historyUncheckedCreateNestedManyWithoutAuthorizationInput
-  }
-
-  export type mst_authorizationCreateOrConnectWithoutAuthdocHistoriesInput = {
-    where: mst_authorizationWhereUniqueInput
-    create: XOR<mst_authorizationCreateWithoutAuthdocHistoriesInput, mst_authorizationUncheckedCreateWithoutAuthdocHistoriesInput>
-  }
-
-  export type tr_authorization_docCreateWithoutAuthdocHistoriesInput = {
-    doc_number?: string | null
-    implementation_date?: Date | string | null
-    evaluation?: string | null
-    description?: string | null
-    conclution?: string | null
-    concept?: string | null
-    standart?: string | null
-    method?: string | null
-    status?: string | null
-    progress?: string | null
-    created_by?: string | null
-    created_date?: Date | string | null
-    updated_at?: Date | string | null
-    email_tracking_authdoc?: email_tracking_authdocCreateNestedManyWithoutTr_authorization_docInput
-    authdocApprovals?: tr_authdoc_approvalCreateNestedManyWithoutAuthorization_docInput
-    authdocMembers?: tr_authdoc_memberCreateNestedManyWithoutAuthorization_docInput
-    authorization?: mst_authorizationCreateNestedOneWithoutAuthorizationDocsInput
-    department?: mst_departmentCreateNestedOneWithoutDepartmentAuthInput
-    authorizationPlant?: mst_plantCreateNestedOneWithoutAuthorizationPlantInput
-    proposedChange?: tr_proposed_changesCreateNestedOneWithoutAuthorizationDocsInput
-    section_department?: mst_section_departmentCreateNestedOneWithoutSectionDepartmentAuthInput
-    tr_handover?: tr_handoverCreateNestedManyWithoutTr_authorization_docInput
-  }
-
-  export type tr_authorization_docUncheckedCreateWithoutAuthdocHistoriesInput = {
-    id?: number
-    proposed_change_id?: number | null
-    doc_number?: string | null
-    implementation_date?: Date | string | null
-    evaluation?: string | null
-    description?: string | null
-    conclution?: string | null
-    concept?: string | null
-    standart?: string | null
-    method?: string | null
-    status?: string | null
-    progress?: string | null
-    created_by?: string | null
-    auth_id?: number | null
-    plant_id?: number | null
-    created_date?: Date | string | null
-    department_id?: number | null
-    section_department_id?: number | null
-    updated_at?: Date | string | null
-    email_tracking_authdoc?: email_tracking_authdocUncheckedCreateNestedManyWithoutTr_authorization_docInput
-    authdocApprovals?: tr_authdoc_approvalUncheckedCreateNestedManyWithoutAuthorization_docInput
-    authdocMembers?: tr_authdoc_memberUncheckedCreateNestedManyWithoutAuthorization_docInput
-    tr_handover?: tr_handoverUncheckedCreateNestedManyWithoutTr_authorization_docInput
-  }
-
-  export type tr_authorization_docCreateOrConnectWithoutAuthdocHistoriesInput = {
-    where: tr_authorization_docWhereUniqueInput
-    create: XOR<tr_authorization_docCreateWithoutAuthdocHistoriesInput, tr_authorization_docUncheckedCreateWithoutAuthdocHistoriesInput>
-  }
-
-  export type mst_authorizationUpsertWithoutAuthdocHistoriesInput = {
-    update: XOR<mst_authorizationUpdateWithoutAuthdocHistoriesInput, mst_authorizationUncheckedUpdateWithoutAuthdocHistoriesInput>
-    create: XOR<mst_authorizationCreateWithoutAuthdocHistoriesInput, mst_authorizationUncheckedCreateWithoutAuthdocHistoriesInput>
-    where?: mst_authorizationWhereInput
-  }
-
-  export type mst_authorizationUpdateToOneWithWhereWithoutAuthdocHistoriesInput = {
-    where?: mst_authorizationWhereInput
-    data: XOR<mst_authorizationUpdateWithoutAuthdocHistoriesInput, mst_authorizationUncheckedUpdateWithoutAuthdocHistoriesInput>
-  }
-
-  export type mst_authorizationUpdateWithoutAuthdocHistoriesInput = {
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    number_phone?: NullableStringFieldUpdateOperationsInput | string | null
-    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
-    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
-    is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    department?: mst_departmentUpdateOneWithoutAuthorizationsNestedInput
-    plant?: mst_plantUpdateOneWithoutAuthorizationsNestedInput
-    role?: mst_roleUpdateOneWithoutAuthorizationsNestedInput
-    section?: mst_section_departmentUpdateOneWithoutAuthorizationsNestedInput
-    departmentHeads?: mst_department_headUpdateManyWithoutAuthorizationNestedInput
-    sectionHeads?: mst_section_headUpdateManyWithoutAuthorizationNestedInput
-    authorization?: tr_additional_docUpdateManyWithoutAuthorizationNestedInput
-    authdocApprovals?: tr_authdoc_approvalUpdateManyWithoutAuthorizationNestedInput
-    authorizationDocs?: tr_authorization_docUpdateManyWithoutAuthorizationNestedInput
-    documentNumbers?: tr_document_numberUpdateManyWithoutAuthorizationNestedInput
-    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
-    tr_handover_approval?: tr_handover_approvalUpdateManyWithoutMst_authorizationNestedInput
-    tr_handover_history?: tr_handover_historyUpdateManyWithoutMst_authorizationNestedInput
-    mainProposedChanges?: tr_proposed_changesUpdateManyWithoutMainProposedChangesNestedInput
-    approvals?: tr_proposed_changes_approvalUpdateManyWithoutAuthorizationNestedInput
-    historyproposedchanges?: tr_proposed_changes_historyUpdateManyWithoutAuthorizationNestedInput
-  }
-
-  export type mst_authorizationUncheckedUpdateWithoutAuthdocHistoriesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    employee_code?: NullableStringFieldUpdateOperationsInput | string | null
-    employee_name?: NullableStringFieldUpdateOperationsInput | string | null
-    email?: NullableStringFieldUpdateOperationsInput | string | null
-    number_phone?: NullableStringFieldUpdateOperationsInput | string | null
-    gender?: NullableEnumGenderFieldUpdateOperationsInput | $Enums.Gender | null
-    department_id?: NullableIntFieldUpdateOperationsInput | number | null
-    section_id?: NullableIntFieldUpdateOperationsInput | number | null
-    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
-    role_id?: NullableIntFieldUpdateOperationsInput | number | null
-    status?: NullableBoolFieldUpdateOperationsInput | boolean | null
-    created_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    updated_at?: DateTimeFieldUpdateOperationsInput | Date | string
-    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
-    is_deleted?: BoolFieldUpdateOperationsInput | boolean
-    departmentHeads?: mst_department_headUncheckedUpdateManyWithoutAuthorizationNestedInput
-    sectionHeads?: mst_section_headUncheckedUpdateManyWithoutAuthorizationNestedInput
-    authorization?: tr_additional_docUncheckedUpdateManyWithoutAuthorizationNestedInput
-    authdocApprovals?: tr_authdoc_approvalUncheckedUpdateManyWithoutAuthorizationNestedInput
-    authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutAuthorizationNestedInput
-    documentNumbers?: tr_document_numberUncheckedUpdateManyWithoutAuthorizationNestedInput
-    tr_handover_tr_handover_auth_idTomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_idTomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id5Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id2Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id3Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationNestedInput
-    tr_handover_tr_handover_auth_id4Tomst_authorization?: tr_handoverUncheckedUpdateManyWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationNestedInput
-    tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutMst_authorizationNestedInput
-    tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutMst_authorizationNestedInput
-    mainProposedChanges?: tr_proposed_changesUncheckedUpdateManyWithoutMainProposedChangesNestedInput
-    approvals?: tr_proposed_changes_approvalUncheckedUpdateManyWithoutAuthorizationNestedInput
-    historyproposedchanges?: tr_proposed_changes_historyUncheckedUpdateManyWithoutAuthorizationNestedInput
-  }
-
-  export type tr_authorization_docUpsertWithoutAuthdocHistoriesInput = {
-    update: XOR<tr_authorization_docUpdateWithoutAuthdocHistoriesInput, tr_authorization_docUncheckedUpdateWithoutAuthdocHistoriesInput>
-    create: XOR<tr_authorization_docCreateWithoutAuthdocHistoriesInput, tr_authorization_docUncheckedCreateWithoutAuthdocHistoriesInput>
-    where?: tr_authorization_docWhereInput
-  }
-
-  export type tr_authorization_docUpdateToOneWithWhereWithoutAuthdocHistoriesInput = {
-    where?: tr_authorization_docWhereInput
-    data: XOR<tr_authorization_docUpdateWithoutAuthdocHistoriesInput, tr_authorization_docUncheckedUpdateWithoutAuthdocHistoriesInput>
-  }
-
-  export type tr_authorization_docUpdateWithoutAuthdocHistoriesInput = {
-    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
-    implementation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    evaluation?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    conclution?: NullableStringFieldUpdateOperationsInput | string | null
-    concept?: NullableStringFieldUpdateOperationsInput | string | null
-    standart?: NullableStringFieldUpdateOperationsInput | string | null
-    method?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    progress?: NullableStringFieldUpdateOperationsInput | string | null
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email_tracking_authdoc?: email_tracking_authdocUpdateManyWithoutTr_authorization_docNestedInput
-    authdocApprovals?: tr_authdoc_approvalUpdateManyWithoutAuthorization_docNestedInput
-    authdocMembers?: tr_authdoc_memberUpdateManyWithoutAuthorization_docNestedInput
-    authorization?: mst_authorizationUpdateOneWithoutAuthorizationDocsNestedInput
-    department?: mst_departmentUpdateOneWithoutDepartmentAuthNestedInput
-    authorizationPlant?: mst_plantUpdateOneWithoutAuthorizationPlantNestedInput
-    proposedChange?: tr_proposed_changesUpdateOneWithoutAuthorizationDocsNestedInput
-    section_department?: mst_section_departmentUpdateOneWithoutSectionDepartmentAuthNestedInput
-    tr_handover?: tr_handoverUpdateManyWithoutTr_authorization_docNestedInput
-  }
-
-  export type tr_authorization_docUncheckedUpdateWithoutAuthdocHistoriesInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
-    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
-    implementation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    evaluation?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    conclution?: NullableStringFieldUpdateOperationsInput | string | null
-    concept?: NullableStringFieldUpdateOperationsInput | string | null
-    standart?: NullableStringFieldUpdateOperationsInput | string | null
-    method?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    progress?: NullableStringFieldUpdateOperationsInput | string | null
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
-    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department_id?: NullableIntFieldUpdateOperationsInput | number | null
-    section_department_id?: NullableIntFieldUpdateOperationsInput | number | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email_tracking_authdoc?: email_tracking_authdocUncheckedUpdateManyWithoutTr_authorization_docNestedInput
-    authdocApprovals?: tr_authdoc_approvalUncheckedUpdateManyWithoutAuthorization_docNestedInput
-    authdocMembers?: tr_authdoc_memberUncheckedUpdateManyWithoutAuthorization_docNestedInput
-    tr_handover?: tr_handoverUncheckedUpdateManyWithoutTr_authorization_docNestedInput
-  }
-
-  export type tr_authorization_docCreateWithoutAuthdocMembersInput = {
-    doc_number?: string | null
-    implementation_date?: Date | string | null
-    evaluation?: string | null
-    description?: string | null
-    conclution?: string | null
-    concept?: string | null
-    standart?: string | null
-    method?: string | null
-    status?: string | null
-    progress?: string | null
-    created_by?: string | null
-    created_date?: Date | string | null
-    updated_at?: Date | string | null
-    email_tracking_authdoc?: email_tracking_authdocCreateNestedManyWithoutTr_authorization_docInput
-    authdocApprovals?: tr_authdoc_approvalCreateNestedManyWithoutAuthorization_docInput
-    authdocHistories?: tr_authdoc_historyCreateNestedManyWithoutAuthorization_docInput
-    authorization?: mst_authorizationCreateNestedOneWithoutAuthorizationDocsInput
-    department?: mst_departmentCreateNestedOneWithoutDepartmentAuthInput
-    authorizationPlant?: mst_plantCreateNestedOneWithoutAuthorizationPlantInput
-    proposedChange?: tr_proposed_changesCreateNestedOneWithoutAuthorizationDocsInput
-    section_department?: mst_section_departmentCreateNestedOneWithoutSectionDepartmentAuthInput
-    tr_handover?: tr_handoverCreateNestedManyWithoutTr_authorization_docInput
-  }
-
-  export type tr_authorization_docUncheckedCreateWithoutAuthdocMembersInput = {
-    id?: number
-    proposed_change_id?: number | null
-    doc_number?: string | null
-    implementation_date?: Date | string | null
-    evaluation?: string | null
-    description?: string | null
-    conclution?: string | null
-    concept?: string | null
-    standart?: string | null
-    method?: string | null
-    status?: string | null
-    progress?: string | null
-    created_by?: string | null
-    auth_id?: number | null
-    plant_id?: number | null
-    created_date?: Date | string | null
-    department_id?: number | null
-    section_department_id?: number | null
-    updated_at?: Date | string | null
-    email_tracking_authdoc?: email_tracking_authdocUncheckedCreateNestedManyWithoutTr_authorization_docInput
-    authdocApprovals?: tr_authdoc_approvalUncheckedCreateNestedManyWithoutAuthorization_docInput
-    authdocHistories?: tr_authdoc_historyUncheckedCreateNestedManyWithoutAuthorization_docInput
-    tr_handover?: tr_handoverUncheckedCreateNestedManyWithoutTr_authorization_docInput
-  }
-
-  export type tr_authorization_docCreateOrConnectWithoutAuthdocMembersInput = {
-    where: tr_authorization_docWhereUniqueInput
-    create: XOR<tr_authorization_docCreateWithoutAuthdocMembersInput, tr_authorization_docUncheckedCreateWithoutAuthdocMembersInput>
-  }
-
-  export type tr_authorization_docUpsertWithoutAuthdocMembersInput = {
-    update: XOR<tr_authorization_docUpdateWithoutAuthdocMembersInput, tr_authorization_docUncheckedUpdateWithoutAuthdocMembersInput>
-    create: XOR<tr_authorization_docCreateWithoutAuthdocMembersInput, tr_authorization_docUncheckedCreateWithoutAuthdocMembersInput>
-    where?: tr_authorization_docWhereInput
-  }
-
-  export type tr_authorization_docUpdateToOneWithWhereWithoutAuthdocMembersInput = {
-    where?: tr_authorization_docWhereInput
-    data: XOR<tr_authorization_docUpdateWithoutAuthdocMembersInput, tr_authorization_docUncheckedUpdateWithoutAuthdocMembersInput>
-  }
-
-  export type tr_authorization_docUpdateWithoutAuthdocMembersInput = {
-    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
-    implementation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    evaluation?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    conclution?: NullableStringFieldUpdateOperationsInput | string | null
-    concept?: NullableStringFieldUpdateOperationsInput | string | null
-    standart?: NullableStringFieldUpdateOperationsInput | string | null
-    method?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    progress?: NullableStringFieldUpdateOperationsInput | string | null
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email_tracking_authdoc?: email_tracking_authdocUpdateManyWithoutTr_authorization_docNestedInput
-    authdocApprovals?: tr_authdoc_approvalUpdateManyWithoutAuthorization_docNestedInput
-    authdocHistories?: tr_authdoc_historyUpdateManyWithoutAuthorization_docNestedInput
-    authorization?: mst_authorizationUpdateOneWithoutAuthorizationDocsNestedInput
-    department?: mst_departmentUpdateOneWithoutDepartmentAuthNestedInput
-    authorizationPlant?: mst_plantUpdateOneWithoutAuthorizationPlantNestedInput
-    proposedChange?: tr_proposed_changesUpdateOneWithoutAuthorizationDocsNestedInput
-    section_department?: mst_section_departmentUpdateOneWithoutSectionDepartmentAuthNestedInput
-    tr_handover?: tr_handoverUpdateManyWithoutTr_authorization_docNestedInput
-  }
-
-  export type tr_authorization_docUncheckedUpdateWithoutAuthdocMembersInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    proposed_change_id?: NullableIntFieldUpdateOperationsInput | number | null
-    doc_number?: NullableStringFieldUpdateOperationsInput | string | null
-    implementation_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    evaluation?: NullableStringFieldUpdateOperationsInput | string | null
-    description?: NullableStringFieldUpdateOperationsInput | string | null
-    conclution?: NullableStringFieldUpdateOperationsInput | string | null
-    concept?: NullableStringFieldUpdateOperationsInput | string | null
-    standart?: NullableStringFieldUpdateOperationsInput | string | null
-    method?: NullableStringFieldUpdateOperationsInput | string | null
-    status?: NullableStringFieldUpdateOperationsInput | string | null
-    progress?: NullableStringFieldUpdateOperationsInput | string | null
-    created_by?: NullableStringFieldUpdateOperationsInput | string | null
-    auth_id?: NullableIntFieldUpdateOperationsInput | number | null
-    plant_id?: NullableIntFieldUpdateOperationsInput | number | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    department_id?: NullableIntFieldUpdateOperationsInput | number | null
-    section_department_id?: NullableIntFieldUpdateOperationsInput | number | null
-    updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    email_tracking_authdoc?: email_tracking_authdocUncheckedUpdateManyWithoutTr_authorization_docNestedInput
-    authdocApprovals?: tr_authdoc_approvalUncheckedUpdateManyWithoutAuthorization_docNestedInput
-    authdocHistories?: tr_authdoc_historyUncheckedUpdateManyWithoutAuthorization_docNestedInput
-    tr_handover?: tr_handoverUncheckedUpdateManyWithoutTr_authorization_docNestedInput
-  }
-
   export type email_tracking_handoverCreateWithoutTr_handoverInput = {
     recipient_email: string
     recipient_type: $Enums.email_tracking_handover_recipient_type
@@ -66784,6 +67196,12 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
+    last_rating_reminder_sent?: Date | string | null
+    rating_reminder_count?: number | null
+    finished_date?: Date | string | null
     updated_date?: Date | string | null
     created_date?: Date | string | null
     mst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_approvalInput
@@ -66796,6 +67214,12 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
+    last_rating_reminder_sent?: Date | string | null
+    rating_reminder_count?: number | null
+    finished_date?: Date | string | null
     updated_date?: Date | string | null
     created_date?: Date | string | null
   }
@@ -67600,9 +68024,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
@@ -67636,9 +68063,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
   }
@@ -67741,9 +68171,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
@@ -67777,9 +68210,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
   }
@@ -67872,9 +68308,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
@@ -67908,9 +68347,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
   }
@@ -68013,9 +68455,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
@@ -68049,9 +68494,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
   }
@@ -68144,9 +68592,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationInput
@@ -68180,9 +68631,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
     tr_handover_history?: tr_handover_historyUncheckedCreateNestedManyWithoutTr_handoverInput
   }
@@ -68211,9 +68665,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
@@ -68247,9 +68704,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
   }
@@ -68877,9 +69337,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_proposed_changesCreateManyPlantInput = {
@@ -69243,9 +69706,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
@@ -69278,9 +69744,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -69304,9 +69773,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_proposed_changesUpdateWithoutPlantInput = {
@@ -69480,9 +69952,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_proposed_changesCreateManyDepartmentInput = {
@@ -69730,9 +70205,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
@@ -69765,9 +70243,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -69791,9 +70272,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_proposed_changesUpdateWithoutDepartmentInput = {
@@ -70002,9 +70486,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_proposed_changesCreateManySection_departmentInput = {
@@ -70342,9 +70829,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
@@ -70377,9 +70867,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -70403,9 +70896,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_proposed_changesUpdateWithoutSection_departmentInput = {
@@ -70964,9 +71460,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handoverCreateManyMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
@@ -70987,9 +71486,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handoverCreateManyMst_authorization_tr_handover_auth_id2Tomst_authorizationInput = {
@@ -71010,9 +71512,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handoverCreateManyMst_authorization_tr_handover_auth_id3Tomst_authorizationInput = {
@@ -71033,9 +71538,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handoverCreateManyMst_authorization_tr_handover_auth_id4Tomst_authorizationInput = {
@@ -71056,9 +71564,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handover_approvalCreateManyMst_authorizationInput = {
@@ -71068,6 +71579,12 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
+    last_rating_reminder_sent?: Date | string | null
+    rating_reminder_count?: number | null
+    finished_date?: Date | string | null
     updated_date?: Date | string | null
     created_date?: Date | string | null
   }
@@ -71443,9 +71960,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
@@ -71478,9 +71998,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -71504,9 +72027,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handoverUpdateWithoutMst_authorization_tr_handover_auth_id5Tomst_authorizationInput = {
@@ -71517,9 +72043,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id2Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id2Tomst_authorizationNestedInput
@@ -71552,9 +72081,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -71578,9 +72110,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handoverUpdateWithoutMst_authorization_tr_handover_auth_id2Tomst_authorizationInput = {
@@ -71591,9 +72126,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
@@ -71626,9 +72164,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -71652,9 +72193,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handoverUpdateWithoutMst_authorization_tr_handover_auth_id3Tomst_authorizationInput = {
@@ -71665,9 +72209,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
@@ -71700,9 +72247,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -71726,9 +72276,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handoverUpdateWithoutMst_authorization_tr_handover_auth_id4Tomst_authorizationInput = {
@@ -71739,9 +72292,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
@@ -71774,9 +72330,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -71800,9 +72359,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_handover_approvalUpdateWithoutMst_authorizationInput = {
@@ -71810,6 +72372,12 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tr_handover?: tr_handoverUpdateOneWithoutTr_handover_approvalNestedInput
@@ -71822,6 +72390,12 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -71833,6 +72407,12 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -72256,9 +72836,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type email_tracking_authdocUpdateWithoutTr_authorization_docInput = {
@@ -72406,9 +72989,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
@@ -72441,9 +73027,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -72467,9 +73056,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type email_tracking_proposedchangesCreateManyTr_proposed_changesInput = {
@@ -72558,9 +73150,12 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
+    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    is_finished?: boolean | null
+    star?: Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_proposed_changes_approvalCreateManyProposedChangeInput = {
@@ -72810,9 +73405,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
     mst_authorization_tr_handover_auth_id5Tomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_id5Tomst_authorizationNestedInput
@@ -72845,9 +73443,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
     tr_handover_history?: tr_handover_historyUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -72871,9 +73472,12 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
 
   export type tr_proposed_changes_approvalUpdateWithoutProposedChangeInput = {
@@ -72965,6 +73569,12 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
+    last_rating_reminder_sent?: Date | string | null
+    rating_reminder_count?: number | null
+    finished_date?: Date | string | null
     updated_date?: Date | string | null
     created_date?: Date | string | null
   }
@@ -73030,6 +73640,12 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     mst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_approvalNestedInput
@@ -73042,6 +73658,12 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
@@ -73053,6 +73675,12 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }

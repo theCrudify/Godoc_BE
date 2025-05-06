@@ -6,7 +6,8 @@ import {
     createSupportDocuments,
     softDeleteProposedChange,
     getAllProposedChangesWithRelations,
-    getProposedChangeByIdWithRelations
+    getProposedChangeByIdWithRelations,
+    getAllProposedChangesWithRelationsbyApprover
 }
     from '../../main-structure/Activity/Document/2_ProposedChanges/ActivityProposedChanges'; // Pastikan path-nya benar
 
@@ -126,6 +127,7 @@ router.post('/status', updateApprovalStatus);
 
 router.get("/completion", getAllProposedChangesWithRelations);
 router.get("/completion/:id", getProposedChangeByIdWithRelations);
+router.get("/completionapprover/:approver_id", getAllProposedChangesWithRelationsbyApprover);
 
 
 // getAllProposedChangesWithRelations

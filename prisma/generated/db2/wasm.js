@@ -403,6 +403,41 @@ exports.Prisma.Mst_support_documentScalarFieldEnum = {
   updated_by: 'updated_by'
 };
 
+exports.Prisma.Tr_authdoc_approvalScalarFieldEnum = {
+  id: 'id',
+  authdoc_id: 'authdoc_id',
+  auth_id: 'auth_id',
+  step: 'step',
+  actor: 'actor',
+  employee_code: 'employee_code',
+  status: 'status',
+  updated_date: 'updated_date',
+  created_date: 'created_date'
+};
+
+exports.Prisma.Tr_authdoc_historyScalarFieldEnum = {
+  id: 'id',
+  description: 'description',
+  employee_code: 'employee_code',
+  authdoc_id: 'authdoc_id',
+  auth_id: 'auth_id',
+  note: 'note',
+  status: 'status',
+  created_date: 'created_date',
+  updated_date: 'updated_date',
+  created_by: 'created_by'
+};
+
+exports.Prisma.Tr_authdoc_memberScalarFieldEnum = {
+  id: 'id',
+  authdoc_id: 'authdoc_id',
+  employee_code: 'employee_code',
+  employee_name: 'employee_name',
+  status: 'status',
+  created_date: 'created_date',
+  is_deleted: 'is_deleted'
+};
+
 exports.Prisma.Tr_authorization_docScalarFieldEnum = {
   id: 'id',
   proposed_change_id: 'proposed_change_id',
@@ -423,18 +458,6 @@ exports.Prisma.Tr_authorization_docScalarFieldEnum = {
   department_id: 'department_id',
   section_department_id: 'section_department_id',
   updated_at: 'updated_at'
-};
-
-exports.Prisma.Tr_authdoc_approvalScalarFieldEnum = {
-  id: 'id',
-  authdoc_id: 'authdoc_id',
-  auth_id: 'auth_id',
-  step: 'step',
-  actor: 'actor',
-  employee_code: 'employee_code',
-  status: 'status',
-  updated_date: 'updated_date',
-  created_date: 'created_date'
 };
 
 exports.Prisma.Tr_proposed_changesScalarFieldEnum = {
@@ -468,29 +491,6 @@ exports.Prisma.Tr_proposed_changesScalarFieldEnum = {
   is_deleted: 'is_deleted'
 };
 
-exports.Prisma.Tr_authdoc_historyScalarFieldEnum = {
-  id: 'id',
-  description: 'description',
-  employee_code: 'employee_code',
-  authdoc_id: 'authdoc_id',
-  auth_id: 'auth_id',
-  note: 'note',
-  status: 'status',
-  created_date: 'created_date',
-  updated_date: 'updated_date',
-  created_by: 'created_by'
-};
-
-exports.Prisma.Tr_authdoc_memberScalarFieldEnum = {
-  id: 'id',
-  authdoc_id: 'authdoc_id',
-  employee_code: 'employee_code',
-  employee_name: 'employee_name',
-  status: 'status',
-  created_date: 'created_date',
-  is_deleted: 'is_deleted'
-};
-
 exports.Prisma.Tr_handoverScalarFieldEnum = {
   id: 'id',
   doc_number: 'doc_number',
@@ -510,9 +510,12 @@ exports.Prisma.Tr_handoverScalarFieldEnum = {
   remark: 'remark',
   created_by: 'created_by',
   created_date: 'created_date',
+  finished_date: 'finished_date',
   updated_at: 'updated_at',
   updated_by: 'updated_by',
-  is_deleted: 'is_deleted'
+  is_deleted: 'is_deleted',
+  is_finished: 'is_finished',
+  star: 'star'
 };
 
 exports.Prisma.Tr_handover_approvalScalarFieldEnum = {
@@ -523,6 +526,12 @@ exports.Prisma.Tr_handover_approvalScalarFieldEnum = {
   actor: 'actor',
   employee_code: 'employee_code',
   status: 'status',
+  rating: 'rating',
+  review: 'review',
+  rating_date: 'rating_date',
+  last_rating_reminder_sent: 'last_rating_reminder_sent',
+  rating_reminder_count: 'rating_reminder_count',
+  finished_date: 'finished_date',
   updated_date: 'updated_date',
   created_date: 'created_date'
 };
@@ -772,6 +781,26 @@ exports.Prisma.mst_support_documentOrderByRelevanceFieldEnum = {
   updated_by: 'updated_by'
 };
 
+exports.Prisma.tr_authdoc_approvalOrderByRelevanceFieldEnum = {
+  actor: 'actor',
+  employee_code: 'employee_code',
+  status: 'status'
+};
+
+exports.Prisma.tr_authdoc_historyOrderByRelevanceFieldEnum = {
+  description: 'description',
+  employee_code: 'employee_code',
+  note: 'note',
+  status: 'status',
+  created_by: 'created_by'
+};
+
+exports.Prisma.tr_authdoc_memberOrderByRelevanceFieldEnum = {
+  employee_code: 'employee_code',
+  employee_name: 'employee_name',
+  status: 'status'
+};
+
 exports.Prisma.tr_authorization_docOrderByRelevanceFieldEnum = {
   doc_number: 'doc_number',
   evaluation: 'evaluation',
@@ -783,12 +812,6 @@ exports.Prisma.tr_authorization_docOrderByRelevanceFieldEnum = {
   status: 'status',
   progress: 'progress',
   created_by: 'created_by'
-};
-
-exports.Prisma.tr_authdoc_approvalOrderByRelevanceFieldEnum = {
-  actor: 'actor',
-  employee_code: 'employee_code',
-  status: 'status'
 };
 
 exports.Prisma.tr_proposed_changesOrderByRelevanceFieldEnum = {
@@ -809,20 +832,6 @@ exports.Prisma.tr_proposed_changesOrderByRelevanceFieldEnum = {
   progresssupport: 'progresssupport'
 };
 
-exports.Prisma.tr_authdoc_historyOrderByRelevanceFieldEnum = {
-  description: 'description',
-  employee_code: 'employee_code',
-  note: 'note',
-  status: 'status',
-  created_by: 'created_by'
-};
-
-exports.Prisma.tr_authdoc_memberOrderByRelevanceFieldEnum = {
-  employee_code: 'employee_code',
-  employee_name: 'employee_name',
-  status: 'status'
-};
-
 exports.Prisma.tr_handoverOrderByRelevanceFieldEnum = {
   doc_number: 'doc_number',
   progress: 'progress',
@@ -836,7 +845,8 @@ exports.Prisma.tr_handoverOrderByRelevanceFieldEnum = {
 exports.Prisma.tr_handover_approvalOrderByRelevanceFieldEnum = {
   actor: 'actor',
   employee_code: 'employee_code',
-  status: 'status'
+  status: 'status',
+  review: 'review'
 };
 
 exports.Prisma.tr_handover_historyOrderByRelevanceFieldEnum = {
@@ -932,11 +942,11 @@ exports.Prisma.ModelName = {
   tbl_support_document_noted: 'tbl_support_document_noted',
   tbl_support_document_file: 'tbl_support_document_file',
   mst_support_document: 'mst_support_document',
-  tr_authorization_doc: 'tr_authorization_doc',
   tr_authdoc_approval: 'tr_authdoc_approval',
-  tr_proposed_changes: 'tr_proposed_changes',
   tr_authdoc_history: 'tr_authdoc_history',
   tr_authdoc_member: 'tr_authdoc_member',
+  tr_authorization_doc: 'tr_authorization_doc',
+  tr_proposed_changes: 'tr_proposed_changes',
   tr_handover: 'tr_handover',
   tr_handover_approval: 'tr_handover_approval',
   tr_handover_history: 'tr_handover_history',

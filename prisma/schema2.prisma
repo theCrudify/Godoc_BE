@@ -422,6 +422,58 @@ model mst_support_document {
   supportDocument tbl_support_document[]
 }
 
+
+
+model tr_authdoc_approval {
+  id                Int                   @id @default(autoincrement())
+  authdoc_id        Int?
+  auth_id           Int?
+  step              Int?
+  actor             String?               @db.VarChar(255)
+  employee_code     String?               @db.VarChar(255)
+  status            String?               @db.VarChar(255)
+  updated_date      DateTime?             @updatedAt @db.Timestamp(0)
+  created_date      DateTime?             @db.DateTime(0)
+  authorization     mst_authorization?    @relation("AuthToAuthdocApproval", fields: [auth_id], references: [id])
+  authorization_doc tr_authorization_doc? @relation("DocToAuthdocApproval", fields: [authdoc_id], references: [id])
+
+  @@index([authdoc_id])
+  @@index([auth_id])
+}
+
+
+
+model tr_authdoc_history {
+  id                Int                   @id @default(autoincrement())
+  description       String?               @db.VarChar(255)
+  employee_code     String?               @db.VarChar(255)
+  authdoc_id        Int?
+  auth_id           Int?
+  note              String?               @db.VarChar(255)
+  status            String?               @db.VarChar(255)
+  created_date      DateTime?             @db.DateTime(0)
+  updated_date      DateTime?             @updatedAt @db.Timestamp(0)
+  created_by        String?               @db.VarChar(255)
+  authorization     mst_authorization?    @relation("AuthToAuthdocHistory", fields: [auth_id], references: [id])
+  authorization_doc tr_authorization_doc? @relation("DocToAuthdocHistory", fields: [authdoc_id], references: [id])
+
+  @@index([authdoc_id])
+  @@index([auth_id])
+}
+
+model tr_authdoc_member {
+  id                Int                   @id @default(autoincrement())
+  authdoc_id        Int?
+  employee_code     String?               @db.VarChar(255)
+  employee_name     String?               @db.VarChar(255)
+  status            String?               @db.VarChar(255)
+  created_date      DateTime?             @db.DateTime(0)
+  is_deleted        Boolean
+  authorization_doc tr_authorization_doc? @relation("DocToAuthdocMember", fields: [authdoc_id], references: [id])
+
+  @@index([authdoc_id])
+}
+
 model tr_authorization_doc {
   id                     Int                      @id @default(autoincrement())
   proposed_change_id     Int?
@@ -458,23 +510,6 @@ model tr_authorization_doc {
   @@index([plant_id], map: "tr_additional_doc_plant_id_fkey")
   @@index([department_id], map: "tr_additional_doc_department_id_fkey")
   @@index([section_department_id], map: "tr_additional_doc_section_department_id_fkey")
-}
-
-model tr_authdoc_approval {
-  id                Int                   @id @default(autoincrement())
-  authdoc_id        Int?
-  auth_id           Int?
-  step              Int?
-  actor             String?               @db.VarChar(255)
-  employee_code     String?               @db.VarChar(255)
-  status            String?               @db.VarChar(255)
-  updated_date      DateTime?             @updatedAt @db.Timestamp(0)
-  created_date      DateTime?             @db.DateTime(0)
-  authorization     mst_authorization?    @relation("AuthToAuthdocApproval", fields: [auth_id], references: [id])
-  authorization_doc tr_authorization_doc? @relation("DocToAuthdocApproval", fields: [authdoc_id], references: [id])
-
-  @@index([authdoc_id])
-  @@index([auth_id])
 }
 
 model tr_proposed_changes {
@@ -527,37 +562,6 @@ model tr_proposed_changes {
   @@index([auth_id])
 }
 
-model tr_authdoc_history {
-  id                Int                   @id @default(autoincrement())
-  description       String?               @db.VarChar(255)
-  employee_code     String?               @db.VarChar(255)
-  authdoc_id        Int?
-  auth_id           Int?
-  note              String?               @db.VarChar(255)
-  status            String?               @db.VarChar(255)
-  created_date      DateTime?             @db.DateTime(0)
-  updated_date      DateTime?             @updatedAt @db.Timestamp(0)
-  created_by        String?               @db.VarChar(255)
-  authorization     mst_authorization?    @relation("AuthToAuthdocHistory", fields: [auth_id], references: [id])
-  authorization_doc tr_authorization_doc? @relation("DocToAuthdocHistory", fields: [authdoc_id], references: [id])
-
-  @@index([authdoc_id])
-  @@index([auth_id])
-}
-
-model tr_authdoc_member {
-  id                Int                   @id @default(autoincrement())
-  authdoc_id        Int?
-  employee_code     String?               @db.VarChar(255)
-  employee_name     String?               @db.VarChar(255)
-  status            String?               @db.VarChar(255)
-  created_date      DateTime?             @db.DateTime(0)
-  is_deleted        Boolean
-  authorization_doc tr_authorization_doc? @relation("DocToAuthdocMember", fields: [authdoc_id], references: [id])
-
-  @@index([authdoc_id])
-}
-
 model tr_handover {
   id                                                        Int                       @id @default(autoincrement())
   doc_number                                                String?                   @db.VarChar(255)
@@ -577,11 +581,13 @@ model tr_handover {
   remark                                                    String?                   @db.Text
   created_by                                                String?                   @db.VarChar(255)
   created_date                                              DateTime?                 @db.DateTime(0)
+  finished_date                                              DateTime?                 @db.DateTime(0)
+
   updated_at                                                DateTime?                 @db.DateTime(0)
   updated_by                                                String?                   @db.VarChar(255)
   is_deleted                                                Boolean?                  @default(false)
   is_finished                                               Boolean?                  @default(false)
-  star                                                      Int?                     // ⭐️ nilai agregat atau akhir rating
+  star                                                      Decimal?                 // Use Decimal instead of Int
 
   email_tracking_handover                                   email_tracking_handover[]
   mst_authorization_tr_handover_auth_idTomst_authorization  mst_authorization?        @relation("tr_handover_auth_idTomst_authorization", fields: [auth_id], references: [id], onUpdate: NoAction, map: "tr_handover_ibfk_1")
@@ -610,23 +616,31 @@ model tr_handover {
 }
 
 model tr_handover_approval {
-  id                Int                @id @default(autoincrement())
-  handover_id       Int?
-  auth_id           Int?
-  step              Int?
-  actor             String?            @db.VarChar(255)
-  employee_code     String?            @db.VarChar(255)
-  status            String?            @db.VarChar(255)
-  rating            Int?               // 📝 rating dari approver
-  review            String?            @db.Text // 📝 review deskriptif dari approver
-  updated_date      DateTime?          @db.DateTime(0)
-  created_date      DateTime?          @db.DateTime(0)
-  tr_handover       tr_handover?       @relation(fields: [handover_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "tr_handover_approval_ibfk_1")
-  mst_authorization mst_authorization? @relation(fields: [auth_id], references: [id], onUpdate: NoAction, map: "tr_handover_approval_ibfk_2")
+  id                        Int                @id @default(autoincrement())
+  handover_id               Int?
+  auth_id                   Int?
+  step                      Int?
+  actor                     String?            @db.VarChar(255)
+  employee_code             String?            @db.VarChar(255)
+  status                    String?            @db.VarChar(255)
+  rating                    Int?               // 📝 rating dari approver
+  review                    String?            @db.Text // 📝 review deskriptif dari approver
+  rating_date               DateTime?          // 📝 waktu ketika rating disubmit
+
+  last_rating_reminder_sent DateTime?          // Tracks when the last reminder was sent
+  rating_reminder_count     Int?               @default(0) // Tracks how many reminders were sent
+  finished_date             DateTime?          // When the handover was marked as finished
+
+  updated_date              DateTime?          @db.DateTime(0)
+  created_date              DateTime?          @db.DateTime(0)
+
+  tr_handover               tr_handover?       @relation(fields: [handover_id], references: [id], onDelete: Cascade, onUpdate: NoAction, map: "tr_handover_approval_ibfk_1")
+  mst_authorization         mst_authorization? @relation(fields: [auth_id], references: [id], onUpdate: NoAction, map: "tr_handover_approval_ibfk_2")
 
   @@index([auth_id], map: "auth_id")
   @@index([handover_id], map: "handover_id")
 }
+
 
 model tr_handover_history {
   id                Int                @id @default(autoincrement())

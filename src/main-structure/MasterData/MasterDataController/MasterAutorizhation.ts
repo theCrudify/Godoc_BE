@@ -103,6 +103,8 @@ export const getAllAuthorizations = async (req: Request, res: Response): Promise
         const hasNextPage = page < totalPages;
         const hasPreviousPage = page > 1;
 
+       
+        // Modify this return statement in the getAllAuthorizations function:
         res.status(200).json({
             data: authorizations.map(auth => ({
                 id: auth.id,
@@ -112,6 +114,15 @@ export const getAllAuthorizations = async (req: Request, res: Response): Promise
                 section_name: auth.section?.section_name ?? null,
                 plant_code: auth.plant?.plant_code ?? null,
                 role_name: auth.role?.role_name ?? null,
+                // Add these fields for the edit form
+                department_id: auth.department_id,
+                section_id: auth.section_id,
+                plant_id: auth.plant_id,
+                role_id: auth.role_id,
+                // Include these additional fields
+                email: auth.email,
+                number_phone: auth.number_phone,
+                gender: auth.gender,
                 status: auth.status,
                 created_by: auth.created_by,
                 created_at: auth.created_at,
@@ -161,6 +172,9 @@ export const updateAuthorization = async (req: Request, res: Response): Promise<
     try {
         const id = parseInt(req.params.id);
         const data = req.body;
+        
+        console.log("🔍 Update Authorization ID:", id);
+        console.log("📝 Update Data:", data);
 
         if (isNaN(id)) {
             res.status(400).json({ error: "Invalid ID" });
@@ -168,7 +182,7 @@ export const updateAuthorization = async (req: Request, res: Response): Promise<
         }
 
         const authorization = await prismaDB2.mst_authorization.findFirst({
-            where: { id, status: true },
+            where: { id, is_deleted: false },
         });
 
         if (!authorization) {
@@ -176,6 +190,7 @@ export const updateAuthorization = async (req: Request, res: Response): Promise<
             return;
         }
 
+        // Pastikan semua field yang diperlukan ada dalam permintaan update
         const updatedAuthorization = await prismaDB2.mst_authorization.update({
             where: { id },
             data: {
@@ -186,20 +201,26 @@ export const updateAuthorization = async (req: Request, res: Response): Promise<
                 plant_id: data.plant_id,
                 role_id: data.role_id,
                 status: data.status,
+                // Tambahkan field-field ini
+                email: data.email,
+                number_phone: data.number_phone,
+                gender: data.gender || 'M',
                 updated_by: data.updated_by,
                 updated_at: new Date(),
             },
         });
+        
+        console.log("✅ Updated Authorization:", updatedAuthorization);
 
         res.status(200).json({ message: "Authorization updated successfully", data: updatedAuthorization });
-    } catch (error) {
-        console.error(error);
-        res.status(500).json({ error: "Internal Server Error" });
+    } catch (error: any) {
+        console.error("❌ Error Updating Authorization:", error);
+        console.error("Stack:", error.stack);
+        
+        res.status(500).json({ error: "Internal Server Error", details: error.message });
     }
 };
 
-
-// Buat Authorization baru
 export const createAuthorization = async (req: Request, res: Response): Promise<void> => {
     try {
         console.log("🔍 Incoming POST:", req.body);
@@ -225,7 +246,7 @@ export const createAuthorization = async (req: Request, res: Response): Promise<
             return;
         }
 
-        // Buat entri baru
+        // Buat entri baru dengan field email, number_phone, dan gender
         const newAuthorization = await prismaDB2.mst_authorization.create({
             data: {
                 employee_code: data.employee_code,
@@ -235,7 +256,13 @@ export const createAuthorization = async (req: Request, res: Response): Promise<
                 plant_id: data.plant_id,
                 role_id: data.role_id,
                 status: data.status ?? true,
+                // Tambahkan field-field ini
+                email: data.email,
+                number_phone: data.number_phone,
+                gender: data.gender || 'M',
                 created_by: data.created_by,
+                created_at: new Date(),
+                updated_at: new Date()
             },
         });
 
@@ -244,6 +271,8 @@ export const createAuthorization = async (req: Request, res: Response): Promise<
         res.status(201).json({ message: "Authorization created successfully", data: newAuthorization });
     } catch (error: any) {
         console.error("❌ Error Creating Authorization:", error);
+        // Log stack trace untuk debugging lebih detail
+        console.error("Stack:", error.stack);
 
         res.status(500).json({ error: "Internal Server Error", details: error.message });
     }

@@ -44,6 +44,7 @@ export const getAllProposedChangesWithRelations = async (req: Request, res: Resp
             });
         }
 
+        // Add other query conditions (auth_id, status, etc.)
         if (req.query.auth_id) {
             andConditions.push({ auth_id: Number(req.query.auth_id) });
         }
@@ -52,62 +53,35 @@ export const getAllProposedChangesWithRelations = async (req: Request, res: Resp
             andConditions.push({ status: req.query.status as string });
         }
 
-        if (req.query.change_type) {
-            andConditions.push({ change_type: req.query.change_type as string });
-        }
-
-        if (req.query.plant_id) {
-            andConditions.push({ plant_id: Number(req.query.plant_id) });
-        }
-
-        if (req.query.department_id) {
-            andConditions.push({ department_id: Number(req.query.department_id) });
-        }
-
-        if (req.query.section_department_id) {
-            andConditions.push({ section_department_id: Number(req.query.section_department_id) });
-        }
-
-        if (req.query.line_code) {
-            andConditions.push({ line_code: req.query.line_code as string });
-        }
-
-        if (req.query.need_engineering_approval !== undefined) {
-            andConditions.push({
-                need_engineering_approval: req.query.need_engineering_approval === "true"
-            });
-        }
-
-        if (req.query.need_production_approval !== undefined) {
-            andConditions.push({
-                need_production_approval: req.query.need_production_approval === "true"
-            });
-        }
-
-        if (req.query.progress) {
-            andConditions.push({ progress: req.query.progress as string });
-        }
-
-        if (req.query.created_by) {
-            andConditions.push({ created_by: req.query.created_by as string });
-        }
+        // Add remaining filter conditions (if needed)
+        // ...
 
         if (andConditions.length > 0) {
             whereCondition.AND = andConditions;
         }
 
-        // Get the proposed changes data
+        // Select only the fields we need for the main query
         const [proposedChanges, totalCount] = await prismaDB2.$transaction([
             prismaDB2.tr_proposed_changes.findMany({
                 where: whereCondition,
                 skip: offset,
                 take: limit,
                 orderBy,
-                include: {
-                    plant: true,
-                    department: true,
-                    section_department: true,
-                    documentNumber: true
+                select: {
+                    id: true,
+                    project_name: true,
+                    document_number_id: true,
+                    line_code: true,
+                    section_code: true,
+                    status: true,
+                    progress: true,
+                    progresssupport: true,
+                    created_date: true,
+                    documentNumber: {
+                        select: {
+                            running_number: true
+                        }
+                    }
                 }
             }),
             prismaDB2.tr_proposed_changes.count({
@@ -115,10 +89,10 @@ export const getAllProposedChangesWithRelations = async (req: Request, res: Resp
             }),
         ]);
 
-        // Fetch related data separately to avoid type issues
+        // Fetch only necessary related data 
         const proposedChangeIds = proposedChanges.map(pc => pc.id);
         
-        // Get authorization docs for these proposed changes
+        // Get minimal authorization doc info
         const authDocs = await prismaDB2.tr_authorization_doc.findMany({
             where: {
                 proposed_change_id: {
@@ -133,7 +107,7 @@ export const getAllProposedChangesWithRelations = async (req: Request, res: Resp
             }
         });
         
-        // Get handovers for these proposed changes
+        // Get minimal handover info
         const handovers = await prismaDB2.tr_handover.findMany({
             where: {
                 proposed_change_id: {
@@ -144,7 +118,10 @@ export const getAllProposedChangesWithRelations = async (req: Request, res: Resp
                 id: true,
                 doc_number: true,
                 proposed_change_id: true,
-                progress: true
+                progress: true,
+                is_finished: true,
+                star: true,
+                status: true
             }
         });
 
@@ -170,40 +147,42 @@ export const getAllProposedChangesWithRelations = async (req: Request, res: Resp
             }
         });
 
-        // Format the results to add the additional information
+        // Format the results with only necessary data
         const formattedProposedChanges = proposedChanges.map(item => {
             const relatedAuthDocs = authDocsByProposedChangeId[item.id] || [];
             const relatedHandovers = handoversByProposedChangeId[item.id] || [];
-            
+        
+            // Only send minimal handover data needed for UI
+            const handoverData = relatedHandovers.length > 0 ? {
+                is_finished: relatedHandovers[0].is_finished || false,
+                star: relatedHandovers[0].star || 0
+            } : null;
+        
             return {
-                ...item,
-                document_number: (item.documentNumber as any)?.running_number || "not yet",
-                has_authorization_doc: relatedAuthDocs.length > 0 ? 
-                    relatedAuthDocs.map(doc => doc.doc_number).join(", ") : 
-                    "not yet",
-                authorization_doc_ids: relatedAuthDocs.length > 0 ?
-                    relatedAuthDocs.map(doc => doc.id) :
-                    [],
-                authorization_doc_progress: relatedAuthDocs.length > 0 ?
-                    relatedAuthDocs.map(doc => ({
-                        id: doc.id,
-                        doc_number: doc.doc_number,
-                        progress: doc.progress || "not available"
-                    })) :
-                    [],
-                has_handover: relatedHandovers.length > 0 ? 
-                    relatedHandovers.map(handover => handover.doc_number).join(", ") : 
-                    "not yet",
-                handover_ids: relatedHandovers.length > 0 ?
-                    relatedHandovers.map(handover => handover.id) :
-                    [],
-                handover_progress: relatedHandovers.length > 0 ?
-                    relatedHandovers.map(handover => ({
-                        id: handover.id,
-                        doc_number: handover.doc_number,
-                        progress: handover.progress || "not available"
-                    })) :
-                    []
+                id: item.id,
+                project_name: item.project_name,
+                documentNumber: item.documentNumber,
+                status: item.status,
+                progress: item.progress,
+                progresssupport: item.progresssupport,
+                created_date: item.created_date,
+                
+                // Auth doc related info
+                authorization_doc_ids: relatedAuthDocs.map(doc => doc.id),
+                authorization_doc_progress: relatedAuthDocs.map(doc => ({
+                    id: doc.id,
+                    progress: doc.progress || "0%"
+                })),
+                
+                // Handover related info
+                handover_ids: relatedHandovers.map(handover => handover.id),
+                handover_progress: relatedHandovers.map(handover => ({
+                    id: handover.id,
+                    progress: handover.progress || "0%"
+                })),
+                
+                // Minimal all_handover_data with only what's needed
+                all_handover_data: handoverData
             };
         });
 
@@ -274,18 +253,25 @@ export const getProposedChangeByIdWithRelations = async (req: Request, res: Resp
         });
         
         // Get handovers for this proposed change
+        // const handovers = await prismaDB2.tr_handover.findMany({
+        //     where: {
+        //         proposed_change_id: proposedChangeId
+        //     },
+        //     select: {
+        //         id: true,
+        //         doc_number: true,
+        //         proposed_change_id: true,
+        //         progress: true
+        //     }
+        // });
+
         const handovers = await prismaDB2.tr_handover.findMany({
             where: {
-                proposed_change_id: proposedChangeId
-            },
-            select: {
-                id: true,
-                doc_number: true,
-                proposed_change_id: true,
-                progress: true
+                 proposed_change_id: proposedChangeId
+                
             }
         });
-
+        
         // Format the result to add the additional information
         const formattedProposedChange = {
             ...proposedChange,
@@ -615,3 +601,337 @@ export const createSupportDocuments = async (req: Request, res: Response): Promi
     }
 };
 
+
+
+
+export const getAllProposedChangesWithRelationsbyApprover = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const page = Number(req.query.page) || 1;
+        const limit = Number(req.query.limit) || 10;
+        const searchTerm = (req.query.search as string) || "";
+        const sortColumn = (req.query.sort as string) || "id";
+        const sortDirection = req.query.direction === "desc" ? "desc" : "asc";
+        const approver_id = req.params.approver_id ? Number(req.params.approver_id) : undefined;
+
+        const validSortColumns = [
+            "id", "project_name", "document_number_id", "item_changes",
+            "line_code", "section_code", "department_id",
+            "section_department_id", "plant_id", "change_type",
+            "status", "created_date", "planning_start", "planning_end",
+            "progress", "need_engineering_approval", "need_production_approval"
+        ];
+
+        const orderBy: any = validSortColumns.includes(sortColumn)
+            ? { [sortColumn]: sortDirection }
+            : { id: "asc" };
+
+        const offset = (page - 1) * limit;
+
+        const whereCondition: any = {
+            is_deleted: false
+        };
+
+        const andConditions = [];
+
+        if (searchTerm) {
+            andConditions.push({
+                OR: [
+                    { project_name: { contains: searchTerm } },
+                    { item_changes: { contains: searchTerm } },
+                    { line_code: { contains: searchTerm } },
+                    { section_code: { contains: searchTerm } },
+                    { change_type: { contains: searchTerm } },
+                    { description: { contains: searchTerm } },
+                    { status: { contains: searchTerm } }
+                ]
+            });
+        }
+
+        // Step 1: If approver_id is provided, find all handovers they're associated with
+        let handoverIdsForApprover: number[] = [];
+        
+        if (approver_id) {
+            const approverHandovers = await prismaDB2.tr_handover_approval.findMany({
+                where: {
+                    auth_id: approver_id
+                },
+                select: {
+                    handover_id: true
+                }
+            });
+            
+            handoverIdsForApprover = approverHandovers
+                .filter(item => item.handover_id !== null)
+                .map(item => item.handover_id as number);
+                
+            // If the approver has no handovers, return empty result early
+            if (handoverIdsForApprover.length === 0) {
+                res.status(200).json({
+                    data: [],
+                    pagination: {
+                        totalCount: 0,
+                        totalPages: 0,
+                        currentPage: page,
+                        limit,
+                        hasNextPage: false,
+                        hasPreviousPage: false
+                    },
+                });
+                return;
+            }
+            
+            // Step 2: Find all proposed changes connected to these handovers that are finished
+            const handoversWithPCIds = await prismaDB2.tr_handover.findMany({
+                where: {
+                    id: {
+                        in: handoverIdsForApprover
+                    },
+                    is_finished: true
+                },
+                select: {
+                    proposed_change_id: true
+                }
+            });
+
+            
+            const proposedChangeIds = handoversWithPCIds
+                .filter(item => item.proposed_change_id !== null)
+                .map(item => item.proposed_change_id as number);
+                
+            // If there are no related proposed changes, return empty result
+            if (proposedChangeIds.length === 0) {
+                res.status(200).json({
+                    data: [],
+                    pagination: {
+                        totalCount: 0,
+                        totalPages: 0,
+                        currentPage: page,
+                        limit,
+                        hasNextPage: false,
+                        hasPreviousPage: false
+                    },
+                });
+                return;
+            }
+            
+            // Add the proposed change ids to the where condition
+            andConditions.push({
+                id: {
+                    in: proposedChangeIds
+                }
+            });
+        }
+
+        // Combine all conditions
+        if (andConditions.length > 0) {
+            whereCondition.AND = andConditions;
+        }
+
+        // Step 3: Execute the main query to get the proposed changes and related data
+        const [proposedChanges, totalCount] = await prismaDB2.$transaction([
+            prismaDB2.tr_proposed_changes.findMany({
+                where: whereCondition,
+                skip: offset,
+                take: limit,
+                orderBy,
+                select: {
+                    id: true,
+                    project_name: true,
+                    document_number_id: true,
+                    line_code: true,
+                    section_code: true,
+                    status: true,
+                    progress: true,
+                    progresssupport: true,
+                    created_date: true,
+                    documentNumber: {
+                        select: {
+                            running_number: true
+                        }
+                    }
+                }
+            }),
+            prismaDB2.tr_proposed_changes.count({
+                where: whereCondition
+            }),
+        ]);
+
+        // Fetch related authorization docs and handovers for the proposed changes
+        const proposedChangeIds = proposedChanges.map(pc => pc.id);
+        
+        const authDocs = await prismaDB2.tr_authorization_doc.findMany({
+            where: {
+                proposed_change_id: {
+                    in: proposedChangeIds
+                }
+            },
+            select: {
+                id: true,
+                doc_number: true,
+                proposed_change_id: true,
+                progress: true
+            }
+        });
+
+        const handovers = await prismaDB2.tr_handover.findMany({
+            where: {
+                proposed_change_id: {
+                    in: proposedChangeIds
+                }
+            },
+            select: {
+                id: true,
+                doc_number: true,
+                proposed_change_id: true,
+                progress: true,
+                is_finished: true,
+                star: true,
+                status: true
+            }
+        });
+        
+        // Get all handover IDs to fetch their approvals
+        const handoverIds = handovers.map(h => h.id);
+        
+        // Fetch handover approvals
+        const handoverApprovals = await prismaDB2.tr_handover_approval.findMany({
+            where: {
+                handover_id: {
+                    in: handoverIds
+                }
+            },
+            select: {
+                id: true,
+                handover_id: true,
+                auth_id: true,
+                step: true,
+                actor: true,
+                employee_code: true,
+                status: true,
+                rating: true,
+                review: true,
+                finished_date: true,
+                created_date: true,
+                updated_date: true
+            }
+        });
+
+        // Group authorization docs and handovers by proposed_change_id
+        const authDocsByProposedChangeId: Record<number, typeof authDocs> = {};
+        const handoversByProposedChangeId: Record<number, typeof handovers> = {};
+        const handoverApprovalsByHandoverId: Record<number, typeof handoverApprovals> = {};
+        
+        authDocs.forEach(doc => {
+            if (doc.proposed_change_id) {
+                if (!authDocsByProposedChangeId[doc.proposed_change_id]) {
+                    authDocsByProposedChangeId[doc.proposed_change_id] = [];
+                }
+                authDocsByProposedChangeId[doc.proposed_change_id].push(doc);
+            }
+        });
+        
+        handovers.forEach(handover => {
+            if (handover.proposed_change_id) {
+                if (!handoversByProposedChangeId[handover.proposed_change_id]) {
+                    handoversByProposedChangeId[handover.proposed_change_id] = [];
+                }
+                handoversByProposedChangeId[handover.proposed_change_id].push(handover);
+            }
+        });
+        
+        // Group handover approvals by handover_id
+        handoverApprovals.forEach(approval => {
+            if (approval.handover_id) {
+                if (!handoverApprovalsByHandoverId[approval.handover_id]) {
+                    handoverApprovalsByHandoverId[approval.handover_id] = [];
+                }
+                handoverApprovalsByHandoverId[approval.handover_id].push(approval);
+            }
+        });
+
+        // Format the results with only necessary data
+        const formattedProposedChanges = proposedChanges.map(item => {
+            const relatedAuthDocs = authDocsByProposedChangeId[item.id] || [];
+            const relatedHandovers = handoversByProposedChangeId[item.id] || [];
+            
+            // Process handovers and their approvals
+            const handoversWithApprovals = relatedHandovers.map(handover => {
+                const approvals = handoverApprovalsByHandoverId[handover.id] || [];
+                
+                return {
+                    id: handover.id,
+                    doc_number: handover.doc_number,
+                    progress: handover.progress || "0%",
+                    status: handover.status,
+                    is_finished: handover.is_finished || false,
+                    star: handover.star || 0,
+                    approvals: approvals.map(approval => ({
+                        id: approval.id,
+                        auth_id: approval.auth_id,
+                        step: approval.step,
+                        actor: approval.actor,
+                        employee_code: approval.employee_code,
+                        status: approval.status,
+                        rating: approval.rating,
+                        review: approval.review,
+                        finished_date: approval.finished_date,
+                        created_date: approval.created_date,
+                        updated_date: approval.updated_date
+                    }))
+                };
+            });
+        
+            const handoverData = relatedHandovers.length > 0 ? {
+                is_finished: relatedHandovers[0].is_finished || false,
+                star: relatedHandovers[0].star || 0
+            } : null;
+        
+            return {
+                id: item.id,
+                project_name: item.project_name,
+                documentNumber: item.documentNumber,
+                status: item.status,
+                progress: item.progress,
+                progresssupport: item.progresssupport,
+                created_date: item.created_date,
+                
+                authorization_doc_ids: relatedAuthDocs.map(doc => doc.id),
+                authorization_doc_progress: relatedAuthDocs.map(doc => ({
+                    id: doc.id,
+                    progress: doc.progress || "0%"
+                })),
+                
+                handover_ids: relatedHandovers.map(handover => handover.id),
+                handover_progress: relatedHandovers.map(handover => ({
+                    id: handover.id,
+                    progress: handover.progress || "0%"
+                })),
+                
+                all_handover_data: handoverData,
+                handovers_with_approvals: handoversWithApprovals
+            };
+        });
+
+        const totalPages = Math.ceil(totalCount / limit);
+        const hasNextPage = page < totalPages;
+        const hasPreviousPage = page > 1;
+
+        res.status(200).json({
+            data: formattedProposedChanges,
+            pagination: {
+                totalCount,
+                totalPages,
+                currentPage: page,
+                limit,
+                hasNextPage,
+                hasPreviousPage
+            },
+        });
+    } catch (error: any) {
+        console.error("❌ Error in getAllProposedChangesWithRelations:", error);
+        res.status(500).json({
+            error: "Internal Server Error",
+            details: process.env.NODE_ENV === 'development' ? error.message : undefined
+        });
+    }
+};
