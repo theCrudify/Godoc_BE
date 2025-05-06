@@ -55,7 +55,7 @@ const getEmailData = async (authorizationDocId: number, authId: number) => {
             step: 'asc'
           }
         }
-      }
+      } 
     });
 
     if (!authorizationDoc) {
