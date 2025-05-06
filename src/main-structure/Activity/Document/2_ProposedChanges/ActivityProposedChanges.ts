@@ -53,6 +53,11 @@ export const getAllProposedChangesWithRelations = async (req: Request, res: Resp
             andConditions.push({ status: req.query.status as string });
         }
 
+        // Tambahkan filter berdasarkan department_id
+        if (req.query.department_id) {
+            andConditions.push({ department_id: Number(req.query.department_id) });
+        }
+
         // Add remaining filter conditions (if needed)
         // ...
 
@@ -73,6 +78,7 @@ export const getAllProposedChangesWithRelations = async (req: Request, res: Resp
                     document_number_id: true,
                     line_code: true,
                     section_code: true,
+                    department_id: true, // Tambahkan department_id di sini
                     status: true,
                     progress: true,
                     progresssupport: true,
@@ -162,6 +168,7 @@ export const getAllProposedChangesWithRelations = async (req: Request, res: Resp
                 id: item.id,
                 project_name: item.project_name,
                 documentNumber: item.documentNumber,
+                department_id: item.department_id, // Tambahkan department_id di sini
                 status: item.status,
                 progress: item.progress,
                 progresssupport: item.progresssupport,
@@ -315,6 +322,7 @@ export const getProposedChangeByIdWithRelations = async (req: Request, res: Resp
         });
     }
 };
+
 
 export const getAllProposedChanges = async (req: Request, res: Response): Promise<void> => {
     try {
@@ -479,7 +487,6 @@ export const getAllProposedChanges = async (req: Request, res: Response): Promis
 };
 
 
-
 export const softDeleteProposedChange = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;
     const updatedBy = req.body.updated_by; // optional: untuk mencatat siapa yang menghapus
@@ -600,8 +607,6 @@ export const createSupportDocuments = async (req: Request, res: Response): Promi
         res.status(500).json({ error: "Internal Server Error", details: error instanceof Error ? error.message : "Unknown error" });
     }
 };
-
-
 
 
 export const getAllProposedChangesWithRelationsbyApprover = async (req: Request, res: Response): Promise<void> => {

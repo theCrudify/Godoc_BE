@@ -179,4 +179,3 @@ function sendIdempotentEmail(
 
 --- 
 
-Kalau kamu mau versi markdown buat ditaruh di GitHub juga, tinggal bilang aja!

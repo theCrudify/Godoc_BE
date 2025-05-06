@@ -14,6 +14,7 @@ import AdditionalDoc from "./routes/routesActivity/AdditionalDoc";
 import AuthDoc from "./routes/routesActivity/ActivityAuthDoc";
 import Handover from "./routes/routesActivity/ActivityHandover";
 import dashboardRoutes from "./main-structure/Activity/Document/0_DAshboard/RouterDashboard";
+import summaryrouter from "./main-structure/Activity/Document/0_DAshboard/summaryrouter";
 
 import { errorHandler } from "./middleware/errorMiddleware";
 import { logger } from "./middleware/loggerMiddleware";
@@ -49,7 +50,7 @@ app.use("/api/users", userRoutes, LoginApps);
 
 app.use("/api/", MasterCompany, MasterDocument); // All Master
 
-app.use("/api/", DocumentNumbers, ProposedChanges, AdditionalDoc, AuthDoc, Handover, dashboardRoutes); //Activity Pag
+app.use("/api/", DocumentNumbers, ProposedChanges, AdditionalDoc, AuthDoc, Handover, dashboardRoutes, summaryrouter); //Activity Pag
 
 // Global Error Handling Middleware
 app.use(errorHandler);

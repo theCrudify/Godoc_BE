@@ -198,6 +198,8 @@ export const getAuthDocByIdApprover = async (req: Request, res: Response): Promi
 };
 
 // Ngisi Approval Secara ID 
+// Fix for updateAuthApprovalStatus function in Authorization_Approver.ts
+
 export const updateAuthApprovalStatus = async (req: Request, res: Response): Promise<void> => {
   console.log("🔍 [START] updateAuthApprovalStatus - Request body:", JSON.stringify(req.body));
   try {
@@ -318,23 +320,24 @@ export const updateAuthApprovalStatus = async (req: Request, res: Response): Pro
     const lockKey = `approval_lock_${authdoc_id}_${auth_id}`;
     console.log(`🔒 Using lock key: ${lockKey}`);
 
-    // Here we'd ideally use Redis or similar for a distributed lock
-    // But for simplicity, we'll implement retry logic with an improved transaction
-
+    // Improved transaction handling with proper retry logic
     let transactionAttempt = 0;
     const maxTransactionAttempts = 3;
     console.log(`⚙️ Max transaction attempts: ${maxTransactionAttempts}`);
 
-    // Variabel untuk melacak berhasil atau tidaknya transaksi
+    // Variable to track transaction success
     let transactionSuccessful = false;
     let transactionError = null;
 
     while (transactionAttempt < maxTransactionAttempts && !transactionSuccessful) {
+      transactionAttempt++;
       try {
-        console.log(`🔄 Starting transaction attempt #${transactionAttempt + 1}`);
-        // Execute entire update logic as a single serialized transaction
+        console.log(`🔄 Starting transaction attempt #${transactionAttempt}`);
+        
+        // Execute entire update logic as a single serialized transaction with increased timeout
         await prismaDB2.$transaction(async (prisma) => {
           console.log("🔄 Inside transaction");
+          
           // Double-check for duplicates inside transaction for extra safety
           console.log("🔍 Double-checking for duplicates inside transaction");
           const duplicateCheck = await prisma.tr_authdoc_history.findFirst({
@@ -351,7 +354,25 @@ export const updateAuthApprovalStatus = async (req: Request, res: Response): Pro
 
           if (duplicateCheck) {
             console.log("⚠️ Duplicate detected inside transaction, skipping updates");
-            // Buat flag untuk menunjukkan transaksi selesai namun karena duplikat
+            // Set flag to indicate transaction completed due to duplicate
+            transactionSuccessful = true;
+            return;
+          }
+
+          // Refetch current approval inside transaction for consistency
+          const freshApproval = await prisma.tr_authdoc_approval.findFirst({
+            where: {
+              id: currentApproval.id
+            }
+          });
+
+          if (!freshApproval) {
+            console.log("❌ Approval record no longer exists in transaction");
+            throw new Error("Approval record not found in transaction");
+          }
+
+          if (freshApproval.status === 'approved') {
+            console.log("⚠️ Approval already marked as approved in transaction, skipping update");
             transactionSuccessful = true;
             return;
           }
@@ -469,10 +490,7 @@ export const updateAuthApprovalStatus = async (req: Request, res: Response): Pro
           let description = '';
           console.log(`🔍 Looking up authorization details for auth_id: ${auth_id}`);
           const authorization = await prisma.mst_authorization.findUnique({
-            where: { id: Number(auth_id) },
-            include: {
-              authorization: true // Get employee data for full name
-            }
+            where: { id: Number(auth_id) }
           });
           console.log("🔍 Authorization details:", authorization ? "Found" : "Not found");
 
@@ -509,45 +527,49 @@ export const updateAuthApprovalStatus = async (req: Request, res: Response): Pro
           });
           console.log("✅ History entry created successfully");
           
-          // Set flag berhasil
+          // Set success flag
           transactionSuccessful = true;
         }, {
-          timeout: 15000,
+          timeout: 30000, // Increase timeout to 30 seconds
           isolationLevel: 'Serializable' // Stronger isolation to prevent concurrent modifications
         });
 
         console.log("✅ Transaction completed successfully");
-        // Jika transaksi berhasil, exit retry loop
-        break;
+        break; // Exit retry loop on success
       } catch (error: any) {
-        console.error(`❌ Transaction error attempt #${transactionAttempt + 1}:`, error);
-        // Simpan error terakhir
+        console.error(`❌ Transaction error attempt #${transactionAttempt}:`, error);
+        // Save the last error
         transactionError = error;
         
         // Handle specific database errors
         if (error.code === 'P2034') { // Prisma transaction failed due to concurrent modification
-          if (transactionAttempt < maxTransactionAttempts - 1) {
-            // Exponential backoff before retry
-            const delay = Math.pow(2, transactionAttempt) * 500; // 500ms, 1000ms, 2000ms
+          if (transactionAttempt < maxTransactionAttempts) {
+            // Exponential backoff before retry with additional randomness to prevent thundering herd
+            const baseDelay = Math.pow(2, transactionAttempt) * 500; // 500ms, 1000ms, 2000ms
+            const jitter = Math.floor(Math.random() * 300); // Add 0-300ms of random jitter
+            const delay = baseDelay + jitter;
             console.log(`⏱️ Retrying after ${delay}ms delay due to conflict`);
             await new Promise(resolve => setTimeout(resolve, delay));
-            transactionAttempt++;
-            console.log(`🔄 Retrying transaction attempt ${transactionAttempt} after conflict`);
+            // Don't increment transactionAttempt here as it's already incremented in the while loop
           } else {
-            console.error("❌ Max retry attempts reached, throwing error");
-            throw error; // Max retries reached
+            console.error("❌ Max retry attempts reached");
+            break; // Exit the retry loop
           }
         } else {
           console.error("❌ Non-retriable error occurred:", error);
           // For other errors, don't retry
-          throw error;
+          break; // Exit the retry loop
         }
       }
     }
 
-    // Jika semua percobaan gagal, lempar error terakhir
-    if (!transactionSuccessful && transactionError) {
-      throw transactionError;
+    // If all attempts failed, throw the last error
+    if (!transactionSuccessful) {
+      if (transactionError) {
+        throw transactionError;
+      } else {
+        throw new Error("Transaction failed after all retry attempts");
+      }
     }
 
     // Get the final updated authorization doc after the transaction
@@ -555,42 +577,44 @@ export const updateAuthApprovalStatus = async (req: Request, res: Response): Pro
     updatedAuthDoc = await getUpdatedAuthDoc(Number(authdoc_id));
     console.log("✅ Retrieved updated auth doc data");
 
-    // Ambil informasi tentang proposed change untuk email
-    console.log(`🔍 Getting proposed change info for email`);
-    const authDoc = await prismaDB2.tr_authorization_doc.findUnique({
-      where: { id: Number(authdoc_id) },
-      include: {
-        proposedChange: true
-      }
-    });
-    console.log("🔍 Auth doc with proposed change:", authDoc ? 
-      `Found (proposed_change_id: ${authDoc.proposed_change_id || 'null'})` : 
-      "Not found");
-
-    // INTEGRATION WITH EMAIL SERVICE - PERBAIKAN UTAMA: SERTAKAN NOTE
+    // FIX FOR EMAIL ERROR: Get the authorization document correctly
     try {
-      // Kirim email sesuai dengan status approval (jika butuh informasi dari proposed changes)
-      if (authDoc?.proposed_change_id) {
-        console.log(`📧 Sending email notification for proposed_change_id: ${authDoc.proposed_change_id}`);
-        console.log(`📝 Using current note LANGSUNG dari request: "${note || ""}"`);
-        
-        // PERBAIKAN: Teruskan note LANGSUNG dari request saat ini ke fungsi email
-        // JANGAN mengambil dari latestHistory.note
-        await sendApprovalEmails(
-          authDoc.proposed_change_id,
-          Number(auth_id),
-          status,
-          currentStep,
-          note || '' // Teruskan note LANGSUNG dari request body ke fungsi email
-        );
-        console.log("✅ Email sent successfully with current note from request");
+      console.log(`🔍 Getting proposed change info for email`);
+      const authDoc = await prismaDB2.tr_authorization_doc.findUnique({
+        where: { id: Number(authdoc_id) },
+        select: {
+          id: true,
+          proposed_change_id: true,
+          proposedChange: true
+        }
+      });
+      
+      if (!authDoc) {
+        console.log(`⚠️ No auth doc found with ID ${authdoc_id} for email notification`);
       } else {
-        console.log("⚠️ No proposed_change_id found, skipping email notification");
+        console.log(`🔍 Auth doc found: ID=${authDoc.id}, proposed_change_id=${authDoc.proposed_change_id || 'null'}`);
+        
+        if (authDoc.proposed_change_id) {
+          console.log(`📧 Sending email notification for authorization document ID: ${authDoc.id}`);
+          console.log(`📝 Using current note from request: "${note || ""}"`);
+          
+          // IMPORTANT FIX: Pass the actual authorization doc ID, not the proposed change ID
+          await sendApprovalEmails(
+            Number(authDoc.id), // Use authDoc.id instead of proposed_change_id
+            Number(auth_id),
+            status,
+            currentStep,
+            note || ''
+          );
+          console.log("✅ Email sent successfully with current note from request");
+        } else {
+          console.log("⚠️ No proposed_change_id associated with this auth doc, skipping email notification");
+        }
       }
     } catch (emailError) {
       console.error("❌ Error sending email notification:", emailError);
       console.error("❌ Email error details:", emailError instanceof Error ? emailError.message : String(emailError));
-      // Continue processing even if email fails - don't blokir proses utama
+      // Continue processing even if email fails - don't block main process
     }
 
     console.log("✅ [END] updateAuthApprovalStatus - Operation completed successfully");
@@ -600,7 +624,7 @@ export const updateAuthApprovalStatus = async (req: Request, res: Response): Pro
     });
 
   } catch (error: any) {
-    console.error("❌ [ERROR] updateApprovalStatus:", error);
+    console.error("❌ [ERROR] updateAuthApprovalStatus:", error);
     console.error("Error stack:", error.stack);
     res.status(500).json({
       error: "Internal Server Error",

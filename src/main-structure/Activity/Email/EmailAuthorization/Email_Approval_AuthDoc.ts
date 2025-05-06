@@ -41,62 +41,49 @@ function hashString(str: string): string {
   return Math.abs(hash).toString(16).padStart(8, '0').substring(0, 8);
 }
 
-// Mendapatkan data untuk email (fungsi ini tetap sama)
-// Mendapatkan data untuk email
-const getEmailData = async (tr_authorization_doc: number, authId: number) => {
+const getEmailData = async (authorizationDocId: number, authId: number) => {
   try {
-    // Mendapatkan data proposed changes
-    const proposedChange = await prismaDB2.tr_proposed_changes.findUnique({
-      where: { id: tr_authorization_doc },
+    // Step 1: Ambil authorization document berdasarkan ID
+    const authorizationDoc = await prismaDB2.tr_authorization_doc.findUnique({
+      where: { id: authorizationDocId },
       include: {
-        authorizationDocs: {
-          where: {
-            proposed_change_id: tr_authorization_doc
-          },
+        authdocApprovals: {
           include: {
-            authdocApprovals: {
-              include: {
-                authorization: true
-              },
-              orderBy: {
-                step: 'asc'
-              }
-            }
+            authorization: true
+          },
+          orderBy: {
+            step: 'asc'
           }
         }
       }
     });
 
-    if (!proposedChange) {
-      throw new Error(`Proposed change with ID ${tr_authorization_doc} not found`);
-    }
-
-    // Mendapatkan authorization document terkait
-    const authorizationDoc = proposedChange.authorizationDocs.length > 0 
-      ? proposedChange.authorizationDocs[0] 
-      : null;
-
     if (!authorizationDoc) {
-      throw new Error(`No authorization document found for proposed change ID ${tr_authorization_doc}`);
+      throw new Error(`Authorization document with ID ${authorizationDocId} not found`);
     }
 
-    // Mendapatkan submitter information
+    // Step 2: Ambil proposed change berdasarkan relasi
+    const proposedChange = await prismaDB2.tr_proposed_changes.findUnique({
+      where: { id: authorizationDoc.proposed_change_id ?? undefined }
+    });
+
+    if (!proposedChange) {
+      throw new Error(`Proposed change with ID ${authorizationDoc.proposed_change_id} not found`);
+    }
+
+    // Step 3: Ambil info submitter
     const submitter = await prismaDB2.mst_authorization.findUnique({
       where: { id: authorizationDoc.auth_id || 0 }
     });
 
-    // Mendapatkan current approver
+    // Step 4: Cari current dan next approver
     const currentApprover = authorizationDoc.authdocApprovals.find(a => a.auth_id === authId);
     if (!currentApprover) {
-      throw new Error(`Approver with auth ID ${authId} not found for this proposed change`);
+      throw new Error(`Approver with auth ID ${authId} not found for this document`);
     }
 
-    // Mendapatkan next approver jika ada
     const currentStep = currentApprover.step || 0;
-    const nextStep = currentStep + 1;
-    const nextApprover = authorizationDoc.authdocApprovals.find(a => a.step === nextStep);
-
-    // Menentukan apakah ini adalah approver terakhir
+    const nextApprover = authorizationDoc.authdocApprovals.find(a => a.step === currentStep + 1);
     const isLastApprover = !nextApprover;
 
     return {
