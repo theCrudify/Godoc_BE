@@ -441,8 +441,6 @@ model tr_authdoc_approval {
   @@index([auth_id])
 }
 
-
-
 model tr_authdoc_history {
   id                Int                   @id @default(autoincrement())
   description       String?               @db.VarChar(255)
