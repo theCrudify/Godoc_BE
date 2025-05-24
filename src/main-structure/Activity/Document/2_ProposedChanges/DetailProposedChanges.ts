@@ -332,7 +332,7 @@ export const viewSupportDocumentFile = async (req: Request, res: Response): Prom
 };
 
 
-
+// Download file
 export const downloadSupportDocumentFile = async (req: Request, res: Response): Promise<void> => {
   const id = Number(req.params.id);
 
@@ -360,7 +360,7 @@ export const downloadSupportDocumentFile = async (req: Request, res: Response): 
   }
 };
 
-
+// Download file with watermark
 export const downloadWithWatermark = async (req: Request, res: Response): Promise<void> => {
   const id = Number(req.params.id);
 
@@ -436,8 +436,7 @@ export const downloadWithWatermark = async (req: Request, res: Response): Promis
 
 
 
-// Untuk Catatan di Detail Proposed Changes
-
+// note for support document
 export const createSupportDocumentNote = async (req: Request, res: Response): Promise<void> => {
   try {
     const data = req.body;
@@ -514,7 +513,8 @@ export const createSupportDocumentNote = async (req: Request, res: Response): Pr
   }
 };
 
-
+//get note by support_doc_id
+// getSupportDocNotes
 export const getSupportDocNotes = async (req: Request, res: Response): Promise<void> => {
   try {
     const { support_doc_id } = req.params;

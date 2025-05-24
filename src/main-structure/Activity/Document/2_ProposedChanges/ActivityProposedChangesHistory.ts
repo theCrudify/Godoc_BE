@@ -1,6 +1,9 @@
 import { Request, Response } from "express";
 import { prismaDB2 } from "../../../../config/database";
 
+// Function to get approval history by proposed_changes_id
+// This function retrieves the approval history for a specific proposed changes ID
+// It uses the Prisma client to query the database and return the results
 export const GethistoryProposedChanges = async (req: Request, res: Response): Promise<void> => {
     try {
         const proposedChangesId = Number(req.params.id);
@@ -35,7 +38,8 @@ export const GethistoryProposedChanges = async (req: Request, res: Response): Pr
 };
 
 
-// Ambil data development berdasarkan ID
+// Function to get a specific proposed changes history by ID
+// This function retrieves a specific proposed changes history by its ID
 export const getProposedChangesHistoryById = async (req: Request, res: Response): Promise<void> => {
     try {
         const id = Number(req.params.id);
@@ -64,7 +68,8 @@ export const getProposedChangesHistoryById = async (req: Request, res: Response)
 };
 
 
-
+// Function to get all proposed changes history
+// This function retrieves all proposed changes history
 export const getAllProposedChangesHistory = async (req: Request, res: Response) => {
     try {
         const histories = await prismaDB2.tr_proposed_changes_history.findMany({

@@ -15,6 +15,12 @@ interface DocumentWhereCondition {
 // Get all document numbers
 
 
+// Fungsi ini akan mengembalikan semua nomor dokumen yang ada di database
+// Fungsi ini juga mendukung pagination dan pencarian berdasarkan beberapa field
+// Fungsi ini akan mengembalikan data dalam format JSON
+// Fungsi ini juga akan mengembalikan informasi pagination seperti totalCount, totalPages, currentPage, limit, hasNextPage, dan hasPreviousPage
+// Fungsi ini juga akan mengembalikan data dalam format JSON
+// Fungsi ini juga akan mengembalikan informasi pagination seperti totalCount, totalPages, currentPage, limit, hasNextPage, dan hasPreviousPage
 export const getAllDocumentNumbers = async (req: Request, res: Response): Promise<void> => {
     try {
         const page = Number(req.query.page) || 1;
@@ -112,6 +118,11 @@ export const getAllDocumentNumbers = async (req: Request, res: Response): Promis
     }
 };
 
+// Fungsi untuk mendapatkan nomor dokumen berdasarkan ID
+// Fungsi ini akan mengembalikan data dokumen berdasarkan ID yang diberikan
+// Jika ID tidak valid, fungsi ini akan mengembalikan pesan kesalahan
+// Jika dokumen tidak ditemukan, fungsi ini akan mengembalikan pesan kesalahan
+// Jika dokumen ditemukan, fungsi ini akan mengembalikan data dokumen yang ditemukan
 export const getDocumentNumberById = async (req: Request, res: Response): Promise<void> => {
     try {
         // 1. Ambil ID dari parameter URL
@@ -172,7 +183,10 @@ export const getDocumentNumberById = async (req: Request, res: Response): Promis
 };
 
 
-
+// Fungsi untuk memvalidasi data input
+// Fungsi ini akan memeriksa apakah semua field yang diperlukan ada dan tidak kosong
+// Jika ada field yang kosong, fungsi ini akan mengembalikan array berisi pesan kesalahan
+// Jika semua field valid, fungsi ini akan mengembalikan array kosong
 function validateAreaData(data: any): string[] {
     const errors: string[] = [];
     if (!data.klasifikasi_document) errors.push("Klasifikasi Document is required.");
@@ -186,6 +200,8 @@ function validateAreaData(data: any): string[] {
     return errors;
 }
 
+// Create Document Number
+// Fungsi untuk membuat nomor dokumen baru
 export const createDocumentNumber = async (req: Request, res: Response): Promise<void> => {
     try {
         const data = req.body;
@@ -306,7 +322,10 @@ export const createDocumentNumber = async (req: Request, res: Response): Promise
 };
 
 
-
+//Delete Document Number
+// Fungsi untuk menghapus nomor dokumen berdasarkan ID
+// Fungsi ini akan menghapus nomor dokumen dari database berdasarkan ID yang diberikan
+// Jika ID tidak valid, fungsi ini akan mengembalikan pesan kesalahan
 export const deleteDocumentNumberById = async (req: Request, res: Response): Promise<void> => {
     try {
         // 1. Ambil ID dari parameter URL

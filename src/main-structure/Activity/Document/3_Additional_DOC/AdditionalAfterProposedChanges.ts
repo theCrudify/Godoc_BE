@@ -172,7 +172,7 @@ export const SupergetProposedChangeById = async (req: Request, res: Response): P
   }
 };
 
-
+// Fungsi untuk mendapatkan deskripsi pengembangan berdasarkan kode
 function getDevelopmentDescription(code: string): string {
   const developmentMap: { [key: string]: string } = {
     "PSD": "Process Development",
@@ -376,7 +376,7 @@ export const updateDocumentNumber = async (req: Request, res: Response): Promise
   }
 };
 
-
+// Fungsi untuk mendapatkan semua dokumen tambahan berdasarkan proposed_change_id
 export const searchByProposedChangeId = async (req: Request, res: Response): Promise<void> => {
   try {
     const { proposed_change_id } = req.query;

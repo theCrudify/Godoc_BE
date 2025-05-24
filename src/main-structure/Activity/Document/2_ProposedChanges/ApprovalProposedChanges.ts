@@ -691,6 +691,7 @@ export const updateApprovalStatus = async (req: Request, res: Response): Promise
 };
 
 // Helper function to get the updated proposed change with all related data
+// This function retrieves the complete proposed change data including all related entities
 const getUpdatedProposedChange = async (proposedChangesId: number) => {
   console.log(`🔍 [getUpdatedProposedChange] Retrieving complete proposed change data for id: ${proposedChangesId}`);
   try {

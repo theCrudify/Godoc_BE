@@ -6,6 +6,7 @@ import { getStatusText, sendEmail, getGenderTitle, getGreeting } from "../../Ema
 import { format } from "date-fns";
 import { id } from "date-fns/locale/id";
 
+//update authorization document
 export const updateAuthDocById = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;

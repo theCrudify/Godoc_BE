@@ -97,7 +97,15 @@ async function fetchHeadData(
     }
 }
 
-
+// Fungsi untuk mendapatkan semua data kepala (section head dan department head)
+// Fungsi ini akan mengembalikan data kepala berdasarkan section_department_id dan line_code
+// Fungsi ini juga akan memfilter data berdasarkan directorship yang telah ditentukan
+// Fungsi ini juga akan menghapus duplikasi berdasarkan employee_code
+// Fungsi ini juga akan memeriksa apakah ada kepala yang tidak memiliki id_authorization
+// Fungsi ini juga akan memeriksa apakah ada kepala yang tidak memiliki employee_code
+// Fungsi ini juga akan memeriksa apakah ada kepala yang tidak memiliki section_id
+// Fungsi ini juga akan memeriksa apakah ada kepala yang tidak memiliki department_id
+// Fungsi ini juga akan memeriksa apakah ada kepala yang tidak memiliki department_name
 async function getAllHeadsData(
     section_department_id: number,
     line_code: string,
@@ -316,6 +324,8 @@ async function createAuthHistory(
 
 
 // Fungsi untuk menyiapkan data approval sesuai urutan yang diinginkan
+// Fungsi ini akan mempersiapkan data approval berdasarkan urutan yang diinginkan
+// Fungsi ini juga akan memeriksa apakah ada kepala yang tidak memiliki id_authorization
 function prepareApprovalData(
     authdoc_id: number,
     heads: HeadData[]
@@ -347,6 +357,7 @@ function prepareApprovalData(
 }
 
 // Create approvals dengan parameter need_engineering_approval dan need_production_approval
+// Fungsi ini akan membuat approval records berdasarkan data kepala yang telah diambil
 async function createdAuthApprovals(
     authdoc_id: number,
     section_department_id: number,
@@ -391,7 +402,10 @@ async function createdAuthApprovals(
     }
 }
 
-// Main function to create proposed change
+// Fungsi ini akan membuat dokumen otorisasi baru
+// Fungsi ini akan memvalidasi data yang diterima dari request body
+// Fungsi ini juga akan membuat entri di tabel tr_authorization_doc
+// Fungsi ini juga akan membuat entri di tabel tr_authdoc_member
 export const createAuthDoc = async (req: Request, res: Response): Promise<void> => {
     try {
         const data = req.body;
@@ -518,6 +532,8 @@ export const createAuthDoc = async (req: Request, res: Response): Promise<void> 
  * @param authdocId ID dokumen otorisasi
  * @param members Array data anggota yang akan ditambahkan
  */
+// Fungsi ini akan membuat entri di tabel tr_authdoc_member
+// Fungsi ini akan memvalidasi data yang diterima dari request body
 const createAuthDocMembers = async (
     authdocId: number,
     members: Array<{ employee_code: string, employee_name: string, status?: string }>
@@ -545,5 +561,7 @@ const createAuthDocMembers = async (
         throw error; // Re-throw untuk ditangani oleh fungsi pemanggil
     }
 };
+
+
 
 export { getAllHeadsData, createAuthHistory, createdAuthApprovals };

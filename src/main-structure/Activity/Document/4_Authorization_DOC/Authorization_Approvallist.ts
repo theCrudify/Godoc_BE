@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { prismaDB2 } from "../../../../config/database";
 
+//Approval List Authorization Document
 export const getApprovalListAuthDoc = async (req: Request, res: Response): Promise<void> => {
   try {
     const proposedChangesId = Number(req.params.id);

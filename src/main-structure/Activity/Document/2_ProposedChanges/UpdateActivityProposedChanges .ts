@@ -3,7 +3,9 @@ import { prismaDB2 } from "../../../../config/database";
 import { createProposedChangeHistory } from "./CreateActivityProposedChanges";
 import { sendUpdateNotificationEmails } from "../../Email/EmailProposedChanges/Email_Update_Proposed"
 
-
+//updateProposedChange
+// Function to update a proposed change
+// This function updates a proposed change record in the database
 export const updateProposedChange = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;

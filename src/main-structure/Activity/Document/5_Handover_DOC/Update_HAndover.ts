@@ -2,7 +2,7 @@ import { Request, Response } from "express";
 import { prismaDB2 } from "../../../../config/database";
 import { sendHandoverUpdateNotificationEmails} from "../../Email/EmailHandover/EmailUpdateHandover"
 
-
+// Update handover document
 export const updateHandover = async (req: Request, res: Response): Promise<void> => {
     try {
         const { id } = req.params;

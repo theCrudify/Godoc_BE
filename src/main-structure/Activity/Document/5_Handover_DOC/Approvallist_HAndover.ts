@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { prismaDB2 } from "../../../../config/database";
 
+//handover approval
 export const getHandoverApproval = async (req: Request, res: Response): Promise<void> => {
   try {
     const handoverId = Number(req.params.id);

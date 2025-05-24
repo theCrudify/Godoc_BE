@@ -1,6 +1,10 @@
 import { Request, Response } from "express";
 import { prismaDB2 } from "../../../../config/database";
 
+// Function to get approval history by proposed_changes_id
+// This function retrieves the approval history for a specific proposed changes ID
+// It uses the Prisma client to query the database and return the results
+// The function is asynchronous and returns a Promise
 export const GetApprovalProposedChanges = async (req: Request, res: Response): Promise<void> => {
   try {
     const proposedChangesId = Number(req.params.id);

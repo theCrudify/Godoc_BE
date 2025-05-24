@@ -361,6 +361,8 @@ export const deleteDocumentFile = async (req: Request, res: Response): Promise<v
 };
 
 
+// Function to update progress support
+// This function updates the progress support for a specific proposed changes ID
 export const updateProgressSupport = async (req: Request, res: Response): Promise<void> => {
   try {
     const id = Number(req.params.id);
@@ -401,6 +403,10 @@ export const updateProgressSupport = async (req: Request, res: Response): Promis
 };
 
 
+// Function to delete additional file (soft delete)
+// This function marks a file as deleted in the database
+// It does not physically delete the file from the server
+// It updates the is_deleted field to true
 export const deleteAdditionalFile = async (req: Request, res: Response): Promise<void> => {
   try {
     const { fileId } = req.params;

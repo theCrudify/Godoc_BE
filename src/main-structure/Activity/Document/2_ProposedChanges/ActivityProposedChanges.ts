@@ -2,6 +2,9 @@ import { Request, Response } from "express";
 import { prismaDB2 } from "../../../../config/database";
 
 // Get all proposed changes with relations
+// This function retrieves all proposed changes from the database
+// It includes related data such as plant, department, section_department, and documentNumber
+// It also fetches related authorization documents and handovers
 export const getAllProposedChangesWithRelations = async (req: Request, res: Response): Promise<void> => {
     try {
         const page = Number(req.query.page) || 1;
@@ -218,6 +221,9 @@ export const getAllProposedChangesWithRelations = async (req: Request, res: Resp
 };
 
 // Get a specific proposed change by ID with relations
+// This function retrieves a specific proposed change by its ID
+// It includes related data such as plant, department, section_department, and documentNumber
+// It also fetches related authorization documents and handovers
 export const getProposedChangeByIdWithRelations = async (req: Request, res: Response): Promise<void> => {
     try {
         const proposedChangeId = Number(req.params.id);
@@ -323,7 +329,12 @@ export const getProposedChangeByIdWithRelations = async (req: Request, res: Resp
     }
 };
 
-
+// Get all proposed changes without relations
+// This function is similar to getAllProposedChangesWithRelations but without the relations
+// and is used for a different endpoint
+// It can be used to get a list of proposed changes without the additional data
+// This is useful for performance reasons when you only need the basic information
+// and not the related data
 export const getAllProposedChanges = async (req: Request, res: Response): Promise<void> => {
     try {
         const page = Number(req.query.page) || 1;
@@ -486,7 +497,11 @@ export const getAllProposedChanges = async (req: Request, res: Response): Promis
     }
 };
 
-
+// Soft delete a proposed change
+// This function marks a proposed change as deleted without actually removing it from the database
+// This is useful for maintaining data integrity and allowing for potential recovery
+// It updates the is_deleted field to true and sets the updated_at timestamp
+// It also allows for tracking who performed the deletion by using the updated_by field
 export const softDeleteProposedChange = async (req: Request, res: Response): Promise<void> => {
     const { id } = req.params;
     const updatedBy = req.body.updated_by; // optional: untuk mencatat siapa yang menghapus
@@ -522,7 +537,12 @@ export const softDeleteProposedChange = async (req: Request, res: Response): Pro
     }
 };
 
-
+// Create support documents
+// This function creates multiple support documents in the database
+// It accepts an array of documents in the request body
+// Each document must have the required fields: created_by, support_doc_id, proposed_id, and document_type
+// It validates the input and returns success or failure messages
+// It also handles errors and returns appropriate status codes
 export const createSupportDocuments = async (req: Request, res: Response): Promise<void> => {
     try {
         const dataList = req.body;
@@ -608,7 +628,17 @@ export const createSupportDocuments = async (req: Request, res: Response): Promi
     }
 };
 
-
+// Get all proposed changes with relations by approver
+// This function is similar to getAllProposedChangesWithRelations but filters the results
+// based on the approver_id provided in the request parameters
+// It retrieves all handovers associated with the approver and then fetches the proposed changes
+// related to those handovers
+// It also handles pagination, sorting, and searching
+// It returns the results in a paginated format with additional information about the handovers
+// and authorization documents
+// This function is useful for displaying the proposed changes that require approval
+// by a specific approver
+// It allows the approver to see all the proposed changes they are responsible for
 export const getAllProposedChangesWithRelationsbyApprover = async (req: Request, res: Response): Promise<void> => {
     try {
         const page = Number(req.query.page) || 1;

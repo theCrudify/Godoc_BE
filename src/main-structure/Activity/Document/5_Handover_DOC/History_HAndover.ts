@@ -1,6 +1,7 @@
 import { Request, Response } from "express";
 import { prismaDB2 } from "../../../../config/database";
 
+//history handover
 export const getHistoryHandover = async (req: Request, res: Response): Promise<void> => {
     try {
         const handoverId = Number(req.params.id); // karena sekarang relasinya ke tr_handover (handover_id)

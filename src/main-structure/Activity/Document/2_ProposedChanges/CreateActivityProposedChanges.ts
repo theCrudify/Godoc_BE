@@ -18,6 +18,8 @@ type HeadData = {
 };
 
 // Function untuk fetch head data (section head atau department head)
+// Fungsi ini akan mengambil data kepala bagian atau kepala departemen berdasarkan tipe model dan ID bagian
+// Fungsi ini juga akan mengembalikan data yang sudah diformat sesuai kebutuhan
 async function fetchHeadData(
   modelType: 'section' | 'department',
   sectionId: number,
@@ -387,6 +389,7 @@ export const createProposedChange = async (req: Request, res: Response): Promise
 
 
     // Create history and approvals in parallel
+    // Using Promise.all to ensure both operations are completed
     await Promise.all([
       createProposedChangeHistory(
         newChange.id,

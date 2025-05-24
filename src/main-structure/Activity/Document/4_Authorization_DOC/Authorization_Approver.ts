@@ -199,7 +199,6 @@ export const getAuthDocByIdApprover = async (req: Request, res: Response): Promi
 
 // Ngisi Approval Secara ID 
 // Fix for updateAuthApprovalStatus function in Authorization_Approver.ts
-
 export const updateAuthApprovalStatus = async (req: Request, res: Response): Promise<void> => {
   console.log("🔍 [START] updateAuthApprovalStatus - Request body:", JSON.stringify(req.body));
   try {

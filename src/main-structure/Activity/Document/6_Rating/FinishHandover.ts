@@ -5,6 +5,7 @@ import { markHandoverAsFinished } from "./EmailRatingReminder";
 /**
  * Endpoint to mark a handover as finished and trigger rating reminders
  */
+//intinya menandakan handover sebagai selesai dan mengirimkan pengingat rating pada kolom is_finished
 export const finishHandover = async (req: Request, res: Response): Promise<void> => {
   try {
     const { id } = req.params;
