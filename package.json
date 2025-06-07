@@ -28,6 +28,7 @@
     },
     "dependencies": {
         "@prisma/client": "^6.3.1",
+        "@types/winston": "^2.4.4",
         "argon2": "^0.41.1",
         "bcryptjs": "^2.4.3",
         "compression": "^1.7.4",
@@ -55,7 +56,9 @@
         "redis": "^4.7.0",
         "sharp": "^0.34.1",
         "useragent": "^2.3.0",
-        "uuid": "^11.1.0"
+        "uuid": "^11.1.0",
+        "winston": "^3.17.0",
+        "zod": "^3.25.32"
     },
     "devDependencies": {
         "@types/bcryptjs": "^2.4.6",

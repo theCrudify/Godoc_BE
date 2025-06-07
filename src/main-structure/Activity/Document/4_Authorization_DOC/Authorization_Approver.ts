@@ -14,8 +14,8 @@ export const getAuthDocByIdApprover = async (req: Request, res: Response): Promi
 
     // Definisi kolom yang diperbolehkan untuk sorting
     const validSortColumns = [
-      "id", "doc_number", "implementation_date", "concept", 
-      "method", "status", "progress", "created_date", 
+      "id", "doc_number", "implementation_date", "concept",
+      "method", "status", "progress", "created_date",
       "plant_id", "department_id", "section_department_id"
     ];
 
@@ -260,7 +260,7 @@ export const updateAuthApprovalStatus = async (req: Request, res: Response): Pro
     console.log(`📅 Current timestamp: ${currentTimestamp.toISOString()}`);
     const oneMinuteAgo = new Date(currentTimestamp.getTime() - 60000); // 1 minute ago
     console.log(`📅 One minute ago: ${oneMinuteAgo.toISOString()}`);
-    
+
     const existingIdenticalHistory = await prismaDB2.tr_authdoc_history.findFirst({
       where: {
         authdoc_id: Number(authdoc_id),
@@ -332,11 +332,11 @@ export const updateAuthApprovalStatus = async (req: Request, res: Response): Pro
       transactionAttempt++;
       try {
         console.log(`🔄 Starting transaction attempt #${transactionAttempt}`);
-        
+
         // Execute entire update logic as a single serialized transaction with increased timeout
         await prismaDB2.$transaction(async (prisma) => {
           console.log("🔄 Inside transaction");
-          
+
           // Double-check for duplicates inside transaction for extra safety
           console.log("🔍 Double-checking for duplicates inside transaction");
           const duplicateCheck = await prisma.tr_authdoc_history.findFirst({
@@ -525,7 +525,7 @@ export const updateAuthApprovalStatus = async (req: Request, res: Response): Pro
             }
           });
           console.log("✅ History entry created successfully");
-          
+
           // Set success flag
           transactionSuccessful = true;
         }, {
@@ -539,7 +539,7 @@ export const updateAuthApprovalStatus = async (req: Request, res: Response): Pro
         console.error(`❌ Transaction error attempt #${transactionAttempt}:`, error);
         // Save the last error
         transactionError = error;
-        
+
         // Handle specific database errors
         if (error.code === 'P2034') { // Prisma transaction failed due to concurrent modification
           if (transactionAttempt < maxTransactionAttempts) {
@@ -587,16 +587,16 @@ export const updateAuthApprovalStatus = async (req: Request, res: Response): Pro
           proposedChange: true
         }
       });
-      
+
       if (!authDoc) {
         console.log(`⚠️ No auth doc found with ID ${authdoc_id} for email notification`);
       } else {
         console.log(`🔍 Auth doc found: ID=${authDoc.id}, proposed_change_id=${authDoc.proposed_change_id || 'null'}`);
-        
+
         if (authDoc.proposed_change_id) {
           console.log(`📧 Sending email notification for authorization document ID: ${authDoc.id}`);
           console.log(`📝 Using current note from request: "${note || ""}"`);
-          
+
           // IMPORTANT FIX: Pass the actual authorization doc ID, not the proposed change ID
           await sendApprovalEmails(
             Number(authDoc.id), // Use authDoc.id instead of proposed_change_id
