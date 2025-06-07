@@ -8,3 +8,5 @@ prisma/generated/
 
 # Uploads
 src/uploads/
+
+.env
