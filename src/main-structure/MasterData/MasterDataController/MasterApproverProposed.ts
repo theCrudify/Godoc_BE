@@ -484,77 +484,77 @@ export const previewApprovalFlow = async (req: Request, res: Response): Promise<
   }
 };
 
-// Get template statistics
-export const getTemplateStatistics = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const [
-      totalTemplates,
-      activeTemplates,
-      inactiveTemplates,
-      templatesByLineCode,
-      templatesByModelType,
-      templatesByStep
-    ] = await prismaDB2.$transaction([
-      // Total templates
-      prismaDB2.mst_template_approval_proposedchanges.count({
-        where: { is_deleted: false }
-      }),
-      // Active templates
-      prismaDB2.mst_template_approval_proposedchanges.count({
-        where: { is_deleted: false, is_active: true }
-      }),
-      // Inactive templates
-      prismaDB2.mst_template_approval_proposedchanges.count({
-        where: { is_deleted: false, is_active: false }
-      }),
-      // Templates by line code
-      prismaDB2.mst_template_approval_proposedchanges.groupBy({
-        by: ['line_code'],
-        where: { is_deleted: false },
-        _count: { id: true }
-      }),
-      // Templates by model type
-      prismaDB2.mst_template_approval_proposedchanges.groupBy({
-        by: ['model_type'],
-        where: { is_deleted: false },
-        _count: { id: true }
-      }),
-      // Templates by step order
-      prismaDB2.mst_template_approval_proposedchanges.groupBy({
-        by: ['step_order'],
-        where: { is_deleted: false },
-        _count: { id: true },
-        orderBy: { step_order: 'asc' }
-      })
-    ]);
+// // Get template statistics
+// export const getTemplateStatistics = async (req: Request, res: Response): Promise<void> => {
+//   try {
+//     const [
+//       totalTemplates,
+//       activeTemplates,
+//       inactiveTemplates,
+//       templatesByLineCode,
+//       templatesByModelType,
+//       templatesByStep
+//     ] = await prismaDB2.$transaction([
+//       // Total templates
+//       prismaDB2.mst_template_approval_proposedchanges.count({
+//         where: { is_deleted: false }
+//       }),
+//       // Active templates
+//       prismaDB2.mst_template_approval_proposedchanges.count({
+//         where: { is_deleted: false, is_active: true }
+//       }),
+//       // Inactive templates
+//       prismaDB2.mst_template_approval_proposedchanges.count({
+//         where: { is_deleted: false, is_active: false }
+//       }),
+//       // Templates by line code
+//       prismaDB2.mst_template_approval_proposedchanges.groupBy({
+//         by: ['line_code'],
+//         where: { is_deleted: false },
+//         _count: { id: true }
+//       }),
+//       // Templates by model type
+//       prismaDB2.mst_template_approval_proposedchanges.groupBy({
+//         by: ['model_type'],
+//         where: { is_deleted: false },
+//         _count: { id: true }
+//       }),
+//       // Templates by step order
+//       prismaDB2.mst_template_approval_proposedchanges.groupBy({
+//         by: ['step_order'],
+//         where: { is_deleted: false },
+//         _count: { id: true },
+//         orderBy: { step_order: 'asc' }
+//       })
+//     ]);
 
-    res.status(200).json({
-      summary: {
-        total: totalTemplates,
-        active: activeTemplates,
-        inactive: inactiveTemplates
-      },
-      distributions: {
-        by_line_code: templatesByLineCode.map(item => ({
-          line_code: item.line_code || 'General',
-          count: item._count.id
-        })),
-        by_model_type: templatesByModelType.map(item => ({
-          model_type: item.model_type,
-          count: item._count.id
-        })),
-        by_step_order: templatesByStep.map(item => ({
-          step: item.step_order,
-          count: item._count.id
-        }))
-      }
-    });
+//     res.status(200).json({
+//       summary: {
+//         total: totalTemplates,
+//         active: activeTemplates,
+//         inactive: inactiveTemplates
+//       },
+//       distributions: {
+//         by_line_code: templatesByLineCode.map(item => ({
+//           line_code: item.line_code || 'General',
+//           count: item._count.id
+//         })),
+//         by_model_type: templatesByModelType.map(item => ({
+//           model_type: item.model_type,
+//           count: item._count.id
+//         })),
+//         by_step_order: templatesByStep.map(item => ({
+//           step: item.step_order,
+//           count: item._count.id
+//         }))
+//       }
+//     });
 
-  } catch (error) {
-    console.error("Error getting template statistics:", error);
-    res.status(500).json({
-      error: "Internal Server Error",
-      details: error instanceof Error ? error.message : "Unknown error"
-    });
-  }
-};
+//   } catch (error) {
+//     console.error("Error getting template statistics:", error);
+//     res.status(500).json({
+//       error: "Internal Server Error",
+//       details: error instanceof Error ? error.message : "Unknown error"
+//     });
+//   }
+// };
