@@ -326,7 +326,7 @@ async function createProposedChangeHistory(
   note: string = ""
 ): Promise<void> {
   try {
-    // Get employee name
+    // Get employee name ok
     const auth = await prismaDB2.mst_authorization.findUnique({
       where: { id: auth_id },
       select: { employee_name: true }
