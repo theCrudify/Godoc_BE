@@ -183,6 +183,11 @@ export type email_tracking_proposedchanges = $Result.DefaultSelection<Prisma.$em
  * 
  */
 export type email_tracking_authdoc = $Result.DefaultSelection<Prisma.$email_tracking_authdocPayload>
+/**
+ * Model mst_template_approval_proposedchanges
+ * This model or at least one of its fields has comments in the database, and requires an additional setup for migrations: Read more: https://pris.ly/d/database-comments
+ */
+export type mst_template_approval_proposedchanges = $Result.DefaultSelection<Prisma.$mst_template_approval_proposedchangesPayload>
 
 /**
  * Enums
@@ -249,6 +254,14 @@ export const email_tracking_handover_status: {
 
 export type email_tracking_handover_status = (typeof email_tracking_handover_status)[keyof typeof email_tracking_handover_status]
 
+
+export const mst_template_approval_proposedchanges_model_type: {
+  section: 'section',
+  department: 'department'
+};
+
+export type mst_template_approval_proposedchanges_model_type = (typeof mst_template_approval_proposedchanges_model_type)[keyof typeof mst_template_approval_proposedchanges_model_type]
+
 }
 
 export type Gender = $Enums.Gender
@@ -278,6 +291,10 @@ export const email_tracking_authdoc_status: typeof $Enums.email_tracking_authdoc
 export type email_tracking_handover_status = $Enums.email_tracking_handover_status
 
 export const email_tracking_handover_status: typeof $Enums.email_tracking_handover_status
+
+export type mst_template_approval_proposedchanges_model_type = $Enums.mst_template_approval_proposedchanges_model_type
+
+export const mst_template_approval_proposedchanges_model_type: typeof $Enums.mst_template_approval_proposedchanges_model_type
 
 /**
  * ##  Prisma Client ʲˢ
@@ -743,6 +760,16 @@ export class PrismaClient<
     * ```
     */
   get email_tracking_authdoc(): Prisma.email_tracking_authdocDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.mst_template_approval_proposedchanges`: Exposes CRUD operations for the **mst_template_approval_proposedchanges** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Mst_template_approval_proposedchanges
+    * const mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.findMany()
+    * ```
+    */
+  get mst_template_approval_proposedchanges(): Prisma.mst_template_approval_proposedchangesDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -1216,7 +1243,8 @@ export namespace Prisma {
     tr_handover_history: 'tr_handover_history',
     email_tracking_handover: 'email_tracking_handover',
     email_tracking_proposedchanges: 'email_tracking_proposedchanges',
-    email_tracking_authdoc: 'email_tracking_authdoc'
+    email_tracking_authdoc: 'email_tracking_authdoc',
+    mst_template_approval_proposedchanges: 'mst_template_approval_proposedchanges'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -1235,7 +1263,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "tr_log" | "mst_role" | "mst_line" | "mst_department_head" | "mst_section_head" | "mst_sub_document" | "mst_development" | "mst_doc_type" | "mst_area" | "mst_plant" | "mst_department" | "mst_section_department" | "mst_document_categories" | "tr_document_number" | "tr_additional_doc" | "tr_additional_file" | "tr_proposed_changes_history" | "tr_proposed_changes_approval" | "mst_authorization" | "tbl_support_document" | "tbl_support_document_noted" | "tbl_support_document_file" | "mst_support_document" | "tr_authdoc_approval" | "tr_authdoc_history" | "tr_authdoc_member" | "tr_authorization_doc" | "tr_proposed_changes" | "tr_handover" | "tr_handover_approval" | "tr_handover_history" | "email_tracking_handover" | "email_tracking_proposedchanges" | "email_tracking_authdoc"
+      modelProps: "tr_log" | "mst_role" | "mst_line" | "mst_department_head" | "mst_section_head" | "mst_sub_document" | "mst_development" | "mst_doc_type" | "mst_area" | "mst_plant" | "mst_department" | "mst_section_department" | "mst_document_categories" | "tr_document_number" | "tr_additional_doc" | "tr_additional_file" | "tr_proposed_changes_history" | "tr_proposed_changes_approval" | "mst_authorization" | "tbl_support_document" | "tbl_support_document_noted" | "tbl_support_document_file" | "mst_support_document" | "tr_authdoc_approval" | "tr_authdoc_history" | "tr_authdoc_member" | "tr_authorization_doc" | "tr_proposed_changes" | "tr_handover" | "tr_handover_approval" | "tr_handover_history" | "email_tracking_handover" | "email_tracking_proposedchanges" | "email_tracking_authdoc" | "mst_template_approval_proposedchanges"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -3483,6 +3511,72 @@ export namespace Prisma {
           }
         }
       }
+      mst_template_approval_proposedchanges: {
+        payload: Prisma.$mst_template_approval_proposedchangesPayload<ExtArgs>
+        fields: Prisma.mst_template_approval_proposedchangesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.mst_template_approval_proposedchangesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mst_template_approval_proposedchangesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.mst_template_approval_proposedchangesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mst_template_approval_proposedchangesPayload>
+          }
+          findFirst: {
+            args: Prisma.mst_template_approval_proposedchangesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mst_template_approval_proposedchangesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.mst_template_approval_proposedchangesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mst_template_approval_proposedchangesPayload>
+          }
+          findMany: {
+            args: Prisma.mst_template_approval_proposedchangesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mst_template_approval_proposedchangesPayload>[]
+          }
+          create: {
+            args: Prisma.mst_template_approval_proposedchangesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mst_template_approval_proposedchangesPayload>
+          }
+          createMany: {
+            args: Prisma.mst_template_approval_proposedchangesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.mst_template_approval_proposedchangesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mst_template_approval_proposedchangesPayload>
+          }
+          update: {
+            args: Prisma.mst_template_approval_proposedchangesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mst_template_approval_proposedchangesPayload>
+          }
+          deleteMany: {
+            args: Prisma.mst_template_approval_proposedchangesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.mst_template_approval_proposedchangesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.mst_template_approval_proposedchangesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$mst_template_approval_proposedchangesPayload>
+          }
+          aggregate: {
+            args: Prisma.Mst_template_approval_proposedchangesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateMst_template_approval_proposedchanges>
+          }
+          groupBy: {
+            args: Prisma.mst_template_approval_proposedchangesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Mst_template_approval_proposedchangesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.mst_template_approval_proposedchangesCountArgs<ExtArgs>
+            result: $Utils.Optional<Mst_template_approval_proposedchangesCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -3601,6 +3695,7 @@ export namespace Prisma {
     email_tracking_handover?: email_tracking_handoverOmit
     email_tracking_proposedchanges?: email_tracking_proposedchangesOmit
     email_tracking_authdoc?: email_tracking_authdocOmit
+    mst_template_approval_proposedchanges?: mst_template_approval_proposedchangesOmit
   }
 
   /* Types for Logging */
@@ -34204,8 +34299,8 @@ export namespace Prisma {
     other_sytem: string | null
     status: string | null
     progress: string | null
-    progresssupport: string | null
     is_deleted: boolean | null
+    progresssupport: string | null
   }
 
   export type Tr_proposed_changesMaxAggregateOutputType = {
@@ -34235,8 +34330,8 @@ export namespace Prisma {
     other_sytem: string | null
     status: string | null
     progress: string | null
-    progresssupport: string | null
     is_deleted: boolean | null
+    progresssupport: string | null
   }
 
   export type Tr_proposed_changesCountAggregateOutputType = {
@@ -34266,8 +34361,8 @@ export namespace Prisma {
     other_sytem: number
     status: number
     progress: number
-    progresssupport: number
     is_deleted: number
+    progresssupport: number
     _all: number
   }
 
@@ -34317,8 +34412,8 @@ export namespace Prisma {
     other_sytem?: true
     status?: true
     progress?: true
-    progresssupport?: true
     is_deleted?: true
+    progresssupport?: true
   }
 
   export type Tr_proposed_changesMaxAggregateInputType = {
@@ -34348,8 +34443,8 @@ export namespace Prisma {
     other_sytem?: true
     status?: true
     progress?: true
-    progresssupport?: true
     is_deleted?: true
+    progresssupport?: true
   }
 
   export type Tr_proposed_changesCountAggregateInputType = {
@@ -34379,8 +34474,8 @@ export namespace Prisma {
     other_sytem?: true
     status?: true
     progress?: true
-    progresssupport?: true
     is_deleted?: true
+    progresssupport?: true
     _all?: true
   }
 
@@ -34497,8 +34592,8 @@ export namespace Prisma {
     other_sytem: string | null
     status: string | null
     progress: string | null
-    progresssupport: string | null
     is_deleted: boolean
+    progresssupport: string | null
     _count: Tr_proposed_changesCountAggregateOutputType | null
     _avg: Tr_proposed_changesAvgAggregateOutputType | null
     _sum: Tr_proposed_changesSumAggregateOutputType | null
@@ -34547,8 +34642,8 @@ export namespace Prisma {
     other_sytem?: boolean
     status?: boolean
     progress?: boolean
-    progresssupport?: boolean
     is_deleted?: boolean
+    progresssupport?: boolean
     email_tracking_proposedchanges?: boolean | tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs>
     proposedChange?: boolean | tr_proposed_changes$proposedChangeArgs<ExtArgs>
     additionalDocs?: boolean | tr_proposed_changes$additionalDocsArgs<ExtArgs>
@@ -34593,11 +34688,11 @@ export namespace Prisma {
     other_sytem?: boolean
     status?: boolean
     progress?: boolean
-    progresssupport?: boolean
     is_deleted?: boolean
+    progresssupport?: boolean
   }
 
-  export type tr_proposed_changesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "project_name" | "document_number_id" | "item_changes" | "line_code" | "section_code" | "section_name" | "department_id" | "section_department_id" | "plant_id" | "auth_id" | "change_type" | "description" | "reason" | "cost" | "cost_text" | "planning_start" | "planning_end" | "created_date" | "created_by" | "updated_at" | "need_engineering_approval" | "need_production_approval" | "other_sytem" | "status" | "progress" | "progresssupport" | "is_deleted", ExtArgs["result"]["tr_proposed_changes"]>
+  export type tr_proposed_changesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "project_name" | "document_number_id" | "item_changes" | "line_code" | "section_code" | "section_name" | "department_id" | "section_department_id" | "plant_id" | "auth_id" | "change_type" | "description" | "reason" | "cost" | "cost_text" | "planning_start" | "planning_end" | "created_date" | "created_by" | "updated_at" | "need_engineering_approval" | "need_production_approval" | "other_sytem" | "status" | "progress" | "is_deleted" | "progresssupport", ExtArgs["result"]["tr_proposed_changes"]>
   export type tr_proposed_changesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     email_tracking_proposedchanges?: boolean | tr_proposed_changes$email_tracking_proposedchangesArgs<ExtArgs>
     proposedChange?: boolean | tr_proposed_changes$proposedChangeArgs<ExtArgs>
@@ -34657,8 +34752,8 @@ export namespace Prisma {
       other_sytem: string | null
       status: string | null
       progress: string | null
-      progresssupport: string | null
       is_deleted: boolean
+      progresssupport: string | null
     }, ExtArgs["result"]["tr_proposed_changes"]>
     composites: {}
   }
@@ -35066,8 +35161,8 @@ export namespace Prisma {
     readonly other_sytem: FieldRef<"tr_proposed_changes", 'String'>
     readonly status: FieldRef<"tr_proposed_changes", 'String'>
     readonly progress: FieldRef<"tr_proposed_changes", 'String'>
-    readonly progresssupport: FieldRef<"tr_proposed_changes", 'String'>
     readonly is_deleted: FieldRef<"tr_proposed_changes", 'Boolean'>
+    readonly progresssupport: FieldRef<"tr_proposed_changes", 'String'>
   }
     
 
@@ -35753,10 +35848,10 @@ export namespace Prisma {
     remark: string | null
     created_by: string | null
     created_date: Date | null
-    finished_date: Date | null
     updated_at: Date | null
     updated_by: string | null
     is_deleted: boolean | null
+    finished_date: Date | null
     is_finished: boolean | null
     star: Decimal | null
   }
@@ -35780,10 +35875,10 @@ export namespace Prisma {
     remark: string | null
     created_by: string | null
     created_date: Date | null
-    finished_date: Date | null
     updated_at: Date | null
     updated_by: string | null
     is_deleted: boolean | null
+    finished_date: Date | null
     is_finished: boolean | null
     star: Decimal | null
   }
@@ -35807,10 +35902,10 @@ export namespace Prisma {
     remark: number
     created_by: number
     created_date: number
-    finished_date: number
     updated_at: number
     updated_by: number
     is_deleted: number
+    finished_date: number
     is_finished: number
     star: number
     _all: number
@@ -35866,10 +35961,10 @@ export namespace Prisma {
     remark?: true
     created_by?: true
     created_date?: true
-    finished_date?: true
     updated_at?: true
     updated_by?: true
     is_deleted?: true
+    finished_date?: true
     is_finished?: true
     star?: true
   }
@@ -35893,10 +35988,10 @@ export namespace Prisma {
     remark?: true
     created_by?: true
     created_date?: true
-    finished_date?: true
     updated_at?: true
     updated_by?: true
     is_deleted?: true
+    finished_date?: true
     is_finished?: true
     star?: true
   }
@@ -35920,10 +36015,10 @@ export namespace Prisma {
     remark?: true
     created_by?: true
     created_date?: true
-    finished_date?: true
     updated_at?: true
     updated_by?: true
     is_deleted?: true
+    finished_date?: true
     is_finished?: true
     star?: true
     _all?: true
@@ -36034,10 +36129,10 @@ export namespace Prisma {
     remark: string | null
     created_by: string | null
     created_date: Date | null
-    finished_date: Date | null
     updated_at: Date | null
     updated_by: string | null
     is_deleted: boolean | null
+    finished_date: Date | null
     is_finished: boolean | null
     star: Decimal | null
     _count: Tr_handoverCountAggregateOutputType | null
@@ -36080,10 +36175,10 @@ export namespace Prisma {
     remark?: boolean
     created_by?: boolean
     created_date?: boolean
-    finished_date?: boolean
     updated_at?: boolean
     updated_by?: boolean
     is_deleted?: boolean
+    finished_date?: boolean
     is_finished?: boolean
     star?: boolean
     email_tracking_handover?: boolean | tr_handover$email_tracking_handoverArgs<ExtArgs>
@@ -36123,15 +36218,15 @@ export namespace Prisma {
     remark?: boolean
     created_by?: boolean
     created_date?: boolean
-    finished_date?: boolean
     updated_at?: boolean
     updated_by?: boolean
     is_deleted?: boolean
+    finished_date?: boolean
     is_finished?: boolean
     star?: boolean
   }
 
-  export type tr_handoverOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "doc_number" | "auth_id" | "auth_id2" | "auth_id3" | "auth_id4" | "auth_id5" | "proposed_change_id" | "authdoc_id" | "plant_id" | "department_id" | "section_department_id" | "progress" | "status" | "material" | "remark" | "created_by" | "created_date" | "finished_date" | "updated_at" | "updated_by" | "is_deleted" | "is_finished" | "star", ExtArgs["result"]["tr_handover"]>
+  export type tr_handoverOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "doc_number" | "auth_id" | "auth_id2" | "auth_id3" | "auth_id4" | "auth_id5" | "proposed_change_id" | "authdoc_id" | "plant_id" | "department_id" | "section_department_id" | "progress" | "status" | "material" | "remark" | "created_by" | "created_date" | "updated_at" | "updated_by" | "is_deleted" | "finished_date" | "is_finished" | "star", ExtArgs["result"]["tr_handover"]>
   export type tr_handoverInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     email_tracking_handover?: boolean | tr_handover$email_tracking_handoverArgs<ExtArgs>
     mst_authorization_tr_handover_auth_idTomst_authorization?: boolean | tr_handover$mst_authorization_tr_handover_auth_idTomst_authorizationArgs<ExtArgs>
@@ -36185,10 +36280,10 @@ export namespace Prisma {
       remark: string | null
       created_by: string | null
       created_date: Date | null
-      finished_date: Date | null
       updated_at: Date | null
       updated_by: string | null
       is_deleted: boolean | null
+      finished_date: Date | null
       is_finished: boolean | null
       star: Prisma.Decimal | null
     }, ExtArgs["result"]["tr_handover"]>
@@ -36591,10 +36686,10 @@ export namespace Prisma {
     readonly remark: FieldRef<"tr_handover", 'String'>
     readonly created_by: FieldRef<"tr_handover", 'String'>
     readonly created_date: FieldRef<"tr_handover", 'DateTime'>
-    readonly finished_date: FieldRef<"tr_handover", 'DateTime'>
     readonly updated_at: FieldRef<"tr_handover", 'DateTime'>
     readonly updated_by: FieldRef<"tr_handover", 'String'>
     readonly is_deleted: FieldRef<"tr_handover", 'Boolean'>
+    readonly finished_date: FieldRef<"tr_handover", 'DateTime'>
     readonly is_finished: FieldRef<"tr_handover", 'Boolean'>
     readonly star: FieldRef<"tr_handover", 'Decimal'>
   }
@@ -37237,8 +37332,8 @@ export namespace Prisma {
     handover_id: number | null
     auth_id: number | null
     step: number | null
-    rating: number | null
     rating_reminder_count: number | null
+    rating: number | null
   }
 
   export type Tr_handover_approvalSumAggregateOutputType = {
@@ -37246,8 +37341,8 @@ export namespace Prisma {
     handover_id: number | null
     auth_id: number | null
     step: number | null
-    rating: number | null
     rating_reminder_count: number | null
+    rating: number | null
   }
 
   export type Tr_handover_approvalMinAggregateOutputType = {
@@ -37258,14 +37353,14 @@ export namespace Prisma {
     actor: string | null
     employee_code: string | null
     status: string | null
-    rating: number | null
-    review: string | null
-    rating_date: Date | null
+    updated_date: Date | null
+    created_date: Date | null
     last_rating_reminder_sent: Date | null
     rating_reminder_count: number | null
     finished_date: Date | null
-    updated_date: Date | null
-    created_date: Date | null
+    rating: number | null
+    review: string | null
+    rating_date: Date | null
   }
 
   export type Tr_handover_approvalMaxAggregateOutputType = {
@@ -37276,14 +37371,14 @@ export namespace Prisma {
     actor: string | null
     employee_code: string | null
     status: string | null
-    rating: number | null
-    review: string | null
-    rating_date: Date | null
+    updated_date: Date | null
+    created_date: Date | null
     last_rating_reminder_sent: Date | null
     rating_reminder_count: number | null
     finished_date: Date | null
-    updated_date: Date | null
-    created_date: Date | null
+    rating: number | null
+    review: string | null
+    rating_date: Date | null
   }
 
   export type Tr_handover_approvalCountAggregateOutputType = {
@@ -37294,14 +37389,14 @@ export namespace Prisma {
     actor: number
     employee_code: number
     status: number
-    rating: number
-    review: number
-    rating_date: number
+    updated_date: number
+    created_date: number
     last_rating_reminder_sent: number
     rating_reminder_count: number
     finished_date: number
-    updated_date: number
-    created_date: number
+    rating: number
+    review: number
+    rating_date: number
     _all: number
   }
 
@@ -37311,8 +37406,8 @@ export namespace Prisma {
     handover_id?: true
     auth_id?: true
     step?: true
-    rating?: true
     rating_reminder_count?: true
+    rating?: true
   }
 
   export type Tr_handover_approvalSumAggregateInputType = {
@@ -37320,8 +37415,8 @@ export namespace Prisma {
     handover_id?: true
     auth_id?: true
     step?: true
-    rating?: true
     rating_reminder_count?: true
+    rating?: true
   }
 
   export type Tr_handover_approvalMinAggregateInputType = {
@@ -37332,14 +37427,14 @@ export namespace Prisma {
     actor?: true
     employee_code?: true
     status?: true
-    rating?: true
-    review?: true
-    rating_date?: true
+    updated_date?: true
+    created_date?: true
     last_rating_reminder_sent?: true
     rating_reminder_count?: true
     finished_date?: true
-    updated_date?: true
-    created_date?: true
+    rating?: true
+    review?: true
+    rating_date?: true
   }
 
   export type Tr_handover_approvalMaxAggregateInputType = {
@@ -37350,14 +37445,14 @@ export namespace Prisma {
     actor?: true
     employee_code?: true
     status?: true
-    rating?: true
-    review?: true
-    rating_date?: true
+    updated_date?: true
+    created_date?: true
     last_rating_reminder_sent?: true
     rating_reminder_count?: true
     finished_date?: true
-    updated_date?: true
-    created_date?: true
+    rating?: true
+    review?: true
+    rating_date?: true
   }
 
   export type Tr_handover_approvalCountAggregateInputType = {
@@ -37368,14 +37463,14 @@ export namespace Prisma {
     actor?: true
     employee_code?: true
     status?: true
-    rating?: true
-    review?: true
-    rating_date?: true
+    updated_date?: true
+    created_date?: true
     last_rating_reminder_sent?: true
     rating_reminder_count?: true
     finished_date?: true
-    updated_date?: true
-    created_date?: true
+    rating?: true
+    review?: true
+    rating_date?: true
     _all?: true
   }
 
@@ -37473,14 +37568,14 @@ export namespace Prisma {
     actor: string | null
     employee_code: string | null
     status: string | null
-    rating: number | null
-    review: string | null
-    rating_date: Date | null
+    updated_date: Date | null
+    created_date: Date | null
     last_rating_reminder_sent: Date | null
     rating_reminder_count: number | null
     finished_date: Date | null
-    updated_date: Date | null
-    created_date: Date | null
+    rating: number | null
+    review: string | null
+    rating_date: Date | null
     _count: Tr_handover_approvalCountAggregateOutputType | null
     _avg: Tr_handover_approvalAvgAggregateOutputType | null
     _sum: Tr_handover_approvalSumAggregateOutputType | null
@@ -37510,14 +37605,14 @@ export namespace Prisma {
     actor?: boolean
     employee_code?: boolean
     status?: boolean
-    rating?: boolean
-    review?: boolean
-    rating_date?: boolean
+    updated_date?: boolean
+    created_date?: boolean
     last_rating_reminder_sent?: boolean
     rating_reminder_count?: boolean
     finished_date?: boolean
-    updated_date?: boolean
-    created_date?: boolean
+    rating?: boolean
+    review?: boolean
+    rating_date?: boolean
     tr_handover?: boolean | tr_handover_approval$tr_handoverArgs<ExtArgs>
     mst_authorization?: boolean | tr_handover_approval$mst_authorizationArgs<ExtArgs>
   }, ExtArgs["result"]["tr_handover_approval"]>
@@ -37532,17 +37627,17 @@ export namespace Prisma {
     actor?: boolean
     employee_code?: boolean
     status?: boolean
-    rating?: boolean
-    review?: boolean
-    rating_date?: boolean
+    updated_date?: boolean
+    created_date?: boolean
     last_rating_reminder_sent?: boolean
     rating_reminder_count?: boolean
     finished_date?: boolean
-    updated_date?: boolean
-    created_date?: boolean
+    rating?: boolean
+    review?: boolean
+    rating_date?: boolean
   }
 
-  export type tr_handover_approvalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "handover_id" | "auth_id" | "step" | "actor" | "employee_code" | "status" | "rating" | "review" | "rating_date" | "last_rating_reminder_sent" | "rating_reminder_count" | "finished_date" | "updated_date" | "created_date", ExtArgs["result"]["tr_handover_approval"]>
+  export type tr_handover_approvalOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "handover_id" | "auth_id" | "step" | "actor" | "employee_code" | "status" | "updated_date" | "created_date" | "last_rating_reminder_sent" | "rating_reminder_count" | "finished_date" | "rating" | "review" | "rating_date", ExtArgs["result"]["tr_handover_approval"]>
   export type tr_handover_approvalInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     tr_handover?: boolean | tr_handover_approval$tr_handoverArgs<ExtArgs>
     mst_authorization?: boolean | tr_handover_approval$mst_authorizationArgs<ExtArgs>
@@ -37562,14 +37657,14 @@ export namespace Prisma {
       actor: string | null
       employee_code: string | null
       status: string | null
-      rating: number | null
-      review: string | null
-      rating_date: Date | null
+      updated_date: Date | null
+      created_date: Date | null
       last_rating_reminder_sent: Date | null
       rating_reminder_count: number | null
       finished_date: Date | null
-      updated_date: Date | null
-      created_date: Date | null
+      rating: number | null
+      review: string | null
+      rating_date: Date | null
     }, ExtArgs["result"]["tr_handover_approval"]>
     composites: {}
   }
@@ -37948,14 +38043,14 @@ export namespace Prisma {
     readonly actor: FieldRef<"tr_handover_approval", 'String'>
     readonly employee_code: FieldRef<"tr_handover_approval", 'String'>
     readonly status: FieldRef<"tr_handover_approval", 'String'>
-    readonly rating: FieldRef<"tr_handover_approval", 'Int'>
-    readonly review: FieldRef<"tr_handover_approval", 'String'>
-    readonly rating_date: FieldRef<"tr_handover_approval", 'DateTime'>
+    readonly updated_date: FieldRef<"tr_handover_approval", 'DateTime'>
+    readonly created_date: FieldRef<"tr_handover_approval", 'DateTime'>
     readonly last_rating_reminder_sent: FieldRef<"tr_handover_approval", 'DateTime'>
     readonly rating_reminder_count: FieldRef<"tr_handover_approval", 'Int'>
     readonly finished_date: FieldRef<"tr_handover_approval", 'DateTime'>
-    readonly updated_date: FieldRef<"tr_handover_approval", 'DateTime'>
-    readonly created_date: FieldRef<"tr_handover_approval", 'DateTime'>
+    readonly rating: FieldRef<"tr_handover_approval", 'Int'>
+    readonly review: FieldRef<"tr_handover_approval", 'String'>
+    readonly rating_date: FieldRef<"tr_handover_approval", 'DateTime'>
   }
     
 
@@ -42601,6 +42696,1088 @@ export namespace Prisma {
 
 
   /**
+   * Model mst_template_approval_proposedchanges
+   */
+
+  export type AggregateMst_template_approval_proposedchanges = {
+    _count: Mst_template_approval_proposedchangesCountAggregateOutputType | null
+    _avg: Mst_template_approval_proposedchangesAvgAggregateOutputType | null
+    _sum: Mst_template_approval_proposedchangesSumAggregateOutputType | null
+    _min: Mst_template_approval_proposedchangesMinAggregateOutputType | null
+    _max: Mst_template_approval_proposedchangesMaxAggregateOutputType | null
+  }
+
+  export type Mst_template_approval_proposedchangesAvgAggregateOutputType = {
+    id: number | null
+    step_order: number | null
+    section_id: number | null
+    priority: number | null
+  }
+
+  export type Mst_template_approval_proposedchangesSumAggregateOutputType = {
+    id: number | null
+    step_order: number | null
+    section_id: number | null
+    priority: number | null
+  }
+
+  export type Mst_template_approval_proposedchangesMinAggregateOutputType = {
+    id: number | null
+    template_name: string | null
+    line_code: string | null
+    need_engineering_approval: boolean | null
+    need_production_approval: boolean | null
+    step_order: number | null
+    actor_name: string | null
+    model_type: $Enums.mst_template_approval_proposedchanges_model_type | null
+    section_id: number | null
+    use_dynamic_section: boolean | null
+    use_line_section: boolean | null
+    is_active: boolean | null
+    priority: number | null
+    description: string | null
+    created_by: string | null
+    created_date: Date | null
+    updated_by: string | null
+    updated_date: Date | null
+    is_deleted: boolean | null
+  }
+
+  export type Mst_template_approval_proposedchangesMaxAggregateOutputType = {
+    id: number | null
+    template_name: string | null
+    line_code: string | null
+    need_engineering_approval: boolean | null
+    need_production_approval: boolean | null
+    step_order: number | null
+    actor_name: string | null
+    model_type: $Enums.mst_template_approval_proposedchanges_model_type | null
+    section_id: number | null
+    use_dynamic_section: boolean | null
+    use_line_section: boolean | null
+    is_active: boolean | null
+    priority: number | null
+    description: string | null
+    created_by: string | null
+    created_date: Date | null
+    updated_by: string | null
+    updated_date: Date | null
+    is_deleted: boolean | null
+  }
+
+  export type Mst_template_approval_proposedchangesCountAggregateOutputType = {
+    id: number
+    template_name: number
+    line_code: number
+    need_engineering_approval: number
+    need_production_approval: number
+    step_order: number
+    actor_name: number
+    model_type: number
+    section_id: number
+    use_dynamic_section: number
+    use_line_section: number
+    is_active: number
+    priority: number
+    description: number
+    created_by: number
+    created_date: number
+    updated_by: number
+    updated_date: number
+    is_deleted: number
+    _all: number
+  }
+
+
+  export type Mst_template_approval_proposedchangesAvgAggregateInputType = {
+    id?: true
+    step_order?: true
+    section_id?: true
+    priority?: true
+  }
+
+  export type Mst_template_approval_proposedchangesSumAggregateInputType = {
+    id?: true
+    step_order?: true
+    section_id?: true
+    priority?: true
+  }
+
+  export type Mst_template_approval_proposedchangesMinAggregateInputType = {
+    id?: true
+    template_name?: true
+    line_code?: true
+    need_engineering_approval?: true
+    need_production_approval?: true
+    step_order?: true
+    actor_name?: true
+    model_type?: true
+    section_id?: true
+    use_dynamic_section?: true
+    use_line_section?: true
+    is_active?: true
+    priority?: true
+    description?: true
+    created_by?: true
+    created_date?: true
+    updated_by?: true
+    updated_date?: true
+    is_deleted?: true
+  }
+
+  export type Mst_template_approval_proposedchangesMaxAggregateInputType = {
+    id?: true
+    template_name?: true
+    line_code?: true
+    need_engineering_approval?: true
+    need_production_approval?: true
+    step_order?: true
+    actor_name?: true
+    model_type?: true
+    section_id?: true
+    use_dynamic_section?: true
+    use_line_section?: true
+    is_active?: true
+    priority?: true
+    description?: true
+    created_by?: true
+    created_date?: true
+    updated_by?: true
+    updated_date?: true
+    is_deleted?: true
+  }
+
+  export type Mst_template_approval_proposedchangesCountAggregateInputType = {
+    id?: true
+    template_name?: true
+    line_code?: true
+    need_engineering_approval?: true
+    need_production_approval?: true
+    step_order?: true
+    actor_name?: true
+    model_type?: true
+    section_id?: true
+    use_dynamic_section?: true
+    use_line_section?: true
+    is_active?: true
+    priority?: true
+    description?: true
+    created_by?: true
+    created_date?: true
+    updated_by?: true
+    updated_date?: true
+    is_deleted?: true
+    _all?: true
+  }
+
+  export type Mst_template_approval_proposedchangesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which mst_template_approval_proposedchanges to aggregate.
+     */
+    where?: mst_template_approval_proposedchangesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of mst_template_approval_proposedchanges to fetch.
+     */
+    orderBy?: mst_template_approval_proposedchangesOrderByWithRelationInput | mst_template_approval_proposedchangesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: mst_template_approval_proposedchangesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` mst_template_approval_proposedchanges from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` mst_template_approval_proposedchanges.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned mst_template_approval_proposedchanges
+    **/
+    _count?: true | Mst_template_approval_proposedchangesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Mst_template_approval_proposedchangesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Mst_template_approval_proposedchangesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Mst_template_approval_proposedchangesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Mst_template_approval_proposedchangesMaxAggregateInputType
+  }
+
+  export type GetMst_template_approval_proposedchangesAggregateType<T extends Mst_template_approval_proposedchangesAggregateArgs> = {
+        [P in keyof T & keyof AggregateMst_template_approval_proposedchanges]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateMst_template_approval_proposedchanges[P]>
+      : GetScalarType<T[P], AggregateMst_template_approval_proposedchanges[P]>
+  }
+
+
+
+
+  export type mst_template_approval_proposedchangesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: mst_template_approval_proposedchangesWhereInput
+    orderBy?: mst_template_approval_proposedchangesOrderByWithAggregationInput | mst_template_approval_proposedchangesOrderByWithAggregationInput[]
+    by: Mst_template_approval_proposedchangesScalarFieldEnum[] | Mst_template_approval_proposedchangesScalarFieldEnum
+    having?: mst_template_approval_proposedchangesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Mst_template_approval_proposedchangesCountAggregateInputType | true
+    _avg?: Mst_template_approval_proposedchangesAvgAggregateInputType
+    _sum?: Mst_template_approval_proposedchangesSumAggregateInputType
+    _min?: Mst_template_approval_proposedchangesMinAggregateInputType
+    _max?: Mst_template_approval_proposedchangesMaxAggregateInputType
+  }
+
+  export type Mst_template_approval_proposedchangesGroupByOutputType = {
+    id: number
+    template_name: string
+    line_code: string | null
+    need_engineering_approval: boolean | null
+    need_production_approval: boolean | null
+    step_order: number
+    actor_name: string
+    model_type: $Enums.mst_template_approval_proposedchanges_model_type
+    section_id: number | null
+    use_dynamic_section: boolean | null
+    use_line_section: boolean | null
+    is_active: boolean | null
+    priority: number | null
+    description: string | null
+    created_by: string
+    created_date: Date | null
+    updated_by: string | null
+    updated_date: Date | null
+    is_deleted: boolean | null
+    _count: Mst_template_approval_proposedchangesCountAggregateOutputType | null
+    _avg: Mst_template_approval_proposedchangesAvgAggregateOutputType | null
+    _sum: Mst_template_approval_proposedchangesSumAggregateOutputType | null
+    _min: Mst_template_approval_proposedchangesMinAggregateOutputType | null
+    _max: Mst_template_approval_proposedchangesMaxAggregateOutputType | null
+  }
+
+  type GetMst_template_approval_proposedchangesGroupByPayload<T extends mst_template_approval_proposedchangesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Mst_template_approval_proposedchangesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Mst_template_approval_proposedchangesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Mst_template_approval_proposedchangesGroupByOutputType[P]>
+            : GetScalarType<T[P], Mst_template_approval_proposedchangesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type mst_template_approval_proposedchangesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    template_name?: boolean
+    line_code?: boolean
+    need_engineering_approval?: boolean
+    need_production_approval?: boolean
+    step_order?: boolean
+    actor_name?: boolean
+    model_type?: boolean
+    section_id?: boolean
+    use_dynamic_section?: boolean
+    use_line_section?: boolean
+    is_active?: boolean
+    priority?: boolean
+    description?: boolean
+    created_by?: boolean
+    created_date?: boolean
+    updated_by?: boolean
+    updated_date?: boolean
+    is_deleted?: boolean
+  }, ExtArgs["result"]["mst_template_approval_proposedchanges"]>
+
+
+
+  export type mst_template_approval_proposedchangesSelectScalar = {
+    id?: boolean
+    template_name?: boolean
+    line_code?: boolean
+    need_engineering_approval?: boolean
+    need_production_approval?: boolean
+    step_order?: boolean
+    actor_name?: boolean
+    model_type?: boolean
+    section_id?: boolean
+    use_dynamic_section?: boolean
+    use_line_section?: boolean
+    is_active?: boolean
+    priority?: boolean
+    description?: boolean
+    created_by?: boolean
+    created_date?: boolean
+    updated_by?: boolean
+    updated_date?: boolean
+    is_deleted?: boolean
+  }
+
+  export type mst_template_approval_proposedchangesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "template_name" | "line_code" | "need_engineering_approval" | "need_production_approval" | "step_order" | "actor_name" | "model_type" | "section_id" | "use_dynamic_section" | "use_line_section" | "is_active" | "priority" | "description" | "created_by" | "created_date" | "updated_by" | "updated_date" | "is_deleted", ExtArgs["result"]["mst_template_approval_proposedchanges"]>
+
+  export type $mst_template_approval_proposedchangesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "mst_template_approval_proposedchanges"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      template_name: string
+      line_code: string | null
+      need_engineering_approval: boolean | null
+      need_production_approval: boolean | null
+      step_order: number
+      actor_name: string
+      model_type: $Enums.mst_template_approval_proposedchanges_model_type
+      section_id: number | null
+      use_dynamic_section: boolean | null
+      use_line_section: boolean | null
+      is_active: boolean | null
+      priority: number | null
+      description: string | null
+      created_by: string
+      created_date: Date | null
+      updated_by: string | null
+      updated_date: Date | null
+      is_deleted: boolean | null
+    }, ExtArgs["result"]["mst_template_approval_proposedchanges"]>
+    composites: {}
+  }
+
+  type mst_template_approval_proposedchangesGetPayload<S extends boolean | null | undefined | mst_template_approval_proposedchangesDefaultArgs> = $Result.GetResult<Prisma.$mst_template_approval_proposedchangesPayload, S>
+
+  type mst_template_approval_proposedchangesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<mst_template_approval_proposedchangesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Mst_template_approval_proposedchangesCountAggregateInputType | true
+    }
+
+  export interface mst_template_approval_proposedchangesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['mst_template_approval_proposedchanges'], meta: { name: 'mst_template_approval_proposedchanges' } }
+    /**
+     * Find zero or one Mst_template_approval_proposedchanges that matches the filter.
+     * @param {mst_template_approval_proposedchangesFindUniqueArgs} args - Arguments to find a Mst_template_approval_proposedchanges
+     * @example
+     * // Get one Mst_template_approval_proposedchanges
+     * const mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends mst_template_approval_proposedchangesFindUniqueArgs>(args: SelectSubset<T, mst_template_approval_proposedchangesFindUniqueArgs<ExtArgs>>): Prisma__mst_template_approval_proposedchangesClient<$Result.GetResult<Prisma.$mst_template_approval_proposedchangesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Mst_template_approval_proposedchanges that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {mst_template_approval_proposedchangesFindUniqueOrThrowArgs} args - Arguments to find a Mst_template_approval_proposedchanges
+     * @example
+     * // Get one Mst_template_approval_proposedchanges
+     * const mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends mst_template_approval_proposedchangesFindUniqueOrThrowArgs>(args: SelectSubset<T, mst_template_approval_proposedchangesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__mst_template_approval_proposedchangesClient<$Result.GetResult<Prisma.$mst_template_approval_proposedchangesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Mst_template_approval_proposedchanges that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mst_template_approval_proposedchangesFindFirstArgs} args - Arguments to find a Mst_template_approval_proposedchanges
+     * @example
+     * // Get one Mst_template_approval_proposedchanges
+     * const mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends mst_template_approval_proposedchangesFindFirstArgs>(args?: SelectSubset<T, mst_template_approval_proposedchangesFindFirstArgs<ExtArgs>>): Prisma__mst_template_approval_proposedchangesClient<$Result.GetResult<Prisma.$mst_template_approval_proposedchangesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Mst_template_approval_proposedchanges that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mst_template_approval_proposedchangesFindFirstOrThrowArgs} args - Arguments to find a Mst_template_approval_proposedchanges
+     * @example
+     * // Get one Mst_template_approval_proposedchanges
+     * const mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends mst_template_approval_proposedchangesFindFirstOrThrowArgs>(args?: SelectSubset<T, mst_template_approval_proposedchangesFindFirstOrThrowArgs<ExtArgs>>): Prisma__mst_template_approval_proposedchangesClient<$Result.GetResult<Prisma.$mst_template_approval_proposedchangesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Mst_template_approval_proposedchanges that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mst_template_approval_proposedchangesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Mst_template_approval_proposedchanges
+     * const mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.findMany()
+     * 
+     * // Get first 10 Mst_template_approval_proposedchanges
+     * const mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const mst_template_approval_proposedchangesWithIdOnly = await prisma.mst_template_approval_proposedchanges.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends mst_template_approval_proposedchangesFindManyArgs>(args?: SelectSubset<T, mst_template_approval_proposedchangesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$mst_template_approval_proposedchangesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Mst_template_approval_proposedchanges.
+     * @param {mst_template_approval_proposedchangesCreateArgs} args - Arguments to create a Mst_template_approval_proposedchanges.
+     * @example
+     * // Create one Mst_template_approval_proposedchanges
+     * const Mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.create({
+     *   data: {
+     *     // ... data to create a Mst_template_approval_proposedchanges
+     *   }
+     * })
+     * 
+     */
+    create<T extends mst_template_approval_proposedchangesCreateArgs>(args: SelectSubset<T, mst_template_approval_proposedchangesCreateArgs<ExtArgs>>): Prisma__mst_template_approval_proposedchangesClient<$Result.GetResult<Prisma.$mst_template_approval_proposedchangesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Mst_template_approval_proposedchanges.
+     * @param {mst_template_approval_proposedchangesCreateManyArgs} args - Arguments to create many Mst_template_approval_proposedchanges.
+     * @example
+     * // Create many Mst_template_approval_proposedchanges
+     * const mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends mst_template_approval_proposedchangesCreateManyArgs>(args?: SelectSubset<T, mst_template_approval_proposedchangesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Mst_template_approval_proposedchanges.
+     * @param {mst_template_approval_proposedchangesDeleteArgs} args - Arguments to delete one Mst_template_approval_proposedchanges.
+     * @example
+     * // Delete one Mst_template_approval_proposedchanges
+     * const Mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.delete({
+     *   where: {
+     *     // ... filter to delete one Mst_template_approval_proposedchanges
+     *   }
+     * })
+     * 
+     */
+    delete<T extends mst_template_approval_proposedchangesDeleteArgs>(args: SelectSubset<T, mst_template_approval_proposedchangesDeleteArgs<ExtArgs>>): Prisma__mst_template_approval_proposedchangesClient<$Result.GetResult<Prisma.$mst_template_approval_proposedchangesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Mst_template_approval_proposedchanges.
+     * @param {mst_template_approval_proposedchangesUpdateArgs} args - Arguments to update one Mst_template_approval_proposedchanges.
+     * @example
+     * // Update one Mst_template_approval_proposedchanges
+     * const mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends mst_template_approval_proposedchangesUpdateArgs>(args: SelectSubset<T, mst_template_approval_proposedchangesUpdateArgs<ExtArgs>>): Prisma__mst_template_approval_proposedchangesClient<$Result.GetResult<Prisma.$mst_template_approval_proposedchangesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Mst_template_approval_proposedchanges.
+     * @param {mst_template_approval_proposedchangesDeleteManyArgs} args - Arguments to filter Mst_template_approval_proposedchanges to delete.
+     * @example
+     * // Delete a few Mst_template_approval_proposedchanges
+     * const { count } = await prisma.mst_template_approval_proposedchanges.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends mst_template_approval_proposedchangesDeleteManyArgs>(args?: SelectSubset<T, mst_template_approval_proposedchangesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Mst_template_approval_proposedchanges.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mst_template_approval_proposedchangesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Mst_template_approval_proposedchanges
+     * const mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends mst_template_approval_proposedchangesUpdateManyArgs>(args: SelectSubset<T, mst_template_approval_proposedchangesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Mst_template_approval_proposedchanges.
+     * @param {mst_template_approval_proposedchangesUpsertArgs} args - Arguments to update or create a Mst_template_approval_proposedchanges.
+     * @example
+     * // Update or create a Mst_template_approval_proposedchanges
+     * const mst_template_approval_proposedchanges = await prisma.mst_template_approval_proposedchanges.upsert({
+     *   create: {
+     *     // ... data to create a Mst_template_approval_proposedchanges
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Mst_template_approval_proposedchanges we want to update
+     *   }
+     * })
+     */
+    upsert<T extends mst_template_approval_proposedchangesUpsertArgs>(args: SelectSubset<T, mst_template_approval_proposedchangesUpsertArgs<ExtArgs>>): Prisma__mst_template_approval_proposedchangesClient<$Result.GetResult<Prisma.$mst_template_approval_proposedchangesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Mst_template_approval_proposedchanges.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mst_template_approval_proposedchangesCountArgs} args - Arguments to filter Mst_template_approval_proposedchanges to count.
+     * @example
+     * // Count the number of Mst_template_approval_proposedchanges
+     * const count = await prisma.mst_template_approval_proposedchanges.count({
+     *   where: {
+     *     // ... the filter for the Mst_template_approval_proposedchanges we want to count
+     *   }
+     * })
+    **/
+    count<T extends mst_template_approval_proposedchangesCountArgs>(
+      args?: Subset<T, mst_template_approval_proposedchangesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Mst_template_approval_proposedchangesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Mst_template_approval_proposedchanges.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Mst_template_approval_proposedchangesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Mst_template_approval_proposedchangesAggregateArgs>(args: Subset<T, Mst_template_approval_proposedchangesAggregateArgs>): Prisma.PrismaPromise<GetMst_template_approval_proposedchangesAggregateType<T>>
+
+    /**
+     * Group by Mst_template_approval_proposedchanges.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {mst_template_approval_proposedchangesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends mst_template_approval_proposedchangesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: mst_template_approval_proposedchangesGroupByArgs['orderBy'] }
+        : { orderBy?: mst_template_approval_proposedchangesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, mst_template_approval_proposedchangesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetMst_template_approval_proposedchangesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the mst_template_approval_proposedchanges model
+   */
+  readonly fields: mst_template_approval_proposedchangesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for mst_template_approval_proposedchanges.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__mst_template_approval_proposedchangesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the mst_template_approval_proposedchanges model
+   */
+  interface mst_template_approval_proposedchangesFieldRefs {
+    readonly id: FieldRef<"mst_template_approval_proposedchanges", 'Int'>
+    readonly template_name: FieldRef<"mst_template_approval_proposedchanges", 'String'>
+    readonly line_code: FieldRef<"mst_template_approval_proposedchanges", 'String'>
+    readonly need_engineering_approval: FieldRef<"mst_template_approval_proposedchanges", 'Boolean'>
+    readonly need_production_approval: FieldRef<"mst_template_approval_proposedchanges", 'Boolean'>
+    readonly step_order: FieldRef<"mst_template_approval_proposedchanges", 'Int'>
+    readonly actor_name: FieldRef<"mst_template_approval_proposedchanges", 'String'>
+    readonly model_type: FieldRef<"mst_template_approval_proposedchanges", 'mst_template_approval_proposedchanges_model_type'>
+    readonly section_id: FieldRef<"mst_template_approval_proposedchanges", 'Int'>
+    readonly use_dynamic_section: FieldRef<"mst_template_approval_proposedchanges", 'Boolean'>
+    readonly use_line_section: FieldRef<"mst_template_approval_proposedchanges", 'Boolean'>
+    readonly is_active: FieldRef<"mst_template_approval_proposedchanges", 'Boolean'>
+    readonly priority: FieldRef<"mst_template_approval_proposedchanges", 'Int'>
+    readonly description: FieldRef<"mst_template_approval_proposedchanges", 'String'>
+    readonly created_by: FieldRef<"mst_template_approval_proposedchanges", 'String'>
+    readonly created_date: FieldRef<"mst_template_approval_proposedchanges", 'DateTime'>
+    readonly updated_by: FieldRef<"mst_template_approval_proposedchanges", 'String'>
+    readonly updated_date: FieldRef<"mst_template_approval_proposedchanges", 'DateTime'>
+    readonly is_deleted: FieldRef<"mst_template_approval_proposedchanges", 'Boolean'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * mst_template_approval_proposedchanges findUnique
+   */
+  export type mst_template_approval_proposedchangesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_template_approval_proposedchanges
+     */
+    select?: mst_template_approval_proposedchangesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_template_approval_proposedchanges
+     */
+    omit?: mst_template_approval_proposedchangesOmit<ExtArgs> | null
+    /**
+     * Filter, which mst_template_approval_proposedchanges to fetch.
+     */
+    where: mst_template_approval_proposedchangesWhereUniqueInput
+  }
+
+  /**
+   * mst_template_approval_proposedchanges findUniqueOrThrow
+   */
+  export type mst_template_approval_proposedchangesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_template_approval_proposedchanges
+     */
+    select?: mst_template_approval_proposedchangesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_template_approval_proposedchanges
+     */
+    omit?: mst_template_approval_proposedchangesOmit<ExtArgs> | null
+    /**
+     * Filter, which mst_template_approval_proposedchanges to fetch.
+     */
+    where: mst_template_approval_proposedchangesWhereUniqueInput
+  }
+
+  /**
+   * mst_template_approval_proposedchanges findFirst
+   */
+  export type mst_template_approval_proposedchangesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_template_approval_proposedchanges
+     */
+    select?: mst_template_approval_proposedchangesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_template_approval_proposedchanges
+     */
+    omit?: mst_template_approval_proposedchangesOmit<ExtArgs> | null
+    /**
+     * Filter, which mst_template_approval_proposedchanges to fetch.
+     */
+    where?: mst_template_approval_proposedchangesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of mst_template_approval_proposedchanges to fetch.
+     */
+    orderBy?: mst_template_approval_proposedchangesOrderByWithRelationInput | mst_template_approval_proposedchangesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for mst_template_approval_proposedchanges.
+     */
+    cursor?: mst_template_approval_proposedchangesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` mst_template_approval_proposedchanges from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` mst_template_approval_proposedchanges.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of mst_template_approval_proposedchanges.
+     */
+    distinct?: Mst_template_approval_proposedchangesScalarFieldEnum | Mst_template_approval_proposedchangesScalarFieldEnum[]
+  }
+
+  /**
+   * mst_template_approval_proposedchanges findFirstOrThrow
+   */
+  export type mst_template_approval_proposedchangesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_template_approval_proposedchanges
+     */
+    select?: mst_template_approval_proposedchangesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_template_approval_proposedchanges
+     */
+    omit?: mst_template_approval_proposedchangesOmit<ExtArgs> | null
+    /**
+     * Filter, which mst_template_approval_proposedchanges to fetch.
+     */
+    where?: mst_template_approval_proposedchangesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of mst_template_approval_proposedchanges to fetch.
+     */
+    orderBy?: mst_template_approval_proposedchangesOrderByWithRelationInput | mst_template_approval_proposedchangesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for mst_template_approval_proposedchanges.
+     */
+    cursor?: mst_template_approval_proposedchangesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` mst_template_approval_proposedchanges from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` mst_template_approval_proposedchanges.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of mst_template_approval_proposedchanges.
+     */
+    distinct?: Mst_template_approval_proposedchangesScalarFieldEnum | Mst_template_approval_proposedchangesScalarFieldEnum[]
+  }
+
+  /**
+   * mst_template_approval_proposedchanges findMany
+   */
+  export type mst_template_approval_proposedchangesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_template_approval_proposedchanges
+     */
+    select?: mst_template_approval_proposedchangesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_template_approval_proposedchanges
+     */
+    omit?: mst_template_approval_proposedchangesOmit<ExtArgs> | null
+    /**
+     * Filter, which mst_template_approval_proposedchanges to fetch.
+     */
+    where?: mst_template_approval_proposedchangesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of mst_template_approval_proposedchanges to fetch.
+     */
+    orderBy?: mst_template_approval_proposedchangesOrderByWithRelationInput | mst_template_approval_proposedchangesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing mst_template_approval_proposedchanges.
+     */
+    cursor?: mst_template_approval_proposedchangesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` mst_template_approval_proposedchanges from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` mst_template_approval_proposedchanges.
+     */
+    skip?: number
+    distinct?: Mst_template_approval_proposedchangesScalarFieldEnum | Mst_template_approval_proposedchangesScalarFieldEnum[]
+  }
+
+  /**
+   * mst_template_approval_proposedchanges create
+   */
+  export type mst_template_approval_proposedchangesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_template_approval_proposedchanges
+     */
+    select?: mst_template_approval_proposedchangesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_template_approval_proposedchanges
+     */
+    omit?: mst_template_approval_proposedchangesOmit<ExtArgs> | null
+    /**
+     * The data needed to create a mst_template_approval_proposedchanges.
+     */
+    data: XOR<mst_template_approval_proposedchangesCreateInput, mst_template_approval_proposedchangesUncheckedCreateInput>
+  }
+
+  /**
+   * mst_template_approval_proposedchanges createMany
+   */
+  export type mst_template_approval_proposedchangesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many mst_template_approval_proposedchanges.
+     */
+    data: mst_template_approval_proposedchangesCreateManyInput | mst_template_approval_proposedchangesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * mst_template_approval_proposedchanges update
+   */
+  export type mst_template_approval_proposedchangesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_template_approval_proposedchanges
+     */
+    select?: mst_template_approval_proposedchangesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_template_approval_proposedchanges
+     */
+    omit?: mst_template_approval_proposedchangesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a mst_template_approval_proposedchanges.
+     */
+    data: XOR<mst_template_approval_proposedchangesUpdateInput, mst_template_approval_proposedchangesUncheckedUpdateInput>
+    /**
+     * Choose, which mst_template_approval_proposedchanges to update.
+     */
+    where: mst_template_approval_proposedchangesWhereUniqueInput
+  }
+
+  /**
+   * mst_template_approval_proposedchanges updateMany
+   */
+  export type mst_template_approval_proposedchangesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update mst_template_approval_proposedchanges.
+     */
+    data: XOR<mst_template_approval_proposedchangesUpdateManyMutationInput, mst_template_approval_proposedchangesUncheckedUpdateManyInput>
+    /**
+     * Filter which mst_template_approval_proposedchanges to update
+     */
+    where?: mst_template_approval_proposedchangesWhereInput
+    /**
+     * Limit how many mst_template_approval_proposedchanges to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * mst_template_approval_proposedchanges upsert
+   */
+  export type mst_template_approval_proposedchangesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_template_approval_proposedchanges
+     */
+    select?: mst_template_approval_proposedchangesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_template_approval_proposedchanges
+     */
+    omit?: mst_template_approval_proposedchangesOmit<ExtArgs> | null
+    /**
+     * The filter to search for the mst_template_approval_proposedchanges to update in case it exists.
+     */
+    where: mst_template_approval_proposedchangesWhereUniqueInput
+    /**
+     * In case the mst_template_approval_proposedchanges found by the `where` argument doesn't exist, create a new mst_template_approval_proposedchanges with this data.
+     */
+    create: XOR<mst_template_approval_proposedchangesCreateInput, mst_template_approval_proposedchangesUncheckedCreateInput>
+    /**
+     * In case the mst_template_approval_proposedchanges was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<mst_template_approval_proposedchangesUpdateInput, mst_template_approval_proposedchangesUncheckedUpdateInput>
+  }
+
+  /**
+   * mst_template_approval_proposedchanges delete
+   */
+  export type mst_template_approval_proposedchangesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_template_approval_proposedchanges
+     */
+    select?: mst_template_approval_proposedchangesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_template_approval_proposedchanges
+     */
+    omit?: mst_template_approval_proposedchangesOmit<ExtArgs> | null
+    /**
+     * Filter which mst_template_approval_proposedchanges to delete.
+     */
+    where: mst_template_approval_proposedchangesWhereUniqueInput
+  }
+
+  /**
+   * mst_template_approval_proposedchanges deleteMany
+   */
+  export type mst_template_approval_proposedchangesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which mst_template_approval_proposedchanges to delete
+     */
+    where?: mst_template_approval_proposedchangesWhereInput
+    /**
+     * Limit how many mst_template_approval_proposedchanges to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * mst_template_approval_proposedchanges without action
+   */
+  export type mst_template_approval_proposedchangesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the mst_template_approval_proposedchanges
+     */
+    select?: mst_template_approval_proposedchangesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the mst_template_approval_proposedchanges
+     */
+    omit?: mst_template_approval_proposedchangesOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -43062,8 +44239,8 @@ export namespace Prisma {
     other_sytem: 'other_sytem',
     status: 'status',
     progress: 'progress',
-    progresssupport: 'progresssupport',
-    is_deleted: 'is_deleted'
+    is_deleted: 'is_deleted',
+    progresssupport: 'progresssupport'
   };
 
   export type Tr_proposed_changesScalarFieldEnum = (typeof Tr_proposed_changesScalarFieldEnum)[keyof typeof Tr_proposed_changesScalarFieldEnum]
@@ -43088,10 +44265,10 @@ export namespace Prisma {
     remark: 'remark',
     created_by: 'created_by',
     created_date: 'created_date',
-    finished_date: 'finished_date',
     updated_at: 'updated_at',
     updated_by: 'updated_by',
     is_deleted: 'is_deleted',
+    finished_date: 'finished_date',
     is_finished: 'is_finished',
     star: 'star'
   };
@@ -43107,14 +44284,14 @@ export namespace Prisma {
     actor: 'actor',
     employee_code: 'employee_code',
     status: 'status',
-    rating: 'rating',
-    review: 'review',
-    rating_date: 'rating_date',
+    updated_date: 'updated_date',
+    created_date: 'created_date',
     last_rating_reminder_sent: 'last_rating_reminder_sent',
     rating_reminder_count: 'rating_reminder_count',
     finished_date: 'finished_date',
-    updated_date: 'updated_date',
-    created_date: 'created_date'
+    rating: 'rating',
+    review: 'review',
+    rating_date: 'rating_date'
   };
 
   export type Tr_handover_approvalScalarFieldEnum = (typeof Tr_handover_approvalScalarFieldEnum)[keyof typeof Tr_handover_approvalScalarFieldEnum]
@@ -43191,6 +44368,31 @@ export namespace Prisma {
   };
 
   export type Email_tracking_authdocScalarFieldEnum = (typeof Email_tracking_authdocScalarFieldEnum)[keyof typeof Email_tracking_authdocScalarFieldEnum]
+
+
+  export const Mst_template_approval_proposedchangesScalarFieldEnum: {
+    id: 'id',
+    template_name: 'template_name',
+    line_code: 'line_code',
+    need_engineering_approval: 'need_engineering_approval',
+    need_production_approval: 'need_production_approval',
+    step_order: 'step_order',
+    actor_name: 'actor_name',
+    model_type: 'model_type',
+    section_id: 'section_id',
+    use_dynamic_section: 'use_dynamic_section',
+    use_line_section: 'use_line_section',
+    is_active: 'is_active',
+    priority: 'priority',
+    description: 'description',
+    created_by: 'created_by',
+    created_date: 'created_date',
+    updated_by: 'updated_by',
+    updated_date: 'updated_date',
+    is_deleted: 'is_deleted'
+  };
+
+  export type Mst_template_approval_proposedchangesScalarFieldEnum = (typeof Mst_template_approval_proposedchangesScalarFieldEnum)[keyof typeof Mst_template_approval_proposedchangesScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -43591,6 +44793,18 @@ export namespace Prisma {
   export type email_tracking_authdocOrderByRelevanceFieldEnum = (typeof email_tracking_authdocOrderByRelevanceFieldEnum)[keyof typeof email_tracking_authdocOrderByRelevanceFieldEnum]
 
 
+  export const mst_template_approval_proposedchangesOrderByRelevanceFieldEnum: {
+    template_name: 'template_name',
+    line_code: 'line_code',
+    actor_name: 'actor_name',
+    description: 'description',
+    created_by: 'created_by',
+    updated_by: 'updated_by'
+  };
+
+  export type mst_template_approval_proposedchangesOrderByRelevanceFieldEnum = (typeof mst_template_approval_proposedchangesOrderByRelevanceFieldEnum)[keyof typeof mst_template_approval_proposedchangesOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -43691,6 +44905,13 @@ export namespace Prisma {
    * Reference to a field of type 'email_tracking_authdoc_status'
    */
   export type Enumemail_tracking_authdoc_statusFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'email_tracking_authdoc_status'>
+    
+
+
+  /**
+   * Reference to a field of type 'mst_template_approval_proposedchanges_model_type'
+   */
+  export type Enummst_template_approval_proposedchanges_model_typeFieldRefInput<$PrismaModel> = FieldRefInputType<$PrismaModel, 'mst_template_approval_proposedchanges_model_type'>
     
 
 
@@ -46117,8 +47338,8 @@ export namespace Prisma {
     other_sytem?: StringNullableFilter<"tr_proposed_changes"> | string | null
     status?: StringNullableFilter<"tr_proposed_changes"> | string | null
     progress?: StringNullableFilter<"tr_proposed_changes"> | string | null
-    progresssupport?: StringNullableFilter<"tr_proposed_changes"> | string | null
     is_deleted?: BoolFilter<"tr_proposed_changes"> | boolean
+    progresssupport?: StringNullableFilter<"tr_proposed_changes"> | string | null
     email_tracking_proposedchanges?: Email_tracking_proposedchangesListRelationFilter
     proposedChange?: Tbl_support_documentListRelationFilter
     additionalDocs?: Tr_additional_docListRelationFilter
@@ -46160,8 +47381,8 @@ export namespace Prisma {
     other_sytem?: SortOrderInput | SortOrder
     status?: SortOrderInput | SortOrder
     progress?: SortOrderInput | SortOrder
-    progresssupport?: SortOrderInput | SortOrder
     is_deleted?: SortOrder
+    progresssupport?: SortOrderInput | SortOrder
     email_tracking_proposedchanges?: email_tracking_proposedchangesOrderByRelationAggregateInput
     proposedChange?: tbl_support_documentOrderByRelationAggregateInput
     additionalDocs?: tr_additional_docOrderByRelationAggregateInput
@@ -46207,8 +47428,8 @@ export namespace Prisma {
     other_sytem?: StringNullableFilter<"tr_proposed_changes"> | string | null
     status?: StringNullableFilter<"tr_proposed_changes"> | string | null
     progress?: StringNullableFilter<"tr_proposed_changes"> | string | null
-    progresssupport?: StringNullableFilter<"tr_proposed_changes"> | string | null
     is_deleted?: BoolFilter<"tr_proposed_changes"> | boolean
+    progresssupport?: StringNullableFilter<"tr_proposed_changes"> | string | null
     email_tracking_proposedchanges?: Email_tracking_proposedchangesListRelationFilter
     proposedChange?: Tbl_support_documentListRelationFilter
     additionalDocs?: Tr_additional_docListRelationFilter
@@ -46250,8 +47471,8 @@ export namespace Prisma {
     other_sytem?: SortOrderInput | SortOrder
     status?: SortOrderInput | SortOrder
     progress?: SortOrderInput | SortOrder
-    progresssupport?: SortOrderInput | SortOrder
     is_deleted?: SortOrder
+    progresssupport?: SortOrderInput | SortOrder
     _count?: tr_proposed_changesCountOrderByAggregateInput
     _avg?: tr_proposed_changesAvgOrderByAggregateInput
     _max?: tr_proposed_changesMaxOrderByAggregateInput
@@ -46289,8 +47510,8 @@ export namespace Prisma {
     other_sytem?: StringNullableWithAggregatesFilter<"tr_proposed_changes"> | string | null
     status?: StringNullableWithAggregatesFilter<"tr_proposed_changes"> | string | null
     progress?: StringNullableWithAggregatesFilter<"tr_proposed_changes"> | string | null
-    progresssupport?: StringNullableWithAggregatesFilter<"tr_proposed_changes"> | string | null
     is_deleted?: BoolWithAggregatesFilter<"tr_proposed_changes"> | boolean
+    progresssupport?: StringNullableWithAggregatesFilter<"tr_proposed_changes"> | string | null
   }
 
   export type tr_handoverWhereInput = {
@@ -46315,10 +47536,10 @@ export namespace Prisma {
     remark?: StringNullableFilter<"tr_handover"> | string | null
     created_by?: StringNullableFilter<"tr_handover"> | string | null
     created_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
-    finished_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     updated_by?: StringNullableFilter<"tr_handover"> | string | null
     is_deleted?: BoolNullableFilter<"tr_handover"> | boolean | null
+    finished_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     is_finished?: BoolNullableFilter<"tr_handover"> | boolean | null
     star?: DecimalNullableFilter<"tr_handover"> | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: Email_tracking_handoverListRelationFilter
@@ -46355,10 +47576,10 @@ export namespace Prisma {
     remark?: SortOrderInput | SortOrder
     created_by?: SortOrderInput | SortOrder
     created_date?: SortOrderInput | SortOrder
-    finished_date?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
     updated_by?: SortOrderInput | SortOrder
     is_deleted?: SortOrderInput | SortOrder
+    finished_date?: SortOrderInput | SortOrder
     is_finished?: SortOrderInput | SortOrder
     star?: SortOrderInput | SortOrder
     email_tracking_handover?: email_tracking_handoverOrderByRelationAggregateInput
@@ -46399,10 +47620,10 @@ export namespace Prisma {
     remark?: StringNullableFilter<"tr_handover"> | string | null
     created_by?: StringNullableFilter<"tr_handover"> | string | null
     created_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
-    finished_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     updated_by?: StringNullableFilter<"tr_handover"> | string | null
     is_deleted?: BoolNullableFilter<"tr_handover"> | boolean | null
+    finished_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     is_finished?: BoolNullableFilter<"tr_handover"> | boolean | null
     star?: DecimalNullableFilter<"tr_handover"> | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: Email_tracking_handoverListRelationFilter
@@ -46439,10 +47660,10 @@ export namespace Prisma {
     remark?: SortOrderInput | SortOrder
     created_by?: SortOrderInput | SortOrder
     created_date?: SortOrderInput | SortOrder
-    finished_date?: SortOrderInput | SortOrder
     updated_at?: SortOrderInput | SortOrder
     updated_by?: SortOrderInput | SortOrder
     is_deleted?: SortOrderInput | SortOrder
+    finished_date?: SortOrderInput | SortOrder
     is_finished?: SortOrderInput | SortOrder
     star?: SortOrderInput | SortOrder
     _count?: tr_handoverCountOrderByAggregateInput
@@ -46474,10 +47695,10 @@ export namespace Prisma {
     remark?: StringNullableWithAggregatesFilter<"tr_handover"> | string | null
     created_by?: StringNullableWithAggregatesFilter<"tr_handover"> | string | null
     created_date?: DateTimeNullableWithAggregatesFilter<"tr_handover"> | Date | string | null
-    finished_date?: DateTimeNullableWithAggregatesFilter<"tr_handover"> | Date | string | null
     updated_at?: DateTimeNullableWithAggregatesFilter<"tr_handover"> | Date | string | null
     updated_by?: StringNullableWithAggregatesFilter<"tr_handover"> | string | null
     is_deleted?: BoolNullableWithAggregatesFilter<"tr_handover"> | boolean | null
+    finished_date?: DateTimeNullableWithAggregatesFilter<"tr_handover"> | Date | string | null
     is_finished?: BoolNullableWithAggregatesFilter<"tr_handover"> | boolean | null
     star?: DecimalNullableWithAggregatesFilter<"tr_handover"> | Decimal | DecimalJsLike | number | string | null
   }
@@ -46493,14 +47714,14 @@ export namespace Prisma {
     actor?: StringNullableFilter<"tr_handover_approval"> | string | null
     employee_code?: StringNullableFilter<"tr_handover_approval"> | string | null
     status?: StringNullableFilter<"tr_handover_approval"> | string | null
-    rating?: IntNullableFilter<"tr_handover_approval"> | number | null
-    review?: StringNullableFilter<"tr_handover_approval"> | string | null
-    rating_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    updated_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    created_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     last_rating_reminder_sent?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     rating_reminder_count?: IntNullableFilter<"tr_handover_approval"> | number | null
     finished_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
-    updated_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
-    created_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    rating?: IntNullableFilter<"tr_handover_approval"> | number | null
+    review?: StringNullableFilter<"tr_handover_approval"> | string | null
+    rating_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     tr_handover?: XOR<Tr_handoverNullableScalarRelationFilter, tr_handoverWhereInput> | null
     mst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
   }
@@ -46513,14 +47734,14 @@ export namespace Prisma {
     actor?: SortOrderInput | SortOrder
     employee_code?: SortOrderInput | SortOrder
     status?: SortOrderInput | SortOrder
-    rating?: SortOrderInput | SortOrder
-    review?: SortOrderInput | SortOrder
-    rating_date?: SortOrderInput | SortOrder
+    updated_date?: SortOrderInput | SortOrder
+    created_date?: SortOrderInput | SortOrder
     last_rating_reminder_sent?: SortOrderInput | SortOrder
     rating_reminder_count?: SortOrderInput | SortOrder
     finished_date?: SortOrderInput | SortOrder
-    updated_date?: SortOrderInput | SortOrder
-    created_date?: SortOrderInput | SortOrder
+    rating?: SortOrderInput | SortOrder
+    review?: SortOrderInput | SortOrder
+    rating_date?: SortOrderInput | SortOrder
     tr_handover?: tr_handoverOrderByWithRelationInput
     mst_authorization?: mst_authorizationOrderByWithRelationInput
     _relevance?: tr_handover_approvalOrderByRelevanceInput
@@ -46537,14 +47758,14 @@ export namespace Prisma {
     actor?: StringNullableFilter<"tr_handover_approval"> | string | null
     employee_code?: StringNullableFilter<"tr_handover_approval"> | string | null
     status?: StringNullableFilter<"tr_handover_approval"> | string | null
-    rating?: IntNullableFilter<"tr_handover_approval"> | number | null
-    review?: StringNullableFilter<"tr_handover_approval"> | string | null
-    rating_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    updated_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    created_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     last_rating_reminder_sent?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     rating_reminder_count?: IntNullableFilter<"tr_handover_approval"> | number | null
     finished_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
-    updated_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
-    created_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    rating?: IntNullableFilter<"tr_handover_approval"> | number | null
+    review?: StringNullableFilter<"tr_handover_approval"> | string | null
+    rating_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     tr_handover?: XOR<Tr_handoverNullableScalarRelationFilter, tr_handoverWhereInput> | null
     mst_authorization?: XOR<Mst_authorizationNullableScalarRelationFilter, mst_authorizationWhereInput> | null
   }, "id">
@@ -46557,14 +47778,14 @@ export namespace Prisma {
     actor?: SortOrderInput | SortOrder
     employee_code?: SortOrderInput | SortOrder
     status?: SortOrderInput | SortOrder
-    rating?: SortOrderInput | SortOrder
-    review?: SortOrderInput | SortOrder
-    rating_date?: SortOrderInput | SortOrder
+    updated_date?: SortOrderInput | SortOrder
+    created_date?: SortOrderInput | SortOrder
     last_rating_reminder_sent?: SortOrderInput | SortOrder
     rating_reminder_count?: SortOrderInput | SortOrder
     finished_date?: SortOrderInput | SortOrder
-    updated_date?: SortOrderInput | SortOrder
-    created_date?: SortOrderInput | SortOrder
+    rating?: SortOrderInput | SortOrder
+    review?: SortOrderInput | SortOrder
+    rating_date?: SortOrderInput | SortOrder
     _count?: tr_handover_approvalCountOrderByAggregateInput
     _avg?: tr_handover_approvalAvgOrderByAggregateInput
     _max?: tr_handover_approvalMaxOrderByAggregateInput
@@ -46583,14 +47804,14 @@ export namespace Prisma {
     actor?: StringNullableWithAggregatesFilter<"tr_handover_approval"> | string | null
     employee_code?: StringNullableWithAggregatesFilter<"tr_handover_approval"> | string | null
     status?: StringNullableWithAggregatesFilter<"tr_handover_approval"> | string | null
-    rating?: IntNullableWithAggregatesFilter<"tr_handover_approval"> | number | null
-    review?: StringNullableWithAggregatesFilter<"tr_handover_approval"> | string | null
-    rating_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
+    updated_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
+    created_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
     last_rating_reminder_sent?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
     rating_reminder_count?: IntNullableWithAggregatesFilter<"tr_handover_approval"> | number | null
     finished_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
-    updated_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
-    created_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
+    rating?: IntNullableWithAggregatesFilter<"tr_handover_approval"> | number | null
+    review?: StringNullableWithAggregatesFilter<"tr_handover_approval"> | string | null
+    rating_date?: DateTimeNullableWithAggregatesFilter<"tr_handover_approval"> | Date | string | null
   }
 
   export type tr_handover_historyWhereInput = {
@@ -46971,6 +48192,131 @@ export namespace Prisma {
     retry_count?: IntNullableWithAggregatesFilter<"email_tracking_authdoc"> | number | null
     last_retry_at?: DateTimeNullableWithAggregatesFilter<"email_tracking_authdoc"> | Date | string | null
     created_at?: DateTimeNullableWithAggregatesFilter<"email_tracking_authdoc"> | Date | string | null
+  }
+
+  export type mst_template_approval_proposedchangesWhereInput = {
+    AND?: mst_template_approval_proposedchangesWhereInput | mst_template_approval_proposedchangesWhereInput[]
+    OR?: mst_template_approval_proposedchangesWhereInput[]
+    NOT?: mst_template_approval_proposedchangesWhereInput | mst_template_approval_proposedchangesWhereInput[]
+    id?: IntFilter<"mst_template_approval_proposedchanges"> | number
+    template_name?: StringFilter<"mst_template_approval_proposedchanges"> | string
+    line_code?: StringNullableFilter<"mst_template_approval_proposedchanges"> | string | null
+    need_engineering_approval?: BoolNullableFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    need_production_approval?: BoolNullableFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    step_order?: IntFilter<"mst_template_approval_proposedchanges"> | number
+    actor_name?: StringFilter<"mst_template_approval_proposedchanges"> | string
+    model_type?: Enummst_template_approval_proposedchanges_model_typeFilter<"mst_template_approval_proposedchanges"> | $Enums.mst_template_approval_proposedchanges_model_type
+    section_id?: IntNullableFilter<"mst_template_approval_proposedchanges"> | number | null
+    use_dynamic_section?: BoolNullableFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    use_line_section?: BoolNullableFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    is_active?: BoolNullableFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    priority?: IntNullableFilter<"mst_template_approval_proposedchanges"> | number | null
+    description?: StringNullableFilter<"mst_template_approval_proposedchanges"> | string | null
+    created_by?: StringFilter<"mst_template_approval_proposedchanges"> | string
+    created_date?: DateTimeNullableFilter<"mst_template_approval_proposedchanges"> | Date | string | null
+    updated_by?: StringNullableFilter<"mst_template_approval_proposedchanges"> | string | null
+    updated_date?: DateTimeNullableFilter<"mst_template_approval_proposedchanges"> | Date | string | null
+    is_deleted?: BoolNullableFilter<"mst_template_approval_proposedchanges"> | boolean | null
+  }
+
+  export type mst_template_approval_proposedchangesOrderByWithRelationInput = {
+    id?: SortOrder
+    template_name?: SortOrder
+    line_code?: SortOrderInput | SortOrder
+    need_engineering_approval?: SortOrderInput | SortOrder
+    need_production_approval?: SortOrderInput | SortOrder
+    step_order?: SortOrder
+    actor_name?: SortOrder
+    model_type?: SortOrder
+    section_id?: SortOrderInput | SortOrder
+    use_dynamic_section?: SortOrderInput | SortOrder
+    use_line_section?: SortOrderInput | SortOrder
+    is_active?: SortOrderInput | SortOrder
+    priority?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    created_by?: SortOrder
+    created_date?: SortOrderInput | SortOrder
+    updated_by?: SortOrderInput | SortOrder
+    updated_date?: SortOrderInput | SortOrder
+    is_deleted?: SortOrderInput | SortOrder
+    _relevance?: mst_template_approval_proposedchangesOrderByRelevanceInput
+  }
+
+  export type mst_template_approval_proposedchangesWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: mst_template_approval_proposedchangesWhereInput | mst_template_approval_proposedchangesWhereInput[]
+    OR?: mst_template_approval_proposedchangesWhereInput[]
+    NOT?: mst_template_approval_proposedchangesWhereInput | mst_template_approval_proposedchangesWhereInput[]
+    template_name?: StringFilter<"mst_template_approval_proposedchanges"> | string
+    line_code?: StringNullableFilter<"mst_template_approval_proposedchanges"> | string | null
+    need_engineering_approval?: BoolNullableFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    need_production_approval?: BoolNullableFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    step_order?: IntFilter<"mst_template_approval_proposedchanges"> | number
+    actor_name?: StringFilter<"mst_template_approval_proposedchanges"> | string
+    model_type?: Enummst_template_approval_proposedchanges_model_typeFilter<"mst_template_approval_proposedchanges"> | $Enums.mst_template_approval_proposedchanges_model_type
+    section_id?: IntNullableFilter<"mst_template_approval_proposedchanges"> | number | null
+    use_dynamic_section?: BoolNullableFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    use_line_section?: BoolNullableFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    is_active?: BoolNullableFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    priority?: IntNullableFilter<"mst_template_approval_proposedchanges"> | number | null
+    description?: StringNullableFilter<"mst_template_approval_proposedchanges"> | string | null
+    created_by?: StringFilter<"mst_template_approval_proposedchanges"> | string
+    created_date?: DateTimeNullableFilter<"mst_template_approval_proposedchanges"> | Date | string | null
+    updated_by?: StringNullableFilter<"mst_template_approval_proposedchanges"> | string | null
+    updated_date?: DateTimeNullableFilter<"mst_template_approval_proposedchanges"> | Date | string | null
+    is_deleted?: BoolNullableFilter<"mst_template_approval_proposedchanges"> | boolean | null
+  }, "id">
+
+  export type mst_template_approval_proposedchangesOrderByWithAggregationInput = {
+    id?: SortOrder
+    template_name?: SortOrder
+    line_code?: SortOrderInput | SortOrder
+    need_engineering_approval?: SortOrderInput | SortOrder
+    need_production_approval?: SortOrderInput | SortOrder
+    step_order?: SortOrder
+    actor_name?: SortOrder
+    model_type?: SortOrder
+    section_id?: SortOrderInput | SortOrder
+    use_dynamic_section?: SortOrderInput | SortOrder
+    use_line_section?: SortOrderInput | SortOrder
+    is_active?: SortOrderInput | SortOrder
+    priority?: SortOrderInput | SortOrder
+    description?: SortOrderInput | SortOrder
+    created_by?: SortOrder
+    created_date?: SortOrderInput | SortOrder
+    updated_by?: SortOrderInput | SortOrder
+    updated_date?: SortOrderInput | SortOrder
+    is_deleted?: SortOrderInput | SortOrder
+    _count?: mst_template_approval_proposedchangesCountOrderByAggregateInput
+    _avg?: mst_template_approval_proposedchangesAvgOrderByAggregateInput
+    _max?: mst_template_approval_proposedchangesMaxOrderByAggregateInput
+    _min?: mst_template_approval_proposedchangesMinOrderByAggregateInput
+    _sum?: mst_template_approval_proposedchangesSumOrderByAggregateInput
+  }
+
+  export type mst_template_approval_proposedchangesScalarWhereWithAggregatesInput = {
+    AND?: mst_template_approval_proposedchangesScalarWhereWithAggregatesInput | mst_template_approval_proposedchangesScalarWhereWithAggregatesInput[]
+    OR?: mst_template_approval_proposedchangesScalarWhereWithAggregatesInput[]
+    NOT?: mst_template_approval_proposedchangesScalarWhereWithAggregatesInput | mst_template_approval_proposedchangesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"mst_template_approval_proposedchanges"> | number
+    template_name?: StringWithAggregatesFilter<"mst_template_approval_proposedchanges"> | string
+    line_code?: StringNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | string | null
+    need_engineering_approval?: BoolNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    need_production_approval?: BoolNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    step_order?: IntWithAggregatesFilter<"mst_template_approval_proposedchanges"> | number
+    actor_name?: StringWithAggregatesFilter<"mst_template_approval_proposedchanges"> | string
+    model_type?: Enummst_template_approval_proposedchanges_model_typeWithAggregatesFilter<"mst_template_approval_proposedchanges"> | $Enums.mst_template_approval_proposedchanges_model_type
+    section_id?: IntNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | number | null
+    use_dynamic_section?: BoolNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    use_line_section?: BoolNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    is_active?: BoolNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | boolean | null
+    priority?: IntNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | number | null
+    description?: StringNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | string | null
+    created_by?: StringWithAggregatesFilter<"mst_template_approval_proposedchanges"> | string
+    created_date?: DateTimeNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | Date | string | null
+    updated_by?: StringNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | string | null
+    updated_date?: DateTimeNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | Date | string | null
+    is_deleted?: BoolNullableWithAggregatesFilter<"mst_template_approval_proposedchanges"> | boolean | null
   }
 
   export type tr_logCreateInput = {
@@ -49464,8 +50810,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
@@ -49507,8 +50853,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -49539,8 +50885,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
@@ -49582,8 +50928,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -49620,8 +50966,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
   }
 
   export type tr_proposed_changesUpdateManyMutationInput = {
@@ -49645,8 +50991,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type tr_proposed_changesUncheckedUpdateManyInput = {
@@ -49676,8 +51022,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type tr_handoverCreateInput = {
@@ -49688,10 +51034,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -49728,10 +51074,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -49747,10 +51093,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -49787,10 +51133,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -49817,10 +51163,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
   }
@@ -49833,10 +51179,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
@@ -49860,10 +51206,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
@@ -49873,14 +51219,14 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
-    rating?: number | null
-    review?: string | null
-    rating_date?: Date | string | null
+    updated_date?: Date | string | null
+    created_date?: Date | string | null
     last_rating_reminder_sent?: Date | string | null
     rating_reminder_count?: number | null
     finished_date?: Date | string | null
-    updated_date?: Date | string | null
-    created_date?: Date | string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
     tr_handover?: tr_handoverCreateNestedOneWithoutTr_handover_approvalInput
     mst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_approvalInput
   }
@@ -49893,14 +51239,14 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
-    rating?: number | null
-    review?: string | null
-    rating_date?: Date | string | null
+    updated_date?: Date | string | null
+    created_date?: Date | string | null
     last_rating_reminder_sent?: Date | string | null
     rating_reminder_count?: number | null
     finished_date?: Date | string | null
-    updated_date?: Date | string | null
-    created_date?: Date | string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
   }
 
   export type tr_handover_approvalUpdateInput = {
@@ -49908,14 +51254,14 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
-    rating?: NullableIntFieldUpdateOperationsInput | number | null
-    review?: NullableStringFieldUpdateOperationsInput | string | null
-    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
     finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tr_handover?: tr_handoverUpdateOneWithoutTr_handover_approvalNestedInput
     mst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_approvalNestedInput
   }
@@ -49928,14 +51274,14 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
-    rating?: NullableIntFieldUpdateOperationsInput | number | null
-    review?: NullableStringFieldUpdateOperationsInput | string | null
-    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
     finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tr_handover_approvalCreateManyInput = {
@@ -49946,14 +51292,14 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
-    rating?: number | null
-    review?: string | null
-    rating_date?: Date | string | null
+    updated_date?: Date | string | null
+    created_date?: Date | string | null
     last_rating_reminder_sent?: Date | string | null
     rating_reminder_count?: number | null
     finished_date?: Date | string | null
-    updated_date?: Date | string | null
-    created_date?: Date | string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
   }
 
   export type tr_handover_approvalUpdateManyMutationInput = {
@@ -49961,14 +51307,14 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
-    rating?: NullableIntFieldUpdateOperationsInput | number | null
-    review?: NullableStringFieldUpdateOperationsInput | string | null
-    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
     finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tr_handover_approvalUncheckedUpdateManyInput = {
@@ -49979,14 +51325,14 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
-    rating?: NullableIntFieldUpdateOperationsInput | number | null
-    review?: NullableStringFieldUpdateOperationsInput | string | null
-    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
     finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tr_handover_historyCreateInput = {
@@ -50397,6 +51743,157 @@ export namespace Prisma {
     retry_count?: NullableIntFieldUpdateOperationsInput | number | null
     last_retry_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     created_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+  }
+
+  export type mst_template_approval_proposedchangesCreateInput = {
+    template_name: string
+    line_code?: string | null
+    need_engineering_approval?: boolean | null
+    need_production_approval?: boolean | null
+    step_order: number
+    actor_name: string
+    model_type: $Enums.mst_template_approval_proposedchanges_model_type
+    section_id?: number | null
+    use_dynamic_section?: boolean | null
+    use_line_section?: boolean | null
+    is_active?: boolean | null
+    priority?: number | null
+    description?: string | null
+    created_by: string
+    created_date?: Date | string | null
+    updated_by?: string | null
+    updated_date?: Date | string | null
+    is_deleted?: boolean | null
+  }
+
+  export type mst_template_approval_proposedchangesUncheckedCreateInput = {
+    id?: number
+    template_name: string
+    line_code?: string | null
+    need_engineering_approval?: boolean | null
+    need_production_approval?: boolean | null
+    step_order: number
+    actor_name: string
+    model_type: $Enums.mst_template_approval_proposedchanges_model_type
+    section_id?: number | null
+    use_dynamic_section?: boolean | null
+    use_line_section?: boolean | null
+    is_active?: boolean | null
+    priority?: number | null
+    description?: string | null
+    created_by: string
+    created_date?: Date | string | null
+    updated_by?: string | null
+    updated_date?: Date | string | null
+    is_deleted?: boolean | null
+  }
+
+  export type mst_template_approval_proposedchangesUpdateInput = {
+    template_name?: StringFieldUpdateOperationsInput | string
+    line_code?: NullableStringFieldUpdateOperationsInput | string | null
+    need_engineering_approval?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    need_production_approval?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    step_order?: IntFieldUpdateOperationsInput | number
+    actor_name?: StringFieldUpdateOperationsInput | string
+    model_type?: Enummst_template_approval_proposedchanges_model_typeFieldUpdateOperationsInput | $Enums.mst_template_approval_proposedchanges_model_type
+    section_id?: NullableIntFieldUpdateOperationsInput | number | null
+    use_dynamic_section?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    use_line_section?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_active?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priority?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: StringFieldUpdateOperationsInput | string
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type mst_template_approval_proposedchangesUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    template_name?: StringFieldUpdateOperationsInput | string
+    line_code?: NullableStringFieldUpdateOperationsInput | string | null
+    need_engineering_approval?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    need_production_approval?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    step_order?: IntFieldUpdateOperationsInput | number
+    actor_name?: StringFieldUpdateOperationsInput | string
+    model_type?: Enummst_template_approval_proposedchanges_model_typeFieldUpdateOperationsInput | $Enums.mst_template_approval_proposedchanges_model_type
+    section_id?: NullableIntFieldUpdateOperationsInput | number | null
+    use_dynamic_section?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    use_line_section?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_active?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priority?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: StringFieldUpdateOperationsInput | string
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type mst_template_approval_proposedchangesCreateManyInput = {
+    id?: number
+    template_name: string
+    line_code?: string | null
+    need_engineering_approval?: boolean | null
+    need_production_approval?: boolean | null
+    step_order: number
+    actor_name: string
+    model_type: $Enums.mst_template_approval_proposedchanges_model_type
+    section_id?: number | null
+    use_dynamic_section?: boolean | null
+    use_line_section?: boolean | null
+    is_active?: boolean | null
+    priority?: number | null
+    description?: string | null
+    created_by: string
+    created_date?: Date | string | null
+    updated_by?: string | null
+    updated_date?: Date | string | null
+    is_deleted?: boolean | null
+  }
+
+  export type mst_template_approval_proposedchangesUpdateManyMutationInput = {
+    template_name?: StringFieldUpdateOperationsInput | string
+    line_code?: NullableStringFieldUpdateOperationsInput | string | null
+    need_engineering_approval?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    need_production_approval?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    step_order?: IntFieldUpdateOperationsInput | number
+    actor_name?: StringFieldUpdateOperationsInput | string
+    model_type?: Enummst_template_approval_proposedchanges_model_typeFieldUpdateOperationsInput | $Enums.mst_template_approval_proposedchanges_model_type
+    section_id?: NullableIntFieldUpdateOperationsInput | number | null
+    use_dynamic_section?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    use_line_section?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_active?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priority?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: StringFieldUpdateOperationsInput | string
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+  }
+
+  export type mst_template_approval_proposedchangesUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    template_name?: StringFieldUpdateOperationsInput | string
+    line_code?: NullableStringFieldUpdateOperationsInput | string | null
+    need_engineering_approval?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    need_production_approval?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    step_order?: IntFieldUpdateOperationsInput | number
+    actor_name?: StringFieldUpdateOperationsInput | string
+    model_type?: Enummst_template_approval_proposedchanges_model_typeFieldUpdateOperationsInput | $Enums.mst_template_approval_proposedchanges_model_type
+    section_id?: NullableIntFieldUpdateOperationsInput | number | null
+    use_dynamic_section?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    use_line_section?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    is_active?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    priority?: NullableIntFieldUpdateOperationsInput | number | null
+    description?: NullableStringFieldUpdateOperationsInput | string | null
+    created_by?: StringFieldUpdateOperationsInput | string
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_by?: NullableStringFieldUpdateOperationsInput | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
   }
 
   export type StringFilter<$PrismaModel = never> = {
@@ -52533,8 +54030,8 @@ export namespace Prisma {
     other_sytem?: SortOrder
     status?: SortOrder
     progress?: SortOrder
-    progresssupport?: SortOrder
     is_deleted?: SortOrder
+    progresssupport?: SortOrder
   }
 
   export type tr_proposed_changesAvgOrderByAggregateInput = {
@@ -52573,8 +54070,8 @@ export namespace Prisma {
     other_sytem?: SortOrder
     status?: SortOrder
     progress?: SortOrder
-    progresssupport?: SortOrder
     is_deleted?: SortOrder
+    progresssupport?: SortOrder
   }
 
   export type tr_proposed_changesMinOrderByAggregateInput = {
@@ -52604,8 +54101,8 @@ export namespace Prisma {
     other_sytem?: SortOrder
     status?: SortOrder
     progress?: SortOrder
-    progresssupport?: SortOrder
     is_deleted?: SortOrder
+    progresssupport?: SortOrder
   }
 
   export type tr_proposed_changesSumOrderByAggregateInput = {
@@ -52663,10 +54160,10 @@ export namespace Prisma {
     remark?: SortOrder
     created_by?: SortOrder
     created_date?: SortOrder
-    finished_date?: SortOrder
     updated_at?: SortOrder
     updated_by?: SortOrder
     is_deleted?: SortOrder
+    finished_date?: SortOrder
     is_finished?: SortOrder
     star?: SortOrder
   }
@@ -52705,10 +54202,10 @@ export namespace Prisma {
     remark?: SortOrder
     created_by?: SortOrder
     created_date?: SortOrder
-    finished_date?: SortOrder
     updated_at?: SortOrder
     updated_by?: SortOrder
     is_deleted?: SortOrder
+    finished_date?: SortOrder
     is_finished?: SortOrder
     star?: SortOrder
   }
@@ -52732,10 +54229,10 @@ export namespace Prisma {
     remark?: SortOrder
     created_by?: SortOrder
     created_date?: SortOrder
-    finished_date?: SortOrder
     updated_at?: SortOrder
     updated_by?: SortOrder
     is_deleted?: SortOrder
+    finished_date?: SortOrder
     is_finished?: SortOrder
     star?: SortOrder
   }
@@ -52790,14 +54287,14 @@ export namespace Prisma {
     actor?: SortOrder
     employee_code?: SortOrder
     status?: SortOrder
-    rating?: SortOrder
-    review?: SortOrder
-    rating_date?: SortOrder
+    updated_date?: SortOrder
+    created_date?: SortOrder
     last_rating_reminder_sent?: SortOrder
     rating_reminder_count?: SortOrder
     finished_date?: SortOrder
-    updated_date?: SortOrder
-    created_date?: SortOrder
+    rating?: SortOrder
+    review?: SortOrder
+    rating_date?: SortOrder
   }
 
   export type tr_handover_approvalAvgOrderByAggregateInput = {
@@ -52805,8 +54302,8 @@ export namespace Prisma {
     handover_id?: SortOrder
     auth_id?: SortOrder
     step?: SortOrder
-    rating?: SortOrder
     rating_reminder_count?: SortOrder
+    rating?: SortOrder
   }
 
   export type tr_handover_approvalMaxOrderByAggregateInput = {
@@ -52817,14 +54314,14 @@ export namespace Prisma {
     actor?: SortOrder
     employee_code?: SortOrder
     status?: SortOrder
-    rating?: SortOrder
-    review?: SortOrder
-    rating_date?: SortOrder
+    updated_date?: SortOrder
+    created_date?: SortOrder
     last_rating_reminder_sent?: SortOrder
     rating_reminder_count?: SortOrder
     finished_date?: SortOrder
-    updated_date?: SortOrder
-    created_date?: SortOrder
+    rating?: SortOrder
+    review?: SortOrder
+    rating_date?: SortOrder
   }
 
   export type tr_handover_approvalMinOrderByAggregateInput = {
@@ -52835,14 +54332,14 @@ export namespace Prisma {
     actor?: SortOrder
     employee_code?: SortOrder
     status?: SortOrder
-    rating?: SortOrder
-    review?: SortOrder
-    rating_date?: SortOrder
+    updated_date?: SortOrder
+    created_date?: SortOrder
     last_rating_reminder_sent?: SortOrder
     rating_reminder_count?: SortOrder
     finished_date?: SortOrder
-    updated_date?: SortOrder
-    created_date?: SortOrder
+    rating?: SortOrder
+    review?: SortOrder
+    rating_date?: SortOrder
   }
 
   export type tr_handover_approvalSumOrderByAggregateInput = {
@@ -52850,8 +54347,8 @@ export namespace Prisma {
     handover_id?: SortOrder
     auth_id?: SortOrder
     step?: SortOrder
-    rating?: SortOrder
     rating_reminder_count?: SortOrder
+    rating?: SortOrder
   }
 
   export type tr_handover_historyOrderByRelevanceInput = {
@@ -53224,6 +54721,109 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumemail_tracking_authdoc_statusFilter<$PrismaModel>
     _max?: NestedEnumemail_tracking_authdoc_statusFilter<$PrismaModel>
+  }
+
+  export type Enummst_template_approval_proposedchanges_model_typeFilter<$PrismaModel = never> = {
+    equals?: $Enums.mst_template_approval_proposedchanges_model_type | Enummst_template_approval_proposedchanges_model_typeFieldRefInput<$PrismaModel>
+    in?: $Enums.mst_template_approval_proposedchanges_model_type[]
+    notIn?: $Enums.mst_template_approval_proposedchanges_model_type[]
+    not?: NestedEnummst_template_approval_proposedchanges_model_typeFilter<$PrismaModel> | $Enums.mst_template_approval_proposedchanges_model_type
+  }
+
+  export type mst_template_approval_proposedchangesOrderByRelevanceInput = {
+    fields: mst_template_approval_proposedchangesOrderByRelevanceFieldEnum | mst_template_approval_proposedchangesOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type mst_template_approval_proposedchangesCountOrderByAggregateInput = {
+    id?: SortOrder
+    template_name?: SortOrder
+    line_code?: SortOrder
+    need_engineering_approval?: SortOrder
+    need_production_approval?: SortOrder
+    step_order?: SortOrder
+    actor_name?: SortOrder
+    model_type?: SortOrder
+    section_id?: SortOrder
+    use_dynamic_section?: SortOrder
+    use_line_section?: SortOrder
+    is_active?: SortOrder
+    priority?: SortOrder
+    description?: SortOrder
+    created_by?: SortOrder
+    created_date?: SortOrder
+    updated_by?: SortOrder
+    updated_date?: SortOrder
+    is_deleted?: SortOrder
+  }
+
+  export type mst_template_approval_proposedchangesAvgOrderByAggregateInput = {
+    id?: SortOrder
+    step_order?: SortOrder
+    section_id?: SortOrder
+    priority?: SortOrder
+  }
+
+  export type mst_template_approval_proposedchangesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    template_name?: SortOrder
+    line_code?: SortOrder
+    need_engineering_approval?: SortOrder
+    need_production_approval?: SortOrder
+    step_order?: SortOrder
+    actor_name?: SortOrder
+    model_type?: SortOrder
+    section_id?: SortOrder
+    use_dynamic_section?: SortOrder
+    use_line_section?: SortOrder
+    is_active?: SortOrder
+    priority?: SortOrder
+    description?: SortOrder
+    created_by?: SortOrder
+    created_date?: SortOrder
+    updated_by?: SortOrder
+    updated_date?: SortOrder
+    is_deleted?: SortOrder
+  }
+
+  export type mst_template_approval_proposedchangesMinOrderByAggregateInput = {
+    id?: SortOrder
+    template_name?: SortOrder
+    line_code?: SortOrder
+    need_engineering_approval?: SortOrder
+    need_production_approval?: SortOrder
+    step_order?: SortOrder
+    actor_name?: SortOrder
+    model_type?: SortOrder
+    section_id?: SortOrder
+    use_dynamic_section?: SortOrder
+    use_line_section?: SortOrder
+    is_active?: SortOrder
+    priority?: SortOrder
+    description?: SortOrder
+    created_by?: SortOrder
+    created_date?: SortOrder
+    updated_by?: SortOrder
+    updated_date?: SortOrder
+    is_deleted?: SortOrder
+  }
+
+  export type mst_template_approval_proposedchangesSumOrderByAggregateInput = {
+    id?: SortOrder
+    step_order?: SortOrder
+    section_id?: SortOrder
+    priority?: SortOrder
+  }
+
+  export type Enummst_template_approval_proposedchanges_model_typeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.mst_template_approval_proposedchanges_model_type | Enummst_template_approval_proposedchanges_model_typeFieldRefInput<$PrismaModel>
+    in?: $Enums.mst_template_approval_proposedchanges_model_type[]
+    notIn?: $Enums.mst_template_approval_proposedchanges_model_type[]
+    not?: NestedEnummst_template_approval_proposedchanges_model_typeWithAggregatesFilter<$PrismaModel> | $Enums.mst_template_approval_proposedchanges_model_type
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnummst_template_approval_proposedchanges_model_typeFilter<$PrismaModel>
+    _max?: NestedEnummst_template_approval_proposedchanges_model_typeFilter<$PrismaModel>
   }
 
   export type StringFieldUpdateOperationsInput = {
@@ -56880,6 +58480,10 @@ export namespace Prisma {
     update?: XOR<XOR<tr_authorization_docUpdateToOneWithWhereWithoutEmail_tracking_authdocInput, tr_authorization_docUpdateWithoutEmail_tracking_authdocInput>, tr_authorization_docUncheckedUpdateWithoutEmail_tracking_authdocInput>
   }
 
+  export type Enummst_template_approval_proposedchanges_model_typeFieldUpdateOperationsInput = {
+    set?: $Enums.mst_template_approval_proposedchanges_model_type
+  }
+
   export type NestedStringFilter<$PrismaModel = never> = {
     equals?: string | StringFieldRefInput<$PrismaModel>
     in?: string[]
@@ -57265,6 +58869,23 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedEnumemail_tracking_authdoc_statusFilter<$PrismaModel>
     _max?: NestedEnumemail_tracking_authdoc_statusFilter<$PrismaModel>
+  }
+
+  export type NestedEnummst_template_approval_proposedchanges_model_typeFilter<$PrismaModel = never> = {
+    equals?: $Enums.mst_template_approval_proposedchanges_model_type | Enummst_template_approval_proposedchanges_model_typeFieldRefInput<$PrismaModel>
+    in?: $Enums.mst_template_approval_proposedchanges_model_type[]
+    notIn?: $Enums.mst_template_approval_proposedchanges_model_type[]
+    not?: NestedEnummst_template_approval_proposedchanges_model_typeFilter<$PrismaModel> | $Enums.mst_template_approval_proposedchanges_model_type
+  }
+
+  export type NestedEnummst_template_approval_proposedchanges_model_typeWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: $Enums.mst_template_approval_proposedchanges_model_type | Enummst_template_approval_proposedchanges_model_typeFieldRefInput<$PrismaModel>
+    in?: $Enums.mst_template_approval_proposedchanges_model_type[]
+    notIn?: $Enums.mst_template_approval_proposedchanges_model_type[]
+    not?: NestedEnummst_template_approval_proposedchanges_model_typeWithAggregatesFilter<$PrismaModel> | $Enums.mst_template_approval_proposedchanges_model_type
+    _count?: NestedIntFilter<$PrismaModel>
+    _min?: NestedEnummst_template_approval_proposedchanges_model_typeFilter<$PrismaModel>
+    _max?: NestedEnummst_template_approval_proposedchanges_model_typeFilter<$PrismaModel>
   }
 
   export type mst_authorizationCreateWithoutRoleInput = {
@@ -58477,10 +60098,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -58515,10 +60136,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -58557,8 +60178,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
@@ -58598,8 +60219,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -58801,10 +60422,10 @@ export namespace Prisma {
     remark?: StringNullableFilter<"tr_handover"> | string | null
     created_by?: StringNullableFilter<"tr_handover"> | string | null
     created_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
-    finished_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     updated_at?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     updated_by?: StringNullableFilter<"tr_handover"> | string | null
     is_deleted?: BoolNullableFilter<"tr_handover"> | boolean | null
+    finished_date?: DateTimeNullableFilter<"tr_handover"> | Date | string | null
     is_finished?: BoolNullableFilter<"tr_handover"> | boolean | null
     star?: DecimalNullableFilter<"tr_handover"> | Decimal | DecimalJsLike | number | string | null
   }
@@ -58855,8 +60476,8 @@ export namespace Prisma {
     other_sytem?: StringNullableFilter<"tr_proposed_changes"> | string | null
     status?: StringNullableFilter<"tr_proposed_changes"> | string | null
     progress?: StringNullableFilter<"tr_proposed_changes"> | string | null
-    progresssupport?: StringNullableFilter<"tr_proposed_changes"> | string | null
     is_deleted?: BoolFilter<"tr_proposed_changes"> | boolean
+    progresssupport?: StringNullableFilter<"tr_proposed_changes"> | string | null
   }
 
   export type mst_authorizationCreateWithoutDepartmentInput = {
@@ -59092,10 +60713,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -59130,10 +60751,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -59172,8 +60793,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
@@ -59213,8 +60834,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -59691,10 +61312,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -59729,10 +61350,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -59771,8 +61392,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
@@ -59812,8 +61433,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -60404,8 +62025,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
@@ -60445,8 +62066,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -60877,8 +62498,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutProposedChangeInput
@@ -60919,8 +62540,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -61153,8 +62774,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     authorizationDocs?: tr_authorization_docUpdateManyWithoutProposedChangeNestedInput
@@ -61195,8 +62816,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -61426,8 +63047,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
@@ -61468,8 +63089,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -61595,8 +63216,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
@@ -61637,8 +63258,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -61742,8 +63363,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
@@ -61784,8 +63405,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -61911,8 +63532,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
@@ -61953,8 +63574,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -62384,10 +64005,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -62422,10 +64043,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -62451,10 +64072,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -62489,10 +64110,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -62518,10 +64139,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -62556,10 +64177,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -62585,10 +64206,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -62623,10 +64244,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -62652,10 +64273,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -62690,10 +64311,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -62716,14 +64337,14 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
-    rating?: number | null
-    review?: string | null
-    rating_date?: Date | string | null
+    updated_date?: Date | string | null
+    created_date?: Date | string | null
     last_rating_reminder_sent?: Date | string | null
     rating_reminder_count?: number | null
     finished_date?: Date | string | null
-    updated_date?: Date | string | null
-    created_date?: Date | string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
     tr_handover?: tr_handoverCreateNestedOneWithoutTr_handover_approvalInput
   }
 
@@ -62734,14 +64355,14 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
-    rating?: number | null
-    review?: string | null
-    rating_date?: Date | string | null
+    updated_date?: Date | string | null
+    created_date?: Date | string | null
     last_rating_reminder_sent?: Date | string | null
     rating_reminder_count?: number | null
     finished_date?: Date | string | null
-    updated_date?: Date | string | null
-    created_date?: Date | string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
   }
 
   export type tr_handover_approvalCreateOrConnectWithoutMst_authorizationInput = {
@@ -62808,8 +64429,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
@@ -62849,8 +64470,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -63350,14 +64971,14 @@ export namespace Prisma {
     actor?: StringNullableFilter<"tr_handover_approval"> | string | null
     employee_code?: StringNullableFilter<"tr_handover_approval"> | string | null
     status?: StringNullableFilter<"tr_handover_approval"> | string | null
-    rating?: IntNullableFilter<"tr_handover_approval"> | number | null
-    review?: StringNullableFilter<"tr_handover_approval"> | string | null
-    rating_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    updated_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    created_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     last_rating_reminder_sent?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
     rating_reminder_count?: IntNullableFilter<"tr_handover_approval"> | number | null
     finished_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
-    updated_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
-    created_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
+    rating?: IntNullableFilter<"tr_handover_approval"> | number | null
+    review?: StringNullableFilter<"tr_handover_approval"> | string | null
+    rating_date?: DateTimeNullableFilter<"tr_handover_approval"> | Date | string | null
   }
 
   export type tr_handover_historyUpsertWithWhereUniqueWithoutMst_authorizationInput = {
@@ -63492,8 +65113,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutProposedChangeInput
@@ -63534,8 +65155,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -63669,8 +65290,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
     authorizationDocs?: tr_authorization_docUpdateManyWithoutProposedChangeNestedInput
@@ -63711,8 +65332,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -64996,8 +66617,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
@@ -65038,8 +66659,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -65103,10 +66724,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -65141,10 +66762,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -65458,8 +67079,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
@@ -65500,8 +67121,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -65770,10 +67391,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -65808,10 +67429,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -66960,8 +68581,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
@@ -67002,8 +68623,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedCreateNestedManyWithoutTr_proposed_changesInput
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -67196,14 +68817,14 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
-    rating?: number | null
-    review?: string | null
-    rating_date?: Date | string | null
+    updated_date?: Date | string | null
+    created_date?: Date | string | null
     last_rating_reminder_sent?: Date | string | null
     rating_reminder_count?: number | null
     finished_date?: Date | string | null
-    updated_date?: Date | string | null
-    created_date?: Date | string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
     mst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_approvalInput
   }
 
@@ -67214,14 +68835,14 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
-    rating?: number | null
-    review?: string | null
-    rating_date?: Date | string | null
+    updated_date?: Date | string | null
+    created_date?: Date | string | null
     last_rating_reminder_sent?: Date | string | null
     rating_reminder_count?: number | null
     finished_date?: Date | string | null
-    updated_date?: Date | string | null
-    created_date?: Date | string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
   }
 
   export type tr_handover_approvalCreateOrConnectWithoutTr_handoverInput = {
@@ -67734,8 +69355,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
@@ -67776,8 +69397,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -68024,10 +69645,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -68063,10 +69684,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -68171,10 +69792,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -68210,10 +69831,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -68308,10 +69929,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverCreateNestedManyWithoutTr_handoverInput
@@ -68347,10 +69968,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -68455,10 +70076,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -68494,10 +70115,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -68592,10 +70213,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationCreateNestedOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationInput
@@ -68631,10 +70252,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
     tr_handover_approval?: tr_handover_approvalUncheckedCreateNestedManyWithoutTr_handoverInput
@@ -68665,10 +70286,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     mst_authorization_tr_handover_auth_idTomst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_tr_handover_auth_idTomst_authorizationNestedInput
@@ -68704,10 +70325,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     tr_handover_approval?: tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -68735,8 +70356,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     proposedChange?: tbl_support_documentCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docCreateNestedManyWithoutProposedChangeInput
     authorizationDocs?: tr_authorization_docCreateNestedManyWithoutProposedChangeInput
@@ -68777,8 +70398,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
     proposedChange?: tbl_support_documentUncheckedCreateNestedManyWithoutProposedChangeInput
     additionalDocs?: tr_additional_docUncheckedCreateNestedManyWithoutProposedChangeInput
     authorizationDocs?: tr_authorization_docUncheckedCreateNestedManyWithoutProposedChangeInput
@@ -68824,8 +70445,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
     authorizationDocs?: tr_authorization_docUpdateManyWithoutProposedChangeNestedInput
@@ -68866,8 +70487,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
     authorizationDocs?: tr_authorization_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -69337,10 +70958,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
   }
@@ -69371,8 +70992,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
   }
 
   export type mst_authorizationUpdateWithoutPlantInput = {
@@ -69706,10 +71327,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -69744,10 +71365,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -69773,10 +71394,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
@@ -69802,8 +71423,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
@@ -69843,8 +71464,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -69880,8 +71501,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type mst_authorizationCreateManyDepartmentInput = {
@@ -69952,10 +71573,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
   }
@@ -69986,8 +71607,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
   }
 
   export type mst_authorizationUpdateWithoutDepartmentInput = {
@@ -70205,10 +71826,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -70243,10 +71864,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -70272,10 +71893,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
@@ -70301,8 +71922,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
@@ -70342,8 +71963,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -70379,8 +72000,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type mst_authorizationCreateManySectionInput = {
@@ -70486,10 +72107,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
   }
@@ -70520,8 +72141,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
   }
 
   export type mst_authorizationUpdateWithoutSectionInput = {
@@ -70829,10 +72450,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -70867,10 +72488,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -70896,10 +72517,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
@@ -70925,8 +72546,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
@@ -70966,8 +72587,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -71003,8 +72624,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type tr_additional_docCreateManyCategoryInput = {
@@ -71191,8 +72812,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
   }
 
   export type tr_proposed_changesUpdateWithoutDocumentNumberInput = {
@@ -71216,8 +72837,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
@@ -71257,8 +72878,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -71294,8 +72915,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type tr_additional_fileCreateManyDocument_versionsInput = {
@@ -71460,10 +73081,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
   }
@@ -71486,10 +73107,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
   }
@@ -71512,10 +73133,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
   }
@@ -71538,10 +73159,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
   }
@@ -71564,10 +73185,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
   }
@@ -71579,14 +73200,14 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
-    rating?: number | null
-    review?: string | null
-    rating_date?: Date | string | null
+    updated_date?: Date | string | null
+    created_date?: Date | string | null
     last_rating_reminder_sent?: Date | string | null
     rating_reminder_count?: number | null
     finished_date?: Date | string | null
-    updated_date?: Date | string | null
-    created_date?: Date | string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
   }
 
   export type tr_handover_historyCreateManyMst_authorizationInput = {
@@ -71627,8 +73248,8 @@ export namespace Prisma {
     other_sytem?: string | null
     status?: string | null
     progress?: string | null
-    progresssupport?: string | null
     is_deleted?: boolean
+    progresssupport?: string | null
   }
 
   export type tr_proposed_changes_approvalCreateManyAuthorizationInput = {
@@ -71960,10 +73581,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -71998,10 +73619,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -72027,10 +73648,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
@@ -72043,10 +73664,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -72081,10 +73702,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -72110,10 +73731,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
@@ -72126,10 +73747,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -72164,10 +73785,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -72193,10 +73814,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
@@ -72209,10 +73830,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -72247,10 +73868,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -72276,10 +73897,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
@@ -72292,10 +73913,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -72330,10 +73951,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -72359,10 +73980,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
@@ -72372,14 +73993,14 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
-    rating?: NullableIntFieldUpdateOperationsInput | number | null
-    review?: NullableStringFieldUpdateOperationsInput | string | null
-    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
     finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     tr_handover?: tr_handoverUpdateOneWithoutTr_handover_approvalNestedInput
   }
 
@@ -72390,14 +74011,14 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
-    rating?: NullableIntFieldUpdateOperationsInput | number | null
-    review?: NullableStringFieldUpdateOperationsInput | string | null
-    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
     finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tr_handover_approvalUncheckedUpdateManyWithoutMst_authorizationInput = {
@@ -72407,14 +74028,14 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
-    rating?: NullableIntFieldUpdateOperationsInput | number | null
-    review?: NullableStringFieldUpdateOperationsInput | string | null
-    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
     finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tr_handover_historyUpdateWithoutMst_authorizationInput = {
@@ -72473,8 +74094,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUpdateManyWithoutProposedChangeNestedInput
@@ -72514,8 +74135,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     email_tracking_proposedchanges?: email_tracking_proposedchangesUncheckedUpdateManyWithoutTr_proposed_changesNestedInput
     proposedChange?: tbl_support_documentUncheckedUpdateManyWithoutProposedChangeNestedInput
     additionalDocs?: tr_additional_docUncheckedUpdateManyWithoutProposedChangeNestedInput
@@ -72551,8 +74172,8 @@ export namespace Prisma {
     other_sytem?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
     progress?: NullableStringFieldUpdateOperationsInput | string | null
-    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: BoolFieldUpdateOperationsInput | boolean
+    progresssupport?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type tr_proposed_changes_approvalUpdateWithoutAuthorizationInput = {
@@ -72836,10 +74457,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
   }
@@ -72989,10 +74610,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -73027,10 +74648,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -73056,10 +74677,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
@@ -73150,10 +74771,10 @@ export namespace Prisma {
     remark?: string | null
     created_by?: string | null
     created_date?: Date | string | null
-    finished_date?: Date | string | null
     updated_at?: Date | string | null
     updated_by?: string | null
     is_deleted?: boolean | null
+    finished_date?: Date | string | null
     is_finished?: boolean | null
     star?: Decimal | DecimalJsLike | number | string | null
   }
@@ -73405,10 +75026,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUpdateManyWithoutTr_handoverNestedInput
@@ -73443,10 +75064,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
     email_tracking_handover?: email_tracking_handoverUncheckedUpdateManyWithoutTr_handoverNestedInput
@@ -73472,10 +75093,10 @@ export namespace Prisma {
     remark?: NullableStringFieldUpdateOperationsInput | string | null
     created_by?: NullableStringFieldUpdateOperationsInput | string | null
     created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_at?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     updated_by?: NullableStringFieldUpdateOperationsInput | string | null
     is_deleted?: NullableBoolFieldUpdateOperationsInput | boolean | null
+    finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     is_finished?: NullableBoolFieldUpdateOperationsInput | boolean | null
     star?: NullableDecimalFieldUpdateOperationsInput | Decimal | DecimalJsLike | number | string | null
   }
@@ -73569,14 +75190,14 @@ export namespace Prisma {
     actor?: string | null
     employee_code?: string | null
     status?: string | null
-    rating?: number | null
-    review?: string | null
-    rating_date?: Date | string | null
+    updated_date?: Date | string | null
+    created_date?: Date | string | null
     last_rating_reminder_sent?: Date | string | null
     rating_reminder_count?: number | null
     finished_date?: Date | string | null
-    updated_date?: Date | string | null
-    created_date?: Date | string | null
+    rating?: number | null
+    review?: string | null
+    rating_date?: Date | string | null
   }
 
   export type tr_handover_historyCreateManyTr_handoverInput = {
@@ -73640,14 +75261,14 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
-    rating?: NullableIntFieldUpdateOperationsInput | number | null
-    review?: NullableStringFieldUpdateOperationsInput | string | null
-    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
     finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     mst_authorization?: mst_authorizationUpdateOneWithoutTr_handover_approvalNestedInput
   }
 
@@ -73658,14 +75279,14 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
-    rating?: NullableIntFieldUpdateOperationsInput | number | null
-    review?: NullableStringFieldUpdateOperationsInput | string | null
-    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
     finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tr_handover_approvalUncheckedUpdateManyWithoutTr_handoverInput = {
@@ -73675,14 +75296,14 @@ export namespace Prisma {
     actor?: NullableStringFieldUpdateOperationsInput | string | null
     employee_code?: NullableStringFieldUpdateOperationsInput | string | null
     status?: NullableStringFieldUpdateOperationsInput | string | null
-    rating?: NullableIntFieldUpdateOperationsInput | number | null
-    review?: NullableStringFieldUpdateOperationsInput | string | null
-    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     last_rating_reminder_sent?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
     rating_reminder_count?: NullableIntFieldUpdateOperationsInput | number | null
     finished_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    updated_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
-    created_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
+    rating?: NullableIntFieldUpdateOperationsInput | number | null
+    review?: NullableStringFieldUpdateOperationsInput | string | null
+    rating_date?: NullableDateTimeFieldUpdateOperationsInput | Date | string | null
   }
 
   export type tr_handover_historyUpdateWithoutTr_handoverInput = {

@@ -487,8 +487,8 @@ exports.Prisma.Tr_proposed_changesScalarFieldEnum = {
   other_sytem: 'other_sytem',
   status: 'status',
   progress: 'progress',
-  progresssupport: 'progresssupport',
-  is_deleted: 'is_deleted'
+  is_deleted: 'is_deleted',
+  progresssupport: 'progresssupport'
 };
 
 exports.Prisma.Tr_handoverScalarFieldEnum = {
@@ -510,10 +510,10 @@ exports.Prisma.Tr_handoverScalarFieldEnum = {
   remark: 'remark',
   created_by: 'created_by',
   created_date: 'created_date',
-  finished_date: 'finished_date',
   updated_at: 'updated_at',
   updated_by: 'updated_by',
   is_deleted: 'is_deleted',
+  finished_date: 'finished_date',
   is_finished: 'is_finished',
   star: 'star'
 };
@@ -526,14 +526,14 @@ exports.Prisma.Tr_handover_approvalScalarFieldEnum = {
   actor: 'actor',
   employee_code: 'employee_code',
   status: 'status',
-  rating: 'rating',
-  review: 'review',
-  rating_date: 'rating_date',
+  updated_date: 'updated_date',
+  created_date: 'created_date',
   last_rating_reminder_sent: 'last_rating_reminder_sent',
   rating_reminder_count: 'rating_reminder_count',
   finished_date: 'finished_date',
-  updated_date: 'updated_date',
-  created_date: 'created_date'
+  rating: 'rating',
+  review: 'review',
+  rating_date: 'rating_date'
 };
 
 exports.Prisma.Tr_handover_historyScalarFieldEnum = {
@@ -595,6 +595,28 @@ exports.Prisma.Email_tracking_authdocScalarFieldEnum = {
   retry_count: 'retry_count',
   last_retry_at: 'last_retry_at',
   created_at: 'created_at'
+};
+
+exports.Prisma.Mst_template_approval_proposedchangesScalarFieldEnum = {
+  id: 'id',
+  template_name: 'template_name',
+  line_code: 'line_code',
+  need_engineering_approval: 'need_engineering_approval',
+  need_production_approval: 'need_production_approval',
+  step_order: 'step_order',
+  actor_name: 'actor_name',
+  model_type: 'model_type',
+  section_id: 'section_id',
+  use_dynamic_section: 'use_dynamic_section',
+  use_line_section: 'use_line_section',
+  is_active: 'is_active',
+  priority: 'priority',
+  description: 'description',
+  created_by: 'created_by',
+  created_date: 'created_date',
+  updated_by: 'updated_by',
+  updated_date: 'updated_date',
+  is_deleted: 'is_deleted'
 };
 
 exports.Prisma.SortOrder = {
@@ -877,6 +899,15 @@ exports.Prisma.email_tracking_authdocOrderByRelevanceFieldEnum = {
   note_text: 'note_text',
   message_id: 'message_id'
 };
+
+exports.Prisma.mst_template_approval_proposedchangesOrderByRelevanceFieldEnum = {
+  template_name: 'template_name',
+  line_code: 'line_code',
+  actor_name: 'actor_name',
+  description: 'description',
+  created_by: 'created_by',
+  updated_by: 'updated_by'
+};
 exports.Gender = exports.$Enums.Gender = {
   M: 'M',
   F: 'F'
@@ -918,6 +949,11 @@ exports.email_tracking_authdoc_status = exports.$Enums.email_tracking_authdoc_st
   rejected: 'rejected'
 };
 
+exports.mst_template_approval_proposedchanges_model_type = exports.$Enums.mst_template_approval_proposedchanges_model_type = {
+  section: 'section',
+  department: 'department'
+};
+
 exports.Prisma.ModelName = {
   tr_log: 'tr_log',
   mst_role: 'mst_role',
@@ -952,7 +988,8 @@ exports.Prisma.ModelName = {
   tr_handover_history: 'tr_handover_history',
   email_tracking_handover: 'email_tracking_handover',
   email_tracking_proposedchanges: 'email_tracking_proposedchanges',
-  email_tracking_authdoc: 'email_tracking_authdoc'
+  email_tracking_authdoc: 'email_tracking_authdoc',
+  mst_template_approval_proposedchanges: 'mst_template_approval_proposedchanges'
 };
 
 /**
