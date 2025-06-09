@@ -1,485 +1,653 @@
 import { Request, Response } from "express";
 import { prismaDB2 } from "../../../config/database";
 
-// CRUD Functions untuk mengelola template approval
+// --- Helper Functions ---
 
-// Get all approval templates with filtering
-export const getAllApprovalTemplates = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const page = Number(req.query.page) || 1;
-    const limit = Number(req.query.limit) || 10;
-    const searchTerm = (req.query.search as string) || "";
-    const line_code = req.query.line_code as string;
-    const need_engineering = req.query.need_engineering as string;
-    const need_production = req.query.need_production as string;
-    const is_active = req.query.is_active as string;
+// Interface untuk validasi input
+interface TemplateApprovalData {
+    template_name: string;
+    line_code?: string;
+    need_engineering_approval?: boolean;
+    need_production_approval?: boolean;
+    step_order: number;
+    actor_name: string;
+    model_type: string;
+    section_id?: number;
+    use_dynamic_section?: boolean;
+    use_line_section?: boolean;
+    is_active?: boolean;
+    priority?: number;
+    description?: string;
+    created_by: string;
+    updated_by?: string;
+}
 
-    const offset = (page - 1) * limit;
+// Interface untuk WHERE condition
+interface TemplateWhereCondition {
+    AND?: Array<Record<string, any>>;
+    OR?: Array<Record<string, any>>;
+    is_deleted?: boolean;
+    is_active?: boolean;
+}
 
-    const whereCondition: any = {
-      is_deleted: false,
-      AND: []
-    };
+// Fungsi validasi input untuk mst_template_approval_proposedchanges
+function validateTemplateApprovalData(data: any): string[] {
+    const errors: string[] = [];
 
-    // Search filter
-    if (searchTerm) {
-      whereCondition.OR = [
-        { template_name: { contains: searchTerm } },
-        { actor_name: { contains: searchTerm } },
-        { description: { contains: searchTerm } }
-      ];
+    // Required fields validation
+    if (!data.template_name || data.template_name.trim() === "") {
+        errors.push("Template name is required.");
+    } else if (data.template_name.length > 255) {
+        errors.push("Template name cannot exceed 255 characters.");
     }
 
-    // Filter by line_code
-    if (line_code) {
-      whereCondition.AND.push({
-        OR: [
-          { line_code: line_code },
-          { line_code: null }
-        ]
-      });
+    if (!data.actor_name || data.actor_name.trim() === "") {
+        errors.push("Actor name is required.");
+    } else if (data.actor_name.length > 255) {
+        errors.push("Actor name cannot exceed 255 characters.");
     }
 
-    // Filter by need_engineering_approval
-    if (need_engineering && need_engineering !== 'all') {
-      const needEngineering = need_engineering === 'true';
-      whereCondition.AND.push({
-        OR: [
-          { need_engineering_approval: needEngineering },
-          { need_engineering_approval: null }
-        ]
-      });
+    if (!data.created_by || data.created_by.trim() === "") {
+        errors.push("Created by is required.");
+    } else if (data.created_by.length > 100) {
+        errors.push("Created by cannot exceed 100 characters.");
     }
 
-    // Filter by need_production_approval
-    if (need_production && need_production !== 'all') {
-      const needProduction = need_production === 'true';
-      whereCondition.AND.push({
-        OR: [
-          { need_production_approval: needProduction },
-          { need_production_approval: null }
-        ]
-      });
+    if (data.step_order === undefined || data.step_order === null) {
+        errors.push("Step order is required.");
+    } else if (!Number.isInteger(data.step_order) || data.step_order < 0) {
+        errors.push("Step order must be a non-negative integer.");
     }
 
-    // Filter by is_active
-    if (is_active && is_active !== 'all') {
-      whereCondition.is_active = is_active === 'true';
+    if (!data.model_type || data.model_type.trim() === "") {
+        errors.push("Model type is required.");
     }
 
-    const [templates, totalCount] = await prismaDB2.$transaction([
-      prismaDB2.mst_template_approval_proposedchanges.findMany({
-        where: whereCondition,
-        skip: offset,
-        take: limit,
-        orderBy: [
-          { step_order: 'asc' },
-          { priority: 'desc' }
-        ]
-      }),
-      prismaDB2.mst_template_approval_proposedchanges.count({ where: whereCondition })
-    ]);
-
-    const totalPages = Math.ceil(totalCount / limit);
-    const hasNextPage = page < totalPages;
-    const hasPreviousPage = page > 1;
-
-    res.status(200).json({
-      data: templates,
-      pagination: {
-        totalCount,
-        totalPages,
-        currentPage: page,
-        limit,
-        hasNextPage,
-        hasPreviousPage
-      }
-    });
-
-  } catch (error) {
-    console.error("Error getting approval templates:", error);
-    res.status(500).json({
-      error: "Internal Server Error",
-      details: error instanceof Error ? error.message : "Unknown error"
-    });
-  }
-};
-
-// Get single approval template by ID
-export const getApprovalTemplateById = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const id = parseInt(req.params.id);
-
-    if (isNaN(id)) {
-      res.status(400).json({ error: "Invalid ID" });
-      return;
+    // Optional fields validation
+    if (data.line_code && data.line_code.length > 50) {
+        errors.push("Line code cannot exceed 50 characters.");
     }
 
-    const template = await prismaDB2.mst_template_approval_proposedchanges.findUnique({
-      where: {
-        id,
-        is_deleted: false
-      }
-    });
-
-    if (!template) {
-      res.status(404).json({ error: "Template not found" });
-      return;
+    if (data.updated_by && data.updated_by.length > 100) {
+        errors.push("Updated by cannot exceed 100 characters.");
     }
 
-    res.status(200).json({ data: template });
-
-  } catch (error) {
-    console.error("Error getting approval template:", error);
-    res.status(500).json({
-      error: "Internal Server Error",
-      details: error instanceof Error ? error.message : "Unknown error"
-    });
-  }
-};
-
-// Create new approval template
-export const createApprovalTemplate = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const data = req.body;
-
-    // Validate required fields
-    const requiredFields = [
-      "template_name", "step_order", "actor_name", 
-      "model_type", "created_by"
-    ];
-
-    const missingFields = requiredFields.filter(field => !data[field]);
-    if (missingFields.length > 0) {
-      res.status(400).json({
-        error: "Validation Error",
-        details: `Missing fields: ${missingFields.join(", ")}`
-      });
-      return;
+    if (data.section_id !== undefined && data.section_id !== null && !Number.isInteger(data.section_id)) {
+        errors.push("Section ID must be an integer.");
     }
 
-    // Validate model_type
-    if (!['section', 'department'].includes(data.model_type)) {
-      res.status(400).json({
-        error: "Validation Error",
-        details: "model_type must be either 'section' or 'department'"
-      });
-      return;
+    if (data.priority !== undefined && data.priority !== null && (!Number.isInteger(data.priority) || data.priority < 0)) {
+        errors.push("Priority must be a non-negative integer.");
     }
 
-    // Check for duplicate step_order with same criteria
-    const existingTemplate = await prismaDB2.mst_template_approval_proposedchanges.findFirst({
-      where: {
-        step_order: data.step_order,
-        line_code: data.line_code || null,
-        need_engineering_approval: data.need_engineering_approval ?? null,
-        need_production_approval: data.need_production_approval ?? null,
-        is_deleted: false,
-        is_active: true
-      }
-    });
-
-    if (existingTemplate) {
-      res.status(409).json({
-        error: "Duplicate template",
-        details: `Template with step_order ${data.step_order} already exists for the same criteria`
-      });
-      return;
+    // Boolean validation
+    if (data.need_engineering_approval !== undefined && typeof data.need_engineering_approval !== "boolean") {
+        errors.push("Need engineering approval must be a boolean.");
     }
 
-    // Create new template
-    const newTemplate = await prismaDB2.mst_template_approval_proposedchanges.create({
-      data: {
-        template_name: data.template_name,
-        line_code: data.line_code || null,
-        need_engineering_approval: data.need_engineering_approval ?? null,
-        need_production_approval: data.need_production_approval ?? null,
-        step_order: data.step_order,
-        actor_name: data.actor_name,
-        model_type: data.model_type,
-        section_id: data.section_id || null,
-        use_dynamic_section: data.use_dynamic_section || false,
-        use_line_section: data.use_line_section || false,
-        is_active: data.is_active !== undefined ? data.is_active : true,
-        priority: data.priority || 0,
-        description: data.description || null,
-        created_by: data.created_by,
-        created_date: new Date()
-      }
-    });
-
-    res.status(201).json({
-      message: "Approval template created successfully",
-      data: newTemplate
-    });
-
-  } catch (error) {
-    console.error("Error creating approval template:", error);
-    res.status(500).json({
-      error: "Internal Server Error",
-      details: error instanceof Error ? error.message : "Unknown error"
-    });
-  }
-};
-
-// Update approval template
-export const updateApprovalTemplate = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const id = parseInt(req.params.id);
-    const data = req.body;
-
-    if (isNaN(id)) {
-      res.status(400).json({ error: "Invalid ID" });
-      return;
+    if (data.need_production_approval !== undefined && typeof data.need_production_approval !== "boolean") {
+        errors.push("Need production approval must be a boolean.");
     }
 
-    // Check if template exists
-    const existingTemplate = await prismaDB2.mst_template_approval_proposedchanges.findUnique({
-      where: { id, is_deleted: false }
-    });
-
-    if (!existingTemplate) {
-      res.status(404).json({ error: "Template not found" });
-      return;
+    if (data.use_dynamic_section !== undefined && typeof data.use_dynamic_section !== "boolean") {
+        errors.push("Use dynamic section must be a boolean.");
     }
 
-    // Validate model_type if provided
-    if (data.model_type && !['section', 'department'].includes(data.model_type)) {
-      res.status(400).json({
-        error: "Validation Error",
-        details: "model_type must be either 'section' or 'department'"
-      });
-      return;
+    if (data.use_line_section !== undefined && typeof data.use_line_section !== "boolean") {
+        errors.push("Use line section must be a boolean.");
     }
 
-    // Check for duplicate step_order if step_order is being updated
-    if (data.step_order && data.step_order !== existingTemplate.step_order) {
-      const duplicateTemplate = await prismaDB2.mst_template_approval_proposedchanges.findFirst({
-        where: {
-          id: { not: id },
-          step_order: data.step_order,
-          line_code: data.line_code ?? existingTemplate.line_code,
-          need_engineering_approval: data.need_engineering_approval ?? existingTemplate.need_engineering_approval,
-          need_production_approval: data.need_production_approval ?? existingTemplate.need_production_approval,
-          is_deleted: false,
-          is_active: true
+    if (data.is_active !== undefined && typeof data.is_active !== "boolean") {
+        errors.push("Is active must be a boolean.");
+    }
+
+    return errors;
+}
+
+// --- CRUD Functions ---
+
+// Get all template approvals with pagination and search
+export const getAllTemplateApprovals = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const page = Number(req.query.page) || 1;
+        const limit = Number(req.query.limit) || 10;
+        const searchTerm = (req.query.search as string) || "";
+        const isActive = req.query.is_active === "true" ? true : req.query.is_active === "false" ? false : undefined;
+        const sortColumn = (req.query.sort as string) || "id";
+        const sortDirection = req.query.direction === "desc" ? "desc" : "asc";
+        const lineCode = req.query.line_code as string;
+        const modelType = req.query.model_type as string;
+
+        const validSortColumns = [
+            "id", "template_name", "line_code", "step_order", "actor_name", 
+            "model_type", "priority", "created_date", "updated_date"
+        ];
+
+        const orderBy: any = validSortColumns.includes(sortColumn)
+            ? { [sortColumn]: sortDirection }
+            : { id: "asc" };
+
+        const offset = (page - 1) * limit;
+
+        const whereCondition: TemplateWhereCondition = {
+            is_deleted: false
+        };
+
+        const andConditions = [];
+
+        // Filter by active status
+        if (isActive !== undefined) {
+            andConditions.push({ is_active: isActive });
         }
-      });
 
-      if (duplicateTemplate) {
-        res.status(409).json({
-          error: "Duplicate template",
-          details: `Template with step_order ${data.step_order} already exists for the same criteria`
+        // Filter by line code
+        if (lineCode) {
+            andConditions.push({ line_code: lineCode });
+        }
+
+        // Filter by model type
+        if (modelType) {
+            andConditions.push({ model_type: modelType });
+        }
+
+        // Search functionality
+        if (searchTerm) {
+            andConditions.push({
+                OR: [
+                    { template_name: { contains: searchTerm } },
+                    { line_code: { contains: searchTerm } },
+                    { actor_name: { contains: searchTerm } },
+                    { model_type: { contains: searchTerm } },
+                    { description: { contains: searchTerm } },
+                    { created_by: { contains: searchTerm } }
+                ]
+            });
+        }
+
+        if (andConditions.length > 0) {
+            whereCondition.AND = andConditions;
+        }
+
+        const [templateApprovals, totalCount] = await prismaDB2.$transaction([
+            prismaDB2.mst_template_approval_proposedchanges.findMany({
+                where: whereCondition,
+                orderBy,
+                skip: offset,
+                take: limit
+            }),
+            prismaDB2.mst_template_approval_proposedchanges.count({
+                where: whereCondition
+            })
+        ]);
+
+        const totalPages = Math.ceil(totalCount / limit);
+
+        res.status(200).json({
+            data: templateApprovals,
+            pagination: {
+                totalCount,
+                totalPages,
+                currentPage: page,
+                limit,
+                hasNextPage: page < totalPages,
+                hasPreviousPage: page > 1
+            }
         });
-        return;
-      }
+
+    } catch (error) {
+        console.error("❌ Error fetching template approvals:", error);
+        res.status(500).json({ 
+            error: "Internal Server Error", 
+            details: error instanceof Error ? error.message : "Unknown error" 
+        });
     }
-
-    // Update template
-    const updatedTemplate = await prismaDB2.mst_template_approval_proposedchanges.update({
-      where: { id },
-      data: {
-        template_name: data.template_name ?? existingTemplate.template_name,
-        line_code: data.line_code !== undefined ? data.line_code : existingTemplate.line_code,
-        need_engineering_approval: data.need_engineering_approval !== undefined ? data.need_engineering_approval : existingTemplate.need_engineering_approval,
-        need_production_approval: data.need_production_approval !== undefined ? data.need_production_approval : existingTemplate.need_production_approval,
-        step_order: data.step_order ?? existingTemplate.step_order,
-        actor_name: data.actor_name ?? existingTemplate.actor_name,
-        model_type: data.model_type ?? existingTemplate.model_type,
-        section_id: data.section_id !== undefined ? data.section_id : existingTemplate.section_id,
-        use_dynamic_section: data.use_dynamic_section !== undefined ? data.use_dynamic_section : existingTemplate.use_dynamic_section,
-        use_line_section: data.use_line_section !== undefined ? data.use_line_section : existingTemplate.use_line_section,
-        is_active: data.is_active !== undefined ? data.is_active : existingTemplate.is_active,
-        priority: data.priority !== undefined ? data.priority : existingTemplate.priority,
-        description: data.description !== undefined ? data.description : existingTemplate.description,
-        updated_by: data.updated_by,
-        updated_date: new Date()
-      }
-    });
-
-    res.status(200).json({
-      message: "Approval template updated successfully",
-      data: updatedTemplate
-    });
-
-  } catch (error) {
-    console.error("Error updating approval template:", error);
-    res.status(500).json({
-      error: "Internal Server Error",
-      details: error instanceof Error ? error.message : "Unknown error"
-    });
-  }
 };
 
-// Delete (soft delete) approval template
-export const deleteApprovalTemplate = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const id = parseInt(req.params.id);
-    const { deleted_by } = req.body;
+// Get template approval by ID
+export const getTemplateApprovalById = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const id = Number(req.params.id);
 
-    if (isNaN(id)) {
-      res.status(400).json({ error: "Invalid ID" });
-      return;
+        if (isNaN(id)) {
+            res.status(400).json({ error: "Invalid ID parameter" });
+            return;
+        }
+
+        const templateApproval = await prismaDB2.mst_template_approval_proposedchanges.findFirst({
+            where: {
+                id: id,
+                is_deleted: false
+            }
+        });
+
+        if (!templateApproval) {
+            res.status(404).json({ error: "Template approval not found" });
+            return;
+        }
+
+        res.status(200).json({ data: templateApproval });
+
+    } catch (error) {
+        console.error("❌ Error fetching template approval by ID:", error);
+        res.status(500).json({ 
+            error: "Internal Server Error", 
+            details: error instanceof Error ? error.message : "Unknown error" 
+        });
     }
-
-    if (!deleted_by) {
-      res.status(400).json({ error: "deleted_by is required" });
-      return;
-    }
-
-    // Check if template exists
-    const existingTemplate = await prismaDB2.mst_template_approval_proposedchanges.findUnique({
-      where: { id, is_deleted: false }
-    });
-
-    if (!existingTemplate) {
-      res.status(404).json({ error: "Template not found" });
-      return;
-    }
-
-    // Soft delete
-    await prismaDB2.mst_template_approval_proposedchanges.update({
-      where: { id },
-      data: {
-        is_deleted: true,
-        updated_by: deleted_by,
-        updated_date: new Date()
-      }
-    });
-
-    res.status(200).json({
-      message: "Approval template deleted successfully"
-    });
-
-  } catch (error) {
-    console.error("Error deleting approval template:", error);
-    res.status(500).json({
-      error: "Internal Server Error",
-      details: error instanceof Error ? error.message : "Unknown error"
-    });
-  }
 };
 
-// Toggle template status (active/inactive)
-export const toggleTemplateStatus = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const id = parseInt(req.params.id);
-    const { updated_by } = req.body;
+// Create new template approval
+export const createTemplateApproval = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const validationErrors = validateTemplateApprovalData(req.body);
+        if (validationErrors.length > 0) {
+            res.status(400).json({ errors: validationErrors });
+            return;
+        }
 
-    if (isNaN(id)) {
-      res.status(400).json({ error: "Invalid ID" });
-      return;
+        const data: TemplateApprovalData = req.body;
+
+        // Check for duplicate template_name and step_order combination
+        const existingTemplate = await prismaDB2.mst_template_approval_proposedchanges.findFirst({
+            where: {
+                template_name: data.template_name,
+                step_order: data.step_order,
+                model_type: data.model_type as any,
+                is_deleted: false
+            }
+        });
+
+        if (existingTemplate) {
+            res.status(409).json({ 
+                error: "Template approval with same name, step order, and model type already exists" 
+            });
+            return;
+        }
+
+        const newTemplateApproval = await prismaDB2.mst_template_approval_proposedchanges.create({
+            data: {
+                template_name: data.template_name,
+                line_code: data.line_code || null,
+                need_engineering_approval: data.need_engineering_approval ?? null,
+                need_production_approval: data.need_production_approval ?? null,
+                step_order: data.step_order,
+                actor_name: data.actor_name,
+                model_type: data.model_type as any, // Assuming enum type
+                section_id: data.section_id ?? null,
+                use_dynamic_section: data.use_dynamic_section ?? false,
+                use_line_section: data.use_line_section ?? false,
+                is_active: data.is_active ?? true,
+                priority: data.priority ?? 0,
+                description: data.description || null,
+                created_by: data.created_by,
+                created_date: new Date(),
+                updated_by: data.created_by,
+                updated_date: new Date(),
+                is_deleted: false
+            }
+        });
+
+        res.status(201).json({
+            message: "Template approval created successfully",
+            data: newTemplateApproval
+        });
+
+    } catch (error) {
+        console.error("❌ Error creating template approval:", error);
+        res.status(500).json({ 
+            error: "Internal Server Error", 
+            details: error instanceof Error ? error.message : "Unknown error" 
+        });
     }
-
-    if (!updated_by) {
-      res.status(400).json({ error: "updated_by is required" });
-      return;
-    }
-
-    // Check if template exists
-    const existingTemplate = await prismaDB2.mst_template_approval_proposedchanges.findUnique({
-      where: { id, is_deleted: false }
-    });
-
-    if (!existingTemplate) {
-      res.status(404).json({ error: "Template not found" });
-      return;
-    }
-
-    // Toggle status
-    const updatedTemplate = await prismaDB2.mst_template_approval_proposedchanges.update({
-      where: { id },
-      data: {
-        is_active: !existingTemplate.is_active,
-        updated_by,
-        updated_date: new Date()
-      }
-    });
-
-    res.status(200).json({
-      message: `Template ${updatedTemplate.is_active ? 'activated' : 'deactivated'} successfully`,
-      data: updatedTemplate
-    });
-
-  } catch (error) {
-    console.error("Error toggling template status:", error);
-    res.status(500).json({
-      error: "Internal Server Error",
-      details: error instanceof Error ? error.message : "Unknown error"
-    });
-  }
 };
 
-// Preview approval flow for given criteria
-export const previewApprovalFlow = async (req: Request, res: Response): Promise<void> => {
-  try {
-    const {
-      section_department_id,
-      line_code,
-      need_engineering_approval,
-      need_production_approval
-    } = req.query;
+// Update template approval
+export const updateTemplateApproval = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const id = Number(req.params.id);
 
-    if (!section_department_id || !line_code) {
-      res.status(400).json({
-        error: "Validation Error",
-        details: "section_department_id and line_code are required"
-      });
-      return;
+        if (isNaN(id)) {
+            res.status(400).json({ error: "Invalid ID parameter" });
+            return;
+        }
+
+        const validationErrors = validateTemplateApprovalData(req.body);
+        if (validationErrors.length > 0) {
+            res.status(400).json({ errors: validationErrors });
+            return;
+        }
+
+        // Check if template approval exists
+        const existingTemplate = await prismaDB2.mst_template_approval_proposedchanges.findFirst({
+            where: {
+                id: id,
+                is_deleted: false
+            }
+        });
+
+        if (!existingTemplate) {
+            res.status(404).json({ error: "Template approval not found" });
+            return;
+        }
+
+        const data: TemplateApprovalData = req.body;
+
+        // Check for duplicate template_name and step_order combination (excluding current record)
+        const duplicateTemplate = await prismaDB2.mst_template_approval_proposedchanges.findFirst({
+            where: {
+                template_name: data.template_name,
+                step_order: data.step_order,
+                model_type: data.model_type as any,
+                id: { not: id },
+                is_deleted: false
+            }
+        });
+
+        if (duplicateTemplate) {
+            res.status(409).json({ 
+                error: "Template approval with same name, step order, and model type already exists" 
+            });
+            return;
+        }
+
+        const updatedTemplateApproval = await prismaDB2.mst_template_approval_proposedchanges.update({
+            where: { id: id },
+            data: {
+                template_name: data.template_name,
+                line_code: data.line_code || null,
+                need_engineering_approval: data.need_engineering_approval ?? null,
+                need_production_approval: data.need_production_approval ?? null,
+                step_order: data.step_order,
+                actor_name: data.actor_name,
+                model_type: data.model_type as any,
+                section_id: data.section_id ?? null,
+                use_dynamic_section: data.use_dynamic_section ?? false,
+                use_line_section: data.use_line_section ?? false,
+                is_active: data.is_active ?? true,
+                priority: data.priority ?? 0,
+                description: data.description || null,
+                updated_by: data.updated_by || data.created_by,
+                updated_date: new Date()
+            }
+        });
+
+        res.status(200).json({
+            message: "Template approval updated successfully",
+            data: updatedTemplateApproval
+        });
+
+    } catch (error) {
+        console.error("❌ Error updating template approval:", error);
+        res.status(500).json({ 
+            error: "Internal Server Error", 
+            details: error instanceof Error ? error.message : "Unknown error" 
+        });
     }
+};
 
-    // Import the function from the main module
-    const { getApprovalTemplates, resolveSectionId } = await import('../../Activity/Document/2_ProposedChanges/CreateActivityProposedChanges');
+// Soft delete template approval
+export const deleteTemplateApproval = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const id = Number(req.params.id);
+        const deletedBy = req.body.deleted_by || "system";
 
-    // Get templates for preview
-    const templates = await getApprovalTemplates(
-      line_code as string,
-      need_engineering_approval === 'true',
-      need_production_approval === 'true'
-    );
+        if (isNaN(id)) {
+            res.status(400).json({ error: "Invalid ID parameter" });
+            return;
+        }
 
-    // Preview the flow
-    const previewFlow = [];
-    for (const template of templates) {
-      const resolvedSectionId = await resolveSectionId(
-        template,
-        Number(section_department_id),
-        line_code as string
-      );
+        // Check if template approval exists
+        const existingTemplate = await prismaDB2.mst_template_approval_proposedchanges.findFirst({
+            where: {
+                id: id,
+                is_deleted: false
+            }
+        });
 
-      let actorName = template.actor_name;
-      if (template.use_line_section) {
-        actorName = `${template.actor_name} (${line_code})`;
-      }
+        if (!existingTemplate) {
+            res.status(404).json({ error: "Template approval not found" });
+            return;
+        }
 
-      previewFlow.push({
-        step: template.step_order,
-        actor: actorName,
-        template_name: template.template_name,
-        model_type: template.model_type,
-        section_id: resolvedSectionId,
-        description: template.description,
-        priority: template.priority
-      });
+        // Soft delete
+        await prismaDB2.mst_template_approval_proposedchanges.update({
+            where: { id: id },
+            data: {
+                is_deleted: true,
+                is_active: false,
+                updated_by: deletedBy,
+                updated_date: new Date()
+            }
+        });
+
+        res.status(200).json({
+            message: "Template approval deleted successfully"
+        });
+
+    } catch (error) {
+        console.error("❌ Error deleting template approval:", error);
+        res.status(500).json({ 
+            error: "Internal Server Error", 
+            details: error instanceof Error ? error.message : "Unknown error" 
+        });
     }
+};
 
-    res.status(200).json({
-      message: "Approval flow preview",
-      criteria: {
-        section_department_id: Number(section_department_id),
-        line_code,
-        need_engineering_approval: need_engineering_approval === 'true',
-        need_production_approval: need_production_approval === 'true'
-      },
-      flow: previewFlow,
-      total_steps: previewFlow.length
-    });
+// Bulk create template approvals
+export const bulkCreateTemplateApprovals = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { data: templateApprovals } = req.body;
 
-  } catch (error) {
-    console.error("Error previewing approval flow:", error);
-    res.status(500).json({
-      error: "Internal Server Error",
-      details: error instanceof Error ? error.message : "Unknown error"
-    });
-  }
+        if (!Array.isArray(templateApprovals) || templateApprovals.length === 0) {
+            res.status(400).json({ error: "Data must be a non-empty array" });
+            return;
+        }
+
+        const successes: any[] = [];
+        const failures: any[] = [];
+
+        await prismaDB2.$transaction(async (tx) => {
+            for (let i = 0; i < templateApprovals.length; i++) {
+                try {
+                    const validationErrors = validateTemplateApprovalData(templateApprovals[i]);
+                    if (validationErrors.length > 0) {
+                        failures.push({ 
+                            index: i, 
+                            error: `Validation failed: ${validationErrors.join(", ")}` 
+                        });
+                        continue;
+                    }
+
+                    const data: TemplateApprovalData = templateApprovals[i];
+
+                    // Check for duplicate
+                    const existingTemplate = await tx.mst_template_approval_proposedchanges.findFirst({
+                        where: {
+                            template_name: data.template_name,
+                            step_order: data.step_order,
+                            model_type: data.model_type as any,
+                            is_deleted: false
+                        }
+                    });
+
+                    if (existingTemplate) {
+                        failures.push({ 
+                            index: i, 
+                            error: "Template approval with same name, step order, and model type already exists" 
+                        });
+                        continue;
+                    }
+
+                    const result = await tx.mst_template_approval_proposedchanges.create({
+                        data: {
+                            template_name: data.template_name,
+                            line_code: data.line_code || null,
+                            need_engineering_approval: data.need_engineering_approval ?? null,
+                            need_production_approval: data.need_production_approval ?? null,
+                            step_order: data.step_order,
+                            actor_name: data.actor_name,
+                            model_type: data.model_type as any,
+                            section_id: data.section_id ?? null,
+                            use_dynamic_section: data.use_dynamic_section ?? false,
+                            use_line_section: data.use_line_section ?? false,
+                            is_active: data.is_active ?? true,
+                            priority: data.priority ?? 0,
+                            description: data.description || null,
+                            created_by: data.created_by,
+                            created_date: new Date(),
+                            updated_by: data.created_by,
+                            updated_date: new Date(),
+                            is_deleted: false
+                        }
+                    });
+
+                    successes.push(result);
+                } catch (err) {
+                    console.error(`❌ Failed to insert at index ${i}`, err);
+                    failures.push({ 
+                        index: i, 
+                        error: err instanceof Error ? err.message : "Unknown error" 
+                    });
+                }
+            }
+        });
+
+        if (failures.length === 0) {
+            res.status(201).json({
+                message: `${successes.length} template approvals created successfully`,
+                data: successes
+            });
+        } else {
+            res.status(207).json({
+                message: `${successes.length} template approvals created, ${failures.length} failed`,
+                successes,
+                failures
+            });
+        }
+
+    } catch (error) {
+        console.error("❌ Error bulk creating template approvals:", error);
+        res.status(500).json({ 
+            error: "Internal Server Error", 
+            details: error instanceof Error ? error.message : "Unknown error" 
+        });
+    }
+};
+
+// Get template approvals by template name
+export const getTemplateApprovalsByTemplateName = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const templateName = req.params.template_name;
+        
+        if (!templateName) {
+            res.status(400).json({ error: "Template name is required" });
+            return;
+        }
+
+        const templateApprovals = await prismaDB2.mst_template_approval_proposedchanges.findMany({
+            where: {
+                template_name: templateName,
+                is_deleted: false,
+                is_active: true
+            },
+            orderBy: {
+                step_order: "asc"
+            }
+        });
+
+        res.status(200).json({
+            data: templateApprovals,
+            count: templateApprovals.length
+        });
+
+    } catch (error) {
+        console.error("❌ Error fetching template approvals by template name:", error);
+        res.status(500).json({ 
+            error: "Internal Server Error", 
+            details: error instanceof Error ? error.message : "Unknown error" 
+        });
+    }
+};
+
+// Get template approvals by line code
+export const getTemplateApprovalsByLineCode = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const lineCode = req.params.line_code;
+        
+        if (!lineCode) {
+            res.status(400).json({ error: "Line code is required" });
+            return;
+        }
+
+        const templateApprovals = await prismaDB2.mst_template_approval_proposedchanges.findMany({
+            where: {
+                line_code: lineCode,
+                is_deleted: false,
+                is_active: true
+            },
+            orderBy: [
+                { template_name: "asc" },
+                { step_order: "asc" }
+            ]
+        });
+
+        res.status(200).json({
+            data: templateApprovals,
+            count: templateApprovals.length
+        });
+
+    } catch (error) {
+        console.error("❌ Error fetching template approvals by line code:", error);
+        res.status(500).json({ 
+            error: "Internal Server Error", 
+            details: error instanceof Error ? error.message : "Unknown error" 
+        });
+    }
+};
+
+// Toggle active status
+export const toggleTemplateApprovalStatus = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const id = Number(req.params.id);
+        const updatedBy = req.body.updated_by || "system";
+
+        if (isNaN(id)) {
+            res.status(400).json({ error: "Invalid ID parameter" });
+            return;
+        }
+
+        // Check if template approval exists
+        const existingTemplate = await prismaDB2.mst_template_approval_proposedchanges.findFirst({
+            where: {
+                id: id,
+                is_deleted: false
+            }
+        });
+
+        if (!existingTemplate) {
+            res.status(404).json({ error: "Template approval not found" });
+            return;
+        }
+
+        const updatedTemplate = await prismaDB2.mst_template_approval_proposedchanges.update({
+            where: { id: id },
+            data: {
+                is_active: !existingTemplate.is_active,
+                updated_by: updatedBy,
+                updated_date: new Date()
+            }
+        });
+
+        res.status(200).json({
+            message: `Template approval ${updatedTemplate.is_active ? 'activated' : 'deactivated'} successfully`,
+            data: updatedTemplate
+        });
+
+    } catch (error) {
+        console.error("❌ Error toggling template approval status:", error);
+        res.status(500).json({ 
+            error: "Internal Server Error", 
+            details: error instanceof Error ? error.message : "Unknown error" 
+        });
+    }
 };
