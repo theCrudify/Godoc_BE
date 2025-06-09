@@ -75,7 +75,17 @@ import {
 } from '../../main-structure/MasterData/MasterDataController/MasterHeadSection'; // Pastikan path-nya benar
 
 
-
+import {
+    getAllTemplateApprovals,
+    getTemplateApprovalById,
+    createTemplateApproval,
+    updateTemplateApproval,
+    deleteTemplateApproval,
+    bulkCreateTemplateApprovals,
+    getTemplateApprovalsByTemplateName,
+    getTemplateApprovalsByLineCode,
+    toggleTemplateApprovalStatus
+} from '../../main-structure/MasterData/MasterDataController/MasterApproverProposed';
 
 const router = express.Router();
 
@@ -136,6 +146,72 @@ router.get("/headSection", getAllSectionHeads);         // GET /headSection?page
 router.get("/headSection/:id", getAllSectionHeadsbyID);    // GET /headSection/123
 router.put("/headSection/:id", updateSectionHead);    // PUT /headSection/123
 router.delete("/headSection/:id", softDeleteSectionHead);  // DELETE /areas/123  (Soft Delete)
+
+// ==========================
+// 📋 Template Approval CRUD Operations
+// ==========================
+
+// GET All template approvals with pagination, search, and filters
+// Query parameters:
+// - page: number (default: 1)
+// - limit: number (default: 10)
+// - search: string (searches in template_name, line_code, actor_name, model_type, description, created_by)
+// - is_active: boolean (true/false)
+// - line_code: string (filter by line code)
+// - model_type: string (filter by model type)
+// - sort: string (id, template_name, line_code, step_order, actor_name, model_type, priority, created_date, updated_date)
+// - direction: asc/desc (default: asc)
+// Example: /api/template-approvals?page=1&limit=10&search=template&is_active=true&sort=step_order&direction=asc
+router.get('/approverproposed', getAllTemplateApprovals);
+
+// GET Template approval by ID
+// Example: /api/template-approvals/1
+router.get('/approverproposed/:id', getTemplateApprovalById);
+
+// POST Create new template approval
+// Body: TemplateApprovalData object
+// Required fields: template_name, step_order, actor_name, model_type, created_by
+router.post('/approverproposed', createTemplateApproval);
+
+// PUT Update template approval by ID
+// Body: TemplateApprovalData object
+// Required fields: template_name, step_order, actor_name, model_type, created_by, updated_by
+router.put('/approverproposed/:id', updateTemplateApproval);
+
+// DELETE Soft delete template approval by ID
+// Body: { deleted_by: string } (optional)
+router.delete('/approverproposed:id', deleteTemplateApproval);
+
+// ==========================
+// 📊 Bulk Operations
+// ==========================
+
+// POST Bulk create template approvals
+// Body: { data: TemplateApprovalData[] }
+// Returns success/failure count with detailed results
+router.post('/bulk/create', bulkCreateTemplateApprovals);
+
+// ==========================
+// 🔍 Specialized Queries
+// ==========================
+
+// GET Template approvals by template name (ordered by step_order)
+// Returns active templates only, ordered by step_order ASC
+// Example: /api/template-approvals/template/MyTemplate
+router.get('/template/:template_name', getTemplateApprovalsByTemplateName);
+
+// GET Template approvals by line code (ordered by template_name, step_order)
+// Returns active templates only
+// Example: /api/template-approvals/line/LINE001
+router.get('/line/:line_code', getTemplateApprovalsByLineCode);
+
+// ==========================
+// ⚙️ Status Management
+// ==========================
+
+// PATCH Toggle active/inactive status
+// Body: { updated_by: string } (optional)
+router.patch('/:id/toggle-status', toggleTemplateApprovalStatus);
 
 
 export default router;
