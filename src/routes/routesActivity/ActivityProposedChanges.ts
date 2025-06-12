@@ -40,7 +40,7 @@ import {
     downloadSupportDocumentFile,
     downloadWithWatermark,
     getSupportDocNotes,
-    
+
 
 
 }
@@ -57,6 +57,19 @@ import {
     getOngoingApprovalsByAuthId,
     updateApprovalStatus
 } from '../../main-structure/Activity/Document/2_ProposedChanges/ApprovalProposedChanges';
+
+// Import approver change controllers
+import {
+    requestApproverChange,
+    getPendingApproverChangeRequests,
+    processApproverChangeRequest,
+    
+} from '../../main-structure/Activity/Document/2_ProposedChanges/ApproverSetup/ApproverProposedChangesController';
+
+import {
+
+    adminBypassApproval
+} from '../../main-structure/Activity/Document/2_ProposedChanges/ApproverSetup/BypassApprovalbyAdmin';
 
 
 const router = express.Router();
@@ -128,6 +141,30 @@ router.post('/status', updateApprovalStatus);
 router.get("/completion", getAllProposedChangesWithRelations);
 router.get("/completion/:id", getProposedChangeByIdWithRelations);
 router.get("/completionapprover/:approver_id", getAllProposedChangesWithRelationsbyApprover);
+
+
+// ==========================================
+// APPROVER CHANGE MANAGEMENT ROUTES
+// ==========================================
+
+// 1. Request perubahan approver oleh user
+// POST /api/proposedchanges/approver-change/request
+// Body: { proposed_changes_id, approval_id, current_auth_id, new_auth_id, reason, urgent? }
+router.post("/approver-change/request", requestApproverChange);
+
+// 2. Get pending requests untuk admin
+// GET /api/proposedchanges/approver-change/pending?page=1&limit=10&priority=urgent&search=project
+router.get("/approver-change/pending", getPendingApproverChangeRequests);
+
+// 3. Process request oleh admin (approve/reject)
+// PATCH /api/proposedchanges/approver-change/:id/process
+// Body: { status: 'approved'|'rejected', admin_decision: 'string' }
+router.patch("/approver-change/:id/process", processApproverChangeRequest);
+
+// 4. Admin bypass system (super admin only)
+// POST /api/proposedchanges/approver-change/bypass
+// Body: { proposed_changes_id, target_status: 'approved'|'done', reason, bypass_type? }
+router.post("/approver-change/bypass", adminBypassApproval);
 
 
 // getAllProposedChangesWithRelations

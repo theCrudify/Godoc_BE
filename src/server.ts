@@ -48,7 +48,7 @@ app.get("/", (req, res) => {
 
 app.use("/api/users", userRoutes, LoginApps);
 
-app.use("/api/", MasterCompany, MasterDocument); // All Master
+app.use("/api/", verifyToken, MasterCompany, MasterDocument); // All Master
 
 app.use("/api/", DocumentNumbers, ProposedChanges, AdditionalDoc, AuthDoc, Handover, mappingdashboard); //Activity Pag
 

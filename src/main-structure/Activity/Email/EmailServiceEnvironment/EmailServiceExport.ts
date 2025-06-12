@@ -4,58 +4,66 @@ import { prismaDB2 } from "../../../../config/database";
 
 // Definisi tipe untuk parameter email
 interface EmailOptions {
-  to: string;
-  subject: string;
-  html: string;
-  cc?: string;
+    to: string;
+    subject: string;
+    html: string;
+    cc?: string;
 }
 
+// Fungsi untuk mengirim email
 const sendEmail = async ({ to, subject, html, cc = '' }: EmailOptions) => {
-  try {
-    const timestamp = Date.now();
-    const plainText = html.replace(/<[^>]+>/g, ' '); // Konversi ke text biasa
+    try {
+        // Tambahkan timestamp untuk memastikan uniqueness
+        const timestamp = new Date().getTime();
+        
+        const transport = nodemailer.createTransport({
+            host: "mail.aio.co.id",
+            port: 587,
+            secure: false,
+            auth: {
+                user: "appsskb@aio.co.id",
+                pass: "Plicaskb1234",
+            },
+            tls: {
+                rejectUnauthorized: false,
+            },
+            debug: false, // Ubah menjadi false kecuali untuk debugging
+        });
 
-    const transport = nodemailer.createTransport({
-      host: process.env.SMTP_HOST,
-      port: parseInt(process.env.SMTP_PORT || '587', 10),
-      secure: false,
-      auth: {
-        user: process.env.SMTP_USER,
-        pass: process.env.SMTP_PASS,
-      },
-      tls: {
-        rejectUnauthorized: false,
-      },
-      debug: false,
-    });
+        // Tambahkan nomor acak ke subject untuk menghindari grouping
+        const uniqueSubject = `${subject} [${timestamp.toString().substring(8)}]`;
 
-    const uniqueSubject = `${subject} [${timestamp.toString().slice(-6)}]`;
+        // Konfigurasi email
+        const mailOptions: any = {
+            from: '"Go-Document System" <appsskb@aio.co.id>',
+            to,
+            subject: uniqueSubject,
+            html,
+        };
 
-    const mailOptions: any = {
-      from: `"Go-Document System" <${process.env.SMTP_USER}>`,
-      to,
-      cc: cc || undefined,
-      subject: uniqueSubject,
-      html,
-      text: plainText,
-      messageId: `<${timestamp}-${Math.random().toString(36).substring(2, 10)}@aio.co.id>`,
-      headers: {
-        'X-Entity-Ref-ID': `${timestamp}-${Math.random().toString(36).substring(2, 8)}`,
-        'X-Unique-ID': `${timestamp}`,
-        'X-Mailer': 'GoDocumentMailer',
-        'X-No-Auto-Attach': 'true'
-      }
-    };
+        // Tambahkan CC jika ada
+        if (cc) {
+            mailOptions.cc = cc;
+        }
 
-    const info = await transport.sendMail(mailOptions);
+        // Tambahkan header Message-ID unik dan timestamp
+        mailOptions.messageId = `<${timestamp}-${Math.random().toString(36).substring(2, 15)}@aio.co.id>`;
+        
+        // Header tambahan untuk mencegah threading/grouping
+        mailOptions.headers = {
+            'X-Entity-Ref-ID': `${timestamp}-${Math.random().toString(36).substring(2, 10)}`,
+            'X-Unique-ID': `${Date.now()}`
+        };
 
-    console.log(`✅ Email sent to ${to}${cc ? ` (cc: ${cc})` : ''}`);
-    console.log(`📨 Message ID: ${info.messageId}`);
-    return info;
-  } catch (error) {
-    console.error(`❌ Failed to send email to ${to}:`, error);
-    throw error;
-  }
+        // Kirim email
+        const info = await transport.sendMail(mailOptions);
+
+        console.log(`Email sent successfully to ${to}${cc ? ` with cc to ${cc}` : ''}, messageId: ${info.messageId}`);
+        return info;
+    } catch (error) {
+        console.error(`Error sending email to ${to}:`, error);
+        throw error; // Re-throw error untuk penanganan lebih lanjut
+    }
 };
 
 // Mendapatkan salam berdasarkan waktu saat ini

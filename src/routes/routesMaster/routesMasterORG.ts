@@ -180,7 +180,7 @@ router.put('/approverproposed/:id', updateTemplateApproval);
 
 // DELETE Soft delete template approval by ID
 // Body: { deleted_by: string } (optional)
-router.delete('/approverproposed:id', deleteTemplateApproval);
+router.delete('/approverproposed/:id', deleteTemplateApproval);
 
 // ==========================
 // 📊 Bulk Operations
@@ -206,12 +206,12 @@ router.get('/template/:template_name', getTemplateApprovalsByTemplateName);
 router.get('/line/:line_code', getTemplateApprovalsByLineCode);
 
 // ==========================
-// ⚙️ Status Management
+// Status Management
 // ==========================
 
 // PATCH Toggle active/inactive status
 // Body: { updated_by: string } (optional)
-router.patch('/:id/toggle-status', toggleTemplateApprovalStatus);
+router.patch('/approverproposed/:id/toggle-status', toggleTemplateApprovalStatus);
 
 
 export default router;

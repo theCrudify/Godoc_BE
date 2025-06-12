@@ -320,7 +320,12 @@ exports.Prisma.Tr_proposed_changes_historyScalarFieldEnum = {
   status: 'status',
   created_date: 'created_date',
   updated_date: 'updated_date',
-  created_by: 'created_by'
+  created_by: 'created_by',
+  action_type: 'action_type',
+  related_request_id: 'related_request_id',
+  related_bypass_id: 'related_bypass_id',
+  metadata: 'metadata',
+  ip_address: 'ip_address'
 };
 
 exports.Prisma.Tr_proposed_changes_approvalScalarFieldEnum = {
@@ -332,7 +337,15 @@ exports.Prisma.Tr_proposed_changes_approvalScalarFieldEnum = {
   employee_code: 'employee_code',
   status: 'status',
   updated_date: 'updated_date',
-  created_date: 'created_date'
+  created_date: 'created_date',
+  version: 'version',
+  original_auth_id: 'original_auth_id',
+  changed_from_request_id: 'changed_from_request_id',
+  change_reason: 'change_reason',
+  changed_by: 'changed_by',
+  changed_date: 'changed_date',
+  is_changed: 'is_changed',
+  note: 'note'
 };
 
 exports.Prisma.Mst_authorizationScalarFieldEnum = {
@@ -351,7 +364,13 @@ exports.Prisma.Mst_authorizationScalarFieldEnum = {
   created_by: 'created_by',
   updated_at: 'updated_at',
   updated_by: 'updated_by',
-  is_deleted: 'is_deleted'
+  is_deleted: 'is_deleted',
+  user_role: 'user_role',
+  email_verified: 'email_verified',
+  notification_enabled: 'notification_enabled',
+  phone_number: 'phone_number',
+  notification_preferences: 'notification_preferences',
+  password: 'password'
 };
 
 exports.Prisma.Tbl_support_documentScalarFieldEnum = {
@@ -488,7 +507,11 @@ exports.Prisma.Tr_proposed_changesScalarFieldEnum = {
   status: 'status',
   progress: 'progress',
   is_deleted: 'is_deleted',
-  progresssupport: 'progresssupport'
+  progresssupport: 'progresssupport',
+  bypass_by: 'bypass_by',
+  bypass_date: 'bypass_date',
+  bypass_reason: 'bypass_reason',
+  is_bypassed: 'is_bypassed'
 };
 
 exports.Prisma.Tr_handoverScalarFieldEnum = {
@@ -619,6 +642,80 @@ exports.Prisma.Mst_template_approval_proposedchangesScalarFieldEnum = {
   is_deleted: 'is_deleted'
 };
 
+exports.Prisma.Tr_admin_bypass_logScalarFieldEnum = {
+  id: 'id',
+  proposed_changes_id: 'proposed_changes_id',
+  admin_auth_id: 'admin_auth_id',
+  bypass_type: 'bypass_type',
+  target_status: 'target_status',
+  original_status: 'original_status',
+  original_progress: 'original_progress',
+  new_progress: 'new_progress',
+  reason: 'reason',
+  affected_approvers_count: 'affected_approvers_count',
+  affected_approvers_list: 'affected_approvers_list',
+  bypass_timestamp: 'bypass_timestamp',
+  ip_address: 'ip_address',
+  user_agent: 'user_agent',
+  created_date: 'created_date',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Tr_approver_change_historyScalarFieldEnum = {
+  id: 'id',
+  approval_id: 'approval_id',
+  proposed_changes_id: 'proposed_changes_id',
+  change_request_id: 'change_request_id',
+  action_type: 'action_type',
+  from_auth_id: 'from_auth_id',
+  to_auth_id: 'to_auth_id',
+  version_from: 'version_from',
+  version_to: 'version_to',
+  reason: 'reason',
+  actor_auth_id: 'actor_auth_id',
+  actor_name: 'actor_name',
+  actor_role: 'actor_role',
+  metadata: 'metadata',
+  created_date: 'created_date',
+  ip_address: 'ip_address'
+};
+
+exports.Prisma.Tr_approver_change_requestScalarFieldEnum = {
+  id: 'id',
+  proposed_changes_id: 'proposed_changes_id',
+  approval_id: 'approval_id',
+  current_auth_id: 'current_auth_id',
+  new_auth_id: 'new_auth_id',
+  reason: 'reason',
+  urgent: 'urgent',
+  requested_by: 'requested_by',
+  requester_auth_id: 'requester_auth_id',
+  status: 'status',
+  admin_decision: 'admin_decision',
+  processed_by: 'processed_by',
+  processed_by_auth_id: 'processed_by_auth_id',
+  processed_date: 'processed_date',
+  version_before: 'version_before',
+  version_after: 'version_after',
+  request_type: 'request_type',
+  priority: 'priority',
+  created_date: 'created_date',
+  updated_date: 'updated_date',
+  is_deleted: 'is_deleted'
+};
+
+exports.Prisma.Tr_notification_logScalarFieldEnum = {
+  id: 'id',
+  notification_type: 'notification_type',
+  recipients: 'recipients',
+  sent_count: 'sent_count',
+  failed_count: 'failed_count',
+  urgent: 'urgent',
+  related_id: 'related_id',
+  details: 'details',
+  created_date: 'created_date'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -626,6 +723,10 @@ exports.Prisma.SortOrder = {
 
 exports.Prisma.NullableJsonNullValueInput = {
   DbNull: Prisma.DbNull,
+  JsonNull: Prisma.JsonNull
+};
+
+exports.Prisma.JsonNullValueInput = {
   JsonNull: Prisma.JsonNull
 };
 
@@ -761,13 +862,16 @@ exports.Prisma.tr_proposed_changes_historyOrderByRelevanceFieldEnum = {
   employee_code: 'employee_code',
   note: 'note',
   status: 'status',
-  created_by: 'created_by'
+  created_by: 'created_by',
+  ip_address: 'ip_address'
 };
 
 exports.Prisma.tr_proposed_changes_approvalOrderByRelevanceFieldEnum = {
   actor: 'actor',
   employee_code: 'employee_code',
-  status: 'status'
+  status: 'status',
+  change_reason: 'change_reason',
+  note: 'note'
 };
 
 exports.Prisma.mst_authorizationOrderByRelevanceFieldEnum = {
@@ -776,7 +880,10 @@ exports.Prisma.mst_authorizationOrderByRelevanceFieldEnum = {
   email: 'email',
   number_phone: 'number_phone',
   created_by: 'created_by',
-  updated_by: 'updated_by'
+  updated_by: 'updated_by',
+  user_role: 'user_role',
+  phone_number: 'phone_number',
+  password: 'password'
 };
 
 exports.Prisma.tbl_support_documentOrderByRelevanceFieldEnum = {
@@ -851,7 +958,8 @@ exports.Prisma.tr_proposed_changesOrderByRelevanceFieldEnum = {
   other_sytem: 'other_sytem',
   status: 'status',
   progress: 'progress',
-  progresssupport: 'progresssupport'
+  progresssupport: 'progresssupport',
+  bypass_reason: 'bypass_reason'
 };
 
 exports.Prisma.tr_handoverOrderByRelevanceFieldEnum = {
@@ -908,6 +1016,43 @@ exports.Prisma.mst_template_approval_proposedchangesOrderByRelevanceFieldEnum = 
   created_by: 'created_by',
   updated_by: 'updated_by'
 };
+
+exports.Prisma.tr_admin_bypass_logOrderByRelevanceFieldEnum = {
+  bypass_type: 'bypass_type',
+  target_status: 'target_status',
+  original_status: 'original_status',
+  original_progress: 'original_progress',
+  new_progress: 'new_progress',
+  reason: 'reason',
+  ip_address: 'ip_address',
+  user_agent: 'user_agent'
+};
+
+exports.Prisma.tr_approver_change_historyOrderByRelevanceFieldEnum = {
+  reason: 'reason',
+  actor_name: 'actor_name',
+  actor_role: 'actor_role',
+  ip_address: 'ip_address'
+};
+
+exports.Prisma.tr_approver_change_requestOrderByRelevanceFieldEnum = {
+  reason: 'reason',
+  requested_by: 'requested_by',
+  admin_decision: 'admin_decision',
+  processed_by: 'processed_by',
+  request_type: 'request_type'
+};
+
+exports.Prisma.tr_notification_logOrderByRelevanceFieldEnum = {
+  notification_type: 'notification_type'
+};
+exports.tr_proposed_changes_history_action_type = exports.$Enums.tr_proposed_changes_history_action_type = {
+  approval: 'approval',
+  change_approver: 'change_approver',
+  admin_bypass: 'admin_bypass',
+  system: 'system'
+};
+
 exports.Gender = exports.$Enums.Gender = {
   M: 'M',
   F: 'F'
@@ -954,6 +1099,28 @@ exports.mst_template_approval_proposedchanges_model_type = exports.$Enums.mst_te
   department: 'department'
 };
 
+exports.tr_approver_change_history_action_type = exports.$Enums.tr_approver_change_history_action_type = {
+  initial: 'initial',
+  change_requested: 'change_requested',
+  change_approved: 'change_approved',
+  change_rejected: 'change_rejected',
+  manual_change: 'manual_change'
+};
+
+exports.tr_approver_change_request_status = exports.$Enums.tr_approver_change_request_status = {
+  pending: 'pending',
+  approved: 'approved',
+  rejected: 'rejected',
+  cancelled: 'cancelled'
+};
+
+exports.tr_approver_change_request_priority = exports.$Enums.tr_approver_change_request_priority = {
+  low: 'low',
+  normal: 'normal',
+  high: 'high',
+  urgent: 'urgent'
+};
+
 exports.Prisma.ModelName = {
   tr_log: 'tr_log',
   mst_role: 'mst_role',
@@ -989,7 +1156,11 @@ exports.Prisma.ModelName = {
   email_tracking_handover: 'email_tracking_handover',
   email_tracking_proposedchanges: 'email_tracking_proposedchanges',
   email_tracking_authdoc: 'email_tracking_authdoc',
-  mst_template_approval_proposedchanges: 'mst_template_approval_proposedchanges'
+  mst_template_approval_proposedchanges: 'mst_template_approval_proposedchanges',
+  tr_admin_bypass_log: 'tr_admin_bypass_log',
+  tr_approver_change_history: 'tr_approver_change_history',
+  tr_approver_change_request: 'tr_approver_change_request',
+  tr_notification_log: 'tr_notification_log'
 };
 
 /**

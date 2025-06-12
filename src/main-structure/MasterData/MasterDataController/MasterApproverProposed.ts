@@ -446,7 +446,8 @@ export const bulkCreateTemplateApprovals = async (req: Request, res: Response): 
         const successes: any[] = [];
         const failures: any[] = [];
 
-        await prismaDB2.$transaction(async (tx) => {
+        await prismaDB2.$transaction(async (txRaw) => {
+            const tx = txRaw as typeof prismaDB2;
             for (let i = 0; i < templateApprovals.length; i++) {
                 try {
                     const validationErrors = validateTemplateApprovalData(templateApprovals[i]);
