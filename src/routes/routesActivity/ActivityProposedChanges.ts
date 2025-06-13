@@ -63,6 +63,8 @@ import {
     requestApproverChange,
     getPendingApproverChangeRequests,
     processApproverChangeRequest,
+       getAllApproverChangeRequests,
+    getApproverChangeRequestStats
     
 } from '../../main-structure/Activity/Document/2_ProposedChanges/ApproverSetup/ApproverProposedChangesController';
 
@@ -166,6 +168,13 @@ router.patch("/approver-change/:id/process", processApproverChangeRequest);
 // Body: { proposed_changes_id, target_status: 'approved'|'done', reason, bypass_type? }
 router.post("/approver-change/bypass", adminBypassApproval);
 
+// 5. Get all requests untuk admin (dengan filter status)
+// GET /api/proposedchanges/approver-change/all?page=1&limit=10&status=pending&priority=urgent&search=project
+router.get("/approver-change/all", getAllApproverChangeRequests);
+
+// 6. Get statistics untuk admin dashboard
+// GET /api/proposedchanges/approver-change/stats
+router.get("/approver-change/stats", getApproverChangeRequestStats);
 
 // getAllProposedChangesWithRelations
 

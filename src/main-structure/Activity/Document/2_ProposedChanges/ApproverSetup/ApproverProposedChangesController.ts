@@ -1173,3 +1173,222 @@ export const processApproverChangeRequest = async (req: AuthenticatedRequest, re
   }
 };
 
+
+//Admin
+// src/main-structure/Activity/Document/2_ProposedChanges/ApproverSetup/ApproverProposedChangesController.ts
+// Tambahkan function ini setelah getPendingApproverChangeRequests
+
+/**
+ * GET ALL APPROVER CHANGE REQUESTS (NOT JUST PENDING)
+ * Endpoint: GET /api/approver-change/all
+ */
+export const getAllApproverChangeRequests = async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+  try {
+    const page = Number(req.query.page) || 1;
+    const limit = Number(req.query.limit) || 10;
+    const priority = req.query.priority as string;
+    const status = req.query.status as string;
+    const searchTerm = req.query.search as string;
+
+    // Validate admin role
+    if (!['admin', 'Admin', 'Super Admin'].includes(req.user?.user_role || '')) {
+      res.status(403).json({ error: "Unauthorized: Admin access required" });
+      return;
+    }
+
+    const skip = (page - 1) * limit;
+
+    // Build where clause
+    const whereClause: any = {
+      is_deleted: false
+    };
+
+    // Status filter (jika tidak ada status, tampilkan semua)
+    if (status && ['pending', 'approved', 'rejected'].includes(status)) {
+      whereClause.status = status;
+    }
+
+    if (priority && ['low', 'normal', 'high', 'urgent'].includes(priority)) {
+      whereClause.priority = priority;
+    }
+
+    if (searchTerm) {
+      whereClause.OR = [
+        {
+          tr_proposed_changes: {
+            project_name: {
+              contains: searchTerm,
+              mode: 'insensitive'
+            }
+          }
+        },
+        {
+          reason: {
+            contains: searchTerm,
+            mode: 'insensitive'
+          }
+        },
+        {
+          mst_authorization_tr_approver_change_request_current_auth_idTomst_authorization: {
+            employee_name: {
+              contains: searchTerm,
+              mode: 'insensitive'
+            }
+          }
+        },
+        {
+          mst_authorization_tr_approver_change_request_new_auth_idTomst_authorization: {
+            employee_name: {
+              contains: searchTerm,
+              mode: 'insensitive'
+            }
+          }
+        }
+      ];
+    }
+
+    // Get requests with pagination
+    const [requests, totalCount] = await Promise.all([
+      prismaDB2.tr_approver_change_request.findMany({
+        where: whereClause,
+        include: {
+          tr_proposed_changes: {
+            select: {
+              project_name: true,
+              item_changes: true,
+              status: true,
+              progress: true,
+              department: {
+                select: { department_name: true }
+              },
+              plant: {
+                select: { plant_name: true }
+              }
+            }
+          },
+          mst_authorization_tr_approver_change_request_current_auth_idTomst_authorization: {
+            select: {
+              employee_name: true,
+              employee_code: true,
+              email: true
+            }
+          },
+          mst_authorization_tr_approver_change_request_new_auth_idTomst_authorization: {
+            select: {
+              employee_name: true,
+              employee_code: true,
+              email: true
+            }
+          },
+          mst_authorization_tr_approver_change_request_requester_auth_idTomst_authorization: {
+            select: {
+              employee_name: true,
+              employee_code: true,
+              email: true
+            }
+          },
+          tr_proposed_changes_approval_tr_approver_change_request_approval_idTotr_proposed_changes_approval: {
+            select: {
+              step: true,
+              actor: true,
+              status: true
+            }
+          }
+        },
+        orderBy: [
+          { urgent: 'desc' },
+          { priority: 'desc' },
+          { created_date: 'desc' }
+        ],
+        skip,
+        take: limit
+      }),
+      prismaDB2.tr_approver_change_request.count({
+        where: whereClause
+      })
+    ]);
+
+    const totalPages = Math.ceil(totalCount / limit);
+
+    res.status(200).json({
+      message: "All approver change requests retrieved successfully",
+      data: requests,
+      pagination: {
+        current_page: page,
+        total_pages: totalPages,
+        total_count: totalCount,
+        limit,
+        has_next: page < totalPages,
+        has_prev: page > 1
+      }
+    });
+
+  } catch (error) {
+    console.error("❌ Error getting all requests:", error);
+    res.status(500).json({ 
+      error: "Internal Server Error",
+      details: process.env.NODE_ENV === 'development' ? (error as Error).message : undefined
+    });
+  }
+};
+
+/**
+ * GET APPROVER CHANGE REQUEST STATISTICS
+ * Endpoint: GET /api/approver-change/stats
+ */
+export const getApproverChangeRequestStats = async (req: AuthenticatedRequest, res: Response): Promise<void> => {
+  try {
+    // Validate admin role
+    if (!['admin', 'Admin', 'Super Admin'].includes(req.user?.user_role || '')) {
+      res.status(403).json({ error: "Unauthorized: Admin access required" });
+      return;
+    }
+
+    // Get counts by status
+    const [pendingCount, approvedCount, rejectedCount, urgentCount] = await Promise.all([
+      prismaDB2.tr_approver_change_request.count({
+        where: { status: 'pending', is_deleted: false }
+      }),
+      prismaDB2.tr_approver_change_request.count({
+        where: { status: 'approved', is_deleted: false }
+      }),
+      prismaDB2.tr_approver_change_request.count({
+        where: { status: 'rejected', is_deleted: false }
+      }),
+      prismaDB2.tr_approver_change_request.count({
+        where: { urgent: true, status: 'pending', is_deleted: false }
+      })
+    ]);
+
+    // Get recent requests (last 7 days)
+    const sevenDaysAgo = new Date();
+    sevenDaysAgo.setDate(sevenDaysAgo.getDate() - 7);
+
+    const recentRequestsCount = await prismaDB2.tr_approver_change_request.count({
+      where: {
+        created_date: { gte: sevenDaysAgo },
+        is_deleted: false
+      }
+    });
+
+    res.status(200).json({
+      message: "Approver change request statistics retrieved successfully",
+      data: {
+        pending: pendingCount,
+        approved: approvedCount,
+        rejected: rejectedCount,
+        urgent: urgentCount,
+        recent_requests: recentRequestsCount,
+        total: pendingCount + approvedCount + rejectedCount
+      }
+    });
+
+  } catch (error) {
+    console.error("❌ Error getting request stats:", error);
+    res.status(500).json({ 
+      error: "Internal Server Error",
+      details: process.env.NODE_ENV === 'development' ? (error as Error).message : undefined
+    });
+  }
+};
+
